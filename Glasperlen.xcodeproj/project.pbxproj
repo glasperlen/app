@@ -14,6 +14,7 @@
 		CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324792549CA3E0051A470 /* Control.Circle.swift */; };
 		CE63247C2549CA3E0051A470 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63247A2549CA3E0051A470 /* Control.swift */; };
 		CE6324822549D14F0051A470 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324812549D14F0051A470 /* Game.swift */; };
+		CE6324852549D8470051A470 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324842549D8470051A470 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE6324792549CA3E0051A470 /* Control.Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Circle.swift; sourceTree = "<group>"; };
 		CE63247A2549CA3E0051A470 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		CE6324812549D14F0051A470 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		CE6324842549D8470051A470 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 				CE6324792549CA3E0051A470 /* Control.Circle.swift */,
 				CE63247A2549CA3E0051A470 /* Control.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
+				CE6324842549D8470051A470 /* Session.swift */,
 				CE4495BC25496A4300ECA6C0 /* Assets.xcassets */,
 				CE4495B625496A4300ECA6C0 /* Products */,
 			);
@@ -130,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6324852549D8470051A470 /* Session.swift in Sources */,
 				CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */,
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Board.swift in Sources */,
