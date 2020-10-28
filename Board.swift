@@ -2,18 +2,20 @@ import SwiftUI
 
 struct Board: View {
     var body: some View {
-        VStack {
-            ForEach(0 ..< 3) { _ in
-                HStack {
-                    ForEach(0 ..< 3) { _ in
-                        Cell {
-                            
+        GeometryReader { geo in
+            VStack {
+                ForEach(0 ..< 3) { _ in
+                    HStack {
+                        ForEach(0 ..< 3) { _ in
+                            Cell {
+                                
+                            }
                         }
                     }
-                }.padding(.horizontal)
+                    .padding(.horizontal)
+                }
             }
-            Spacer()
-                .frame(height: 80)
+            .frame(height: geo.size.width)
         }
     }
 }
