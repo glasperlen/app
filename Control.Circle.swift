@@ -3,7 +3,6 @@ import SwiftUI
 extension Control {
     struct Circle: View {
         let image: String
-        let color: Color
         let action: () -> Void
         
         var body: some View {
@@ -15,12 +14,11 @@ extension Control {
                             .foregroundColor(.clear)
                         SwiftUI.Circle()
                             .frame(width: 40, height: 40)
-                            .shadow(color: color.opacity(0.5), radius: 4, x: -3, y: -3)
-                            .shadow(color: color.opacity(0.5), radius: 4, x: 3, y: 3)
-                            .foregroundColor(selected ? .init(.systemBackground) : color)
+                            .shadow(color: Color.secondary.opacity(0.3), radius: 4, x: -3, y: -3)
+                            .shadow(color: Color.secondary.opacity(0.3), radius: 4, x: 3, y: 3)
+                            .foregroundColor(selected ? Color.secondary.opacity(0.5) : .init(.systemBackground))
                         Image(systemName: image)
-                            .font(Font.headline.bold())
-                            .foregroundColor(selected ? color : .black)
+                            .foregroundColor(selected ? .init(.systemBackground) : .secondary)
                     }
                     .contentShape(SwiftUI.Circle())
                 })

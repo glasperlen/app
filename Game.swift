@@ -10,13 +10,13 @@ struct Game: View {
             Spacer()
             HStack {
                 Spacer()
-                Control.Circle(image: "star.fill", color: .blue) {
+                Control.Circle(image: "star.fill") {
                     
                 }
-                Control.Circle(image: "plus", color: .orange) {
+                Control.Circle(image: "plus") {
                     
                 }
-                Control.Circle(image: "chart.bar.fill", color: .blue) {
+                Control.Circle(image: "chart.bar.fill") {
                     
                 }
                 Spacer()
