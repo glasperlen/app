@@ -2,6 +2,7 @@ import SwiftUI
 
 struct Game: View {
     @Binding var session: Session
+    @State private var new = false
     
     var body: some View {
         VStack {
@@ -14,7 +15,10 @@ struct Game: View {
                     
                 }
                 Control.Circle(image: "plus") {
-                    
+                    new = true
+                }
+                .sheet(isPresented: $new) {
+                    New(session: $session)
                 }
                 Control.Circle(image: "chart.bar.fill") {
                     
