@@ -2,24 +2,31 @@ import SwiftUI
 import Magister
 
 extension Header {
-    struct Score: View {
+    struct Score<P>: View where P : View {
+        @Binding var session: Session
+        let player: P
         let edge: Edge.Set
-        let name: String?
         let order: Player.Order
         
         var body: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundColor(order == .first ? .blue : .pink )
-                    .frame(height: 30)
                 HStack {
                     if edge == .trailing {
+                        player
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
                         Spacer()
                     }
-                    Text(verbatim: "312")
+                    Text(NSNumber(value: session.board[order].score), formatter: NumberFormatter())
                         .padding(.horizontal)
+                        .font(.footnote)
                     if edge == .leading {
                         Spacer()
+                        player
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
                     }
                 }
             }

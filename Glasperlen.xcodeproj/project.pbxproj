@@ -19,6 +19,7 @@
 		CEB90ED6254AD60400F92A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED5254AD60400F92A7C /* AppDelegate.swift */; };
 		CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED8254ADA5E00F92A7C /* Header.swift */; };
 		CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */; };
+		CEB90EE4254AE66800F92A7C /* Session.Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90EE3254AE66800F92A7C /* Session.Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		CEB90ED5254AD60400F92A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB90ED8254ADA5E00F92A7C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.Score.swift; sourceTree = "<group>"; };
+		CEB90EE3254AE66800F92A7C /* Session.Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Match.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				CEB90ED8254ADA5E00F92A7C /* Header.swift */,
 				CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */,
 				CE6324842549D8470051A470 /* Session.swift */,
+				CEB90EE3254AE66800F92A7C /* Session.Match.swift */,
 				CE4495BC25496A4300ECA6C0 /* Assets.xcassets */,
 				CE4495B625496A4300ECA6C0 /* Products */,
 			);
@@ -156,6 +159,7 @@
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Board.swift in Sources */,
 				CE63247C2549CA3E0051A470 /* Control.swift in Sources */,
+				CEB90EE4254AE66800F92A7C /* Session.Match.swift in Sources */,
 				CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */,
 				CE6324722549AB580051A470 /* Board.Cell.swift in Sources */,
 				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,

@@ -1,12 +1,22 @@
 import SwiftUI
 
 struct Header: View {
+    @Binding var session: Session
+    
     var body: some View {
-        HStack {
-            Score(edge: .leading, name: nil, order: .first)
-            Spacer()
-            Score(edge: .trailing, name: "Dimi", order: .second)
+        ZStack {
+            if session.match != nil {
+                Score(session: $session, player:
+                        Image(systemName: "person.fill"),
+                      edge: .leading, order: .first)
+                Spacer()
+                Score(session: $session, player:
+                        Text(verbatim: "Dimi")
+                        .font(.caption2),
+                      edge: .trailing, order: .second)
+            }
         }
+        .frame(height: 30)
         .padding(.horizontal)
     }
 }

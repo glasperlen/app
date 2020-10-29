@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct Game: View {
+    @Binding var session: Session
+    
     var body: some View {
         VStack {
-            Header()
+            Header(session: $session)
             Board()
             Spacer()
             HStack {
@@ -11,7 +13,7 @@ struct Game: View {
                 Control.Circle(image: "star.fill", color: .blue) {
                     
                 }
-                Control.Circle(image: "plus", color: .blue) {
+                Control.Circle(image: "plus", color: .orange) {
                     
                 }
                 Control.Circle(image: "chart.bar.fill", color: .blue) {

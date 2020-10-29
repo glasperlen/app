@@ -6,7 +6,7 @@ import SwiftUI
     
     var body: some Scene {
         WindowGroup {
-            Game()
+            Game(session: $session)
                 .preferredColorScheme(.dark)
                 
         }
