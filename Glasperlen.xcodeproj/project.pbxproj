@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,10 @@
 		CE63247C2549CA3E0051A470 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63247A2549CA3E0051A470 /* Control.swift */; };
 		CE6324822549D14F0051A470 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324812549D14F0051A470 /* Game.swift */; };
 		CE6324852549D8470051A470 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324842549D8470051A470 /* Session.swift */; };
+		CEB90ED3254AD52D00F92A7C /* Magister in Frameworks */ = {isa = PBXBuildFile; productRef = CEB90ED2254AD52D00F92A7C /* Magister */; };
+		CEB90ED6254AD60400F92A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED5254AD60400F92A7C /* AppDelegate.swift */; };
+		CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED8254ADA5E00F92A7C /* Header.swift */; };
+		CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,9 @@
 		CE63247A2549CA3E0051A470 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		CE6324812549D14F0051A470 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CE6324842549D8470051A470 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CEB90ED5254AD60400F92A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEB90ED8254ADA5E00F92A7C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.Score.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB90ED3254AD52D00F92A7C /* Magister in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,11 +54,14 @@
 			children = (
 				CE4495C125496A4300ECA6C0 /* Info.plist */,
 				CE4495B825496A4300ECA6C0 /* App.swift */,
+				CEB90ED5254AD60400F92A7C /* AppDelegate.swift */,
 				CE6324712549AB580051A470 /* Board.Cell.swift */,
 				CE63246E2549AB280051A470 /* Board.swift */,
 				CE6324792549CA3E0051A470 /* Control.Circle.swift */,
 				CE63247A2549CA3E0051A470 /* Control.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
+				CEB90ED8254ADA5E00F92A7C /* Header.swift */,
+				CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */,
 				CE6324842549D8470051A470 /* Session.swift */,
 				CE4495BC25496A4300ECA6C0 /* Assets.xcassets */,
 				CE4495B625496A4300ECA6C0 /* Products */,
@@ -81,6 +92,9 @@
 			dependencies = (
 			);
 			name = Glasperlen;
+			packageProductDependencies = (
+				CEB90ED2254AD52D00F92A7C /* Magister */,
+			);
 			productName = Glasperlen;
 			productReference = CE4495B525496A4300ECA6C0 /* Glasperlen.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +122,9 @@
 				Base,
 			);
 			mainGroup = CE4495AC25496A4300ECA6C0;
+			packageReferences = (
+				CEB90ED1254AD52D00F92A7C /* XCRemoteSwiftPackageReference "magister" */,
+			);
 			productRefGroup = CE4495B625496A4300ECA6C0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,12 +150,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB90ED6254AD60400F92A7C /* AppDelegate.swift in Sources */,
 				CE6324852549D8470051A470 /* Session.swift in Sources */,
 				CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */,
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Board.swift in Sources */,
 				CE63247C2549CA3E0051A470 /* Control.swift in Sources */,
+				CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */,
 				CE6324722549AB580051A470 /* Board.Cell.swift in Sources */,
+				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,
 				CE4495B925496A4300ECA6C0 /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEB90ED1254AD52D00F92A7C /* XCRemoteSwiftPackageReference "magister" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/glasperlen/magister.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEB90ED2254AD52D00F92A7C /* Magister */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB90ED1254AD52D00F92A7C /* XCRemoteSwiftPackageReference "magister" */;
+			productName = Magister;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE4495AD25496A4300ECA6C0 /* Project object */;
 }

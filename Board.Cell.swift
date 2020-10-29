@@ -8,10 +8,11 @@ extension Board {
             Button(action: action) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 6)
-                        .foregroundColor(.init(UIColor.tertiarySystemBackground))
+                        .foregroundColor(.init(.secondarySystemBackground))
                     Circle()
                         .padding()
                         .foregroundColor(.red)
+                        .hidden()
                 }
             }
         }

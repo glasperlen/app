@@ -3,28 +3,27 @@ import SwiftUI
 extension Control {
     struct Circle: View {
         let image: String
+        let color: Color
         let action: () -> Void
         
         var body: some View {
-            Button(action: action) {
-
-            }
-            .buttonStyle(Style { selected in
-                ZStack {
-                    SwiftUI.Circle()
-                        .frame(width: 70, height: 70)
-                        .foregroundColor(.clear)
-                    SwiftUI.Circle()
-                        .frame(width: 40, height: 40)
-                        .shadow(color: Color.accentColor.opacity(0.5), radius: 4, x: -3, y: -3)
-                        .shadow(color: Color.accentColor.opacity(0.5), radius: 4, x: 3, y: 3)
-                        .foregroundColor(selected ? .init(.systemBackground) : .accentColor)
-                    Image(systemName: image)
-                        .font(Font.headline.bold())
-                        .foregroundColor(selected ? .accentColor : .black)
-                }
-                .contentShape(SwiftUI.Circle())
-            })
+            Button(action: action) { }
+                .buttonStyle(Style { selected in
+                    ZStack {
+                        SwiftUI.Circle()
+                            .frame(width: 70, height: 70)
+                            .foregroundColor(.clear)
+                        SwiftUI.Circle()
+                            .frame(width: 40, height: 40)
+                            .shadow(color: color.opacity(0.5), radius: 4, x: -3, y: -3)
+                            .shadow(color: color.opacity(0.5), radius: 4, x: 3, y: 3)
+                            .foregroundColor(selected ? .init(.systemBackground) : color)
+                        Image(systemName: image)
+                            .font(Font.headline.bold())
+                            .foregroundColor(selected ? color : .black)
+                    }
+                    .contentShape(SwiftUI.Circle())
+                })
         }
     }
 }
