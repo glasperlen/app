@@ -18,6 +18,12 @@ struct Onboard: View {
                         .font(.headline)
                     Spacer()
                 }
+                HStack {
+                    Text("As a new player you will receive a starting deck with 5 beads.\n\nAs you win matches you will gain more beads and grow your deck.")
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+                .padding(.vertical)
                 Spacer()
                 Control.Capsule(text: "Start", color: .blue) {
                     
