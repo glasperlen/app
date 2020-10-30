@@ -18,6 +18,7 @@ extension Control {
                             .foregroundColor(selected ? .init(.systemBackground) : color)
                         Text(text)
                             .foregroundColor(selected ? color : .white)
+                            .font(.footnote)
                     }
                     .contentShape(Rectangle())
                 })
