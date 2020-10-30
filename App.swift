@@ -7,7 +7,7 @@ import SwiftUI
     var body: some Scene {
         WindowGroup {
             if session.inventory.beads.isEmpty {
-                Onboard()
+                Onboard(session: $session)
             } else {
                 Game(session: $session)
                     .preferredColorScheme(.dark)

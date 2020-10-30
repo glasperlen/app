@@ -1,15 +1,16 @@
 import SwiftUI
 
 struct Onboard: View {
+    @Binding var session: Session
     @State private var tab = 0
     
     var body: some View {
         TabView(selection: $tab) {
-            First(tab: $tab)
+            First(session: $session, tab: $tab)
                 .tag(0)
-            Second(tab: $tab)
+            Second(session: $session, tab: $tab)
                 .tag(1)
-            Third(tab: $tab)
+            Third(session: $session, tab: $tab)
                 .tag(2)
         }
         .tabViewStyle(PageTabViewStyle())

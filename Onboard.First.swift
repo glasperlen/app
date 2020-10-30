@@ -2,6 +2,7 @@ import SwiftUI
 
 extension Onboard {
     struct First: View {
+        @Binding var session: Session
         @Binding var tab: Int
         
         var body: some View {
