@@ -6,45 +6,41 @@ extension Onboard {
         @Binding var tab: Int
         
         var body: some View {
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.init(.tertiarySystemBackground))
-                VStack {
+            Card {
+                HStack {
+                    Text("Welcome to")
+                        .font(.footnote)
                     Spacer()
-                        .frame(height: 20)
-                    HStack {
-                        Text("Welcome to")
-                            .font(.footnote)
-                        Spacer()
-                    }
-                    HStack {
-                        Text("The Glass Bead Game")
-                            .font(.headline)
-                        Spacer()
-                    }
-                    Spacer()
-                    Image(systemName: "person.fill")
-                        .foregroundColor(.accentColor)
-                        .font(.largeTitle)
-                        .padding(.vertical)
-                    HStack {
-                        Text("As a new player you will receive a starting deck with 5 beads.\n\nAs you win matches you will gain more beads and grow your deck.")
-                            .foregroundColor(.secondary)
-                        Spacer()
-                    }
-                    .padding(.vertical)
-                    Spacer()
-                    Control.Capsule(text: "Next", color: .init(.secondarySystemBackground)) {
-                        withAnimation(.easeInOut(duration: 1)) {
-                            tab = 1
-                        }
-                    }
-                    .padding(.horizontal)
                 }
-                .padding()
+                HStack {
+                    Text("The Glass Bead Game")
+                        .font(.headline)
+                    Spacer()
+                }
+                Spacer()
+                Image(systemName: "person.fill")
+                    .foregroundColor(.accentColor)
+                    .font(.largeTitle)
+                    .padding(.vertical)
+                HStack {
+                    Text("As a new player you will receive a starting deck with 5 beads.\n\nAs you win matches you will gain more beads and grow your deck.")
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+                .padding(.vertical)
+                Spacer()
+                Button {
+                    withAnimation(.easeInOut(duration: 1)) {
+                        tab = 1
+                    }
+                } label: {
+                    Text("Next")
+                        .foregroundColor(.primary)
+                        .font(Font.footnote.bold())
+                        .frame(minWidth: 100, minHeight: 50)
+                }
+                .contentShape(Rectangle())
             }
-            .padding(.bottom, 80)
-            .padding()
         }
     }
 }

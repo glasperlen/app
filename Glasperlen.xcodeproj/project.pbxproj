@@ -10,6 +10,9 @@
 		CE1C5D45254AF8DC00B581C9 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C5D44254AF8DC00B581C9 /* New.swift */; };
 		CE4495B925496A4300ECA6C0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4495B825496A4300ECA6C0 /* App.swift */; };
 		CE4495BD25496A4300ECA6C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4495BC25496A4300ECA6C0 /* Assets.xcassets */; };
+		CE60EDB0254D8D26007056BC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDAF254D8D26007056BC /* Color.swift */; };
+		CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDB3254D959A007056BC /* Neumorphic.swift */; };
+		CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDB7254D9759007056BC /* Onboard.Card.swift */; };
 		CE63246F2549AB280051A470 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63246E2549AB280051A470 /* Board.swift */; };
 		CE6324722549AB580051A470 /* Board.Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324712549AB580051A470 /* Board.Cell.swift */; };
 		CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324792549CA3E0051A470 /* Control.Circle.swift */; };
@@ -37,6 +40,9 @@
 		CE4495B825496A4300ECA6C0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CE4495BC25496A4300ECA6C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE4495C125496A4300ECA6C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE60EDAF254D8D26007056BC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CE60EDB3254D959A007056BC /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
+		CE60EDB7254D9759007056BC /* Onboard.Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Card.swift; sourceTree = "<group>"; };
 		CE63246E2549AB280051A470 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		CE6324712549AB580051A470 /* Board.Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.Cell.swift; sourceTree = "<group>"; };
 		CE6324792549CA3E0051A470 /* Control.Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Circle.swift; sourceTree = "<group>"; };
@@ -75,6 +81,7 @@
 				CE4495C125496A4300ECA6C0 /* Info.plist */,
 				CE4495B825496A4300ECA6C0 /* App.swift */,
 				CEB90ED5254AD60400F92A7C /* AppDelegate.swift */,
+				CE60EDAF254D8D26007056BC /* Color.swift */,
 				CE6324712549AB580051A470 /* Board.Cell.swift */,
 				CE63246E2549AB280051A470 /* Board.swift */,
 				CEE409B2254B245600A9D5EB /* Control.Capsule.swift */,
@@ -86,7 +93,9 @@
 				CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */,
 				CEB90ED8254ADA5E00F92A7C /* Header.swift */,
 				CE938BCA254C6B6200A7BEC2 /* Inventory.swift */,
+				CE60EDB3254D959A007056BC /* Neumorphic.swift */,
 				CE1C5D44254AF8DC00B581C9 /* New.swift */,
+				CE60EDB7254D9759007056BC /* Onboard.Card.swift */,
 				CE65FC34254C3AC1000A78C1 /* Onboard.First.swift */,
 				CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */,
 				CEE409AB254B1DCA00A9D5EB /* Onboard.swift */,
@@ -186,6 +195,7 @@
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Board.swift in Sources */,
 				CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */,
+				CE60EDB0254D8D26007056BC /* Color.swift in Sources */,
 				CE63247C2549CA3E0051A470 /* Control.swift in Sources */,
 				CEB90EE4254AE66800F92A7C /* Session.Match.swift in Sources */,
 				CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */,
@@ -194,9 +204,11 @@
 				CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */,
 				CE938BCB254C6B6200A7BEC2 /* Inventory.swift in Sources */,
 				CE6324722549AB580051A470 /* Board.Cell.swift in Sources */,
+				CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */,
 				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,
 				CE1C5D45254AF8DC00B581C9 /* New.swift in Sources */,
 				CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */,
+				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,
 				CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */,
 				CE4495B925496A4300ECA6C0 /* App.swift in Sources */,
 				CE938BC7254C6AF600A7BEC2 /* Defaults.swift in Sources */,
