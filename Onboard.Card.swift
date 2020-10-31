@@ -11,7 +11,7 @@ extension Onboard {
         var body: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 25)
-                    .foregroundColor(.background)
+                    .fill(Color.background)
                     .modifier(Neumorphic())
                 VStack {
                     content

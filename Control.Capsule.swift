@@ -11,11 +11,11 @@ extension Control {
                 .buttonStyle(Style { selected in
                     ZStack {
                         Rectangle()
+                            .fill(Color.clear)
                             .frame(height: 50)
-                            .foregroundColor(.clear)
                         RoundedRectangle(cornerRadius: 17)
+                            .fill(selected ? .init(.systemBackground) : color)
                             .frame(height: 34)
-                            .foregroundColor(selected ? .init(.systemBackground) : color)
                         Text(text)
                             .foregroundColor(selected ? color : .white)
                             .font(.footnote)

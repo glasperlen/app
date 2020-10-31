@@ -11,7 +11,7 @@ extension Header {
         var body: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .foregroundColor(order == .first ? .blue : .pink )
+                    .fill(order == .first ? Color.blue : .pink )
                 HStack {
                     if edge == .trailing {
                         player
