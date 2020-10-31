@@ -13,6 +13,7 @@
 		CE60EDB0254D8D26007056BC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDAF254D8D26007056BC /* Color.swift */; };
 		CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDB3254D959A007056BC /* Neumorphic.swift */; };
 		CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDB7254D9759007056BC /* Onboard.Card.swift */; };
+		CE60EDBC254DA523007056BC /* Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDBB254DA523007056BC /* Bead.swift */; };
 		CE63246F2549AB280051A470 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63246E2549AB280051A470 /* Board.swift */; };
 		CE6324722549AB580051A470 /* Board.Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324712549AB580051A470 /* Board.Cell.swift */; };
 		CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324792549CA3E0051A470 /* Control.Circle.swift */; };
@@ -43,6 +44,7 @@
 		CE60EDAF254D8D26007056BC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CE60EDB3254D959A007056BC /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		CE60EDB7254D9759007056BC /* Onboard.Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Card.swift; sourceTree = "<group>"; };
+		CE60EDBB254DA523007056BC /* Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bead.swift; sourceTree = "<group>"; };
 		CE63246E2549AB280051A470 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		CE6324712549AB580051A470 /* Board.Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.Cell.swift; sourceTree = "<group>"; };
 		CE6324792549CA3E0051A470 /* Control.Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Circle.swift; sourceTree = "<group>"; };
@@ -81,9 +83,10 @@
 				CE4495C125496A4300ECA6C0 /* Info.plist */,
 				CE4495B825496A4300ECA6C0 /* App.swift */,
 				CEB90ED5254AD60400F92A7C /* AppDelegate.swift */,
-				CE60EDAF254D8D26007056BC /* Color.swift */,
+				CE60EDBB254DA523007056BC /* Bead.swift */,
 				CE6324712549AB580051A470 /* Board.Cell.swift */,
 				CE63246E2549AB280051A470 /* Board.swift */,
+				CE60EDAF254D8D26007056BC /* Color.swift */,
 				CEE409B2254B245600A9D5EB /* Control.Capsule.swift */,
 				CE6324792549CA3E0051A470 /* Control.Circle.swift */,
 				CEE409AF254B242C00A9D5EB /* Control.Style.swift */,
@@ -206,6 +209,7 @@
 				CE6324722549AB580051A470 /* Board.Cell.swift in Sources */,
 				CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */,
 				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,
+				CE60EDBC254DA523007056BC /* Bead.swift in Sources */,
 				CE1C5D45254AF8DC00B581C9 /* New.swift in Sources */,
 				CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */,
 				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,

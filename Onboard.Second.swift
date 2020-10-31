@@ -5,7 +5,7 @@ extension Onboard {
     struct Second: View {
         @Binding var session: Session
         @Binding var tab: Int
-        @State private var beads = [Bead]()
+        @State private var beads = [Magister.Bead]()
         
         var body: some View {
             Card {
@@ -22,23 +22,23 @@ extension Onboard {
                 HStack {
                     Spacer()
                     ForEach(0 ..< 5) {
-                        Circle()
-                            .shadow(color: beads.isEmpty ? Color.black.opacity(0.3) : beads[$0].color.color.opacity(0.6), radius: 6)
-                            .frame(width: 16, height: 16)
-                            .foregroundColor(beads.isEmpty ? .init(.secondarySystemBackground) : beads[$0].color.color)
+                        Bead(color: beads.isEmpty ? .init(.secondarySystemBackground) : beads[$0].color.color)
+                            .frame(width: 18, height: 18)
                     }
                     Spacer()
                 }
                 .padding(.vertical)
-                Button {
-                    withAnimation(.easeInOut(duration: 1)) {
-                        tab = 1
+                if !beads.isEmpty {
+                    Button {
+                        withAnimation(.easeInOut(duration: 1)) {
+                            tab = 1
+                        }
+                    } label: {
+                        Text("View bag")
+                            .foregroundColor(.secondary)
+                            .font(Font.footnote.bold())
+                            .frame(minWidth: 100, minHeight: 50)
                     }
-                } label: {
-                    Text("View bag")
-                        .foregroundColor(.secondary)
-                        .font(Font.footnote.bold())
-                        .frame(minWidth: 100, minHeight: 50)
                 }
                 Spacer()
                 Button {
@@ -54,7 +54,11 @@ extension Onboard {
             }
             .onAppear {
                 if beads.isEmpty {
-                    beads = Factory.make(5).shuffled()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        withAnimation(.easeInOut(duration: 1)) {
+                            beads = Factory.make(5).shuffled()
+                        }
+                    }
                 }
             }
         }

@@ -5,7 +5,7 @@ extension Color {
     static let background = Color(red: 0.08, green: 0.09, blue: 0.1)
 }
 
-extension Bead.Color {
+extension Magister.Bead.Color {
     var color: Color {
         switch self {
         case .red: return .red
