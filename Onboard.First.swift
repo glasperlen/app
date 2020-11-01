@@ -1,8 +1,10 @@
 import SwiftUI
+import Magister
 
 extension Onboard {
     struct First: View {
         @Binding var session: Session
+        @Binding var beads: [Magister.Bead]
         @Binding var tab: Int
         
         var body: some View {
@@ -19,7 +21,6 @@ extension Onboard {
                 }
                 Spacer()
                 Image(systemName: "person.fill")
-                    .foregroundColor(.accentColor)
                     .font(.largeTitle)
                     .padding(.vertical)
                 HStack {

@@ -3,17 +3,19 @@ import SwiftUI
 struct Board: View {
     var body: some View {
         GeometryReader { geo in
-            VStack {
-                ForEach(0 ..< 3) { _ in
-                    HStack {
-                        ForEach(0 ..< 3) { _ in
-                            Cell {
-                                
+            Group {
+                VStack {
+                    ForEach(0 ..< 3) { x in
+                        HStack {
+                            ForEach(0 ..< 3) { y in
+                                Cell {
+                                    
+                                }
                             }
                         }
                     }
-                    .padding(.horizontal)
                 }
+                .padding()
             }
             .frame(height: geo.size.width)
         }

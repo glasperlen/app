@@ -4,8 +4,8 @@ import Magister
 extension Onboard {
     struct Second: View {
         @Binding var session: Session
+        @Binding var beads: [Magister.Bead]
         @Binding var tab: Int
-        @State private var beads = [Magister.Bead]()
         
         var body: some View {
             Card {
@@ -16,7 +16,6 @@ extension Onboard {
                 }
                 Spacer()
                 Image(systemName: "bag.fill")
-                    .foregroundColor(.accentColor)
                     .font(.largeTitle)
                     .padding(.vertical)
                 HStack {
@@ -30,9 +29,7 @@ extension Onboard {
                 .padding(.vertical)
                 if !beads.isEmpty {
                     Button {
-                        withAnimation(.easeInOut(duration: 1)) {
-                            tab = 1
-                        }
+                        
                     } label: {
                         Text("View bag")
                             .foregroundColor(.secondary)
@@ -54,8 +51,8 @@ extension Onboard {
             }
             .onAppear {
                 if beads.isEmpty {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation(.easeInOut(duration: 1)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        withAnimation(.easeInOut(duration: 2)) {
                             beads = Factory.make(5).shuffled()
                         }
                     }

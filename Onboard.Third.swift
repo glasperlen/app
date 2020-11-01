@@ -1,22 +1,19 @@
 import SwiftUI
+import Magister
 
 extension Onboard {
     struct Third: View {
         @Binding var session: Session
+        @Binding var beads: [Magister.Bead]
         @Binding var tab: Int
         
         var body: some View {
             Card {
                 HStack {
-                    Text("Your brand new deck")
+                    Text("All set!")
                         .font(.footnote)
                     Spacer()
                 }
-                Spacer()
-                Image(systemName: "bag.fill")
-                    .foregroundColor(.accentColor)
-                    .font(.largeTitle)
-                    .padding(.vertical)
                 HStack {
                     Text("You can join matches now!")
                         .foregroundColor(.secondary)
@@ -24,12 +21,11 @@ extension Onboard {
                 }
                 .padding(.vertical)
                 Spacer()
-                Control.Capsule(text: "Open bag", color: .init(.secondarySystemBackground)) {
-                    
-                }
-                .padding(.horizontal)
-                Control.Capsule(text: "Continue", color: .init(.secondarySystemBackground)) {
-                    tab = 2
+                Control.Capsule(text: "Start", background: .primary, foreground: .init(.systemBackground)) {
+                    withAnimation(.easeInOut(duration: 1)) {
+                        session.inventory.deck = beads.map(\.id)
+                        session.inventory.beads = .init(beads)
+                    }
                 }
                 .padding(.horizontal)
             }

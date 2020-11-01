@@ -7,14 +7,14 @@ import SwiftUI
     var body: some Scene {
         WindowGroup {
             ZStack {
+                Color.background
+                    .edgesIgnoringSafeArea(.all)
                 if session.inventory.beads.isEmpty {
                     Onboard(session: $session)
                 } else {
                     Game(session: $session)
                 }
             }
-            .background(Color.background
-                            .edgesIgnoringSafeArea(.all))
             .preferredColorScheme(.dark)
         }
     }

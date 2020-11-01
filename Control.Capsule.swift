@@ -3,7 +3,8 @@ import SwiftUI
 extension Control {
     struct Capsule: View {
         let text: LocalizedStringKey
-        let color: Color
+        let background: Color
+        let foreground: Color
         let action: () -> Void
         
         var body: some View {
@@ -14,10 +15,10 @@ extension Control {
                             .fill(Color.clear)
                             .frame(height: 50)
                         RoundedRectangle(cornerRadius: 17)
-                            .fill(selected ? .init(.systemBackground) : color)
+                            .fill(selected ? foreground : background)
                             .frame(height: 34)
                         Text(text)
-                            .foregroundColor(selected ? color : .white)
+                            .foregroundColor(selected ? background : foreground)
                             .font(.footnote)
                     }
                     .contentShape(Rectangle())

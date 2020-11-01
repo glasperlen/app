@@ -8,6 +8,8 @@ extension Color {
 extension Magister.Bead.Color {
     var color: Color {
         switch self {
+        case .blue: return .blue
+        case .pink: return .pink
         case .red: return .red
         case .orange: return .orange
         case .green: return .green
