@@ -1,10 +1,8 @@
 import SwiftUI
-import Magister
 
 extension Onboard {
     struct First: View {
         @Binding var session: Session
-        @Binding var beads: [Magister.Bead]
         @Binding var tab: Int
         
         var body: some View {
@@ -24,7 +22,7 @@ extension Onboard {
                     .font(.largeTitle)
                     .padding(.vertical)
                 HStack {
-                    Text("As a new player you will receive a starting deck with 5 beads.\n\nAs you win matches you will gain more beads and grow your deck.")
+                    Text("As a new player you will receive a starting deck with 5 beads.\n\nWhen winning matches you will gain more beads and grow your deck.")
                         .foregroundColor(.secondary)
                     Spacer()
                 }

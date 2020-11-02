@@ -6,16 +6,12 @@ import SwiftUI
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                Color.background
-                    .edgesIgnoringSafeArea(.all)
-                if session.inventory.beads.isEmpty {
-                    Onboard(session: $session)
-                } else {
-                    Game(session: $session)
+            Game(session: $session)
+                .modifier(Background())
+                .preferredColorScheme(.dark)
+                .onAppear {
+                    session.onboard = session.inventory.beads.isEmpty
                 }
-            }
-            .preferredColorScheme(.dark)
         }
     }
 }

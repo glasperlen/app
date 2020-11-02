@@ -1,25 +1,27 @@
 import SwiftUI
+import Magister
 
-struct New: View {
+struct Deck: View {
     @Binding var session: Session
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
         VStack {
-            Text("New game")
-                .font(.headline)
-                .foregroundColor(.primary)
             Spacer()
+            HStack {
+                Spacer()
+            }
             Button {
                 visible.wrappedValue.dismiss()
             } label: {
-                Text("Cancel")
-                    .font(.footnote)
+                Image(systemName: "chevron.down.circle.fill")
                     .foregroundColor(.secondary)
-                    .frame(minWidth: 100, minHeight: 50)
+                    .font(.title)
+                    .frame(width: 50, height: 50)
             }
             .contentShape(Rectangle())
+            .padding(.vertical)
         }
-        .padding(.vertical)
+        .modifier(Background())
     }
 }

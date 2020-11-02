@@ -4,8 +4,8 @@ import Magister
 extension Onboard {
     struct Second: View {
         @Binding var session: Session
-        @Binding var beads: [Magister.Bead]
         @Binding var tab: Int
+        @State private var deck = false
         
         var body: some View {
             Card {
@@ -21,17 +21,17 @@ extension Onboard {
                 HStack {
                     Spacer()
                     ForEach(0 ..< 5) {
-                        Bead(color: beads.isEmpty ? .init(.secondarySystemBackground) : beads[$0].color.color)
+                        Bead(color: session.inventory.beads.isEmpty ? .init(.secondarySystemBackground) : session.inventory[$0].color.color)
                             .frame(width: 18, height: 18)
                     }
                     Spacer()
                 }
-                .padding(.vertical)
-                if !beads.isEmpty {
+                .padding(.top)
+                if !session.inventory.beads.isEmpty {
                     Button {
-                        
+                        deck = true
                     } label: {
-                        Text("View bag")
+                        Text("View")
                             .foregroundColor(.secondary)
                             .font(Font.footnote.bold())
                             .frame(minWidth: 100, minHeight: 50)
@@ -49,11 +49,18 @@ extension Onboard {
                         .frame(minWidth: 100, minHeight: 50)
                 }
             }
+            .sheet(isPresented: $deck) {
+                Deck(session: $session)
+            }
             .onAppear {
-                if beads.isEmpty {
+                if session.inventory.beads.isEmpty {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        withAnimation(.easeInOut(duration: 2)) {
-                            beads = Factory.make(5).shuffled()
+                        let beads = Factory.make(5)
+                        withAnimation(.easeInOut(duration: 1)) {
+                            beads.enumerated().forEach {
+                                session.inventory[$0.0] = $0.1
+                            }
+                            session.inventory.beads = beads
                         }
                     }
                 }

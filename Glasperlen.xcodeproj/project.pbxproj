@@ -30,6 +30,8 @@
 		CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED8254ADA5E00F92A7C /* Header.swift */; };
 		CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */; };
 		CEB90EE4254AE66800F92A7C /* Session.Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90EE3254AE66800F92A7C /* Session.Match.swift */; };
+		CEBE5394255019550059F12C /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE5393255019550059F12C /* Deck.swift */; };
+		CEBE5398255023580059F12C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE5397255023580059F12C /* Background.swift */; };
 		CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409AB254B1DCA00A9D5EB /* Onboard.swift */; };
 		CEE409B0254B242C00A9D5EB /* Control.Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409AF254B242C00A9D5EB /* Control.Style.swift */; };
 		CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409B2254B245600A9D5EB /* Control.Capsule.swift */; };
@@ -60,6 +62,8 @@
 		CEB90ED8254ADA5E00F92A7C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.Score.swift; sourceTree = "<group>"; };
 		CEB90EE3254AE66800F92A7C /* Session.Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Match.swift; sourceTree = "<group>"; };
+		CEBE5393255019550059F12C /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		CEBE5397255023580059F12C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		CEE409AB254B1DCA00A9D5EB /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
 		CEE409AF254B242C00A9D5EB /* Control.Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Style.swift; sourceTree = "<group>"; };
 		CEE409B2254B245600A9D5EB /* Control.Capsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Capsule.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				CE4495C125496A4300ECA6C0 /* Info.plist */,
 				CE4495B825496A4300ECA6C0 /* App.swift */,
 				CEB90ED5254AD60400F92A7C /* AppDelegate.swift */,
+				CEBE5397255023580059F12C /* Background.swift */,
 				CE60EDBB254DA523007056BC /* Bead.swift */,
 				CE6324712549AB580051A470 /* Board.Cell.swift */,
 				CE63246E2549AB280051A470 /* Board.swift */,
@@ -91,6 +96,7 @@
 				CE6324792549CA3E0051A470 /* Control.Circle.swift */,
 				CEE409AF254B242C00A9D5EB /* Control.Style.swift */,
 				CE63247A2549CA3E0051A470 /* Control.swift */,
+				CEBE5393255019550059F12C /* Deck.swift */,
 				CE938BC6254C6AF600A7BEC2 /* Defaults.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
 				CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */,
@@ -199,9 +205,11 @@
 				CE63246F2549AB280051A470 /* Board.swift in Sources */,
 				CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */,
 				CE60EDB0254D8D26007056BC /* Color.swift in Sources */,
+				CEBE5394255019550059F12C /* Deck.swift in Sources */,
 				CE63247C2549CA3E0051A470 /* Control.swift in Sources */,
 				CEB90EE4254AE66800F92A7C /* Session.Match.swift in Sources */,
 				CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */,
+				CEBE5398255023580059F12C /* Background.swift in Sources */,
 				CE65FC35254C3AC1000A78C1 /* Onboard.First.swift in Sources */,
 				CEE409B0254B242C00A9D5EB /* Control.Style.swift in Sources */,
 				CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */,

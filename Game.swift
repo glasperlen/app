@@ -25,6 +25,12 @@ struct Game: View {
                 }
                 Spacer()
             }
+            EmptyView()
+                .fullScreenCover(isPresented: $session.onboard) {
+                    Onboard(session: $session)
+                        .modifier(Background())
+                        .preferredColorScheme(.dark)
+                }
         }
     }
 }
