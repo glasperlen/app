@@ -12,10 +12,16 @@ extension Board {
                 ZStack {
                     Rectangle()
                         .hidden()
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.background)
-                        .modifier(Neumorphic())
-                        .frame(width: 90, height: 90)
+                    if session.board[x, y] == nil {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.background)
+                            .modifier(Neumorphic())
+                            .padding(5)
+                    } else {
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(session.board[x, y]!.order == session.match?.local ? Color.user : .oponent, style: .init(lineWidth: 1))
+                            .padding(5)
+                    }
                     if session.board[x, y] != nil {
                         Bead(color: session.board[x, y]!.bead.color.color)
                             .frame(width: 50, height: 50)
