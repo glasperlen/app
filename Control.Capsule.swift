@@ -16,10 +16,10 @@ extension Control {
                             .frame(height: 50)
                         RoundedRectangle(cornerRadius: 17)
                             .fill(selected ? foreground : background)
-                            .frame(height: 34)
+                            .frame(width: 180, height: 34)
                         Text(text)
                             .foregroundColor(selected ? background : foreground)
-                            .font(.footnote)
+                            .font(Font.footnote.bold())
                     }
                     .contentShape(Rectangle())
                 })

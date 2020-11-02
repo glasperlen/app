@@ -5,12 +5,16 @@ struct Inventory: Codable {
     var beads = Set<Magister.Bead>()
     private var deck = [Int : UUID]()
     
-    subscript(_ index: Int) -> Magister.Bead {
+    subscript(_ index: Int) -> Magister.Bead? {
         get {
-            beads.first { $0.id == deck[index] }!
+            beads.first { $0.id == deck[index] }
         }
         set {
-            deck[index] = newValue.id
+            guard let id = newValue?.id else {
+                deck.removeValue(forKey: index)
+                return
+            }
+            deck[index] = id
         }
     }
 }

@@ -19,10 +19,9 @@ extension Onboard {
                 }
                 .padding(.vertical)
                 Spacer()
-                Control.Capsule(text: "Start", background: .primary, foreground: .init(.systemBackground)) {
+                Control.Capsule(text: "Start", background: .primary, foreground: .background) {
                     session.onboard = false
                 }
-                .padding(.horizontal)
             }
         }
     }

@@ -7,7 +7,7 @@ struct Game: View {
     var body: some View {
         VStack {
             Header(session: $session)
-            Board()
+            Board(session: $session)
             Spacer()
             HStack {
                 Spacer()

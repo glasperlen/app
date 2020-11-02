@@ -8,9 +8,19 @@ struct Deck: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack {
-                Spacer()
+                .frame(height: 20)
+            VStack {
+                ForEach(0 ..< 5) { index in
+                    HStack {
+                        Bead(color: session.inventory[index]?.color.color ?? .black)
+                            .frame(width: 50, height: 50)
+                            .padding()
+                        Spacer()
+                    }
+                }
             }
+            .padding()
+            Spacer()
             Button {
                 visible.wrappedValue.dismiss()
             } label: {
@@ -20,7 +30,7 @@ struct Deck: View {
                     .frame(width: 50, height: 50)
             }
             .contentShape(Rectangle())
-            .padding(.vertical)
+            .padding(.bottom)
         }
         .modifier(Background())
     }

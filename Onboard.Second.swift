@@ -21,7 +21,7 @@ extension Onboard {
                 HStack {
                     Spacer()
                     ForEach(0 ..< 5) {
-                        Bead(color: session.inventory.beads.isEmpty ? .init(.secondarySystemBackground) : session.inventory[$0].color.color)
+                        Bead(color: session.inventory[$0]?.color.color ?? .black)
                             .frame(width: 18, height: 18)
                     }
                     Spacer()

@@ -10,26 +10,26 @@ extension Header {
         
         var body: some View {
             ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(order == .first ? Color.blue : .pink )
                 HStack {
-                    if edge == .trailing {
+                    if edge == .leading {
                         player
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
-                        Spacer()
+                            .padding(.leading)
                     }
                     Text(NSNumber(value: session.board[order].score), formatter: NumberFormatter())
                         .padding(.horizontal)
                         .font(.footnote)
-                    if edge == .leading {
-                        Spacer()
+                    if edge == .trailing {
                         player
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                            .padding(.trailing)
                     }
                 }
+                .frame(height: 30)
+                .foregroundColor(.background)
             }
+            .background(RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.primary))
+            .opacity(session.match!.turn == order ? 1 : 0.3)
+            .padding(.horizontal)
         }
     }
 }

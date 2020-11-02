@@ -2,7 +2,7 @@ import SwiftUI
 import Magister
 
 extension Color {
-    static let background = Color(red: 0.08, green: 0.09, blue: 0.1)
+    static let background = Color(red: 0.07, green: 0.075, blue: 0.08)
 }
 
 extension Magister.Bead.Color {
