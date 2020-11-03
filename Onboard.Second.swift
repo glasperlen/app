@@ -55,7 +55,7 @@ extension Onboard {
             .onAppear {
                 if session.inventory.beads.isEmpty {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        let beads = Factory.make(5)
+                        let beads = Factory.beads(5)
                         withAnimation(.easeInOut(duration: 1)) {
                             beads.enumerated().forEach {
                                 session.inventory[$0.0] = $0.1

@@ -6,8 +6,16 @@ struct Game: View {
     
     var body: some View {
         VStack {
-            Header(session: $session)
-            Board(session: $session)
+            if session.match == nil {
+                Image(systemName: "ant")
+                    .fullScreenCover(isPresented: $session.onboard) {
+                        Onboard(session: $session)
+                            .modifier(Background())
+                            .preferredColorScheme(.dark)
+                    }
+            } else {
+                Match(session: $session)
+            }
             Spacer()
             HStack {
                 Spacer()
@@ -25,12 +33,6 @@ struct Game: View {
                 }
                 Spacer()
             }
-            EmptyView()
-                .fullScreenCover(isPresented: $session.onboard) {
-                    Onboard(session: $session)
-                        .modifier(Background())
-                        .preferredColorScheme(.dark)
-                }
         }
     }
 }

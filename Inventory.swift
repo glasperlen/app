@@ -3,18 +3,19 @@ import Magister
 
 struct Inventory: Codable {
     var beads = Set<Magister.Bead>()
-    private var deck = [Int : UUID]()
+    var deck: [Magister.Bead] { _deck.map(\.value).map { id in beads.first { $0.id == id }! } }
+    private var _deck = [Int : UUID]()
     
     subscript(_ index: Int) -> Magister.Bead? {
         get {
-            beads.first { $0.id == deck[index] }
+            beads.first { $0.id == _deck[index] }
         }
         set {
             guard let id = newValue?.id else {
-                deck.removeValue(forKey: index)
+                _deck.removeValue(forKey: index)
                 return
             }
-            deck[index] = id
+            _deck[index] = id
         }
     }
 }

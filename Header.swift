@@ -5,14 +5,12 @@ struct Header: View {
     
     var body: some View {
         ZStack {
-            if session.match != nil {
-                if session.match!.turn == session.match!.local {
-                    user
-                    oponent
-                } else {
-                    oponent
-                    user
-                }
+            if session.match!.turn == .user {
+                user
+                oponent
+            } else {
+                oponent
+                user
             }
         }
         .padding(.horizontal)
@@ -21,9 +19,7 @@ struct Header: View {
     
     private var user: some View {
         HStack {
-            Score(session: $session, player:
-                    Image(systemName: "person.fill"),
-                  edge: .leading, order: session.match!.local)
+            Score(session: $session, player: .user)
             Spacer()
         }
     }
@@ -31,10 +27,7 @@ struct Header: View {
     private var oponent: some View {
         HStack {
             Spacer()
-            Score(session: $session, player:
-                    Text(verbatim: "Dimi")
-                    .font(.caption2),
-                  edge: .trailing, order: session.match!.local == .first ? .second : .first)
+            Score(session: $session, player: .oponent)
         }
     }
 }

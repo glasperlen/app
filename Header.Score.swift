@@ -2,34 +2,31 @@ import SwiftUI
 import Magister
 
 extension Header {
-    struct Score<P>: View where P : View {
+    struct Score: View {
         @Binding var session: Session
-        let player: P
-        let edge: Edge.Set
-        let order: Player.Order
+        let player: Player.Mode
         
         var body: some View {
-            ZStack {
-                HStack {
-                    if edge == .leading {
-                        player
-                            .padding(.leading)
-                    }
-                    Text(NSNumber(value: session.board[order].score), formatter: NumberFormatter())
-                        .fixedSize(horizontal: true, vertical: false)
-                        .font(Font.body.bold())
-                        .padding(.horizontal)
-                    if edge == .trailing {
-                        player
-                            .padding(.trailing)
-                    }
+            HStack {
+                if player == .user {
+                    Image(systemName: "person.fill")
+                        .padding(.leading)
                 }
-                .frame(height: 30)
-                .foregroundColor(.black)
+                Text(NSNumber(value: session.match![player].score), formatter: NumberFormatter())
+                    .fixedSize(horizontal: true, vertical: false)
+                    .font(Font.body.bold())
+                    .padding(.horizontal)
+                if player == .oponent {
+                    Text(verbatim: session.match![.oponent].name)
+                        .font(.caption2)
+                        .padding(.trailing)
+                }
             }
+            .frame(height: 30)
+            .foregroundColor(.black)
             .background(RoundedRectangle(cornerRadius: 15)
-                            .fill(session.match!.local == order ? Color.user : .oponent))
-            .opacity(session.match!.turn == order ? 1 : 0.3)
+                            .fill(player == .user ? Color.user : .oponent))
+            .opacity(session.match!.turn == player ? 1 : 0.3)
             .padding(.horizontal)
         }
     }

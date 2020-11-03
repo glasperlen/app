@@ -15,24 +15,24 @@ struct New: View {
             HStack {
                 Spacer()
                 Control.Capsule(text: "Start", background: .primary, foreground: .background) {
-                    session.match = Session.Match(local: .second)
+                    session.match = .robot(session.inventory.deck)
                     visible.wrappedValue.dismiss()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        session.board[0, 0] = session.match!.turn.active(session.inventory[4]!)
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                        session.match?.next()
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-                        session.board[1, 0] = session.match!.turn.active(session.inventory[0]!)
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-                        session.match?.next()
-                    }
+
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                        session.board[0, 0] = session.match!.turn.active(session.inventory[4]!)
+//                    }
+//
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//                        session.match?.next()
+//                    }
+//
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+//                        session.board[1, 0] = session.match!.turn.active(session.inventory[0]!)
+//                    }
+//
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+//                        session.match?.next()
+//                    }
                 }
                 Spacer()
             }
