@@ -7,7 +7,7 @@ struct Game: View {
     
     var body: some View {
         VStack {
-            if session.match == nil {
+            if session.match == .off {
                 VStack {
                     HStack {
                         Text("The")
@@ -42,7 +42,7 @@ struct Game: View {
             Spacer()
             HStack {
                 Spacer()
-                if session.match == nil {
+                if session.match == .off {
                     Control.Circle(image: "star.fill") {
                         
                     }

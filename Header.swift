@@ -5,7 +5,7 @@ struct Header: View {
     
     var body: some View {
         ZStack {
-            if session.match!.turn == .user {
+            if session.match.turn == .user {
                 user
                 oponent
             } else {
