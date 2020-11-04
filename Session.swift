@@ -9,4 +9,8 @@ struct Session {
             Defaults.inventory = inventory
         }
     }
+    
+    mutating func newMatch() {
+        match = .robot(inventory.deck)
+    }
 }

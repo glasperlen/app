@@ -15,7 +15,7 @@ struct New: View {
             HStack {
                 Spacer()
                 Control.Capsule(text: "Start", background: .primary, foreground: .background) {
-                    session.match = .robot(session.inventory.deck)
+                    session.newMatch()
                     visible.wrappedValue.dismiss()
                 }
                 Spacer()

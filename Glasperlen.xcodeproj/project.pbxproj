@@ -22,6 +22,7 @@
 		CE6324852549D8470051A470 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324842549D8470051A470 /* Session.swift */; };
 		CE65FC35254C3AC1000A78C1 /* Onboard.First.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65FC34254C3AC1000A78C1 /* Onboard.First.swift */; };
 		CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */; };
+		CE84D8A42552FD2A00884B24 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84D8A32552FD2A00884B24 /* Menu.swift */; };
 		CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */; };
 		CE938BC7254C6AF600A7BEC2 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC6254C6AF600A7BEC2 /* Defaults.swift */; };
 		CE938BCB254C6B6200A7BEC2 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BCA254C6B6200A7BEC2 /* Inventory.swift */; };
@@ -55,6 +56,7 @@
 		CE6324842549D8470051A470 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CE65FC34254C3AC1000A78C1 /* Onboard.First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.First.swift; sourceTree = "<group>"; };
 		CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Second.swift; sourceTree = "<group>"; };
+		CE84D8A32552FD2A00884B24 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Third.swift; sourceTree = "<group>"; };
 		CE938BC6254C6AF600A7BEC2 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE938BCA254C6B6200A7BEC2 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				CEB90ED8254ADA5E00F92A7C /* Header.swift */,
 				CE938BCA254C6B6200A7BEC2 /* Inventory.swift */,
 				CE989B2D2551B8DF007FBDCE /* Match.swift */,
+				CE84D8A32552FD2A00884B24 /* Menu.swift */,
 				CE60EDB3254D959A007056BC /* Neumorphic.swift */,
 				CE1C5D44254AF8DC00B581C9 /* New.swift */,
 				CE60EDB7254D9759007056BC /* Onboard.Card.swift */,
@@ -204,6 +207,7 @@
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Board.swift in Sources */,
 				CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */,
+				CE84D8A42552FD2A00884B24 /* Menu.swift in Sources */,
 				CE60EDB0254D8D26007056BC /* Color.swift in Sources */,
 				CEBE5394255019550059F12C /* Deck.swift in Sources */,
 				CE63247C2549CA3E0051A470 /* Control.swift in Sources */,
