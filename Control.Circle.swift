@@ -12,12 +12,18 @@ extension Control {
                         SwiftUI.Circle()
                             .fill(Color.clear)
                             .frame(width: 70, height: 70)
-                        SwiftUI.Circle()
-                            .fill(selected ? Color.secondary.opacity(0.4) : .background)
-                            .modifier(Neumorphic())
-                            .frame(width: 50, height: 50)
+                        if selected {
+                            SwiftUI.Circle()
+                                .stroke(Color.secondary, style: .init(lineWidth: 1))
+                                .frame(width: 50, height: 50)
+                        } else {
+                            SwiftUI.Circle()
+                                .fill(Color.background)
+                                .modifier(Neumorphic())
+                                .frame(width: 50, height: 50)
+                        }
                         Image(systemName: image)
-                            .foregroundColor(selected ? .background : .secondary)
+                            .foregroundColor(selected ? .secondary : .primary)
                     }
                     .contentShape(SwiftUI.Circle())
                 })

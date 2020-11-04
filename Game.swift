@@ -7,12 +7,34 @@ struct Game: View {
     var body: some View {
         VStack {
             if session.match == nil {
-                Image(systemName: "ant")
-                    .fullScreenCover(isPresented: $session.onboard) {
-                        Onboard(session: $session)
-                            .modifier(Background())
-                            .preferredColorScheme(.dark)
+                VStack {
+                    HStack {
+                        Text("The")
+                            .font(.body)
+                        Spacer()
                     }
+                    HStack {
+                        Text("Glass")
+                            .font(Font.largeTitle.bold())
+                        Spacer()
+                    }
+                    HStack {
+                        Text("Bead")
+                            .font(Font.largeTitle.bold())
+                        Spacer()
+                    }
+                    HStack {
+                        Text("Game")
+                            .font(Font.largeTitle.bold())
+                        Spacer()
+                    }
+                }
+                .padding(40)
+                .fullScreenCover(isPresented: $session.onboard) {
+                    Onboard(session: $session)
+                        .modifier(Background())
+                        .preferredColorScheme(.dark)
+                }
             } else {
                 Match(session: $session)
             }
@@ -22,7 +44,7 @@ struct Game: View {
                 Control.Circle(image: "star.fill") {
                     
                 }
-                Control.Circle(image: "plus") {
+                Control.Circle(image: "plus.app.fill") {
                     new = true
                 }
                 .sheet(isPresented: $new) {
