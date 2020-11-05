@@ -15,8 +15,8 @@ struct New: View {
             HStack {
                 Spacer()
                 Control.Capsule(text: "Start", background: .primary, foreground: .background) {
-                    session.newMatch()
                     visible.wrappedValue.dismiss()
+                    session.new.send()
                 }
                 Spacer()
             }

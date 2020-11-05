@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 import Magister
 
 struct Session {
@@ -9,8 +10,5 @@ struct Session {
             Defaults.inventory = inventory
         }
     }
-    
-    mutating func newMatch() {
-        match = .robot(inventory.deck)
-    }
+    let new = PassthroughSubject<Void, Never>()
 }
