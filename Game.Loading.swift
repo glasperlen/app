@@ -58,8 +58,8 @@ extension Game {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     withAnimation(.easeInOut(duration: 0.3)) {
                         loading = false
-                        session.match = match
                     }
+                    session.match = match
                 }
             }
         }

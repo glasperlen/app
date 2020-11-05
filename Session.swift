@@ -3,7 +3,7 @@ import Combine
 import Magister
 
 struct Session {
-    var match = Magister.Match.off
+    var match = Match.off
     var onboard = false
     var inventory = Defaults.inventory {
         didSet {
@@ -11,5 +11,4 @@ struct Session {
         }
     }
     let new = PassthroughSubject<Void, Never>()
-    let turn = PassthroughSubject<Player.Mode, Never>()
 }

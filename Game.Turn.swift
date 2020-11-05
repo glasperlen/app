@@ -29,15 +29,25 @@ extension Game {
                 }
             }
             .onChange(of: session.match.turn) { new in
+                guard new != .none else { return }
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         turn = new
                     }
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         turn = nil
+                    }
+                }
+                
+                if new == .oponent {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                        withAnimation(.easeInOut(duration: 1)) {
+                            session.match.robot()
+                        }
                     }
                 }
             }

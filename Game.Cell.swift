@@ -1,10 +1,10 @@
 import SwiftUI
+import Magister
 
-extension Board {
+extension Game {
     struct Cell: View {
         @Binding var session: Session
-        let x: Int
-        let y: Int
+        let point: Magister.Board.Point
         let action: () -> Void
         
         var body: some View {
@@ -12,18 +12,18 @@ extension Board {
                 ZStack {
                     Rectangle()
                         .hidden()
-                    if session.match.board[x, y] == nil {
+                    if session.match.board[point] == nil {
                         RoundedRectangle(cornerRadius: 12)
                             .fill(Color.background)
                             .modifier(Neumorphic())
                             .padding(5)
                     } else {
                         RoundedRectangle(cornerRadius: 12)
-                            .stroke(session.match.board[x, y]!.player == .user ? Color.user : .oponent, style: .init(lineWidth: 1))
+                            .stroke(session.match.board[point]!.player == .user ? Color.user : .oponent, style: .init(lineWidth: 1))
                             .padding(5)
                     }
-                    if session.match.board[x, y] != nil {
-                        Bead(color: session.match.board[x, y]!.bead.color.color)
+                    if session.match.board[point] != nil {
+                        Bead(bead: session.match.board[point]!.bead)
                             .frame(width: 50, height: 50)
                     }
                 }
