@@ -9,8 +9,8 @@ extension Bead {
                 Circle()
                     .fill(SwiftUI.Color.black.opacity(0.1))
                 Text(verbatim: "\(point)")
-                    .foregroundColor(.secondary)
-                    .font(.caption2)
+                    .foregroundColor(.primary)
+                    .font(.footnote)
             }
             .frame(width: 30, height: 30)
         }

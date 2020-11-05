@@ -18,7 +18,10 @@ extension Game {
                 VStack {
                     ForEach(0 ..< session.match[.user].deck.count) { index in
                         Button {
-                            
+                            visible.wrappedValue.dismiss()
+                            withAnimation(.easeInOut(duration: 1)) {
+                                session.carry = index
+                            }
                         } label: {
                             Bead(bead: session.match[.user].deck[index])
                                 .frame(width: 70, height: 70)

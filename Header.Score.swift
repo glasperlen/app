@@ -25,7 +25,7 @@ extension Header {
             .frame(height: 30)
             .foregroundColor(.black)
             .background(RoundedRectangle(cornerRadius: 15)
-                            .fill(player == .user ? Color.user : .oponent))
+                            .fill(player.color))
             .opacity(session.match.turn == player ? 1 : 0.3)
             .padding(.horizontal)
         }

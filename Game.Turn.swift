@@ -9,7 +9,7 @@ extension Game {
         var body: some View {
             ZStack {
                 if turn != nil {
-                    Color.background.opacity(0.5)
+                    Color.background.opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
                     VStack {
                         Text("Next turn")
@@ -37,14 +37,14 @@ extension Game {
                     }
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         turn = nil
                     }
                 }
                 
                 if new == .oponent {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         withAnimation(.easeInOut(duration: 1)) {
                             session.match.robot()
                         }

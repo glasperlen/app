@@ -22,7 +22,7 @@ struct Bead: View {
         .foregroundColor(.white)
         .onAppear {
             withAnimation(.easeInOut(duration: 1)) {
-                offset = 38
+                offset = 30
             }
         }
     }

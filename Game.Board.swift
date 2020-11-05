@@ -1,4 +1,5 @@
 import SwiftUI
+import Magister
 
 extension Game {
     struct Board: View {
@@ -11,8 +12,19 @@ extension Game {
                         ForEach(0 ..< 3) { y in
                             HStack {
                                 ForEach(0 ..< 3) { x in
-                                    Cell(session: $session, point: .init(x, y)) {
-                                        
+                                    let point = Magister.Board.Point(x, y)
+                                    if session.carry != nil && session.match.board[point] == nil {
+                                        Button {
+                                            let carry = session.carry!
+                                            session.carry = nil
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                                session.match.play(carry, point)
+                                            }
+                                        } label: {
+                                            Cell(session: $session, point: point)
+                                        }
+                                    } else {
+                                        Cell(session: $session, point: point)
                                     }
                                 }
                             }

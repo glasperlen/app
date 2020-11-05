@@ -22,3 +22,13 @@ extension Magister.Bead.Color {
         }
     }
 }
+
+extension Magister.Player.Mode {
+    var color: Color {
+        switch self {
+        case .user: return .user
+        case .oponent: return .oponent
+        case .none: return .clear
+        }
+    }
+}

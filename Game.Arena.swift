@@ -8,7 +8,11 @@ extension Game {
             VStack {
                 Match(session: $session)
                 Spacer()
-                Controls(session: $session)
+                if session.carry == nil {
+                    Controls(session: $session)
+                } else {
+                    Carry(session: $session)
+                }
             }
         }
     }
