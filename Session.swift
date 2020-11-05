@@ -11,4 +11,5 @@ struct Session {
         }
     }
     let new = PassthroughSubject<Void, Never>()
+    let turn = PassthroughSubject<Player.Mode, Never>()
 }
