@@ -10,6 +10,8 @@ extension Game {
         
         var body: some View {
             ZStack {
+                Color.background.opacity(0.95)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
                         Spacer()
@@ -58,8 +60,8 @@ extension Game {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     withAnimation(.easeInOut(duration: 0.3)) {
                         loading = false
+                        session.match = match
                     }
-                    session.match = match
                 }
             }
         }

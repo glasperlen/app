@@ -6,12 +6,12 @@ struct Game: View {
     
     var body: some View {
         ZStack {
+            Arena(session: $session)
             if loading {
                 Loading(session: $session, loading: $loading)
-            } else {
-                Arena(session: $session)
             }
             Turn(session: $session)
+            Finish(session: $session)
         }
         .onReceive(session.new.delay(for: .seconds(0.3), scheduler: DispatchQueue.main)) {
             withAnimation(.easeInOut(duration: 1)) {

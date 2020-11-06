@@ -12,7 +12,7 @@ extension Game {
                     Color.background.opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
                     VStack {
-                        Text("Next turn")
+                        Text("New turn")
                             .font(.headline)
                             .padding()
                         if turn == .user {
@@ -44,7 +44,7 @@ extension Game {
                 }
                 
                 if new == .oponent {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         withAnimation(.easeInOut(duration: 1)) {
                             session.match.robot()
                         }

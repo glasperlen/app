@@ -35,6 +35,7 @@
 		CE938BC7254C6AF600A7BEC2 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC6254C6AF600A7BEC2 /* Defaults.swift */; };
 		CE938BCB254C6B6200A7BEC2 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BCA254C6B6200A7BEC2 /* Inventory.swift */; };
 		CE989B2E2551B8DF007FBDCE /* Game.Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE989B2D2551B8DF007FBDCE /* Game.Match.swift */; };
+		CEAEB56425557CDB0046E4E9 /* Game.Finish.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEB56325557CDB0046E4E9 /* Game.Finish.swift */; };
 		CEB90ED3254AD52D00F92A7C /* Magister in Frameworks */ = {isa = PBXBuildFile; productRef = CEB90ED2254AD52D00F92A7C /* Magister */; };
 		CEB90ED6254AD60400F92A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED5254AD60400F92A7C /* AppDelegate.swift */; };
 		CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED8254ADA5E00F92A7C /* Header.swift */; };
@@ -78,6 +79,7 @@
 		CE938BC6254C6AF600A7BEC2 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE938BCA254C6B6200A7BEC2 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		CE989B2D2551B8DF007FBDCE /* Game.Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Match.swift; sourceTree = "<group>"; };
+		CEAEB56325557CDB0046E4E9 /* Game.Finish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Finish.swift; sourceTree = "<group>"; };
 		CEB90ED5254AD60400F92A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB90ED8254ADA5E00F92A7C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.Score.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				CE6324712549AB580051A470 /* Game.Cell.swift */,
 				CE7273BB2553F88400A79BF2 /* Game.Controls.swift */,
 				CE6E72672554281A000AB7D2 /* Game.Deck.swift */,
+				CEAEB56325557CDB0046E4E9 /* Game.Finish.swift */,
 				CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */,
 				CE989B2D2551B8DF007FBDCE /* Game.Match.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
@@ -251,6 +254,7 @@
 				CE6E726025541BB9000AB7D2 /* Game.Arena.swift in Sources */,
 				CE7273BC2553F88400A79BF2 /* Game.Controls.swift in Sources */,
 				CE6324722549AB580051A470 /* Game.Cell.swift in Sources */,
+				CEAEB56425557CDB0046E4E9 /* Game.Finish.swift in Sources */,
 				CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */,
 				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,
 				CE60EDBC254DA523007056BC /* Bead.swift in Sources */,
