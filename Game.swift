@@ -6,7 +6,25 @@ struct Game: View {
     
     var body: some View {
         ZStack {
-            Arena(session: $session)
+            if session.match == .off {
+                VStack {
+                    Title(session: $session)
+                    Spacer()
+                    Controls(session: $session)
+                }
+            } else {
+                VStack {
+                    Header(session: $session)
+                    Spacer()
+                    Board(session: $session)
+                }
+            }
+            if session.match.turn == .user {
+                VStack {
+                    Spacer()
+                    Deck(session: $session)
+                }
+            }
             if loading {
                 Loading(session: $session, loading: $loading)
             }

@@ -3,41 +3,44 @@ import SwiftUI
 extension Game {
     struct Deck: View {
         @Binding var session: Session
-        @Environment(\.presentationMode) private var visible
         
         var body: some View {
-            VStack {
+            HStack {
+                Text("Play a bead")
+                    .font(.headline)
+                    .padding()
+                Spacer()
+            }
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    Spacer()
-                    Text("Play a bead")
-                        .font(.headline)
-                        .padding(.top, 20)
-                        .padding()
-                    Spacer()
-                }
-                VStack {
                     ForEach(0 ..< 5) { index in
                         if session.match[.user][index].state == .waiting {
                             Button {
-                                visible.wrappedValue.dismiss()
                                 withAnimation(.easeInOut(duration: 1)) {
                                     session.carry = index
                                 }
                             } label: {
-                                Bead(bead: session.match[.user][index].bead)
-                                    .frame(width: 70, height: 70)
-                                    .padding()
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.background)
+                                        .modifier(Neumorphic())
+                                        .frame(width: 70, height: 70)
+                                    if session.carry == index {
+                                        Circle()
+                                            .stroke(Color.user, style: .init(lineWidth: 3))
+                                            .frame(width: 67, height: 67)
+                                    }
+                                    Bead(bead: session.match[.user][index].bead)
+                                        .frame(width: 42, height: 42)
+                                }
+                                .contentShape(SwiftUI.Circle())
+                                .padding()
                             }
                         }
                     }
                 }
-                .padding()
-                Spacer()
-                Dismiss {
-                    visible.wrappedValue.dismiss()
-                }
+                .padding(.vertical)
             }
-            .modifier(Background())
         }
     }
 }

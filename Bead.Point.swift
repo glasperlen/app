@@ -7,7 +7,7 @@ extension Bead {
         var body: some View {
             ZStack {
                 Circle()
-                    .fill(SwiftUI.Color.black.opacity(0.1))
+                    .fill(SwiftUI.Color.clear)
                 Text(verbatim: "\(point)")
                     .foregroundColor(.primary)
                     .font(.footnote)
