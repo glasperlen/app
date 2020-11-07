@@ -17,10 +17,9 @@ extension Game {
                             .font(Font.title.bold())
                     } else {
                         HStack {
-                            Text(verbatim: session.match[.oponent].name)
-                                .font(.headline)
-                            Text("'s Turn")
-                                .font(.headline)
+                            Text("\(session.match[.oponent].name)'s turn")
+                                .padding()
+                                .font(Font.title.bold())
                         }
                         .transition(.slide)
                     }

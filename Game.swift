@@ -13,8 +13,8 @@ struct Game: View {
             Turn(session: $session)
             Finish(session: $session)
         }
-        .onReceive(session.new.delay(for: .seconds(0.3), scheduler: DispatchQueue.main)) {
-            withAnimation(.easeInOut(duration: 1)) {
+        .onReceive(session.new) {
+            withAnimation(.easeInOut(duration: 0.5)) {
                 loading = true
             }
         }

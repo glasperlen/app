@@ -28,9 +28,6 @@ extension Game {
                         Spacer()
                     }
                     Spacer()
-                    Control.Capsule(text: "New Game", background: .primary, foreground: .background) {
-                        session.new.send()
-                    }
                 }
                 .padding(40)
                 .fullScreenCover(isPresented: $session.onboard) {

@@ -11,7 +11,7 @@ extension Control {
                     ZStack {
                         SwiftUI.Circle()
                             .fill(Color.clear)
-                            .frame(width: 70, height: 70)
+                            .frame(width: 75, height: 75)
                         if selected {
                             SwiftUI.Circle()
                                 .stroke(Color.secondary, style: .init(lineWidth: 1))

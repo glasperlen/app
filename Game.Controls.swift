@@ -13,16 +13,17 @@ extension Game {
                     Control.Circle(image: "star.fill") {
                         
                     }
-                    Control.Circle(image: "chart.bar.fill") {
-                        
+                    Control.Circle(image: "plus.circle.fill") {
+                        session.new.send()
                     }
-                } else if session.match.turn == .user {
                     Control.Circle(image: "line.horizontal.3.circle.fill") {
                         menu = true
                     }
                     .sheet(isPresented: $menu) {
                         Menu(session: $session)
                     }
+                } else if session.match.turn == .user {
+                    
                     Control.Circle(image: "plus.circle.fill") {
                         deck = true
                     }

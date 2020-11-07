@@ -18,7 +18,9 @@ extension Game {
                                             let carry = session.carry!
                                             session.carry = nil
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                                session.match.play(carry, point)
+                                                withAnimation(.easeInOut(duration: 1)) {
+                                                    session.match.play(carry, point)
+                                                }
                                             }
                                         } label: {
                                             Cell(session: $session, point: point)

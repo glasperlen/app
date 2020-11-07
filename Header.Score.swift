@@ -8,26 +8,21 @@ extension Header {
         
         var body: some View {
             HStack {
-                if player == .user {
-                    Image(systemName: "person.fill")
+                if player != .user {
+                    Text(verbatim: session.match[.oponent].name)
+                        .lineLimit(1)
+                        .font(.caption2)
                         .padding(.leading)
                 }
                 Text(NSNumber(value: session.match[player].score), formatter: NumberFormatter())
                     .fixedSize(horizontal: true, vertical: false)
                     .font(Font.body.bold())
-                    .padding(.horizontal)
-                if player == .oponent {
-                    Text(verbatim: session.match[.oponent].name)
-                        .font(.caption2)
-                        .padding(.trailing)
-                }
+                    .padding()
             }
             .frame(height: 30)
             .foregroundColor(.black)
             .background(RoundedRectangle(cornerRadius: 15)
-                            .fill(player.color))
-            .opacity(session.match.turn == player ? 1 : 0.3)
-            .padding(.horizontal)
+                            .fill(player.color.opacity(session.match.turn == player ? 1 : 0.3)))
         }
     }
 }

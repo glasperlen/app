@@ -29,7 +29,7 @@ extension Game {
                             Spacer()
                         }
                         Spacer()
-                        Control.Capsule(text: "Accept", background: .primary, foreground: .background) {
+                        Control.Capsule(text: "Done", background: .primary, foreground: .background) {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 session.match = .off
                                 finished = nil

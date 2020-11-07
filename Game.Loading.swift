@@ -14,22 +14,19 @@ extension Game {
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
-                        Spacer()
-                        Text("Who plays first?")
-                            .font(.headline)
-                            .padding(.top, 50)
+                        Text("First turn")
+                            .font(Font.largeTitle.bold())
+                            .padding(40)
                         Spacer()
                     }
                     Spacer()
-                }
-                VStack {
                     Text(verbatim: name)
                         .font(.headline)
                         .foregroundColor(.oponent)
                         .padding()
                     if me {
                         Image(systemName: "arrowtriangle.down.fill")
-                            .font(.title)
+                            .font(Font.title.bold())
                             .foregroundColor(.user)
                             .padding()
                     } else {
@@ -42,6 +39,7 @@ extension Game {
                         .font(.largeTitle)
                         .foregroundColor(.user)
                         .padding()
+                    Spacer()
                 }
             }
             .onAppear {
