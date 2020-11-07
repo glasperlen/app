@@ -3,7 +3,6 @@ import SwiftUI
 extension Game {
     struct Controls: View {
         @Binding var session: Session
-        @State private var new = false
         @State private var menu = false
         @State private var deck = false
         
@@ -13,12 +12,6 @@ extension Game {
                 if session.match == .off {
                     Control.Circle(image: "star.fill") {
                         
-                    }
-                    Control.Circle(image: "plus.app.fill") {
-                        new = true
-                    }
-                    .sheet(isPresented: $new) {
-                        New(session: $session)
                     }
                     Control.Circle(image: "chart.bar.fill") {
                         

@@ -13,7 +13,7 @@ extension Game {
                         .foregroundColor(.secondary)
                         .padding()
                     if session.carry != nil {
-                        Bead(bead: session.match[.user].deck[session.carry!])
+                        Bead(bead: session.match[.user][session.carry!].bead)
                             .frame(width: 40, height: 40)
                             .padding()
                     }

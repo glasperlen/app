@@ -11,21 +11,19 @@ extension Game {
                 if turn != nil {
                     Color.background.opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
-                    VStack {
-                        Text("New turn")
-                            .font(.headline)
-                            .padding()
-                        if turn == .user {
-                            Text("Your turn")
-                                .font(Font.title.bold())
-                                .padding()
-                        } else {
+                    if turn == .user {
+                        Text("Your turn")
+                            .transition(.slide)
+                            .font(Font.title.bold())
+                    } else {
+                        HStack {
                             Text(verbatim: session.match[.oponent].name)
-                                .font(.title)
-                                .padding()
+                                .font(.headline)
+                            Text("'s Turn")
+                                .font(.headline)
                         }
+                        .transition(.slide)
                     }
-                    .transition(.slide)
                 }
             }
             .onChange(of: session.match.turn) { new in

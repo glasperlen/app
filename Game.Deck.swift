@@ -16,16 +16,18 @@ extension Game {
                     Spacer()
                 }
                 VStack {
-                    ForEach(0 ..< session.match[.user].deck.count) { index in
-                        Button {
-                            visible.wrappedValue.dismiss()
-                            withAnimation(.easeInOut(duration: 1)) {
-                                session.carry = index
+                    ForEach(0 ..< 5) { index in
+                        if session.match[.user][index].state == .waiting {
+                            Button {
+                                visible.wrappedValue.dismiss()
+                                withAnimation(.easeInOut(duration: 1)) {
+                                    session.carry = index
+                                }
+                            } label: {
+                                Bead(bead: session.match[.user][index].bead)
+                                    .frame(width: 70, height: 70)
+                                    .padding()
                             }
-                        } label: {
-                            Bead(bead: session.match[.user].deck[index])
-                                .frame(width: 70, height: 70)
-                                .padding()
                         }
                     }
                 }
