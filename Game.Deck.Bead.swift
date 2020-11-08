@@ -2,6 +2,7 @@ import SwiftUI
 
 extension Game.Deck {
     struct Bead: View {
+        @Binding var session: Session
         @State var item: Item
         
         var body: some View {
@@ -32,13 +33,20 @@ extension Game.Deck {
             }
             .offset(item.offset)
             .gesture(
-                DragGesture()
+                DragGesture(coordinateSpace: .global)
                     .onChanged { gesture in
+                        session.drop = session.cells.filter { session.match.board[$0.0] == nil }.first { $0.1.contains(gesture.location) }?.0
                         item.offset = gesture.translation
                     }
-
                     .onEnded { _ in
-                        item.offset = .zero
+                        if let drop = session.drop {
+                            session.match.play(item.index, drop)
+                        } else {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                item.offset = .zero
+                            }
+                        }
+                        session.drop = nil
                     }
             )
         }

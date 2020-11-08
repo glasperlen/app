@@ -1,10 +1,12 @@
 import Foundation
 import Combine
+import CoreGraphics
 import Magister
 
 struct Session {
-    var carry: Int?
+    var drop: Board.Point?
     var match = Match.off
+    var cells = [Board.Point : CGRect]()
     var onboard = false
     
     var inventory = Defaults.inventory {

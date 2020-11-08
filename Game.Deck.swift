@@ -13,7 +13,7 @@ extension Game {
                     HStack {
                         Spacer()
                         ForEach(items.dropFirst(3), id: \.bead.id) {
-                            Bead(item: $0)
+                            Bead(session: $session, item: $0)
                         }
                         Spacer()
                     }
@@ -21,7 +21,7 @@ extension Game {
                 HStack {
                     Spacer()
                     ForEach(items.prefix(3), id: \.bead.id) {
-                        Bead(item: $0)
+                        Bead(session: $session, item: $0)
                     }
                     Spacer()
                 }
@@ -33,6 +33,7 @@ extension Game {
         }
         
         private func update() {
+            guard session.match != .off else { return }
             items = (0 ..< 5).compactMap {
                 guard session.match[.user][$0].state == .waiting else { return nil }
                 return .init(index: $0, bead: session.match[.user][$0].bead)
