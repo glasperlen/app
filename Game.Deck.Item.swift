@@ -4,8 +4,8 @@ import Magister
 
 extension Game.Deck {
     struct Item {
-        var item: Player.Item
+        var offset = CGSize.zero
         let index: Int
-        let offset = CGSize.zero
+        let bead: Magister.Bead
     }
 }

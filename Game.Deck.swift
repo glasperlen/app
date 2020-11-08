@@ -12,13 +12,17 @@ extension Game {
                 if items.count > 3 {
                     HStack {
                         Spacer()
-                        ForEach(3 ..< items.count, id: \.self, content: item)
+                        ForEach(items.dropFirst(3), id: \.bead.id) {
+                            Bead(item: $0)
+                        }
                         Spacer()
                     }
                 }
                 HStack {
                     Spacer()
-                    ForEach(0 ..< min(items.count, 3), id: \.self, content: item)
+                    ForEach(items.prefix(3), id: \.bead.id) {
+                        Bead(item: $0)
+                    }
                     Spacer()
                 }
             }
@@ -31,30 +35,8 @@ extension Game {
         private func update() {
             items = (0 ..< 5).compactMap {
                 guard session.match[.user][$0].state == .waiting else { return nil }
-                return .init(item: session.match[.user][$0], index: $0)
+                return .init(index: $0, bead: session.match[.user][$0].bead)
             }
-        }
-        
-        private func item(_ index: Int) -> some View {
-            ZStack {
-                Circle()
-                    .fill(Color.background)
-                    .modifier(Neumorphic())
-                    .frame(width: 70, height: 70)
-                Bead(bead: session.match[.user][index].bead)
-                    .frame(width: 42, height: 42)
-            }
-            .offset(offset[index])
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.offset[index] = gesture.translation
-                    }
-
-                    .onEnded { _ in
-                        self.offset[index] = .zero
-                    }
-            )
         }
     }
 }
