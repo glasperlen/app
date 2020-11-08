@@ -20,10 +20,7 @@ struct Game: View {
                 }
             }
             if session.match.turn == .user {
-                VStack {
-                    Spacer()
-                    Deck(session: $session)
-                }
+                Deck(session: $session)
             }
             if loading {
                 Loading(session: $session, loading: $loading)
