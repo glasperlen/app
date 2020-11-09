@@ -1,5 +1,4 @@
 import SwiftUI
-import Magister
 
 struct Onboard: View {
     @Binding var session: Session

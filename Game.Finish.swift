@@ -41,6 +41,7 @@ extension Game {
             }
             .onReceive(session.match.finish) { result in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    session.gameplay = nil
                     withAnimation(.easeInOut(duration: 0.5)) {
                         finished = result
                     }

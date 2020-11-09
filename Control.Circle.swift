@@ -11,19 +11,20 @@ extension Control {
                     ZStack {
                         SwiftUI.Circle()
                             .fill(Color.clear)
-                            .frame(width: 75, height: 75)
+                            .frame(width: 90, height: 90)
                         if selected {
                             SwiftUI.Circle()
-                                .stroke(Color.secondary, style: .init(lineWidth: 1))
-                                .frame(width: 50, height: 50)
+                                .stroke(Color.primary, style: .init(lineWidth: 2))
+                                .frame(width: 60, height: 60)
                         } else {
                             SwiftUI.Circle()
                                 .fill(Color.background)
                                 .modifier(Neumorphic())
-                                .frame(width: 50, height: 50)
+                                .frame(width: 60, height: 60)
                         }
                         Image(systemName: image)
-                            .foregroundColor(selected ? .secondary : .primary)
+                            .font(.title2)
+                            .foregroundColor(.primary)
                     }
                     .contentShape(SwiftUI.Circle())
                 })

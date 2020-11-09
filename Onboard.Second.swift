@@ -21,13 +21,13 @@ extension Onboard {
                 HStack {
                     Spacer()
                     ForEach(0 ..< 5) {
-                        Bead.Color(color: session.inventory[$0]?.color.color ?? .black)
+                        Bead.Color(color: session.beads.count > 4 ? session.beads[$0].item.color.color : .black)
                             .frame(width: 18, height: 18)
                     }
                     Spacer()
                 }
                 .padding(.top)
-                if !session.inventory.beads.isEmpty {
+                if !session.beads.isEmpty {
                     Button {
                         deck = true
                     } label: {
@@ -53,14 +53,10 @@ extension Onboard {
                 Deck(session: $session)
             }
             .onAppear {
-                if session.inventory.beads.isEmpty {
+                if session.beads.isEmpty {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        let beads = Factory.beads()
                         withAnimation(.easeInOut(duration: 1)) {
-                            beads.enumerated().forEach {
-                                session.inventory[$0.0] = $0.1
-                            }
-                            session.inventory.beads = beads
+                            session.beads = Factory.beads().map { .init(selected: true, item: $0) }
                         }
                     }
                 }

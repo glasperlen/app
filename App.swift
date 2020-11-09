@@ -9,9 +9,6 @@ import SwiftUI
             Game(session: $session)
                 .modifier(Background())
                 .preferredColorScheme(.dark)
-                .onAppear {
-                    session.onboard = session.inventory.beads.isEmpty
-                }
         }
     }
 }

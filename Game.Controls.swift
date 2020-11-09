@@ -8,13 +8,13 @@ extension Game {
         var body: some View {
             HStack {
                 Spacer()
-                Control.Circle(image: "star.fill") {
+                Control.Circle(image: "star") {
                     
                 }
-                Control.Circle(image: "plus.circle.fill") {
+                Control.Circle(image: "plus") {
                     session.new.send()
                 }
-                Control.Circle(image: "line.horizontal.3.circle.fill") {
+                Control.Circle(image: "bag") {
                     menu = true
                 }
                 .sheet(isPresented: $menu) {

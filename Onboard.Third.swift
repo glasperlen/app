@@ -4,6 +4,7 @@ extension Onboard {
     struct Third: View {
         @Binding var session: Session
         @Binding var tab: Int
+        @Environment(\.presentationMode) private var visible
         
         var body: some View {
             Card {
@@ -20,7 +21,7 @@ extension Onboard {
                 .padding(.vertical)
                 Spacer()
                 Control.Capsule(text: "Start", background: .primary, foreground: .background) {
-                    session.onboard = false
+                    visible.wrappedValue.dismiss()
                 }
             }
         }

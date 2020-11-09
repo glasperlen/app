@@ -20,7 +20,7 @@ extension Onboard {
                 .padding(30)
             }
             .padding(.bottom, 80)
-            .padding()
+            .padding(40)
         }
     }
 }

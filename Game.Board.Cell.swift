@@ -29,7 +29,7 @@ extension Game.Board {
                         .fill(flash!)
                         .padding(5)
                 }
-                if session.drop == point {
+                if session.gameplay?.drop == point {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.user, style: .init(lineWidth: 1))
                         .padding(5)
@@ -49,7 +49,7 @@ extension Game.Board {
                 }
             }
             .onAppear {
-                session.cells[point] = frame
+                session.gameplay?.cells[point] = frame
             }
         }
     }

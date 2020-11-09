@@ -10,7 +10,7 @@ extension Bead {
                     .fill(SwiftUI.Color.clear)
                 Text(verbatim: "\(point)")
                     .foregroundColor(.primary)
-                    .font(.footnote)
+                    .font(.caption2)
             }
             .frame(width: 30, height: 30)
         }

@@ -7,17 +7,21 @@ struct Deck: View {
     
     var body: some View {
         VStack {
-            VStack {
-                ForEach(0 ..< 5) { index in
-                    HStack {
-                        Bead.Color(color: session.inventory[index]?.color.color ?? .black)
-                            .frame(width: 50, height: 50)
-                            .padding()
-                        Spacer()
-                    }
+            HStack {
+                Text("Inventory")
+                    .font(.title)
+                    .padding(.leading)
+                Spacer()
+            }
+            .padding(.top, 40)
+            ForEach(session.beads) { bead in
+                HStack {
+                    Bead(bead: bead.item)
+                        .frame(width: 70, height: 70)
+                        .padding()
+                    Spacer()
                 }
             }
-            .padding()
             Spacer()
             Dismiss {
                 visible.wrappedValue.dismiss()

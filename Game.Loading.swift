@@ -43,7 +43,8 @@ extension Game {
                 }
             }
             .onAppear {
-                let match = Magister.Match.robot(session.inventory.deck)
+                session.gameplay = .init()
+                let match = Magister.Match.robot(session.beads.filter { $0.selected }.map(\.item))
                 name = match[.oponent].name
                 let rolls = match.turn == .user ? 8 : 9
             

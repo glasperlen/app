@@ -3,6 +3,7 @@ import SwiftUI
 extension Game {
     struct Title: View {
         @Binding var session: Session
+        @AppStorage(Defaults.Key.onboard_start.rawValue) private var start = true
         
         var body: some View {
             VStack {
@@ -29,7 +30,9 @@ extension Game {
                 Spacer()
             }
             .padding(40)
-            .fullScreenCover(isPresented: $session.onboard) {
+            .fullScreenCover(isPresented: $start, onDismiss: {
+                start = false
+            }) {
                 Onboard(session: $session)
                     .modifier(Background())
                     .preferredColorScheme(.dark)

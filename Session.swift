@@ -1,19 +1,14 @@
 import Foundation
 import Combine
-import CoreGraphics
 import Magister
 
 struct Session {
-    var drop: Board.Point?
     var match = Match.off
-    var cells = [Board.Point : CGRect]()
-    var onboard = false
-    
-    var inventory = Defaults.inventory {
+    var gameplay: Gameplay?
+    var beads = Defaults.beads {
         didSet {
-            Defaults.inventory = inventory
+            Defaults.beads = beads
         }
     }
-    
     let new = PassthroughSubject<Void, Never>()
 }

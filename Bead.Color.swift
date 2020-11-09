@@ -8,8 +8,6 @@ extension Bead {
             GeometryReader { geo in
                 Circle()
                     .fill(color)
-                    .shadow(color: SwiftUI.Color.black.opacity(0.7), radius: geo.size.width / 12)
-                    .shadow(color: color.opacity(0.6), radius: geo.size.width / 5)
                     .overlay(
                         Circle()
                             .stroke(SwiftUI.Color.white, lineWidth: geo.size.width / 6)
