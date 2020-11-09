@@ -30,7 +30,6 @@
 		CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */; };
 		CE6E726425541BFB000AB7D2 /* Game.Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E726325541BFB000AB7D2 /* Game.Turn.swift */; };
 		CE6E72682554281A000AB7D2 /* Game.Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E72672554281A000AB7D2 /* Game.Deck.swift */; };
-		CE6E727225542BB5000AB7D2 /* Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E727125542BB5000AB7D2 /* Dismiss.swift */; };
 		CE6E727625542CA5000AB7D2 /* Bead.Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E727525542CA5000AB7D2 /* Bead.Base.swift */; };
 		CE6E727B25543014000AB7D2 /* Bead.Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E727A25543014000AB7D2 /* Bead.Point.swift */; };
 		CE7273BC2553F88400A79BF2 /* Game.Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7273BB2553F88400A79BF2 /* Game.Controls.swift */; };
@@ -74,7 +73,6 @@
 		CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Second.swift; sourceTree = "<group>"; };
 		CE6E726325541BFB000AB7D2 /* Game.Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Turn.swift; sourceTree = "<group>"; };
 		CE6E72672554281A000AB7D2 /* Game.Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Deck.swift; sourceTree = "<group>"; };
-		CE6E727125542BB5000AB7D2 /* Dismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dismiss.swift; sourceTree = "<group>"; };
 		CE6E727525542CA5000AB7D2 /* Bead.Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bead.Base.swift; sourceTree = "<group>"; };
 		CE6E727A25543014000AB7D2 /* Bead.Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bead.Point.swift; sourceTree = "<group>"; };
 		CE7273BB2553F88400A79BF2 /* Game.Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Controls.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				CE63247A2549CA3E0051A470 /* Control.swift */,
 				CE25360325596A2200DBA035 /* Defaults.Key.swift */,
 				CE2535FC255967BC00DBA035 /* Defaults.swift */,
-				CE6E727125542BB5000AB7D2 /* Dismiss.swift */,
 				CE6324712549AB580051A470 /* Game.Board.Cell.swift */,
 				CE63246E2549AB280051A470 /* Game.Board.swift */,
 				CE7273BB2553F88400A79BF2 /* Game.Controls.swift */,
@@ -257,7 +254,6 @@
 				CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */,
 				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,
 				CE60EDBC254DA523007056BC /* Bead.swift in Sources */,
-				CE6E727225542BB5000AB7D2 /* Dismiss.swift in Sources */,
 				CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */,
 				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,
 				CE7273BF2553FE0900A79BF2 /* Game.Loading.swift in Sources */,

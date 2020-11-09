@@ -6,26 +6,35 @@ struct Inventory: View {
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
-        ScrollView {
-            HStack {
-                Text("Inventory")
-                    .font(.headline)
-                    .padding(.leading)
-                Spacer()
+        HStack {
+            Text("Inventory")
+                .font(.headline)
+                .padding(.leading)
+            Spacer()
+            Button {
+                visible.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundColor(.secondary)
+                    .font(.title2)
+                    .frame(width: 60, height: 40)
             }
-            .padding(.top, 40)
+            .contentShape(Rectangle())
+        }
+        .padding(.top, 20)
+        ScrollView {
             ForEach(session.beads) { bead in
                 HStack {
                     Bead(bead: bead.item)
-                        .frame(width: 70, height: 70)
-                        .padding(.leading, 40)
+                        .padding(.horizontal)
                     Spacer()
                 }
+                Rectangle()
+                    .fill(Color(.tertiarySystemBackground))
+                    .frame(height: 1)
+                    .padding(.horizontal)
             }
             Spacer()
-            Dismiss {
-                visible.wrappedValue.dismiss()
-            }
         }
         .modifier(Background())
     }
