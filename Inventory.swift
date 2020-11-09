@@ -1,15 +1,15 @@
 import SwiftUI
 import Magister
 
-struct Deck: View {
+struct Inventory: View {
     @Binding var session: Session
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
-        VStack {
+        ScrollView {
             HStack {
                 Text("Inventory")
-                    .font(.title)
+                    .font(.headline)
                     .padding(.leading)
                 Spacer()
             }
@@ -18,7 +18,7 @@ struct Deck: View {
                 HStack {
                     Bead(bead: bead.item)
                         .frame(width: 70, height: 70)
-                        .padding()
+                        .padding(.leading, 40)
                     Spacer()
                 }
             }

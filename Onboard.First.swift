@@ -7,6 +7,9 @@ extension Onboard {
         
         var body: some View {
             Card {
+                Image(systemName: "person.fill")
+                    .font(.largeTitle)
+                    .padding(.vertical)
                 HStack {
                     Text("Welcome to")
                         .font(.footnote)
@@ -17,16 +20,11 @@ extension Onboard {
                         .font(.headline)
                     Spacer()
                 }
-                Spacer()
-                Image(systemName: "person.fill")
-                    .font(.largeTitle)
-                    .padding(.vertical)
                 HStack {
-                    Text("As a new player you will receive a starting deck with 5 beads.\n\nWhen winning matches you will gain more beads and grow your deck.")
+                    Text("As a new player you will receive 5 beads.\n\nYou can get more beads by winning matches.")
                         .foregroundColor(.secondary)
                     Spacer()
                 }
-                .padding(.vertical)
                 Spacer()
                 Button {
                     withAnimation(.easeInOut(duration: 1)) {

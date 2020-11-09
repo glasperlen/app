@@ -7,9 +7,9 @@ extension Bead {
         var body: some View {
             ZStack {
                 Circle()
-                    .fill(SwiftUI.Color.clear)
+                    .fill(Color.clear)
                 Text(verbatim: "\(point)")
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white)
                     .font(.caption2)
             }
             .frame(width: 30, height: 30)

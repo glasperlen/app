@@ -5,23 +5,17 @@ extension Onboard {
     struct Second: View {
         @Binding var session: Session
         @Binding var tab: Int
-        @State private var deck = false
+        @State private var inventory = false
         
         var body: some View {
             Card {
-                HStack {
-                    Text("Your brand new deck")
-                        .font(.footnote)
-                    Spacer()
-                }
-                Spacer()
                 Image(systemName: "bag.fill")
                     .font(.largeTitle)
                     .padding(.vertical)
                 HStack {
                     Spacer()
                     ForEach(0 ..< 5) {
-                        Bead.Color(color: session.beads.count > 4 ? session.beads[$0].item.color.color : .black)
+                        Bead.Base(color: session.beads.count > 4 ? session.beads[$0].item.color.color : .black)
                             .frame(width: 18, height: 18)
                     }
                     Spacer()
@@ -29,7 +23,7 @@ extension Onboard {
                 .padding(.top)
                 if !session.beads.isEmpty {
                     Button {
-                        deck = true
+                        inventory = true
                     } label: {
                         Text("View")
                             .foregroundColor(.secondary)
@@ -49,8 +43,8 @@ extension Onboard {
                         .frame(minWidth: 100, minHeight: 50)
                 }
             }
-            .sheet(isPresented: $deck) {
-                Deck(session: $session)
+            .sheet(isPresented: $inventory) {
+                Inventory(session: $session)
             }
             .onAppear {
                 if session.beads.isEmpty {

@@ -6,25 +6,22 @@ struct Bead: View {
     @State private var offset = CGFloat()
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Point(point: bead[.top])
-                    .offset(y: -offset * geo.size.width)
-                Point(point: bead[.bottom])
-                    .offset(y: offset * geo.size.width)
-                Point(point: bead[.left])
-                    .offset(x: -offset * geo.size.width)
-                Point(point: bead[.right])
-                    .offset(x: offset * geo.size.width)
-                Color(color: bead.color.color)
-                    .padding()
-            }
+        ZStack {
+            Base(color: bead.color.color)
+                .frame(width: 16, height: 16)
+            Point(point: bead[.top])
+                .offset(y: -offset)
+            Point(point: bead[.bottom])
+                .offset(y: offset)
+            Point(point: bead[.left])
+                .offset(x: -offset)
+            Point(point: bead[.right])
+                .offset(x: offset)
         }
-        .font(.caption2)
-        .foregroundColor(.white)
+        .frame(width: 80, height: 80)
         .onAppear {
-            withAnimation(.easeInOut(duration: 1)) {
-                offset = 0.45
+            withAnimation(.easeInOut(duration: 0.5)) {
+                offset = 22
             }
         }
     }

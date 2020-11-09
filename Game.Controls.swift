@@ -3,7 +3,7 @@ import SwiftUI
 extension Game {
     struct Controls: View {
         @Binding var session: Session
-        @State private var menu = false
+        @State private var inventory = false
         
         var body: some View {
             HStack {
@@ -15,10 +15,10 @@ extension Game {
                     session.new.send()
                 }
                 Control.Circle(image: "bag") {
-                    menu = true
+                    inventory = true
                 }
-                .sheet(isPresented: $menu) {
-                    Menu(session: $session)
+                .sheet(isPresented: $inventory) {
+                    Inventory(session: $session)
                 }
                 Spacer()
             }
