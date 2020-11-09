@@ -24,17 +24,30 @@ struct Inventory: View {
         .padding(.top, 20)
         ScrollView {
             ForEach(session.beads) { bead in
+                if bead == session.beads.first {
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: 1)
+                }
                 HStack {
+                    Spacer()
                     Bead(bead: bead.item)
-                        .padding()
+                        .padding(.horizontal)
+                    if bead.selected {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.user)
+                            .font(.title2)
+                            .padding()
+                    }
                     Spacer()
                 }
-                Rectangle()
-                    .fill(Color(.tertiarySystemBackground))
-                    .frame(height: 1)
-                    .padding(.horizontal)
+                if bead != session.beads.last {
+                    Rectangle()
+                        .fill(Color(.tertiarySystemBackground))
+                        .frame(height: 1)
+                        .padding(.horizontal)
+                }
             }
-            Spacer()
         }
         .modifier(Background())
     }
