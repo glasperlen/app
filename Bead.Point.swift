@@ -10,9 +10,9 @@ extension Bead {
                     .fill(Color.clear)
                 Text(verbatim: "\(point)")
                     .foregroundColor(.white)
-                    .font(.caption2)
+                    .font(Font.caption2.bold())
             }
-            .frame(width: 30, height: 30)
+            .frame(width: 26, height: 26)
         }
     }
 }

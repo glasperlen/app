@@ -6,17 +6,13 @@ extension Bead {
         
         var body: some View {
             Circle()
-                .fill(color)
-                .overlay(
-                    Circle()
-                        .fill(Color.background.opacity(0.3))
-                        .blur(radius: 3)
-                        .mask(
-                            Circle()
-                                .fill(
-                                    LinearGradient(gradient: .init(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
-                                ))
+            .fill(color)
+            .overlay(
+                Circle()
+                .fill(Color.background.opacity(0.35))
+                .blur(radius: 6)
             )
+            .frame(width: 54, height: 54)
         }
     }
 }

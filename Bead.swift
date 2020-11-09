@@ -8,7 +8,6 @@ struct Bead: View {
     var body: some View {
         ZStack {
             Base(color: bead.color.color)
-                .frame(width: 16, height: 16)
             Point(point: bead[.top])
                 .offset(y: -offset)
             Point(point: bead[.bottom])
@@ -18,10 +17,9 @@ struct Bead: View {
             Point(point: bead[.right])
                 .offset(x: offset)
         }
-        .frame(width: 80, height: 80)
         .onAppear {
             withAnimation(.easeInOut(duration: 0.5)) {
-                offset = 22
+                offset = 13
             }
         }
     }

@@ -26,7 +26,7 @@ struct Inventory: View {
             ForEach(session.beads) { bead in
                 HStack {
                     Bead(bead: bead.item)
-                        .padding(.horizontal)
+                        .padding()
                     Spacer()
                 }
                 Rectangle()
