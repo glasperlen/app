@@ -1,5 +1,4 @@
 import SwiftUI
-import Magister
 
 struct Inventory: View {
     @Binding var session: Session
@@ -23,29 +22,11 @@ struct Inventory: View {
         }
         .padding(.top, 20)
         ScrollView {
-            ForEach(session.beads) { bead in
-                if bead == session.beads.first {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(height: 1)
-                }
+            ForEach(0 ..< .init(ceil(Float(session.beads.count) / 3))) { row in
                 HStack {
-                    Spacer()
-                    Bead(bead: bead.item)
-                        .padding(.horizontal)
-                    if bead.selected {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(.user)
-                            .font(.title2)
-                            .padding()
+                    ForEach(3 * row ..< 3) { _ in
+//                        Item(bead: session.beads[$0])
                     }
-                    Spacer()
-                }
-                if bead != session.beads.last {
-                    Rectangle()
-                        .fill(Color(.tertiarySystemBackground))
-                        .frame(height: 1)
-                        .padding(.horizontal)
                 }
             }
         }

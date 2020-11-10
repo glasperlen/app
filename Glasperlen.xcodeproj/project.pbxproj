@@ -34,6 +34,7 @@
 		CE6E727B25543014000AB7D2 /* Bead.Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E727A25543014000AB7D2 /* Bead.Point.swift */; };
 		CE7273BC2553F88400A79BF2 /* Game.Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7273BB2553F88400A79BF2 /* Game.Controls.swift */; };
 		CE7273BF2553FE0900A79BF2 /* Game.Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */; };
+		CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */; };
 		CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */; };
 		CEAEB56425557CDB0046E4E9 /* Game.Finish.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEB56325557CDB0046E4E9 /* Game.Finish.swift */; };
 		CEB90ED3254AD52D00F92A7C /* Magister in Frameworks */ = {isa = PBXBuildFile; productRef = CEB90ED2254AD52D00F92A7C /* Magister */; };
@@ -77,6 +78,7 @@
 		CE6E727A25543014000AB7D2 /* Bead.Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bead.Point.swift; sourceTree = "<group>"; };
 		CE7273BB2553F88400A79BF2 /* Game.Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Controls.swift; sourceTree = "<group>"; };
 		CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Loading.swift; sourceTree = "<group>"; };
+		CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.Item.swift; sourceTree = "<group>"; };
 		CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Third.swift; sourceTree = "<group>"; };
 		CEAEB56325557CDB0046E4E9 /* Game.Finish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Finish.swift; sourceTree = "<group>"; };
 		CEB90ED5254AD60400F92A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				CE6E726325541BFB000AB7D2 /* Game.Turn.swift */,
 				CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */,
 				CEB90ED8254ADA5E00F92A7C /* Header.swift */,
+				CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */,
 				CEBE5393255019550059F12C /* Inventory.swift */,
 				CE60EDB3254D959A007056BC /* Neumorphic.swift */,
 				CE60EDB7254D9759007056BC /* Onboard.Card.swift */,
@@ -231,6 +234,7 @@
 				CEB90ED6254AD60400F92A7C /* AppDelegate.swift in Sources */,
 				CE6324852549D8470051A470 /* Session.swift in Sources */,
 				CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */,
+				CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */,
 				CE62335225582A3300B1BE7C /* Game.Deck.Item.swift in Sources */,
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Game.Board.swift in Sources */,
