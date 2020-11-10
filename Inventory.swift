@@ -22,11 +22,15 @@ struct Inventory: View {
         }
         .padding(.top, 20)
         ScrollView {
+            Spacer()
+                .frame(height: 30)
             ForEach(0 ..< .init(ceil(Float(session.beads.count) / 3))) { row in
                 HStack {
-                    ForEach(3 * row ..< 3) { _ in
-//                        Item(bead: session.beads[$0])
+                    Spacer()
+                    ForEach(session.beads.dropFirst(row * 3).prefix(3)) {
+                        Item(session: $session, bead: $0)
                     }
+                    Spacer()
                 }
             }
         }

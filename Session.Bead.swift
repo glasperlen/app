@@ -8,7 +8,7 @@ extension Session {
         let item: Magister.Bead
         
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.id == rhs.id
+            lhs.id == rhs.id && lhs.selected == rhs.selected
         }
     }
 }
