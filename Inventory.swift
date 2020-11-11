@@ -10,6 +10,8 @@ struct Inventory: View {
                 .font(.headline)
                 .padding(.leading)
             Spacer()
+            Text(verbatim: "\(session.beads.filter(\.selected).count)/5")
+                .font(.headline)
             Button {
                 visible.wrappedValue.dismiss()
             } label: {
@@ -21,6 +23,13 @@ struct Inventory: View {
             .contentShape(Rectangle())
         }
         .padding(.top, 20)
+        HStack {
+            Text("You need 5 selected to play")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+            Spacer()
+        }
+        .padding(.leading)
         ScrollView {
             Spacer()
                 .frame(height: 30)
