@@ -4,7 +4,7 @@ import Magister
 
 extension Session {
     struct Gameplay {
-        var drop: Board.Point?
-        var cells = [Board.Point : CGRect]()
+        var drop: Point?
+        var cells = [Point : CGRect]()
     }
 }

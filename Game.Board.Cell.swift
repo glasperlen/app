@@ -4,7 +4,7 @@ import Magister
 extension Game.Board {
     struct Cell: View {
         @Binding var session: Session
-        @State private var flash: Color?
+        @State private var flash: SwiftUI.Color?
         let point: Magister.Board.Point
         let frame: CGRect
         

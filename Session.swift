@@ -3,7 +3,7 @@ import Combine
 import Magister
 
 struct Session {
-    var match = Match.off
+    var match: Match?
     var gameplay: Gameplay?
     var beads = Defaults.beads {
         didSet {

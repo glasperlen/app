@@ -9,18 +9,9 @@ extension Game {
         var body: some View {
             VStack {
                 Spacer()
-                if items.count > 3 {
-                    HStack {
-                        Spacer()
-                        ForEach(items.dropFirst(3), id: \.bead.id) {
-                            Bead(session: $session, item: $0)
-                        }
-                        Spacer()
-                    }
-                }
                 HStack {
                     Spacer()
-                    ForEach(items.prefix(3), id: \.bead.id) {
+                    ForEach(session.match[.user].deck.filter { $0.state == .waiting }, id: \.bead.id) {
                         Bead(session: $session, item: $0)
                     }
                     Spacer()

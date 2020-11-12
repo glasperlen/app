@@ -1,9 +1,10 @@
 import SwiftUI
+import Magister
 
 extension Game.Deck {
     struct Bead: View {
         @Binding var session: Session
-        @State var item: Item
+        @State var item: Magister.Bead
         
         var body: some View {
             ZStack {
@@ -12,7 +13,7 @@ extension Game.Deck {
                     .modifier(Neumorphic())
                     .frame(width: 80, height: 80)
                 Circle()
-                    .fill(item.bead.color.color)
+                    .fill(item.color.color)
                     .frame(width: 16, height: 16)
                 Text(verbatim: "\(item.bead[.top])")
                     .foregroundColor(.primary)
