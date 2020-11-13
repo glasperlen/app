@@ -11,24 +11,24 @@ extension Game {
                 Spacer()
                 HStack {
                     Spacer()
-                    ForEach(session.match[.user].deck.filter { $0.state == .waiting }, id: \.bead.id) {
-                        Bead(session: $session, item: $0)
-                    }
+//                    ForEach(session.match[.user].deck.filter { $0.state == .waiting }, id: \.bead.id) {
+//                        Bead(session: $session, item: $0)
+//                    }
                     Spacer()
                 }
             }
-            .onChange(of: session.match[.user]) { _ in
-                update()
-            }
+//            .onChange(of: session.match[.user]) { _ in
+//                update()
+//            }
             .onAppear(perform: update)
         }
         
         private func update() {
-            guard session.match != .off else { return }
-            items = (0 ..< 5).compactMap {
-                guard session.match[.user][$0].state == .waiting else { return nil }
-                return .init(index: $0, bead: session.match[.user][$0].bead)
-            }
+            guard session.match != nil else { return }
+//            items = (0 ..< 5).compactMap {
+//                guard session.match[.user][$0].state == .waiting else { return nil }
+//                return .init(index: $0, bead: session.match[.user][$0].bead)
+//            }
         }
     }
 }

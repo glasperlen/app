@@ -26,7 +26,7 @@ struct Header: View {
             ActionSheet(title: .init("Abandon game?"), message: .init("Your oponent will get 1 of your beads"), buttons: [
                             .cancel(.init("Cancel")),
                             .destructive(.init("Abandon")) {
-                                session.match = .off
+                                session.match = nil
                             }])
         }
     }

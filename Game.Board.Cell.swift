@@ -5,23 +5,23 @@ extension Game.Board {
     struct Cell: View {
         @Binding var session: Session
         @State private var flash: SwiftUI.Color?
-        let point: Magister.Board.Point
+        let point: Point
         let frame: CGRect
         
         var body: some View {
             ZStack {
                 Rectangle()
                     .hidden()
-                if session.match.board[point] == nil {
+                if session.match?[point] == nil {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(Color.background)
                         .modifier(Neumorphic())
                         .padding(5)
                 } else {
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(session.match.board[point]!.player.color, style: .init(lineWidth: 1))
+                        .stroke(session.match![point]!.player.color, style: .init(lineWidth: 1))
                         .padding(5)
-                    Bead(bead: session.match.board[point]!.bead)
+                    Bead(bead: session.match![point]!.bead)
                         .frame(width: 60, height: 60)
                 }
                 if flash != nil {
@@ -35,7 +35,7 @@ extension Game.Board {
                         .padding(5)
                 }
             }
-            .onChange(of: session.match.board[point]?.player) {
+            .onChange(of: session.match?[point]?.player) {
                 guard let color = $0?.color else { return }
                 
                 withAnimation(.easeInOut(duration: 0.4)) {

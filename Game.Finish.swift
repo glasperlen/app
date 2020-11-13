@@ -31,7 +31,7 @@ extension Game {
                         Spacer()
                         Control.Capsule(text: "Done", background: .primary, foreground: .background) {
                             withAnimation(.easeInOut(duration: 0.3)) {
-                                session.match = .off
+                                session.match = nil
                                 finished = nil
                             }
                         }
@@ -39,7 +39,7 @@ extension Game {
                     .padding(40)
                 }
             }
-            .onReceive(session.match.finish) { result in
+            .onChange(of: session.match?.result) { result in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     session.gameplay = nil
                     withAnimation(.easeInOut(duration: 0.5)) {
