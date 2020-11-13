@@ -20,13 +20,15 @@ extension Game {
                         Spacer()
                     }
                     Spacer()
+                }
+                VStack {
+                    Spacer()
                     Text(verbatim: name)
-                        .font(.headline)
-                        .foregroundColor(.oponent)
+                        .font(Font.title.bold())
                         .padding()
                     if me {
                         Image(systemName: "arrowtriangle.down.fill")
-                            .font(Font.title.bold())
+                            .font(.title)
                             .foregroundColor(.user)
                             .padding()
                     } else {
@@ -37,7 +39,6 @@ extension Game {
                     }
                     Image(systemName: "person.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.user)
                         .padding()
                     Spacer()
                 }
@@ -45,7 +46,7 @@ extension Game {
             .onAppear {
                 let match = Match(session.beads.filter { $0.selected }.map(\.item))
                 name = match.oponent.name
-                let rolls = match.turn == .user ? 8 : 9
+                let rolls = match.turn == .user ? 4 : 5
             
                 (0 ..< rolls).forEach {
                     DispatchQueue.main.asyncAfter(deadline: .now() + (0.2 * .init($0))) {
@@ -55,7 +56,7 @@ extension Game {
                     }
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     withAnimation(.easeInOut(duration: 0.3)) {
                         loading = false
                         session.match = match

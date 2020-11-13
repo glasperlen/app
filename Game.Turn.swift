@@ -36,14 +36,14 @@ extension Game {
                     }
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         turn = nil
                     }
                 }
                 
                 if new == .oponent {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation(.easeInOut(duration: 1)) {
                             session.match?.robot()
                         }

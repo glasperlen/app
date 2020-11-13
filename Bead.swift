@@ -18,7 +18,7 @@ struct Bead: View {
                 .offset(x: offset)
         }
         .onAppear {
-            withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation(.easeInOut(duration: 0.3)) {
                 offset = 13
             }
         }

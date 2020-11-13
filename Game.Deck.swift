@@ -9,8 +9,8 @@ extension Game {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
                     ForEach(session.beads.filter { session.match?.played($0.item) == false }, id: \.item.id) { bead in
+                        Spacer()
                         Bead(bead: bead.item)
                             .offset(offset[bead.item.id] ?? .zero)
                             .gesture(
@@ -35,6 +35,7 @@ extension Game {
                     }
                     Spacer()
                 }
+                .padding(.bottom, 20)
             }
         }
     }

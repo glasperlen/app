@@ -9,8 +9,8 @@ extension Bead {
             .fill(color)
             .overlay(
                 Circle()
-                    .fill(Color.background.opacity(0.35))
-                    .blur(radius: 6)
+                    .fill(Color.black.opacity(0.5))
+                    .blur(radius: 7)
             )
             .frame(width: 54, height: 54)
         }
