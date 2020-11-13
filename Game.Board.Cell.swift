@@ -4,7 +4,7 @@ import Magister
 extension Game.Board {
     struct Cell: View {
         @Binding var session: Session
-        @State private var flash: SwiftUI.Color?
+        @State private var flash: Color?
         let point: Point
         let frame: CGRect
         
@@ -29,7 +29,7 @@ extension Game.Board {
                         .fill(flash!)
                         .padding(5)
                 }
-                if session.gameplay?.drop == point {
+                if session.match?.drop == point {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.user, style: .init(lineWidth: 1))
                         .padding(5)
@@ -49,7 +49,7 @@ extension Game.Board {
                 }
             }
             .onAppear {
-                session.gameplay?.cells[point] = frame
+                session.match?.positions[point] = frame
             }
         }
     }

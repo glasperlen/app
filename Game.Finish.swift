@@ -4,7 +4,7 @@ import Magister
 extension Game {
     struct Finish: View {
         @Binding var session: Session
-        @State private var finished: Magister.Match.Result?
+        @State private var finished: Match.Result?
         
         var body: some View {
             ZStack {
@@ -41,7 +41,6 @@ extension Game {
             }
             .onChange(of: session.match?.result) { result in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    session.gameplay = nil
                     withAnimation(.easeInOut(duration: 0.5)) {
                         finished = result
                     }

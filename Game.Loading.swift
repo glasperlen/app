@@ -43,7 +43,6 @@ extension Game {
                 }
             }
             .onAppear {
-                session.gameplay = .init()
                 let match = Match(session.beads.filter { $0.selected }.map(\.item))
                 name = match.oponent.name
                 let rolls = match.turn == .user ? 8 : 9

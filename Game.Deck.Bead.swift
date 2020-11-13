@@ -5,6 +5,7 @@ extension Game.Deck {
     struct Bead: View {
         @Binding var session: Session
         @State var item: Magister.Bead
+        @State private var offset = CGSize()
         
         var body: some View {
             ZStack {
@@ -32,22 +33,22 @@ extension Game.Deck {
                     .font(.footnote)
                     .offset(x: 20)
             }
-//            .offset(item.offset)
+            .offset(offset)
             .gesture(
                 DragGesture(coordinateSpace: .global)
                     .onChanged { gesture in
-//                        session.gameplay?.drop = session.gameplay?.cells.filter { session.match.board[$0.0] == nil }.first { $0.1.contains(gesture.location) }?.0
-//                        item.offset = gesture.translation
+                        session.match?.drop = session.match?.positions.filter { session.match?[$0.0] == nil }.first { $0.1.contains(gesture.location) }?.0
+                        offset = gesture.translation
                     }
                     .onEnded { _ in
-//                        if let drop = session.gameplay?.drop {
-//                            session.match.play(item.index, drop)
-//                        } else {
-//                            withAnimation(.easeInOut(duration: 0.3)) {
-//                                item.offset = .zero
-//                            }
-//                        }
-                        session.gameplay?.drop = nil
+                        if let drop = session.match?.drop {
+                            session.match?.play(item, drop)
+                        } else {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                offset = .zero
+                            }
+                        }
+                        session.match?.drop = nil
                     }
             )
         }

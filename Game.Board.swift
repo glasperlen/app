@@ -13,7 +13,9 @@ extension Game {
                             HStack {
                                 ForEach(0 ..< 3) { x in
                                     GeometryReader {
-                                        Cell(session: $session, point: .init(x, y), frame: $0.frame(in: .global))
+                                        Cell(session: $session,
+                                             point: .init(x, y),
+                                             frame: $0.frame(in: .global))
                                     }
                                 }
                             }

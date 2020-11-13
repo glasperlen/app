@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE2317362556E6470074CD22 /* Game.Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2317352556E6470074CD22 /* Game.Title.swift */; };
-		CE2535F92559645600DBA035 /* Session.Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535F82559645600DBA035 /* Session.Board.swift */; };
 		CE2535FD255967BC00DBA035 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FC255967BC00DBA035 /* Defaults.swift */; };
 		CE253600255967E900DBA035 /* Session.Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FF255967E900DBA035 /* Session.Bead.swift */; };
 		CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25360325596A2200DBA035 /* Defaults.Key.swift */; };
@@ -50,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		CE2317352556E6470074CD22 /* Game.Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Title.swift; sourceTree = "<group>"; };
-		CE2535F82559645600DBA035 /* Session.Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Board.swift; sourceTree = "<group>"; };
 		CE2535FC255967BC00DBA035 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2535FF255967E900DBA035 /* Session.Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Bead.swift; sourceTree = "<group>"; };
 		CE25360325596A2200DBA035 /* Defaults.Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.Key.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				CEE409AB254B1DCA00A9D5EB /* Onboard.swift */,
 				CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */,
 				CE2535FF255967E900DBA035 /* Session.Bead.swift */,
-				CE2535F82559645600DBA035 /* Session.Board.swift */,
 				CE6324842549D8470051A470 /* Session.swift */,
 				CE4495BC25496A4300ECA6C0 /* Assets.xcassets */,
 				CE4495B625496A4300ECA6C0 /* Products */,
@@ -263,7 +260,6 @@
 				CE7273BF2553FE0900A79BF2 /* Game.Loading.swift in Sources */,
 				CE6233562558305300B1BE7C /* Game.Deck.Bead.swift in Sources */,
 				CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */,
-				CE2535F92559645600DBA035 /* Session.Board.swift in Sources */,
 				CE4495B925496A4300ECA6C0 /* App.swift in Sources */,
 				CE6E726425541BFB000AB7D2 /* Game.Turn.swift in Sources */,
 				CE6E727625542CA5000AB7D2 /* Bead.Base.swift in Sources */,
