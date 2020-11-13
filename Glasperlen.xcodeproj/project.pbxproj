@@ -17,8 +17,6 @@
 		CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDB3254D959A007056BC /* Neumorphic.swift */; };
 		CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDB7254D9759007056BC /* Onboard.Card.swift */; };
 		CE60EDBC254DA523007056BC /* Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDBB254DA523007056BC /* Bead.swift */; };
-		CE62335225582A3300B1BE7C /* Game.Deck.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62335125582A3300B1BE7C /* Game.Deck.Item.swift */; };
-		CE6233562558305300B1BE7C /* Game.Deck.Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6233552558305300B1BE7C /* Game.Deck.Bead.swift */; };
 		CE63246F2549AB280051A470 /* Game.Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63246E2549AB280051A470 /* Game.Board.swift */; };
 		CE6324722549AB580051A470 /* Game.Board.Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324712549AB580051A470 /* Game.Board.Cell.swift */; };
 		CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324792549CA3E0051A470 /* Control.Circle.swift */; };
@@ -60,8 +58,6 @@
 		CE60EDB3254D959A007056BC /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		CE60EDB7254D9759007056BC /* Onboard.Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Card.swift; sourceTree = "<group>"; };
 		CE60EDBB254DA523007056BC /* Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bead.swift; sourceTree = "<group>"; };
-		CE62335125582A3300B1BE7C /* Game.Deck.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Deck.Item.swift; sourceTree = "<group>"; };
-		CE6233552558305300B1BE7C /* Game.Deck.Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Deck.Bead.swift; sourceTree = "<group>"; };
 		CE63246E2549AB280051A470 /* Game.Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Board.swift; sourceTree = "<group>"; };
 		CE6324712549AB580051A470 /* Game.Board.Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Board.Cell.swift; sourceTree = "<group>"; };
 		CE6324792549CA3E0051A470 /* Control.Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Circle.swift; sourceTree = "<group>"; };
@@ -121,8 +117,6 @@
 				CE6324712549AB580051A470 /* Game.Board.Cell.swift */,
 				CE63246E2549AB280051A470 /* Game.Board.swift */,
 				CE7273BB2553F88400A79BF2 /* Game.Controls.swift */,
-				CE6233552558305300B1BE7C /* Game.Deck.Bead.swift */,
-				CE62335125582A3300B1BE7C /* Game.Deck.Item.swift */,
 				CE6E72672554281A000AB7D2 /* Game.Deck.swift */,
 				CEAEB56325557CDB0046E4E9 /* Game.Finish.swift */,
 				CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */,
@@ -232,7 +226,6 @@
 				CE6324852549D8470051A470 /* Session.swift in Sources */,
 				CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */,
 				CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */,
-				CE62335225582A3300B1BE7C /* Game.Deck.Item.swift in Sources */,
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Game.Board.swift in Sources */,
 				CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */,
@@ -258,7 +251,6 @@
 				CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */,
 				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,
 				CE7273BF2553FE0900A79BF2 /* Game.Loading.swift in Sources */,
-				CE6233562558305300B1BE7C /* Game.Deck.Bead.swift in Sources */,
 				CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */,
 				CE4495B925496A4300ECA6C0 /* App.swift in Sources */,
 				CE6E726425541BFB000AB7D2 /* Game.Turn.swift in Sources */,

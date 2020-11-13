@@ -3,32 +3,39 @@ import SwiftUI
 extension Game {
     struct Deck: View {
         @Binding var session: Session
-        @State private var offset = Array(repeating: CGSize(), count: 5)
-        @State private var items = [Item]()
+        @State private var offset = [UUID : CGSize]()
         
         var body: some View {
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
-//                    ForEach(session.match[.user].deck.filter { $0.state == .waiting }, id: \.bead.id) {
-//                        Bead(session: $session, item: $0)
-//                    }
+                    ForEach(session.beads.filter { session.match?.played($0.item) == false }, id: \.item.id) { bead in
+                        Bead(bead: bead.item)
+                            .offset(offset[bead.item.id] ?? .zero)
+                            .gesture(
+                                DragGesture(coordinateSpace: .global)
+                                    .onChanged { gesture in
+                                        session.match?.drop = session.match?.positions
+                                            .filter { session.match?[$0.0] == nil }
+                                            .first { $0.1.contains(gesture.location) }?.0
+                                        offset[bead.item.id] = gesture.translation
+                                    }
+                                    .onEnded { _ in
+                                        if let drop = session.match?.drop {
+                                            session.match?.play(bead.item, drop)
+                                        } else {
+                                            withAnimation(.easeInOut(duration: 0.3)) {
+                                                offset[bead.item.id] = nil
+                                            }
+                                        }
+                                        session.match?.drop = nil
+                                    }
+                            )
+                    }
                     Spacer()
                 }
             }
-//            .onChange(of: session.match[.user]) { _ in
-//                update()
-//            }
-            .onAppear(perform: update)
-        }
-        
-        private func update() {
-            guard session.match != nil else { return }
-//            items = (0 ..< 5).compactMap {
-//                guard session.match[.user][$0].state == .waiting else { return nil }
-//                return .init(index: $0, bead: session.match[.user][$0].bead)
-//            }
         }
     }
 }
