@@ -2,27 +2,20 @@ import SwiftUI
 import Magister
 
 extension Header {
-    struct Score: View {
-        @Binding var session: Session
-        let player: Player
+    struct Score: Shape {
+        let inverse: Bool
+        var score: CGFloat
         
-        var body: some View {
-            HStack {
-//                if player != .user {
-//                    Text(verbatim: session.match[.oponent].name)
-//                        .lineLimit(1)
-//                        .font(.caption2)
-//                        .padding(.leading)
-//                }
-//                Text(NSNumber(value: session.match[player].score), formatter: NumberFormatter())
-//                    .fixedSize(horizontal: true, vertical: false)
-//                    .font(Font.body.bold())
-//                    .padding()
+        func path(in rect: CGRect) -> Path {
+            .init {
+                $0.addRoundedRect(in: inverse ? .init(x: rect.width * score, y: 0, width: rect.width * (1 - score), height: rect.height)
+                                    : .init(x: 0, y: 0, width: rect.width * score, height: rect.height), cornerSize: .init(width: 1.5, height: 1.5))
             }
-//            .frame(height: 30)
-//            .foregroundColor(.black)
-//            .background(RoundedRectangle(cornerRadius: 15)
-//                            .fill(player.color.opacity(session.match.turn == player ? 1 : 0.3)))
+        }
+        
+        var animatableData: CGFloat {
+            get { score }
+            set { score = newValue }
         }
     }
 }

@@ -15,18 +15,33 @@ struct Header: View {
                     .frame(width: 50, height: 45)
             }
             .contentShape(Rectangle())
-            .padding(.leading)
             Spacer()
-            Score(session: $session, player: .oponent)
-                .padding(.leading)
-            Score(session: $session, player: .user)
+            Image(systemName: "person.fill")
+            VStack {
+                Score(inverse: false, score: .init(session.match?.score ?? 0))
+                    .fill(Color.user)
+                    .animation(.easeInOut(duration: 1))
+                    .frame(height: 3)
+                    .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
+                Score(inverse: true, score: .init(session.match?.score ?? 0))
+                    .fill(Color.oponent)
+                    .animation(.easeInOut(duration: 1))
+                    .frame(height: 3)
+                    .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
+            }
+            .frame(width: 100)
+            Text(verbatim: session.match?.oponent.name ?? "")
+                .font(Font.footnote.bold())
                 .padding(.trailing)
         }
+        .padding(.horizontal)
         .actionSheet(isPresented: $abandon) {
             ActionSheet(title: .init("Abandon game?"), message: .init("Your oponent will get 1 of your beads"), buttons: [
                             .cancel(.init("Cancel")),
                             .destructive(.init("Abandon")) {
-                                session.match = nil
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    session.match = nil
+                                }
                             }])
         }
     }

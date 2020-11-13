@@ -15,7 +15,6 @@ struct Game: View {
             } else {
                 VStack {
                     Header(session: $session)
-                    Spacer()
                     Board(session: $session)
                 }
             }
