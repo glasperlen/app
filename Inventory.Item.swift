@@ -7,6 +7,7 @@ extension Inventory {
         
         var body: some View {
             Button {
+                guard bead.selected || session.beads.filter(\.selected).count < 5 else { return }
                 session.beads[session.beads.firstIndex(of: bead)!].selected.toggle()
             } label: {
                 ZStack {

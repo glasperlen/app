@@ -4,6 +4,7 @@ extension Game {
     struct Controls: View {
         @Binding var session: Session
         @State private var inventory = false
+        @State private var alert = false
         
         var body: some View {
             HStack {
@@ -12,7 +13,17 @@ extension Game {
                     
                 }
                 Control.Circle(image: "plus") {
-                    session.new.send()
+                    if session.beads.filter(\.selected).count != 5 {
+                        alert = true
+                    } else {
+                        session.new.send()
+                    }
+                }
+                .alert(isPresented: $alert) {
+                    Alert(title: .init("Need 5 beads selected to start a game"),
+                          message: .init("Select them on your inventory"),
+                          primaryButton: .default(.init("Inventory")) { inventory = true },
+                          secondaryButton: .cancel())
                 }
                 Control.Circle(image: "bag") {
                     inventory = true
