@@ -8,7 +8,6 @@ import SwiftUI
         WindowGroup {
             Game(session: $session)
                 .modifier(Background())
-                .preferredColorScheme(.dark)
         }
     }
 }
