@@ -10,7 +10,7 @@ extension Game {
             HStack {
                 Spacer()
                 Control.Circle(image: "star") {
-                    
+                    UIApplication.shared.leaderboards()
                 }
                 Control.Circle(image: "plus") {
                     if session.beads.filter(\.selected).count != 5 {
