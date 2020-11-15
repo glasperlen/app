@@ -40,6 +40,14 @@ extension Game {
                 }
             }
             .onChange(of: session.match?.result) { result in
+                guard let result = result else { return }
+                switch result {
+                case .win:
+                    Defaults.victories += 1
+                    UIApplication.shared.victories(Defaults.victories)
+                case .loose: break
+                case .draw: break
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation(.easeInOut(duration: 0.5)) {
                         finished = result

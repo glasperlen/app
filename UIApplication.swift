@@ -20,11 +20,11 @@ extension UIApplication {
     }
     
     func leaderboards() {
-        GKAccessPoint.shared.trigger(state: .leaderboards) {
-            
-        }
-        GKAccessPoint.shared.trigger(state: .localPlayerProfile) {
-            
-        }
+        GKAccessPoint.shared.trigger(state: .leaderboards) { }
+    }
+    
+    func victories(_ score: Int) {
+        guard GKLocalPlayer.local.isAuthenticated else { return }
+        GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["glasperlen.victories"]) { _ in }
     }
 }
