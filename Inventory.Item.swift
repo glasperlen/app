@@ -12,10 +12,11 @@ extension Inventory {
             } label: {
                 ZStack {
                     Circle()
-                        .stroke(Color.user, style: .init(lineWidth: 5))
-                        .frame(width: 65, height: 65)
+                        .stroke(Color.primary, style: .init(lineWidth: 3))
+                        .frame(width: 55, height: 55)
                         .opacity(bead.selected ? 1 : 0)
                     Bead(bead: bead.item)
+                        .opacity(bead.selected ? 1 : 0.4)
                 }
             }
             .contentShape(Rectangle())

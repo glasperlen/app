@@ -2,6 +2,7 @@ import SwiftUI
 
 struct Inventory: View {
     @Binding var session: Session
+    @State private var store = false
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
@@ -24,8 +25,29 @@ struct Inventory: View {
         }
         .padding(.top, 20)
         ScrollView {
-            Spacer()
-                .frame(height: 30)
+            HStack {
+                VStack {
+                    HStack {
+                        Text("Get beads")
+                            .font(.headline)
+                        Spacer()
+                    }
+                    HStack {
+                        Text("You can purchase beads on the Store")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                }
+                Spacer()
+                Control.Circle(image: "cart") {
+                    store = true
+                }
+                .sheet(isPresented: $store) {
+                    Store()
+                }
+            }
+            .padding()
             ForEach(0 ..< .init(ceil(Float(session.beads.count) / 3))) { row in
                 HStack {
                     Spacer()
