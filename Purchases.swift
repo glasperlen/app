@@ -1,9 +1,9 @@
 import StoreKit
-import Combine
 
-final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    private(set) var products = CurrentValueSubject<[SKProduct], Never>([])
-    private(set) var error = PassthroughSubject<String, Never>()
+final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    @Published private(set) var products = [SKProduct]()
+    @Published private(set) var loading = true
+    @Published private(set) var error: String?
     private weak var request: SKProductsRequest?
     
     deinit {
@@ -21,7 +21,10 @@ final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, S
     }
     
     func productsRequest(_: SKProductsRequest, didReceive: SKProductsResponse) {
-        products.value = didReceive.products
+        DispatchQueue.main.async { [weak self] in
+            self?.products = didReceive.products.sorted { $0.price.doubleValue < $1.price.doubleValue }
+            self?.loading = false
+        }
     }
     
     func paymentQueue(_: SKPaymentQueue, updatedTransactions: [SKPaymentTransaction]) {
@@ -33,15 +36,21 @@ final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, S
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_: SKPaymentQueue) {
-        products.send(products.value)
+        DispatchQueue.main.async { [weak self] in
+            self?.objectWillChange.send()
+        }
     }
     
     func request(_: SKRequest, didFailWithError: Error) {
-        error.send(didFailWithError.localizedDescription)
+        DispatchQueue.main.async { [weak self] in
+            self?.error = didFailWithError.localizedDescription
+        }
     }
     
     func paymentQueue(_: SKPaymentQueue, restoreCompletedTransactionsFailedWithError: Error) {
-        error.send(restoreCompletedTransactionsFailedWithError.localizedDescription)
+        DispatchQueue.main.async { [weak self] in
+            self?.error = restoreCompletedTransactionsFailedWithError.localizedDescription
+        }
     }
     
     private func update(_ transactions: [SKPaymentTransaction]) {
@@ -59,10 +68,13 @@ final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, S
                 break
             }
         }
-        products.send(products.value)
+        DispatchQueue.main.async { [weak self] in
+            self?.objectWillChange.send()
+        }
     }
     
     func purchase(_ product: SKProduct) {
+        loading = true
         SKPaymentQueue.default().add(.init(product: product))
     }
     

@@ -2,10 +2,9 @@ import SwiftUI
 import StoreKit
 
 struct Store: View {
-    @State private var formatter = NumberFormatter()
-    @State private var load = true
-    private let purchases = Purchases()
+    @ObservedObject private var purchases = Purchases()
     @Environment(\.presentationMode) private var visible
+    @State private var formatter = NumberFormatter()
     
     var body: some View {
         HStack {
@@ -25,7 +24,14 @@ struct Store: View {
         }
         .padding(.top, 20)
         ScrollView {
-            if load || purchases.products.value.isEmpty {
+            if purchases.error != nil {
+                HStack {
+                    Text(verbatim: purchases.error!)
+                        .foregroundColor(.secondary)
+                        .padding()
+                    Spacer()
+                }
+            } else if purchases.loading || purchases.products.isEmpty {
                 HStack {
                     Text("Loading")
                         .font(Font.caption.bold())
@@ -34,12 +40,11 @@ struct Store: View {
                     Spacer()
                 }
             } else {
-                ForEach(purchases.products.value, id: \.self) { product in
+                ForEach(purchases.products, id: \.self) { product in
                     Item(purchase: Purchases.Item(rawValue: product.productIdentifier)!, price: price(product)) {
-                        withAnimation(.easeInOut(duration: 1)) {
-                            load = true
+                        withAnimation(.easeInOut(duration: 1)) {   
+                            purchases.purchase(product)
                         }
-                        purchases.purchase(product)
                     }
                 }
             }

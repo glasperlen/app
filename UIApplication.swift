@@ -20,6 +20,7 @@ extension UIApplication {
     }
     
     func leaderboards() {
+        guard GKLocalPlayer.local.isAuthenticated else { return }
         GKAccessPoint.shared.trigger(state: .leaderboards) { }
     }
     
