@@ -7,32 +7,35 @@ extension Store {
         let action: () -> Void
         
         var body: some View {
-            VStack {
-                HStack {
-                    Image(systemName: purchase.image)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .foregroundColor(.init(.systemIndigo))
-                    Spacer()
-                        .frame(width: 10)
-                    Text(verbatim: purchase.title)
-                        .font(Font.title.bold())
-                        .foregroundColor(.init(.systemIndigo))
+            HStack {
+                VStack {
+                    Image(purchase.image)
+                        .padding()
+                    Text(verbatim: price)
+                        .font(.footnote)
+                    Control.Capsule(text: "Purchase", background: .accentColor, foreground: .white, width: 100) {
+                        
+                    }
                 }
-                Text(verbatim: purchase.subtitle)
-                    .foregroundColor(.secondary)
-                    .padding()
-                Text(verbatim: price)
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-//                if session.user.value.purchases.contains(purchase) {
-//                    Image(systemName: "checkmark.circle.fill")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.init(.systemIndigo))
-//                        .padding()
-//                } else {
-//                    Cta(title: "Purchase", background: .pink, width: 120, action: action)
-//                }
+                VStack {
+                    HStack {
+                        Text(verbatim: purchase.title)
+                            .font(Font.title3.bold())
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.trailing)
+                            .padding(.top)
+                        Spacer()
+                    }
+                    HStack {
+                        Text(verbatim: purchase.subtitle)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .foregroundColor(.secondary)
+                            .padding(.trailing)
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                Spacer()
             }
         }
     }

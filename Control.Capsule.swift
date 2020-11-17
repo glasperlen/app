@@ -5,6 +5,7 @@ extension Control {
         let text: LocalizedStringKey
         let background: Color
         let foreground: Color
+        var width = CGFloat(180)
         let action: () -> Void
         
         var body: some View {
@@ -16,11 +17,12 @@ extension Control {
                             .frame(height: 50)
                         RoundedRectangle(cornerRadius: 17)
                             .fill(selected ? foreground : background)
-                            .frame(width: 180, height: 34)
+                            .frame(height: 34)
                         Text(text)
                             .foregroundColor(selected ? background : foreground)
                             .font(Font.footnote.bold())
                     }
+                    .frame(width: width)
                     .contentShape(Rectangle())
                 })
         }

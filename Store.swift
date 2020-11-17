@@ -40,12 +40,31 @@ struct Store: View {
                     Spacer()
                 }
             } else {
+                HStack {
+                    Text("You can purchase packs with beads, each one is unique and every time you purchase them they will contain different beads.\n\nThe quality of the beads they contain will be influenced by the quality of the pack you choose.")
+                        .padding(.leading)
+                    Spacer()
+                }
+                .padding(.top)
+                HStack {
+                    Text("All purchases are consumable, you can purchase them many times but you won't be able to restore them.")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                        .padding(.leading)
+                    Spacer()
+                }
+                .padding(.vertical)
                 ForEach(purchases.products, id: \.self) { product in
                     Item(purchase: Purchases.Item(rawValue: product.productIdentifier)!, price: price(product)) {
                         withAnimation(.easeInOut(duration: 1)) {   
                             purchases.purchase(product)
                         }
                     }
+                    .padding(.vertical)
+                    Rectangle()
+                        .fill(Color.white.opacity(0.1))
+                        .frame(height: 1)
+                        .padding(.horizontal)
                 }
             }
         }
