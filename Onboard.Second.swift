@@ -5,32 +5,13 @@ extension Onboard {
     struct Second: View {
         @Binding var session: Session
         @Binding var tab: Int
-        @State private var inventory = false
         
         var body: some View {
             Card {
                 Image(systemName: "bag.fill")
                     .font(.largeTitle)
                     .padding(.vertical)
-                HStack {
-                    Spacer()
-                    ForEach(0 ..< 5) {
-                        Bead.Base(color: session.beads.count > 4 ? session.beads[$0].item.color.color : .black)
-                            .frame(width: 18, height: 18)
-                    }
-                    Spacer()
-                }
-                .padding(.top)
-                if !session.beads.isEmpty {
-                    Button {
-                        inventory = true
-                    } label: {
-                        Text("View")
-                            .foregroundColor(.secondary)
-                            .font(Font.footnote.bold())
-                            .frame(minWidth: 100, minHeight: 50)
-                    }
-                }
+                Pack(beads: session.beads)
                 Spacer()
                 Button {
                     withAnimation(.easeInOut(duration: 1)) {
@@ -42,9 +23,6 @@ extension Onboard {
                         .font(Font.footnote.bold())
                         .frame(minWidth: 100, minHeight: 50)
                 }
-            }
-            .sheet(isPresented: $inventory) {
-                Inventory(session: $session)
             }
             .onAppear {
                 if session.beads.isEmpty {

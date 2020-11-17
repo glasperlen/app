@@ -2,9 +2,11 @@ import SwiftUI
 import StoreKit
 
 struct Store: View {
+    @Binding var session: Session
     @ObservedObject private var purchases = Purchases()
     @Environment(\.presentationMode) private var visible
     @State private var formatter = NumberFormatter()
+    @State private var pack = false
     
     var body: some View {
         HStack {
@@ -21,6 +23,14 @@ struct Store: View {
                     .frame(width: 60, height: 40)
             }
             .contentShape(Rectangle())
+            .sheet(isPresented: $pack) {
+                guard let beads = purchases.beads else { return }
+                session.beads.append(contentsOf: beads)
+                purchases.beads = nil
+                visible.wrappedValue.dismiss()
+            } content: {
+                Pack.Detail(beads: purchases.beads ?? [])
+            }
         }
         .padding(.top, 20)
         ScrollView {
@@ -69,9 +79,15 @@ struct Store: View {
             }
         }
         .modifier(Background())
+        .onChange(of: purchases.beads) {
+            guard $0 != nil else { return }
+            pack = true
+        }
         .onAppear {
             formatter.numberStyle = .currencyISOCode
-            purchases.load()
+            if purchases.products.isEmpty {
+                purchases.load()
+            }
         }
     }
     

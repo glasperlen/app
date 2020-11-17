@@ -1,6 +1,8 @@
 import StoreKit
+import Magister
 
 final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    @Published var beads: [Session.Bead]?
     @Published private(set) var products = [SKProduct]()
     @Published private(set) var loading = true
     @Published private(set) var error: String?
@@ -60,8 +62,11 @@ final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProducts
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transation)
             case .restored, .purchased:
-                DispatchQueue.main.async {
-//                    session.user.value.purchases.insert(Purchase(rawValue: transation.payment.productIdentifier)!)
+                if beads == nil {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.beads = Factory.beads(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
+                            .map { .init(selected: false, item: $0) }
+                    }
                 }
                 SKPaymentQueue.default().finishTransaction(transation)
             default:

@@ -30,5 +30,13 @@ extension Purchases {
             case .high: return NSLocalizedString("5 new beads with a high chance of having high points", comment: "")
             }
         }
+        
+        var tier: Int {
+            switch self {
+            case .low: return 0
+            case .medium: return 30
+            case .high: return 60
+            }
+        }
     }
 }
