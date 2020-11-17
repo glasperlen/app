@@ -11,11 +11,11 @@ extension UIApplication {
                     alert.addAction(.init(title: NSLocalizedString("Settings", comment: ""), style: .default) { _ in
                         self.open(URL(string: UIApplication.openSettingsURLString)!)
                     })
-                    self.windows.first!.rootViewController!.present(alert, animated: true)
+                    self.present(alert)
                 }
                 return
             }
-            self.windows.first!.rootViewController!.present(controller, animated: true)
+            self.present(controller)
         }
     }
     
@@ -27,5 +27,13 @@ extension UIApplication {
     func victories(_ score: Int) {
         guard GKLocalPlayer.local.isAuthenticated else { return }
         GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["glasperlen.victories"]) { _ in }
+    }
+    
+    private func present(_ controller: UIViewController) {
+        guard var root = windows.first?.rootViewController else { return }
+        while let presented = root.presentedViewController {
+            root = presented
+        }
+        root.present(controller, animated: true)
     }
 }
