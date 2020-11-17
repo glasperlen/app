@@ -56,13 +56,13 @@ struct Store: View {
                 .padding(.vertical)
                 ForEach(purchases.products, id: \.self) { product in
                     Item(purchase: Purchases.Item(rawValue: product.productIdentifier)!, price: price(product)) {
-                        withAnimation(.easeInOut(duration: 1)) {   
+                        withAnimation(.easeInOut(duration: 0.5)) {   
                             purchases.purchase(product)
                         }
                     }
                     .padding(.vertical)
                     Rectangle()
-                        .fill(Color.white.opacity(0.1))
+                        .fill(Color.white.opacity(0.2))
                         .frame(height: 1)
                         .padding(.horizontal)
                 }

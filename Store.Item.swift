@@ -13,9 +13,7 @@ extension Store {
                         .padding()
                     Text(verbatim: price)
                         .font(.footnote)
-                    Control.Capsule(text: "Purchase", background: .accentColor, foreground: .white, width: 100) {
-                        
-                    }
+                    Control.Capsule(text: "Purchase", background: .accentColor, foreground: .white, width: 100, action: action)
                 }
                 VStack {
                     HStack {

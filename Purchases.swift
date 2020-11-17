@@ -37,7 +37,7 @@ final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProducts
     
     func paymentQueueRestoreCompletedTransactionsFinished(_: SKPaymentQueue) {
         DispatchQueue.main.async { [weak self] in
-            self?.objectWillChange.send()
+            self?.loading = false
         }
     }
     
@@ -69,7 +69,7 @@ final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProducts
             }
         }
         DispatchQueue.main.async { [weak self] in
-            self?.objectWillChange.send()
+            self?.loading = false
         }
     }
     
