@@ -2,11 +2,10 @@ import SwiftUI
 import StoreKit
 
 struct Store: View {
-    @Binding var session: Session
+    let purchased: ([Session.Bead]) -> Void
     @ObservedObject private var purchases = Purchases()
     @Environment(\.presentationMode) private var visible
     @State private var formatter = NumberFormatter()
-    @State private var pack = false
     
     var body: some View {
         HStack {
@@ -23,14 +22,6 @@ struct Store: View {
                     .frame(width: 60, height: 40)
             }
             .contentShape(Rectangle())
-            .sheet(isPresented: $pack) {
-                guard let beads = purchases.beads else { return }
-                session.beads.append(contentsOf: beads)
-                purchases.beads = nil
-                visible.wrappedValue.dismiss()
-            } content: {
-                Pack.Detail(beads: purchases.beads ?? [])
-            }
         }
         .padding(.top, 20)
         ScrollView {
@@ -51,7 +42,7 @@ struct Store: View {
                 }
             } else {
                 HStack {
-                    Text("You can purchase packs with beads, each one is unique and every time you purchase them they will contain different beads.\n\nThe quality of the beads they contain will be influenced by the quality of the pack you choose.")
+                    Text("You can purchase packs with new beads, each pack is unique and every time you purchase them they will contain different beads.\n\nThe points of the beads in the packs will be influenced by the quality of the pack you choose.")
                         .padding(.leading)
                     Spacer()
                 }
@@ -79,9 +70,9 @@ struct Store: View {
             }
         }
         .modifier(Background())
-        .onChange(of: purchases.beads) {
-            guard $0 != nil else { return }
-            pack = true
+        .onReceive(purchases.beads) {
+            visible.wrappedValue.dismiss()
+            purchased($0)
         }
         .onAppear {
             formatter.numberStyle = .currencyISOCode

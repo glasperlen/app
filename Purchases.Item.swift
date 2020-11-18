@@ -25,9 +25,9 @@ extension Purchases {
         
         var subtitle: String {
             switch self {
-            case .low: return NSLocalizedString("5 new beads with a low chance of having high points", comment: "")
-            case .medium: return NSLocalizedString("5 new beads with a medium chance of having high points", comment: "")
-            case .high: return NSLocalizedString("5 new beads with a high chance of having high points", comment: "")
+            case .low: return NSLocalizedString("5 new and unique beads with a low chance of having many points", comment: "")
+            case .medium: return NSLocalizedString("5 new and unique beads with a medium chance of having manuy points", comment: "")
+            case .high: return NSLocalizedString("5 new and unique beads with a high chance of having many points", comment: "")
             }
         }
         

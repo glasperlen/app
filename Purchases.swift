@@ -1,11 +1,12 @@
 import StoreKit
 import Magister
+import Combine
 
 final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    @Published var beads: [Session.Bead]?
     @Published private(set) var products = [SKProduct]()
     @Published private(set) var loading = true
     @Published private(set) var error: String?
+    let beads = PassthroughSubject<[Session.Bead], Never>()
     private weak var request: SKProductsRequest?
     
     deinit {
@@ -62,11 +63,10 @@ final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProducts
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transation)
             case .restored, .purchased:
-                if beads == nil {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.beads = Factory.beads(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
-                            .map { .init(selected: false, item: $0) }
-                    }
+                print("tran")
+                DispatchQueue.main.async { [weak self] in
+                    self?.beads.send(Factory.beads(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
+                        .map { .init(selected: false, item: $0) })
                 }
                 SKPaymentQueue.default().finishTransaction(transation)
             default:
