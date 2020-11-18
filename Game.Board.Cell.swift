@@ -35,14 +35,19 @@ extension Game.Board {
                         .padding(5)
                 }
             }
-            .onChange(of: session.match?[point]?.player) {
+            .onChange(of: session.match?[point]?.player) { [old = session.match?[point]?.player] in
                 guard let color = $0?.color else { return }
+                session.play(.Tink)
                 
                 withAnimation(.easeInOut(duration: 0.4)) {
                     flash = color
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    if old != nil {
+                        session.play(.Pop)
+                    }
+                    
                     withAnimation(.easeInOut(duration: 0.4)) {
                         flash = nil
                     }

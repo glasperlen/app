@@ -47,9 +47,12 @@ extension Game {
                 let match = Match(session.beads.filter { $0.selected }.map(\.item))
                 name = match.oponent.name
                 let rolls = match.turn == .user ? 4 : 5
-            
+                
                 (0 ..< rolls).forEach {
                     DispatchQueue.main.asyncAfter(deadline: .now() + (0.2 * .init($0))) {
+                        
+                        session.play(.Basso)
+                        
                         withAnimation(.easeInOut(duration: 0.2)) {
                             me.toggle()
                         }

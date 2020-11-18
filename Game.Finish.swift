@@ -49,6 +49,8 @@ extension Game {
                 case .draw: break
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    session.play(result == .win ? .Hero : .Bottle)
+                    
                     withAnimation(.easeInOut(duration: 0.5)) {
                         finished = result
                     }
