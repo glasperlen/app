@@ -17,11 +17,18 @@ extension Store {
                 }
                 VStack {
                     HStack {
+                        Text(verbatim: purchase.heading)
+                            .font(Font.title.bold())
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.trailing)
+                            .padding(.top)
+                        Spacer()
+                    }
+                    HStack {
                         Text(verbatim: purchase.title)
                             .font(Font.title3.bold())
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.trailing)
-                            .padding(.top)
                         Spacer()
                     }
                     HStack {

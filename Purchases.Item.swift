@@ -15,11 +15,19 @@ extension Purchases {
             }
         }
         
+        var heading: String {
+            switch self {
+            case .low: return NSLocalizedString("Low", comment: "")
+            case .medium: return NSLocalizedString("Medium", comment: "")
+            case .high: return NSLocalizedString("High", comment: "")
+            }
+        }
+        
         var title: String {
             switch self {
-            case .low: return NSLocalizedString("Low pack of 5 beads", comment: "")
-            case .medium: return NSLocalizedString("Medium pack of 5 beads", comment: "")
-            case .high: return NSLocalizedString("High pack of 5 beads", comment: "")
+            case .low: return NSLocalizedString("Pack of 5 beads", comment: "")
+            case .medium: return NSLocalizedString("Pack of 5 beads", comment: "")
+            case .high: return NSLocalizedString("Pack of 5 beads", comment: "")
             }
         }
         
