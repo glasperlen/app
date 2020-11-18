@@ -37,7 +37,10 @@ extension Game.Board {
             }
             .onChange(of: session.match?[point]?.player) { [old = session.match?[point]?.player] in
                 guard let color = $0?.color else { return }
-                session.play(.Tink)
+                
+                if old == nil {
+                    session.play(.Tink)
+                }
                 
                 withAnimation(.easeInOut(duration: 0.4)) {
                     flash = color
