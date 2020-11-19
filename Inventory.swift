@@ -49,6 +49,7 @@ struct Inventory: View {
                 }
                 .sheet(isPresented: $store) {
                     Store {
+                        session.play(.Glass)
                         session.beads.append(contentsOf: $0)
                         pack = true
                     }
