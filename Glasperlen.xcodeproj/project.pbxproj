@@ -56,6 +56,9 @@
 		CEE409B0254B242C00A9D5EB /* Control.Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409AF254B242C00A9D5EB /* Control.Style.swift */; };
 		CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409B2254B245600A9D5EB /* Control.Capsule.swift */; };
 		CEECC8D625667D0900395B05 /* Glass.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CEECC8D525667D0900395B05 /* Glass.aiff */; };
+		CEECC8DA256686F600395B05 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC8D9256686F600395B05 /* Menu.swift */; };
+		CEECC8DD25668F9800395B05 /* Menu.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC8DC25668F9800395B05 /* Menu.Item.swift */; };
+		CEECC8E1256697DD00395B05 /* Menu.Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC8E0256697DD00395B05 /* Menu.Switch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +112,9 @@
 		CEE409AF254B242C00A9D5EB /* Control.Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Style.swift; sourceTree = "<group>"; };
 		CEE409B2254B245600A9D5EB /* Control.Capsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Capsule.swift; sourceTree = "<group>"; };
 		CEECC8D525667D0900395B05 /* Glass.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Glass.aiff; sourceTree = "<group>"; };
+		CEECC8D9256686F600395B05 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		CEECC8DC25668F9800395B05 /* Menu.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.Item.swift; sourceTree = "<group>"; };
+		CEECC8E0256697DD00395B05 /* Menu.Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.Switch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,9 @@
 				CEB90ED8254ADA5E00F92A7C /* Header.swift */,
 				CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */,
 				CEBE5393255019550059F12C /* Inventory.swift */,
+				CEECC8DC25668F9800395B05 /* Menu.Item.swift */,
+				CEECC8D9256686F600395B05 /* Menu.swift */,
+				CEECC8E0256697DD00395B05 /* Menu.Switch.swift */,
 				CE60EDB3254D959A007056BC /* Neumorphic.swift */,
 				CE60EDB7254D9759007056BC /* Onboard.Card.swift */,
 				CE65FC34254C3AC1000A78C1 /* Onboard.First.swift */,
@@ -278,6 +287,7 @@
 				CEB4C69E25627A5D0068AEE9 /* Store.swift in Sources */,
 				CE6324852549D8470051A470 /* Session.swift in Sources */,
 				CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */,
+				CEECC8DD25668F9800395B05 /* Menu.Item.swift in Sources */,
 				CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */,
 				CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */,
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
@@ -305,7 +315,9 @@
 				CE6324722549AB580051A470 /* Game.Board.Cell.swift in Sources */,
 				CEAEB56425557CDB0046E4E9 /* Game.Finish.swift in Sources */,
 				CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */,
+				CEECC8DA256686F600395B05 /* Menu.swift in Sources */,
 				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,
+				CEECC8E1256697DD00395B05 /* Menu.Switch.swift in Sources */,
 				CE60EDBC254DA523007056BC /* Bead.swift in Sources */,
 				CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */,
 				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,

@@ -3,7 +3,6 @@ import SwiftUI
 struct Inventory: View {
     @Binding var session: Session
     @State private var store = false
-    @State private var pack = false
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
@@ -40,19 +39,12 @@ struct Inventory: View {
                         Spacer()
                     }
                 }
-                .sheet(isPresented: $pack) {
-                    Pack.Detail(beads: session.beads.suffix(5))
-                }
                 Spacer()
                 Control.Circle(image: "cart") {
                     store = true
                 }
                 .sheet(isPresented: $store) {
-                    Store {
-                        session.play(.Glass)
-                        session.beads.append(contentsOf: $0)
-                        pack = true
-                    }
+                    Store(session: $session)
                 }
             }
             .padding()

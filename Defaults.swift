@@ -10,4 +10,14 @@ final class Defaults: UserDefaults {
         get { standard.integer(forKey: Key.victories.rawValue) }
         set { standard.setValue(newValue, forKey: Key.victories.rawValue) }
     }
+    
+    class var settings_sound: Bool {
+        get { standard.value(forKey: Key.settings_sound.rawValue) as? Bool ?? true }
+        set { standard.setValue(newValue, forKey: Key.settings_sound.rawValue) }
+    }
+    
+    class var settings_vibrate: Bool {
+        get { standard.value(forKey: Key.settings_vibrate.rawValue) as? Bool ?? true }
+        set { standard.setValue(newValue, forKey: Key.settings_vibrate.rawValue) }
+    }
 }

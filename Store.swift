@@ -2,10 +2,11 @@ import SwiftUI
 import StoreKit
 
 struct Store: View {
-    let purchased: ([Session.Bead]) -> Void
+    @Binding var session: Session
     @ObservedObject private var purchases = Purchases()
     @Environment(\.presentationMode) private var visible
     @State private var formatter = NumberFormatter()
+    @State private var pack = false
     
     var body: some View {
         HStack {
@@ -62,9 +63,14 @@ struct Store: View {
             }
         }
         .modifier(Background())
+        .sheet(isPresented: $pack) {
+            Pack.Detail(beads: session.beads.suffix(5))
+        }
         .onReceive(purchases.beads) {
             visible.wrappedValue.dismiss()
-            purchased($0)
+            session.play(.Glass)
+            session.beads.append(contentsOf: $0)
+            pack = true
         }
         .onAppear {
             formatter.numberStyle = .currencyISOCode

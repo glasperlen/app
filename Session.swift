@@ -18,7 +18,10 @@ struct Session {
         players.filter { !$0.isPlaying }.forEach {
             players.remove($0)
         }
-        guard let player = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: audio.rawValue, withExtension: "aiff")!) else { return }
+        guard
+            Defaults.settings_sound,
+            let player = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: audio.rawValue, withExtension: "aiff")!)
+        else { return }
         players.insert(player)
         player.play()
     }

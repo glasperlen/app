@@ -1,0 +1,25 @@
+import SwiftUI
+
+extension Menu {
+    struct Switch: View {
+        let text: LocalizedStringKey
+        @Binding var value: Bool
+        
+        var body: some View {
+            HStack {
+                Spacer()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(Color(.secondarySystemBackground).opacity(0.3))
+                    Toggle(text, isOn: $value)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                        .font(.footnote)
+                        .padding(.horizontal)
+                }
+                .frame(height: 50)
+                .padding(.horizontal)
+                Spacer()
+            }
+        }
+    }
+}

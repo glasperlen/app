@@ -5,6 +5,8 @@ extension Defaults {
         case
         beads,
         victories,
-        onboard_start
+        onboard_start,
+        settings_sound,
+        settings_vibrate
     }
 }
