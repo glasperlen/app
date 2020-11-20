@@ -46,7 +46,7 @@ struct Menu: View {
             }
             Item(text: "Leaderboards", image: "star") {
                 visible.wrappedValue.dismiss()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                     UIApplication.shared.leaderboards()
                 }
             }
