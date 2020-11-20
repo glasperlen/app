@@ -40,6 +40,8 @@ extension Game.Board {
                 
                 if old == nil {
                     session.play(.Tink)
+                } else {
+                    session.impact()
                 }
                 
                 withAnimation(.easeInOut(duration: 0.4)) {

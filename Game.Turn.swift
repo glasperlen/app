@@ -28,8 +28,8 @@ extension Game {
                     }
                 }
             }
-            .onChange(of: session.match?.turn) { new in
-                session.impact()
+            .onChange(of: session.match?.turn) {
+                guard let new = $0 else { return }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     withAnimation(.easeInOut(duration: 0.25)) {
