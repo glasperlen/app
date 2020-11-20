@@ -14,7 +14,7 @@ extension Game.Board {
                     .hidden()
                 if session.match?[point] == nil {
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.background)
+                        .fill(Color("Background"))
                         .modifier(Neumorphic())
                         .padding(5)
                 } else {
@@ -31,7 +31,7 @@ extension Game.Board {
                 }
                 if session.match?.drop == point {
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.user, style: .init(lineWidth: 1))
+                        .stroke(Color("User"), style: .init(lineWidth: 1))
                         .padding(5)
                 }
             }

@@ -9,7 +9,8 @@ extension Game {
         var body: some View {
             ZStack {
                 if turn != nil {
-                    Color.background.opacity(0.8)
+                    Color("Background")
+                        .opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
                     if turn == .user {
                         Text("Your turn")
@@ -18,7 +19,7 @@ extension Game {
                     } else {
                         HStack {
                             session.match.map {
-                                Text("\($0.oponent.name)'s turn")
+                                Text("\($0.opponent.name)'s turn")
                                     .padding()
                                     .font(Font.title.bold())
                             }
@@ -42,7 +43,7 @@ extension Game {
                     }
                 }
                 
-                if new == .oponent {
+                if new == .opponent {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation(.easeInOut(duration: 1)) {
                             session.match?.robot()

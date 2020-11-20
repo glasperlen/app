@@ -9,44 +9,25 @@ extension Game {
         var body: some View {
             ZStack {
                 if finished != nil {
-                    Color.background.opacity(0.9)
+                    Color("Background")
+                        .opacity(0.95)
                         .edgesIgnoringSafeArea(.all)
                     VStack {
-                        HStack {
-                            Text("Game Over")
-                                .font(.body)
-                            Spacer()
-                        }
-                        HStack {
-                            Text({
-                                switch finished! {
-                                case .draw: return "Draw!"
-                                case .win: return "You win!"
-                                case .loose: return "You loose!"
-                                }
-                            } () as LocalizedStringKey)
-                                .font(Font.largeTitle.bold())
-                            Spacer()
-                        }
-                        Spacer()
-                        Control.Capsule(text: "Done", background: .primary, foreground: .background) {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                session.match = nil
-                                finished = nil
-                            }
+                        Text("Game Over")
+                            .bold()
+                            .padding(.top)
+                        if finished == .win {
+                            Win(session: $session, done: done)
+                        } else {
+                            Loose(session: $session, done: done)
                         }
                     }
-                    .padding(40)
                 }
             }
             .onChange(of: session.match?.result) { result in
                 guard let result = result else { return }
-                switch result {
-                case .win:
-                    Defaults.victories += 1
-                    UIApplication.shared.victories(Defaults.victories)
-                case .loose: break
-                case .draw: break
+                if result == .win {
+                    UIApplication.shared.victory()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     session.play(result == .win ? .Hero : .Bottle)
@@ -55,6 +36,13 @@ extension Game {
                         finished = result
                     }
                 }
+            }
+        }
+        
+        private func done() {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                session.match = nil
+                finished = nil
             }
         }
     }

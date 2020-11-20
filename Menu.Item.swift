@@ -7,26 +7,22 @@ extension Menu {
         let action: () -> Void
         
         var body: some View {
-            HStack {
-                Spacer()
-                Button(action: action) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(.init(.secondarySystemBackground))
-                        HStack {
-                            Text(text)
-                                .font(.footnote)
-                            Spacer()
-                            Image(systemName: image)
-                        }
-                        .padding(.horizontal)
-                        .foregroundColor(.primary)
+            Button(action: action) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(.init(.secondarySystemBackground))
+                    HStack {
+                        Text(text)
+                            .font(.footnote)
+                        Spacer()
+                        Image(systemName: image)
                     }
-                    .frame(height: 50)
+                    .padding(.horizontal)
+                    .foregroundColor(.primary)
                 }
-                .padding(.horizontal)
-                Spacer()
+                .frame(height: 50)
             }
+            .padding(.horizontal)
         }
     }
 }

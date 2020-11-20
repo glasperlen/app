@@ -20,7 +20,7 @@ extension Onboard {
                 }
                 .padding(.vertical)
                 Spacer()
-                Control.Capsule(text: "Start", background: .primary, foreground: .background) {
+                Control.Capsule(text: "Start", background: .primary, foreground: .init("Background")) {
                     visible.wrappedValue.dismiss()
                 }
             }

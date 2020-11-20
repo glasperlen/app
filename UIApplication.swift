@@ -22,9 +22,10 @@ extension UIApplication {
         GKAccessPoint.shared.trigger(state: .leaderboards) { }
     }
     
-    func victories(_ score: Int) {
+    func victory() {
+        Defaults.victories += 1
         guard GKLocalPlayer.local.isAuthenticated else { return }
-        GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["glasperlen.victories"]) { _ in }
+        GKLeaderboard.submitScore(Defaults.victories, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["glasperlen.victories"]) { _ in }
     }
     
     private func signin() {

@@ -18,7 +18,7 @@ extension Control {
                                 .frame(width: 60, height: 60)
                         } else {
                             SwiftUI.Circle()
-                                .fill(Color.background)
+                                .fill(Color("Background"))
                                 .modifier(Neumorphic())
                                 .frame(width: 60, height: 60)
                         }

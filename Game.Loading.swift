@@ -10,7 +10,8 @@ extension Game {
         
         var body: some View {
             ZStack {
-                Color.background.opacity(0.95)
+                Color("Background")
+                    .opacity(0.95)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
@@ -29,12 +30,12 @@ extension Game {
                     if me {
                         Image(systemName: "arrowtriangle.down.fill")
                             .font(.title)
-                            .foregroundColor(.user)
+                            .foregroundColor(.init("User"))
                             .padding()
                     } else {
                         Image(systemName: "arrowtriangle.up.fill")
                             .font(.title)
-                            .foregroundColor(.oponent)
+                            .foregroundColor(.init("Opponent"))
                             .padding()
                     }
                     Image(systemName: "person.fill")
@@ -45,7 +46,7 @@ extension Game {
             }
             .onAppear {
                 let match = Match(session.beads.filter { $0.selected }.map(\.item))
-                name = match.oponent.name
+                name = match.opponent.name
                 let rolls = match.turn == .user ? 4 : 5
                 
                 (0 ..< rolls).forEach {
