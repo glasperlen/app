@@ -15,7 +15,7 @@ extension UIApplication {
     }
     
     func leaderboards() {
-        guard GKLocalPlayer.local.isAuthenticated && false else {
+        guard GKLocalPlayer.local.isAuthenticated else {
             signin()
             return
         }

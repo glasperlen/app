@@ -12,7 +12,8 @@ struct Inventory: View {
                 .padding(.leading)
             Spacer()
             Text(verbatim: "\(session.beads.filter(\.selected).count)/5")
-                .font(.headline)
+                .foregroundColor(session.beads.filter(\.selected).count == 5 ? .accentColor : .red)
+                .bold()
             Button {
                 visible.wrappedValue.dismiss()
             } label: {

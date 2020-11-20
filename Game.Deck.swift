@@ -9,7 +9,7 @@ extension Game {
             VStack {
                 Spacer()
                 HStack {
-                    ForEach(session.beads.filter { session.match?.played($0.item) == false }, id: \.item.id) { bead in
+                    ForEach(session.beads.filter(\.selected).filter { session.match?.played($0.item) == false }, id: \.item.id) { bead in
                         Spacer()
                         Bead(bead: bead.item)
                             .offset(offset[bead.item.id] ?? .zero)

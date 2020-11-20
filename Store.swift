@@ -68,7 +68,7 @@ struct Store: View {
         }
         .onReceive(purchases.beads) {
             visible.wrappedValue.dismiss()
-            session.play(.Glass)
+            session.play(.Hero)
             session.beads.append(contentsOf: $0)
             pack = true
         }

@@ -23,11 +23,12 @@ extension Game {
                         session.new.send()
                     }
                 }
-                .alert(isPresented: $alert) {
-                    Alert(title: .init("Need 5 beads selected to start a game"),
-                          message: .init("Select them on your inventory"),
-                          primaryButton: .default(.init("Inventory")) { inventory = true },
-                          secondaryButton: .cancel())
+                .actionSheet(isPresented: $alert) {
+                    .init(title: .init("Need 5 beads selected to start a game"),
+                                message: .init("Select them on your inventory"),
+                                buttons: [
+                                    .default(.init("Inventory")) { inventory = true },
+                                    .cancel()])
                 }
                 Control.Circle(image: "line.horizontal.3") {
                     menu = true

@@ -59,7 +59,6 @@
 		CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409AB254B1DCA00A9D5EB /* Onboard.swift */; };
 		CEE409B0254B242C00A9D5EB /* Control.Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409AF254B242C00A9D5EB /* Control.Style.swift */; };
 		CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409B2254B245600A9D5EB /* Control.Capsule.swift */; };
-		CEECC8D625667D0900395B05 /* Glass.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CEECC8D525667D0900395B05 /* Glass.aiff */; };
 		CEECC8DA256686F600395B05 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC8D9256686F600395B05 /* Menu.swift */; };
 		CEECC8DD25668F9800395B05 /* Menu.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC8DC25668F9800395B05 /* Menu.Item.swift */; };
 		CEECC8E1256697DD00395B05 /* Menu.Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC8E0256697DD00395B05 /* Menu.Switch.swift */; };
@@ -119,7 +118,6 @@
 		CEE409AB254B1DCA00A9D5EB /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
 		CEE409AF254B242C00A9D5EB /* Control.Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Style.swift; sourceTree = "<group>"; };
 		CEE409B2254B245600A9D5EB /* Control.Capsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.Capsule.swift; sourceTree = "<group>"; };
-		CEECC8D525667D0900395B05 /* Glass.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Glass.aiff; sourceTree = "<group>"; };
 		CEECC8D9256686F600395B05 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		CEECC8DC25668F9800395B05 /* Menu.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.Item.swift; sourceTree = "<group>"; };
 		CEECC8E0256697DD00395B05 /* Menu.Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.Switch.swift; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 			children = (
 				CED891422565840E0083C128 /* Basso.aiff */,
 				CED89138256583030083C128 /* Bottle.aiff */,
-				CEECC8D525667D0900395B05 /* Glass.aiff */,
 				CED89139256583030083C128 /* Hero.aiff */,
 				CE70C212256578A700E5FCC0 /* Pop.aiff */,
 				CE70C213256578A700E5FCC0 /* Tink.aiff */,
@@ -280,7 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE55B3C62567C649006D3F83 /* Settings.bundle in Resources */,
-				CEECC8D625667D0900395B05 /* Glass.aiff in Resources */,
 				CED891432565840E0083C128 /* Basso.aiff in Resources */,
 				CE70C214256578A700E5FCC0 /* Pop.aiff in Resources */,
 				CED8913A256583030083C128 /* Bottle.aiff in Resources */,

@@ -15,18 +15,18 @@ extension Game.Finish {
                     .padding(.top)
                 Spacer()
             }
-            if prize != nil {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(.secondarySystemBackground))
-                        .frame(width: 120, height: 120)
-                    Circle()
-                        .fill(Color.black.opacity(0.2))
-                        .frame(width: 80, height: 80)
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(.secondarySystemBackground))
+                    .frame(width: 120, height: 120)
+                Circle()
+                    .fill(Color.black.opacity(0.2))
+                    .frame(width: 80, height: 80)
+                if prize != nil {
                     Bead(bead: prize!)
                 }
-                .padding(.top, 50)
             }
+            .padding(.top, 50)
             Text("This bead will be")
                 .padding(.top)
             Text("removed from your inventory.")

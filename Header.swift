@@ -39,14 +39,14 @@ struct Header: View {
         }
         .padding(.horizontal)
         .actionSheet(isPresented: $abandon) {
-            ActionSheet(title: .init("Abandon game?"), message: .init("Your opponent will get 1 of your beads"), buttons: [
-                            .cancel(.init("Cancel")),
-                            .destructive(.init("Abandon")) {
-                                session.play(.Bottle)
-                                withAnimation(.easeInOut(duration: 0.5)) {
-                                    session.match = nil
-                                }
-                            }])
+            .init(title: .init("Abandon game?"), message: .init("Your opponent will get 1 of your beads"), buttons: [
+                    .cancel(.init("Cancel")),
+                    .destructive(.init("Abandon")) {
+                        session.play(.Bottle)
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            session.match = nil
+                        }
+                    }])
         }
     }
 }
