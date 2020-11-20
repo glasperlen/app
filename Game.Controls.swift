@@ -17,18 +17,27 @@ extension Game {
                     Inventory(session: $session)
                 }
                 Control.Circle(image: "plus") {
-                    if session.beads.filter(\.selected).count != 5 {
-                        alert = true
-                    } else {
-                        session.new.send()
-                    }
+                    alert = true
                 }
                 .actionSheet(isPresented: $alert) {
-                    .init(title: .init("Need 5 beads selected to start a game"),
-                                message: .init("Select them on your inventory"),
-                                buttons: [
-                                    .default(.init("Inventory")) { inventory = true },
-                                    .cancel()])
+                    if session.beads.filter(\.selected).count == 5 {
+                        return .init(title: .init("New game"),
+                                     message: .init("Choose your opponent"),
+                                     buttons: [
+                                        .default(.init("A player from Game Center")) {
+                                            UIApplication.shared.requestMatch()
+                                        },
+                                        .default(.init("Artificial Intelligence")) {
+                                            session.new.send()
+                                        },
+                                        .cancel()])
+                    } else {
+                        return .init(title: .init("Need 5 beads selected to start a game"),
+                                     message: .init("Select them on your inventory"),
+                                     buttons: [
+                                         .default(.init("Inventory")) { inventory = true },
+                                         .cancel()])
+                    }
                 }
                 Control.Circle(image: "line.horizontal.3") {
                     menu = true
