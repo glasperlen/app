@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import Combine
 import AVFoundation
 import Magister
@@ -13,6 +13,11 @@ struct Session {
     let new = PassthroughSubject<Void, Never>()
     private var subs = Set<AnyCancellable>()
     private var players = Set<AVAudioPlayer>()
+    private let haptics = UIImpactFeedbackGenerator(style: .heavy)
+    
+    init() {
+        haptics.prepare()
+    }
     
     mutating func play(_ audio: Audio) {
         players.filter { !$0.isPlaying }.forEach {
@@ -24,5 +29,10 @@ struct Session {
         else { return }
         players.insert(player)
         player.play()
+    }
+    
+    func impact() {
+        guard Defaults.settings_vibrate else { return }
+        haptics.impactOccurred()
     }
 }

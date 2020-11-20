@@ -28,7 +28,7 @@ extension Game {
                 }
             }
             .onChange(of: session.match?.turn) { new in
-                guard new != .none else { return }
+                session.impact()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     withAnimation(.easeInOut(duration: 0.25)) {
