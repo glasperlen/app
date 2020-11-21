@@ -3,11 +3,17 @@ import GameKit
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
     public func player(_ player: GKPlayer, receivedTurnEventFor match: GKTurnBasedMatch, didBecomeActive: Bool) {
-        print("here")
+        print("here: \(match)")
     }
     
     public func player(_ player: GKPlayer, wantsToQuitMatch match: GKTurnBasedMatch) {
         print("yala \(player == GKLocalPlayer.local)")
+        match.participantQuitInTurn(with: .quit, nextParticipants: match.participants, turnTimeout: 0, match: .init()) { e in
+            print("quit error \(e)")
+        }
+//        match.endMatchInTurn(withMatch: .init()) { e in
+//            print("ended error \(e)")
+//        }
     }
     
     public func turnBasedMatchmakerViewController(_ controller: GKTurnBasedMatchmakerViewController, didFailWithError: Error) {
