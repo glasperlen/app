@@ -20,8 +20,10 @@ extension Game.Finish {
                     .padding(.leading)
                 Spacer()
             }
-            ForEach(session.match?.opponent.beads ?? []) {
-                Item(prize: $prize, bead: $0)
+            session.match?.robot.map {
+                ForEach($0.beads) {
+                    Item(prize: $prize, bead: $0)
+                }
             }
             Spacer()
             if prize != nil {

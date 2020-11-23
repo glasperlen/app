@@ -4,7 +4,7 @@ import Magister
 extension Game {
     struct Finish: View {
         @Binding var session: Session
-        @State private var finished: Match.Result?
+        @State private var show = false
         
         var body: some View {
             ZStack {
@@ -24,8 +24,8 @@ extension Game {
                     }
                 }
             }
-            .onChange(of: session.match?.result) { result in
-                guard let result = result else { return }
+            .onChange(of: session.match?.state) {
+                guard let result = $0 else { return }
                 if result == .win {
                     UIApplication.shared.victory()
                 }

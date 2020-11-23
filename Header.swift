@@ -18,24 +18,30 @@ struct Header: View {
             Spacer()
             Image(systemName: "person.fill")
             ZStack {
-                Score(inverse: true, score: .init(session.match?.score ?? 0))
-                    .fill(Color("Opponent"))
-                    .animation(.easeInOut(duration: 0.5))
-                    .frame(height: 6)
-                    .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
-                Score(inverse: false, score: .init(session.match?.score ?? 0))
-                    .fill(Color("User"))
-                    .animation(.easeInOut(duration: 0.5))
-                    .frame(height: 6)
-                    .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
+                session.match.map {
+                    Score(inverse: true, score: .init($0[.first]))
+                        .fill(Color("Opponent"))
+                        .animation(.easeInOut(duration: 0.5))
+                        .frame(height: 6)
+                        .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
+                }
+                session.match.map {
+                    Score(inverse: false, score: .init($0[.second]))
+                        .fill(Color("User"))
+                        .animation(.easeInOut(duration: 0.5))
+                        .frame(height: 6)
+                        .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
+                }
                 Rectangle()
                     .fill(Color.primary)
                     .frame(width: 3, height: 6)
             }
             .frame(width: 80)
-            Text(verbatim: session.match?.opponent.name ?? "")
-                .font(Font.footnote.bold())
-                .padding(.trailing)
+            session.match?.robot.map {
+                Text(verbatim: $0.name)
+                    .font(Font.footnote.bold())
+                    .padding(.trailing)
+            }
         }
         .padding(.horizontal)
         .actionSheet(isPresented: $abandon) {

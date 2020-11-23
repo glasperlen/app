@@ -4,22 +4,22 @@ import Magister
 extension Game {
     struct Turn: View {
         @Binding var session: Session
-        @State private var turn: Player?
+        @State private var show = false
         
         var body: some View {
             ZStack {
-                if turn != nil {
+                if show {
                     Color("Background")
                         .opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
-                    if turn == .user {
+                    if session.match?.state == .second {
                         Text("Your turn")
                             .transition(.slide)
                             .font(Font.title.bold())
                     } else {
                         HStack {
-                            session.match.map {
-                                Text("\($0.opponent.name)'s turn")
+                            session.match?.robot.map {
+                                Text("\($0.name)'s turn")
                                     .padding()
                                     .font(Font.title.bold())
                             }
@@ -28,25 +28,29 @@ extension Game {
                     }
                 }
             }
-            .onChange(of: session.match?.turn) {
-                guard let new = $0 else { return }
+            .onChange(of: session.match?.state) {
+                guard let new = $0, new == .first || new == .second else { return }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     withAnimation(.easeInOut(duration: 0.25)) {
-                        turn = new
+                        show = true
                     }
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation(.easeInOut(duration: 0.25)) {
-                        turn = nil
+                        show = false
                     }
                 }
                 
-                if new == .opponent {
+                if new == .first {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation(.easeInOut(duration: 1)) {
-                            session.match?.robot()
+                            session.match.map {
+                                $0.robot?.play($0).map {
+                                    session.match?[$0.point] = $0.bead
+                                }
+                            }
                         }
                     }
                 }

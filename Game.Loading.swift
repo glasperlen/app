@@ -45,9 +45,10 @@ extension Game {
                 }
             }
             .onAppear {
-                let match = Match(session.beads.filter { $0.selected }.map(\.item))
-                name = match.opponent.name
-                let rolls = match.turn == .user ? 4 : 5
+                var match = Match()
+                match.robot = .init(session.beads.filter { $0.selected }.map(\.item))
+                name = match.robot!.name
+                let rolls = match.state == .second ? 4 : 5
                 
                 (0 ..< rolls).forEach {
                     DispatchQueue.main.asyncAfter(deadline: .now() + (0.2 * .init($0))) {

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct Game: View {
     @Binding var session: Session
+    @State private var positions = Positions()
     @State private var loading = false
     
     var body: some View {
@@ -15,11 +16,11 @@ struct Game: View {
             } else {
                 VStack {
                     Header(session: $session)
-                    Board(session: $session)
+                    Board(session: $session, positions: $positions)
                 }
             }
-            if session.match?.turn == .user {
-                Deck(session: $session)
+            if session.match?.state == .second {
+                Deck(session: $session, positions: $positions)
             }
             if loading {
                 Loading(session: $session, loading: $loading)

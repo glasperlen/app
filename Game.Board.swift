@@ -4,6 +4,7 @@ import Magister
 extension Game {
     struct Board: View {
         @Binding var session: Session
+        @Binding var positions: Positions
         
         var body: some View {
             GeometryReader { geo in
@@ -14,6 +15,7 @@ extension Game {
                                 ForEach(0 ..< 3) { x in
                                     GeometryReader {
                                         Cell(session: $session,
+                                             positions: $positions,
                                              point: .init(x, y),
                                              frame: $0.frame(in: .global))
                                     }

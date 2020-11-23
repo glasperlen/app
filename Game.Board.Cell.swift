@@ -4,6 +4,7 @@ import Magister
 extension Game.Board {
     struct Cell: View {
         @Binding var session: Session
+        @Binding var positions: Positions
         @State private var flash: Color?
         let point: Point
         let frame: CGRect
@@ -19,7 +20,7 @@ extension Game.Board {
                         .padding(5)
                 } else {
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(session.match![point]!.player.color, style: .init(lineWidth: 1))
+                        .stroke(session.match![point]!.state.color, style: .init(lineWidth: 1))
                         .padding(5)
                     Bead(bead: session.match![point]!.bead)
                         .frame(width: 60, height: 60)
@@ -29,13 +30,13 @@ extension Game.Board {
                         .fill(flash!)
                         .padding(5)
                 }
-                if session.match?.drop == point {
+                if positions.drop == point {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color("User"), style: .init(lineWidth: 1))
                         .padding(5)
                 }
             }
-            .onChange(of: session.match?[point]?.player) { [old = session.match?[point]?.player] in
+            .onChange(of: session.match?[point]?.state) { [old = session.match?[point]?.state] in
                 guard let color = $0?.color else { return }
                 
                 if old == nil {
@@ -59,7 +60,7 @@ extension Game.Board {
                 }
             }
             .onAppear {
-                session.match?.positions[point] = frame
+                positions[point] = frame
             }
         }
     }

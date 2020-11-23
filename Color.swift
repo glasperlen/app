@@ -17,11 +17,11 @@ extension Magister.Bead.Color {
     }
 }
 
-extension Player {
+extension Match.State {
     var color: Color {
         switch self {
-        case .user: return .init("User")
-        case .opponent: return .init("Opponent")
+        case .first: return .init("Opponent")
+        default: return .init("User")
         }
     }
 }
