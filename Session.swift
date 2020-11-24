@@ -4,12 +4,18 @@ import AVFoundation
 import Magister
 
 struct Session {
-    var match: Match?
+    var match = Defaults.match {
+        didSet {
+            Defaults.match = match
+        }
+    }
+    
     var beads = Defaults.beads {
         didSet {
             Defaults.beads = beads
         }
     }
+    
     private var subs = Set<AnyCancellable>()
     private var players = Set<AVAudioPlayer>()
     private let haptics = UIImpactFeedbackGenerator(style: .heavy)

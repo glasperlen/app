@@ -20,10 +20,15 @@ extension Game {
                     content
                 }
             }
-            .onChange(of: session.match?.state) { new in
-                withAnimation(.easeInOut(duration: 1)) {
-                    visible = new == state
-                }
+            .onChange(of: session.match?.state) { _ in
+                update()
+            }
+            .onAppear(perform: update)
+        }
+        
+        private func update() {
+            withAnimation(.easeInOut(duration: 1)) {
+                visible = session.match?.state == state
             }
         }
     }
