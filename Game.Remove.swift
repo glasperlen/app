@@ -1,14 +1,14 @@
 import SwiftUI
 import Magister
 
-extension Game.Finish {
+extension Game {
     struct Remove: View {
         @Binding var session: Session
         @State private var selected: Magister.Bead?
         @State private var visible = false
         
         var body: some View {
-            Card(visible: visible) {
+            Card(session: $session, state: .remove) {
                 HStack {
                     Text("You loose!")
                         .font(Font.largeTitle.bold())
@@ -33,12 +33,12 @@ extension Game.Finish {
                 Text("removed from your inventory.")
                 Spacer()
                 Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
-                    
+                    session.match?.removed()
                 }
                 .padding(.bottom)
                 .onAppear {
                     guard selected == nil else { return }
-                    let bead = session.beads.randomElement()?.item
+                    let bead = session.beads.filter(\.selected).randomElement()?.item
                     session.beads.removeAll { $0.item == bead }
                     withAnimation(.easeInOut(duration: 1)) {
                         selected = bead

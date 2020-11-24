@@ -1,14 +1,14 @@
 import SwiftUI
 import Magister
 
-extension Game.Finish {
+extension Game {
     struct PrizeRobot: View {
         @Binding var session: Session
         @State private var selected: Magister.Bead?
         @State private var visible = false
         
         var body: some View {
-            Card(visible: visible) {
+            Card(session: $session, state: .prizeRobot) {
                 HStack {
                     Text("You win!")
                         .font(Font.largeTitle.bold())
@@ -23,16 +23,16 @@ extension Game.Finish {
                 }
                 session.match?.robot.map {
                     ForEach($0.beads) {
-                        Item(selected: $selected, bead: $0)
+                        Prize(selected: $selected, bead: $0)
                     }
                 }
                 Spacer()
                 if selected != nil {
                     Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
-//                        guard let selected = self.selected else { return }
-//                        self.selected = nil
-//                        session.beads.append(.init(selected: false, item: selected))
-//                        done()
+                        guard let bead = selected else { return }
+                        selected = nil
+                        session.beads.append(.init(selected: false, item: bead))
+                        session.match?.prize = bead
                     }
                     .padding(.bottom)
                 }
@@ -40,6 +40,8 @@ extension Game.Finish {
             .onChange(of: session.match?.state) {
                 if $0 == .prizeRobot {
                     visible = true
+                } else {
+                    visible = false
                 }
             }
         }
