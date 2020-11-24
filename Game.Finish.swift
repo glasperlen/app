@@ -1,4 +1,35 @@
 import SwiftUI
+
+extension Game {
+    struct Finish<Content>: View where Content : View {
+        let content: Content?
+        
+        @inlinable public init(@ViewBuilder content: () -> Content) {
+            self.content = content()
+        }
+        
+        var body: some View {
+            ZStack {
+                if content != nil {
+                    Color("Background")
+                        .opacity(0.95)
+                        .edgesIgnoringSafeArea(.all)
+                    VStack {
+                        Text("Game Over")
+                            .bold()
+                            .padding(.top)
+                        content
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*
+ import SwiftUI
 import Magister
 
 extension Game {
@@ -46,4 +77,4 @@ extension Game {
             }
         }
     }
-}
+}*/

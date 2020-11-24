@@ -26,7 +26,7 @@ struct Game: View {
                 Loading(session: $session, loading: $loading)
             }
             Turn(session: $session)
-            Finish(session: $session)
+            PrizeRobot(session: $session)
         }
         .onReceive(session.new) {
             withAnimation(.easeInOut(duration: 0.5)) {
