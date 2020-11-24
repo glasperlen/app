@@ -15,8 +15,10 @@ struct Game: View {
             } else {
                 VStack {
                     Header(session: $session)
-                    Board(session: $session, positions: $positions)
+                    Spacer()
                 }
+                Board(session: $session, positions: $positions)
+                    .padding(.top, 30)
             }
             if session.match?.state == .second {
                 Deck(session: $session, positions: $positions)

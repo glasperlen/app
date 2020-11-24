@@ -11,36 +11,30 @@ struct Header: View {
             } label: {
                 Image(systemName: "xmark.circle.fill")
                     .foregroundColor(.init("Opponent"))
-                    .font(.title)
-                    .frame(width: 50, height: 45)
+                    .font(.title3)
+                    .frame(width: 50, height: 40)
             }
             .contentShape(Rectangle())
             Spacer()
             Image(systemName: "person.fill")
-            ZStack {
-                session.match.map {
-                    Score(inverse: true, score: .init($0[.first]))
-                        .fill(Color("Opponent"))
-                        .animation(.easeInOut(duration: 0.5))
-                        .frame(height: 6)
-                        .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
-                }
-                session.match.map {
-                    Score(inverse: false, score: .init($0[.second]))
-                        .fill(Color("User"))
-                        .animation(.easeInOut(duration: 0.5))
-                        .frame(height: 6)
-                        .opacity(session.match?.cells.isEmpty == false ? 1 : 0)
-                }
-                Rectangle()
-                    .fill(Color.primary)
-                    .frame(width: 3, height: 6)
+                .opacity(session.match?.state == .second ? 1 : 0.3)
+            session.match.map {
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color("User"))
+                    .frame(width: 10, height: $0[.second] > $0[.first] ? 20 : 10)
+                    .animation(.easeInOut(duration: 0.5))
             }
-            .frame(width: 80)
+            session.match.map {
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color("Opponent"))
+                    .frame(width: 10, height: $0[.first] > $0[.second] ? 20 : 10)
+                    .animation(.easeInOut(duration: 0.5))
+            }
             session.match?.robot.map {
                 Text(verbatim: $0.name)
-                    .font(Font.footnote.bold())
+                    .bold()
                     .padding(.trailing)
+                    .opacity(session.match?.state == .first ? 1 : 0.3)
             }
         }
         .padding(.horizontal)

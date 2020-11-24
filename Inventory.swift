@@ -12,7 +12,7 @@ struct Inventory: View {
                 .padding(.leading)
             Spacer()
             Text(verbatim: "\(session.beads.filter(\.selected).count)/5")
-                .foregroundColor(session.beads.filter(\.selected).count == 5 ? .accentColor : .red)
+                .foregroundColor(session.beads.filter(\.selected).count == 5 ? .primary : .red)
                 .bold()
             Button {
                 visible.wrappedValue.dismiss()
