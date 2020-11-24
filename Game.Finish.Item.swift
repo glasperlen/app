@@ -1,20 +1,20 @@
 import SwiftUI
 import Magister
 
-extension Game.Finish.Win {
+extension Game.Finish {
     struct Item: View {
-        @Binding var prize: Magister.Bead?
+        @Binding var selected: Magister.Bead?
         let bead: Magister.Bead
         
         var body: some View {
             Button {
                 withAnimation(.easeInOut(duration: 0.5)) {
-                    prize = bead
+                    selected = bead
                 }
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(prize == bead ? .accentColor : Color(.secondarySystemBackground))
+                        .fill(selected == bead ? .accentColor : Color(.secondarySystemBackground))
                         .frame(width: 72, height: 72)
                     Circle()
                         .fill(Color.black.opacity(0.2))

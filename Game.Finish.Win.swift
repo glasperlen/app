@@ -20,11 +20,11 @@ extension Game.Finish {
                     .padding(.leading)
                 Spacer()
             }
-            session.match?.robot.map {
-                ForEach($0.beads) {
-                    Item(prize: $prize, bead: $0)
-                }
-            }
+//            session.match?.robot.map {
+//                ForEach($0.beads) {
+//                    Item(prize: $prize, bead: $0)
+//                }
+//            }
             Spacer()
             if prize != nil {
                 Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
