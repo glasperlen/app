@@ -27,6 +27,7 @@ struct Game: View {
             }
             Turn(session: $session)
             Finish.PrizeRobot(session: $session)
+            Finish.Remove(session: $session)
         }
         .onReceive(session.new) {
             withAnimation(.easeInOut(duration: 0.5)) {

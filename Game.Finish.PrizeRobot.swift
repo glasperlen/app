@@ -5,9 +5,10 @@ extension Game.Finish {
     struct PrizeRobot: View {
         @Binding var session: Session
         @State private var selected: Magister.Bead?
+        @State private var visible = false
         
         var body: some View {
-            Card {
+            Card(visible: visible) {
                 HStack {
                     Text("You win!")
                         .font(Font.largeTitle.bold())
@@ -34,6 +35,11 @@ extension Game.Finish {
 //                        done()
                     }
                     .padding(.bottom)
+                }
+            }
+            .onChange(of: session.match?.state) {
+                if $0 == .prizeRobot {
+                    visible = true
                 }
             }
         }

@@ -12,13 +12,12 @@
 		CE2535FD255967BC00DBA035 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FC255967BC00DBA035 /* Defaults.swift */; };
 		CE253600255967E900DBA035 /* Session.Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FF255967E900DBA035 /* Session.Bead.swift */; };
 		CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25360325596A2200DBA035 /* Defaults.Key.swift */; };
+		CE2B39EB256D24A0004AB84E /* Game.Finish.Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B39EA256D24A0004AB84E /* Game.Finish.Remove.swift */; };
 		CE34B9DB2564271700A2CD60 /* Pack.Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */; };
 		CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DF25642A5200A2CD60 /* Pack.swift */; };
 		CE4495B925496A4300ECA6C0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4495B825496A4300ECA6C0 /* App.swift */; };
 		CE4495BD25496A4300ECA6C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4495BC25496A4300ECA6C0 /* Assets.xcassets */; };
 		CE55B3C62567C649006D3F83 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE55B3C52567C649006D3F83 /* Settings.bundle */; };
-		CE55B3CA2567CE50006D3F83 /* Game.Finish.Win.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55B3C92567CE50006D3F83 /* Game.Finish.Win.swift */; };
-		CE55B3CD2567CE59006D3F83 /* Game.Finish.Loose.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55B3CC2567CE59006D3F83 /* Game.Finish.Loose.swift */; };
 		CE55B3D12567D5CF006D3F83 /* Game.Finish.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55B3D02567D5CF006D3F83 /* Game.Finish.Item.swift */; };
 		CE60EDB0254D8D26007056BC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDAF254D8D26007056BC /* Color.swift */; };
 		CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDB3254D959A007056BC /* Neumorphic.swift */; };
@@ -75,6 +74,7 @@
 		CE2535FC255967BC00DBA035 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2535FF255967E900DBA035 /* Session.Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Bead.swift; sourceTree = "<group>"; };
 		CE25360325596A2200DBA035 /* Defaults.Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.Key.swift; sourceTree = "<group>"; };
+		CE2B39EA256D24A0004AB84E /* Game.Finish.Remove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Finish.Remove.swift; sourceTree = "<group>"; };
 		CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.Detail.swift; sourceTree = "<group>"; };
 		CE34B9DF25642A5200A2CD60 /* Pack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.swift; sourceTree = "<group>"; };
 		CE4495B525496A4300ECA6C0 /* Glasperlen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glasperlen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,8 +82,6 @@
 		CE4495BC25496A4300ECA6C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE4495C125496A4300ECA6C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE55B3C52567C649006D3F83 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		CE55B3C92567CE50006D3F83 /* Game.Finish.Win.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Finish.Win.swift; sourceTree = "<group>"; };
-		CE55B3CC2567CE59006D3F83 /* Game.Finish.Loose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Finish.Loose.swift; sourceTree = "<group>"; };
 		CE55B3D02567D5CF006D3F83 /* Game.Finish.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Finish.Item.swift; sourceTree = "<group>"; };
 		CE60EDAF254D8D26007056BC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CE60EDB3254D959A007056BC /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
@@ -168,13 +166,12 @@
 				CE63246E2549AB280051A470 /* Game.Board.swift */,
 				CE7273BB2553F88400A79BF2 /* Game.Controls.swift */,
 				CE6E72672554281A000AB7D2 /* Game.Deck.swift */,
-				CE55B3CC2567CE59006D3F83 /* Game.Finish.Loose.swift */,
 				CEAEB56325557CDB0046E4E9 /* Game.Finish.Card.swift */,
-				CE93B293256D1E5D00785FFD /* Game.Finish.swift */,
 				CE55B3D02567D5CF006D3F83 /* Game.Finish.Item.swift */,
-				CE55B3C92567CE50006D3F83 /* Game.Finish.Win.swift */,
-				CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */,
 				CE93B28D256D1C4A00785FFD /* Game.Finish.PrizeRobot.swift */,
+				CE2B39EA256D24A0004AB84E /* Game.Finish.Remove.swift */,
+				CE93B293256D1E5D00785FFD /* Game.Finish.swift */,
+				CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
 				CE2317352556E6470074CD22 /* Game.Title.swift */,
 				CE6E726325541BFB000AB7D2 /* Game.Turn.swift */,
@@ -334,7 +331,6 @@
 				CE063851256190A4006ED1AD /* UIApplication.swift in Sources */,
 				CE60EDB0254D8D26007056BC /* Color.swift in Sources */,
 				CE6E72682554281A000AB7D2 /* Game.Deck.swift in Sources */,
-				CE55B3CA2567CE50006D3F83 /* Game.Finish.Win.swift in Sources */,
 				CEBE5394255019550059F12C /* Inventory.swift in Sources */,
 				CE63247C2549CA3E0051A470 /* Control.swift in Sources */,
 				CEB90EDD254ADBDF00F92A7C /* Header.Score.swift in Sources */,
@@ -344,7 +340,6 @@
 				CEB4C6A725627D130068AEE9 /* Purchases.Item.swift in Sources */,
 				CEE409B0254B242C00A9D5EB /* Control.Style.swift in Sources */,
 				CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */,
-				CE55B3CD2567CE59006D3F83 /* Game.Finish.Loose.swift in Sources */,
 				CE7273BC2553F88400A79BF2 /* Game.Controls.swift in Sources */,
 				CE2535FD255967BC00DBA035 /* Defaults.swift in Sources */,
 				CE93B28E256D1C4A00785FFD /* Game.Finish.PrizeRobot.swift in Sources */,
@@ -360,6 +355,7 @@
 				CE60EDBC254DA523007056BC /* Bead.swift in Sources */,
 				CE55B3D12567D5CF006D3F83 /* Game.Finish.Item.swift in Sources */,
 				CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */,
+				CE2B39EB256D24A0004AB84E /* Game.Finish.Remove.swift in Sources */,
 				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,
 				CEB4C6AC25627DFA0068AEE9 /* Store.Item.swift in Sources */,
 				CE7273BF2553FE0900A79BF2 /* Game.Loading.swift in Sources */,

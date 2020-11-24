@@ -2,15 +2,17 @@ import SwiftUI
 
 extension Game.Finish {
     struct Card<Content>: View where Content : View {
-        let content: Content?
+        let visible: Bool
+        let content: Content
         
-        @inlinable public init(@ViewBuilder content: () -> Content) {
+        @inlinable public init(visible: Bool, @ViewBuilder content: () -> Content) {
+            self.visible = visible
             self.content = content()
         }
         
         var body: some View {
             ZStack {
-                if content != nil {
+                if visible {
                     Color("Background")
                         .opacity(0.95)
                         .edgesIgnoringSafeArea(.all)
