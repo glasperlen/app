@@ -10,7 +10,6 @@ struct Session {
             Defaults.beads = beads
         }
     }
-    let new = PassthroughSubject<Void, Never>()
     private var subs = Set<AnyCancellable>()
     private var players = Set<AVAudioPlayer>()
     private let haptics = UIImpactFeedbackGenerator(style: .heavy)

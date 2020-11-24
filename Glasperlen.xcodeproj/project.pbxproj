@@ -31,7 +31,6 @@
 		CE6324852549D8470051A470 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6324842549D8470051A470 /* Session.swift */; };
 		CE65FC35254C3AC1000A78C1 /* Onboard.First.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65FC34254C3AC1000A78C1 /* Onboard.First.swift */; };
 		CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */; };
-		CE6E726425541BFB000AB7D2 /* Game.Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E726325541BFB000AB7D2 /* Game.Turn.swift */; };
 		CE6E72682554281A000AB7D2 /* Game.Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E72672554281A000AB7D2 /* Game.Deck.swift */; };
 		CE6E727625542CA5000AB7D2 /* Bead.Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E727525542CA5000AB7D2 /* Bead.Base.swift */; };
 		CE6E727B25543014000AB7D2 /* Bead.Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E727A25543014000AB7D2 /* Bead.Point.swift */; };
@@ -39,7 +38,9 @@
 		CE70C214256578A700E5FCC0 /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CE70C212256578A700E5FCC0 /* Pop.aiff */; };
 		CE70C215256578A700E5FCC0 /* Tink.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CE70C213256578A700E5FCC0 /* Tink.aiff */; };
 		CE7273BC2553F88400A79BF2 /* Game.Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7273BB2553F88400A79BF2 /* Game.Controls.swift */; };
-		CE7273BF2553FE0900A79BF2 /* Game.Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */; };
+		CE7273BF2553FE0900A79BF2 /* Game.New.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7273BE2553FE0900A79BF2 /* Game.New.swift */; };
+		CE73E551256D43B300406EA8 /* Game.First.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73E550256D43B300406EA8 /* Game.First.swift */; };
+		CE73E554256D44B900406EA8 /* Game.Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73E553256D44B900406EA8 /* Game.Second.swift */; };
 		CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */; };
 		CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */; };
 		CE93B28E256D1C4A00785FFD /* Game.PrizeRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93B28D256D1C4A00785FFD /* Game.PrizeRobot.swift */; };
@@ -94,7 +95,6 @@
 		CE6324842549D8470051A470 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CE65FC34254C3AC1000A78C1 /* Onboard.First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.First.swift; sourceTree = "<group>"; };
 		CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Second.swift; sourceTree = "<group>"; };
-		CE6E726325541BFB000AB7D2 /* Game.Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Turn.swift; sourceTree = "<group>"; };
 		CE6E72672554281A000AB7D2 /* Game.Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Deck.swift; sourceTree = "<group>"; };
 		CE6E727525542CA5000AB7D2 /* Bead.Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bead.Base.swift; sourceTree = "<group>"; };
 		CE6E727A25543014000AB7D2 /* Bead.Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bead.Point.swift; sourceTree = "<group>"; };
@@ -102,7 +102,9 @@
 		CE70C212256578A700E5FCC0 /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
 		CE70C213256578A700E5FCC0 /* Tink.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Tink.aiff; sourceTree = "<group>"; };
 		CE7273BB2553F88400A79BF2 /* Game.Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Controls.swift; sourceTree = "<group>"; };
-		CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Loading.swift; sourceTree = "<group>"; };
+		CE7273BE2553FE0900A79BF2 /* Game.New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.New.swift; sourceTree = "<group>"; };
+		CE73E550256D43B300406EA8 /* Game.First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.First.swift; sourceTree = "<group>"; };
+		CE73E553256D44B900406EA8 /* Game.Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Second.swift; sourceTree = "<group>"; };
 		CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.Item.swift; sourceTree = "<group>"; };
 		CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Third.swift; sourceTree = "<group>"; };
 		CE93B28D256D1C4A00785FFD /* Game.PrizeRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.PrizeRobot.swift; sourceTree = "<group>"; };
@@ -168,10 +170,11 @@
 				CE55B3D02567D5CF006D3F83 /* Game.Prize.swift */,
 				CE93B28D256D1C4A00785FFD /* Game.PrizeRobot.swift */,
 				CE2B39EA256D24A0004AB84E /* Game.Remove.swift */,
-				CE7273BE2553FE0900A79BF2 /* Game.Loading.swift */,
+				CE7273BE2553FE0900A79BF2 /* Game.New.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
 				CE2317352556E6470074CD22 /* Game.Title.swift */,
-				CE6E726325541BFB000AB7D2 /* Game.Turn.swift */,
+				CE73E550256D43B300406EA8 /* Game.First.swift */,
+				CE73E553256D44B900406EA8 /* Game.Second.swift */,
 				CEB90EDC254ADBDF00F92A7C /* Header.Score.swift */,
 				CEB90ED8254ADA5E00F92A7C /* Header.swift */,
 				CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */,
@@ -320,6 +323,7 @@
 				CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */,
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CE63246F2549AB280051A470 /* Game.Board.swift in Sources */,
+				CE73E554256D44B900406EA8 /* Game.Second.swift in Sources */,
 				CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */,
 				CE6E727B25543014000AB7D2 /* Bead.Point.swift in Sources */,
 				CE34B9DB2564271700A2CD60 /* Pack.Detail.swift in Sources */,
@@ -333,6 +337,7 @@
 				CE70C20F2565770C00E5FCC0 /* Session.Audio.swift in Sources */,
 				CEBE5398255023580059F12C /* Background.swift in Sources */,
 				CE65FC35254C3AC1000A78C1 /* Onboard.First.swift in Sources */,
+				CE73E551256D43B300406EA8 /* Game.First.swift in Sources */,
 				CEB4C6A725627D130068AEE9 /* Purchases.Item.swift in Sources */,
 				CEE409B0254B242C00A9D5EB /* Control.Style.swift in Sources */,
 				CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */,
@@ -354,10 +359,9 @@
 				CE2B39EB256D24A0004AB84E /* Game.Remove.swift in Sources */,
 				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,
 				CEB4C6AC25627DFA0068AEE9 /* Store.Item.swift in Sources */,
-				CE7273BF2553FE0900A79BF2 /* Game.Loading.swift in Sources */,
+				CE7273BF2553FE0900A79BF2 /* Game.New.swift in Sources */,
 				CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */,
 				CE4495B925496A4300ECA6C0 /* App.swift in Sources */,
-				CE6E726425541BFB000AB7D2 /* Game.Turn.swift in Sources */,
 				CE6E727625542CA5000AB7D2 /* Bead.Base.swift in Sources */,
 				CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */,
 			);

@@ -17,9 +17,6 @@ extension Game {
         var body: some View {
             ZStack {
                 if visible {
-                    Color("Background")
-                        .opacity(0.95)
-                        .edgesIgnoringSafeArea(.all)
                     content
                 }
             }

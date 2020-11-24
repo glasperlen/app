@@ -28,7 +28,7 @@ extension Game {
                                             UIApplication.shared.requestMatch()
                                         },
                                         .default(.init("Artificial Intelligence")) {
-                                            session.new.send()
+                                            session.match = .init()
                                         },
                                         .cancel()])
                     } else {
