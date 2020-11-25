@@ -2,6 +2,7 @@ import UIKit
 import Combine
 import AVFoundation
 import Magister
+import GameKit
 
 struct Session {
     var match = Defaults.match {
@@ -16,6 +17,7 @@ struct Session {
         }
     }
     
+    var multiplayer: GKTurnBasedMatch?
     private var subs = Set<AnyCancellable>()
     private var players = Set<AVAudioPlayer>()
     private let haptics = UIImpactFeedbackGenerator(style: .heavy)

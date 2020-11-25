@@ -5,6 +5,7 @@ extension Defaults {
         case
         beads,
         match,
+        id,
         victories,
         onboard_start,
         settings_sound,

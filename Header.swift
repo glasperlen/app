@@ -39,12 +39,12 @@ struct Header: View {
         }
         .padding(.horizontal)
         .actionSheet(isPresented: $abandon) {
-            .init(title: .init("Abandon game?"), message: .init("Your opponent will get 1 of your beads"), buttons: [
+            .init(title: .init("Quit game?"), message: .init("You will loose"), buttons: [
                     .cancel(.init("Cancel")),
-                    .destructive(.init("Abandon")) {
+                    .destructive(.init("Quit")) {
                         session.play(.Bottle)
                         withAnimation(.easeInOut(duration: 0.5)) {
-                            session.match = nil
+                            session.match?.quitSecond()
                         }
                     }])
         }

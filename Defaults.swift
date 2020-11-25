@@ -18,6 +18,17 @@ final class Defaults: UserDefaults {
         }
     }
     
+    class var id: String? {
+        get { standard.string(forKey: Key.id.rawValue) }
+        set {
+            guard let id = newValue else {
+                standard.removeObject(forKey: Key.id.rawValue)
+                return
+            }
+            standard.setValue(id, forKey: Key.id.rawValue)
+        }
+    }
+    
     class var victories: Int {
         get { standard.integer(forKey: Key.victories.rawValue) }
         set { standard.setValue(newValue, forKey: Key.victories.rawValue) }

@@ -2,8 +2,14 @@ import Foundation
 import GameKit
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
-    public func player(_ player: GKPlayer, receivedTurnEventFor match: GKTurnBasedMatch, didBecomeActive: Bool) {
-        print("here: \(match)")
+    public func player(_ player: GKPlayer, didRequestMatchWithOtherPlayers playersToInvite: [GKPlayer]) {
+        print("did request")
+    }
+    
+    public func player(_: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
+        Defaults.id = receivedTurnEventFor.matchID
+        print("turn received \(didBecomeActive)")
+        windows.first?.rootViewController?.dismiss(animated: true)
     }
     
     public func player(_ player: GKPlayer, wantsToQuitMatch match: GKTurnBasedMatch) {

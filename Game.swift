@@ -28,6 +28,7 @@ struct Game: View {
             PrizeRobot(session: $session)
             Remove(session: $session)
             New(session: $session)
+            Multiplayer(session: $session)
         }
         .onChange(of: session.match?.state) {
             if $0 == .end {

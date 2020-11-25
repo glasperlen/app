@@ -24,16 +24,16 @@ extension Game {
                         return .init(title: .init("New game"),
                                      message: .init("Choose your opponent"),
                                      buttons: [
-                                        .default(.init("A player from Game Center")) {
-                                            UIApplication.shared.requestMatch()
-                                        },
-                                        .default(.init("Artificial Intelligence")) {
+                                        .default(.init("Single")) {
                                             session.match = .init()
+                                        },
+                                        .default(.init("Multiplayer")) {
+                                            UIApplication.shared.requestMatch()
                                         },
                                         .cancel()])
                     } else {
-                        return .init(title: .init("Need 5 beads selected to start a game"),
-                                     message: .init("Select them on your inventory"),
+                        return .init(title: .init("Need 5 beads selected to play"),
+                                     message: .init("Select them in your inventory"),
                                      buttons: [
                                          .default(.init("Inventory")) { inventory = true },
                                          .cancel()])
