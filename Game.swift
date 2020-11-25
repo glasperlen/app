@@ -34,6 +34,7 @@ struct Game: View {
             if $0 == .end {
                 withAnimation(.easeInOut(duration: 1)) {
                     session.match = nil
+                    Defaults.id = nil
                 }
             }
         }

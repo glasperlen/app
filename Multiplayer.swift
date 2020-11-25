@@ -8,6 +8,10 @@ struct Multiplayer: View {
         if id != nil {
             if session.multiplayer == nil {
                 Loading(session: $session)
+            } else {
+                if session.multiplayer!.participants.last?.status == .matching {
+                    Matching(session: $session)
+                }
             }
         }
     }

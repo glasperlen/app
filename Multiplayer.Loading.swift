@@ -1,5 +1,6 @@
 import SwiftUI
 import GameKit
+import Magister
 
 extension Multiplayer {
     struct Loading: View {
@@ -10,10 +11,18 @@ extension Multiplayer {
             Color("Background")
                 .edgesIgnoringSafeArea(.all)
                 .onAppear {
-                    guard session.multiplayer == nil, let id = Defaults.id else { return }
-                    GKTurnBasedMatch.load(withID: id) {
-                        session.multiplayer = $0
-                        error = $1?.localizedDescription
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        guard session.multiplayer == nil, let id = Defaults.id else { return }
+                        GKTurnBasedMatch.load(withID: id) {
+                            error = $1?.localizedDescription
+                            session.multiplayer = $0
+                            session.multiplayer?.loadMatchData {
+                                guard $1 == nil else { return }
+                                session.match = $0.flatMap {
+                                    try? JSONDecoder().decode(Match.self, from: $0)
+                                }
+                            }
+                        }
                     }
                 }
             if error == nil {
@@ -22,6 +31,7 @@ extension Multiplayer {
             } else {
                 Text(verbatim: error!)
                     .foregroundColor(.secondary)
+                    .padding()
             }
         }
     }

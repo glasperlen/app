@@ -1,22 +1,29 @@
 import Foundation
 import GameKit
+import Magister
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
-    public func player(_ player: GKPlayer, didRequestMatchWithOtherPlayers playersToInvite: [GKPlayer]) {
-        print("did request")
-    }
-    
-    public func player(_: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
-        Defaults.id = receivedTurnEventFor.matchID
+    public func player(_: GKPlayer, receivedTurnEventFor event: GKTurnBasedMatch, didBecomeActive: Bool) {
         print("turn received \(didBecomeActive)")
+        if event.participants.last?.status == .matching && didBecomeActive {
+            var match = Match()
+            match.multiplayer()
+            match.data.map {
+                event.endTurn(withNextParticipants: [event.participants.last!], turnTimeout: 100000, match: $0) { _ in
+                    Defaults.id = event.matchID
+                }
+            }
+        }
         windows.first?.rootViewController?.dismiss(animated: true)
     }
     
-    public func player(_ player: GKPlayer, wantsToQuitMatch match: GKTurnBasedMatch) {
-        print("yala \(player == GKLocalPlayer.local)")
-        match.participantQuitInTurn(with: .quit, nextParticipants: match.participants, turnTimeout: 0, match: .init()) { e in
-            print("quit error \(e)")
+    public func player(_ player: GKPlayer, wantsToQuitMatch: GKTurnBasedMatch) {
+        if player == GKLocalPlayer.local {
+            wantsToQuitMatch.participantQuitInTurn(with: .quit, nextParticipants: wantsToQuitMatch.participants, turnTimeout: 0, match: wantsToQuitMatch.matchData ?? .init()) { _ in
+                Defaults.id = nil
+            }
         }
+        
 //        match.endMatchInTurn(withMatch: .init()) { e in
 //            print("ended error \(e)")
 //        }
@@ -31,6 +38,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
     }
     
     func auth() {
+        guard !GKLocalPlayer.local.isAuthenticated else { return }
         GKLocalPlayer.local.authenticateHandler = { controller, error in
             guard let controller = controller else {
                 if error == nil {
@@ -69,6 +77,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         
         let controller = GKTurnBasedMatchmakerViewController(matchRequest: request)
         controller.turnBasedMatchmakerDelegate = self
+        controller.showExistingMatches = false
         present(controller)
     }
     
