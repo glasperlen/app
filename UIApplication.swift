@@ -3,30 +3,25 @@ import GameKit
 import Magister
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
-    public func player(_: GKPlayer, receivedTurnEventFor event: GKTurnBasedMatch, didBecomeActive: Bool) {
+    public func player(_ player: GKPlayer, didModifySavedGame savedGame: GKSavedGame) {
+        print("modify saved game")
+    }
+    
+    public func player(_: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
         print("turn received \(didBecomeActive)")
-        if event.participants.last?.status == .matching && didBecomeActive {
-            var match = Match()
-            match.multiplayer()
-            match.data.map {
-                event.endTurn(withNextParticipants: [event.participants.last!], turnTimeout: 100000, match: $0) { _ in
-                    Defaults.id = event.matchID
-                }
+        if Defaults.id == nil {
+            if receivedTurnEventFor.participants.last?.status == .matching && didBecomeActive {
+                var match = Match()
+                match.multiplayer()
+                receivedTurnEventFor.next(match)
             }
+            Defaults.id = receivedTurnEventFor.matchID
         }
         windows.first?.rootViewController?.dismiss(animated: true)
     }
     
-    public func player(_ player: GKPlayer, wantsToQuitMatch: GKTurnBasedMatch) {
-        if player == GKLocalPlayer.local {
-            wantsToQuitMatch.participantQuitInTurn(with: .quit, nextParticipants: wantsToQuitMatch.participants, turnTimeout: 0, match: wantsToQuitMatch.matchData ?? .init()) { _ in
-                Defaults.id = nil
-            }
-        }
-        
-//        match.endMatchInTurn(withMatch: .init()) { e in
-//            print("ended error \(e)")
-//        }
+    public func player(_: GKPlayer, wantsToQuitMatch: GKTurnBasedMatch) {
+        wantsToQuitMatch.quit()
     }
     
     public func turnBasedMatchmakerViewController(_ controller: GKTurnBasedMatchmakerViewController, didFailWithError: Error) {
@@ -77,7 +72,6 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         
         let controller = GKTurnBasedMatchmakerViewController(matchRequest: request)
         controller.turnBasedMatchmakerDelegate = self
-        controller.showExistingMatches = false
         present(controller)
     }
     

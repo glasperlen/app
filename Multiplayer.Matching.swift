@@ -18,6 +18,9 @@ extension Multiplayer {
                 }
                 .padding(.bottom)
             }
+            .onAppear {
+                session.multiplayer?.saveCurrentTurn(withMatch: try! JSONEncoder().encode(session.match!))
+            }
         }
     }
 }

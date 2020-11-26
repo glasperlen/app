@@ -43,8 +43,12 @@ struct Header: View {
                     .cancel(.init("Cancel")),
                     .destructive(.init("Quit")) {
                         session.play(.Bottle)
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            session.match?.quitSecond()
+                        if let multiplayer = session.multiplayer {
+                            
+                        } else {
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                session.match?.quitSecond()
+                            }
                         }
                     }])
         }
