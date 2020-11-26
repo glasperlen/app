@@ -17,6 +17,13 @@ struct Session {
         }
     }
     
+    var play: Bool {
+        guard let multiplayer = self.multiplayer else {
+            return match?.state == .second
+        }
+        return multiplayer.currentParticipant?.player == GKLocalPlayer.local
+    }
+    
     var multiplayer: GKTurnBasedMatch?
     private var subs = Set<AnyCancellable>()
     private var players = Set<AVAudioPlayer>()

@@ -44,7 +44,9 @@ struct Header: View {
                     .destructive(.init("Quit")) {
                         session.play(.Bottle)
                         if let multiplayer = session.multiplayer {
-                            
+                            Defaults.id = nil
+                            session.match = nil
+                            Defaults.match = nil
                         } else {
                             withAnimation(.easeInOut(duration: 0.5)) {
                                 session.match?.quitSecond()

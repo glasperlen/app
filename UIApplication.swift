@@ -1,23 +1,40 @@
 import Foundation
 import GameKit
+import Combine
 import Magister
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
+    static let synch = PassthroughSubject<Void, Never>()
+    
     public func player(_ player: GKPlayer, didModifySavedGame savedGame: GKSavedGame) {
         print("modify saved game")
     }
     
     public func player(_: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
-        print("turn received \(didBecomeActive)")
         if Defaults.id == nil {
-            if receivedTurnEventFor.participants.last?.status == .matching && didBecomeActive {
-                var match = Match()
-                match.multiplayer()
-                receivedTurnEventFor.next(match)
+            receivedTurnEventFor.refresh {
+                var match: Match
+                if let loaded = $0 {
+                    match = loaded
+                    match.matched()
+                } else {
+                    match = .init()
+                    match.multiplayer()
+                }
+                Defaults.match = match
+                receivedTurnEventFor.next(match) {
+                    Defaults.id = receivedTurnEventFor.matchID
+                    Self.synch.send()
+                }
             }
-            Defaults.id = receivedTurnEventFor.matchID
+            windows.first?.rootViewController?.dismiss(animated: true)
+        } else {
+            receivedTurnEventFor.refresh {
+                guard let match = $0 else { return }
+                Defaults.match = match
+                Self.synch.send()
+            }
         }
-        windows.first?.rootViewController?.dismiss(animated: true)
     }
     
     public func player(_: GKPlayer, wantsToQuitMatch: GKTurnBasedMatch) {

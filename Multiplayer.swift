@@ -6,12 +6,16 @@ struct Multiplayer: View {
     
     var body: some View {
         if id != nil {
-            if session.multiplayer == nil {
-                Loading(session: $session)
-            } else if session.match != nil {
-                if session.multiplayer!.participants.last?.status == .matching {
+            ZStack {
+                if session.multiplayer == nil {
+                    Loading(session: $session)
+                } else if session.match?.state == .matching {
                     Matching(session: $session)
                 }
+            }
+            .onReceive(UIApplication.synch) {
+                guard Defaults.match?.state != session.match?.state else { return }
+                session.match = Defaults.match
             }
         }
     }

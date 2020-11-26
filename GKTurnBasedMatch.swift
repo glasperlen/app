@@ -11,18 +11,24 @@ extension GKTurnBasedMatch {
             + participants.filter { $0.player == GKLocalPlayer.local }
     }
     
-    func refresh(_ completion: @escaping (Match) -> Void) {
+    func refresh(_ completion: @escaping (Match?) -> Void) {
         loadMatchData {
-            guard $1 == nil else { return }
-            $0.flatMap {
+            guard $1 == nil else {
+                completion(nil)
+                return
+            }
+            completion($0.flatMap {
                 try? JSONDecoder().decode(Match.self, from: $0)
-            }.map(completion)
+            })
         }
     }
     
-    func next(_ match: Match) {
+    func next(_ match: Match, completion: (() -> Void)?) {
         (try? JSONEncoder().encode(match)).map {
-            endTurn(withNextParticipants: players, turnTimeout: 100000, match: $0)
+            endTurn(withNextParticipants: players, turnTimeout: 1000, match: $0) { error in
+                print(error)
+                completion?()
+            }
         }
     }
     

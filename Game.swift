@@ -20,7 +20,7 @@ struct Game: View {
                 Board(session: $session, positions: $positions)
                     .padding(.top, 30)
             }
-            if session.match?.state == .second {
+            if session.play {
                 Deck(session: $session, positions: $positions)
             }
             First(session: $session)
