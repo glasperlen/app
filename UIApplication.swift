@@ -38,6 +38,8 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
     }
     
     public func player(_: GKPlayer, wantsToQuitMatch: GKTurnBasedMatch) {
+        Defaults.id = nil
+        Defaults.match = nil
         wantsToQuitMatch.quit()
     }
     

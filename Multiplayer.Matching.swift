@@ -13,11 +13,11 @@ extension Multiplayer {
             VStack {
                 Spacer()
                 Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
-                    Defaults.id = nil
-                    session.multiplayer = nil
-                    
                     session.match?.quitFirst()
                     session.multiplayer?.quit()
+                    
+                    Defaults.id = nil
+                    session.multiplayer = nil
                 }
                 .padding(.bottom)
             }

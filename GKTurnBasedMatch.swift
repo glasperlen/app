@@ -25,7 +25,7 @@ extension GKTurnBasedMatch {
     
     func next(_ match: Match, completion: (() -> Void)?) {
         (try? JSONEncoder().encode(match)).map {
-            endTurn(withNextParticipants: players, turnTimeout: 1000, match: $0) { error in
+            endTurn(withNextParticipants: players, turnTimeout: 10000, match: $0) { error in
                 print(error)
                 completion?()
             }
