@@ -17,7 +17,7 @@ struct Header: View {
             .contentShape(Rectangle())
             Spacer()
             Image(systemName: "person.fill")
-                .opacity(session.match?.state == .second ? 1 : 0.3)
+                .opacity(session.play ? 1 : 0.3)
             session.match.map {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color("User"))
@@ -30,12 +30,10 @@ struct Header: View {
                     .frame(width: 10, height: $0[.first] > $0[.second] ? 20 : 10)
                     .animation(.easeInOut(duration: 0.5))
             }
-            session.match?.robot.map {
-                Text(verbatim: $0.name)
-                    .bold()
-                    .padding(.trailing)
-                    .opacity(session.match?.state == .first ? 1 : 0.3)
-            }
+            Text(verbatim: session.opponent)
+                .bold()
+                .padding(.trailing)
+                .opacity(!session.play ? 1 : 0.3)
         }
         .padding(.horizontal)
         .actionSheet(isPresented: $abandon) {

@@ -4,13 +4,10 @@ import Combine
 import Magister
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
-    static let synch = PassthroughSubject<Void, Never>()
+    static let newMatch = PassthroughSubject<Match, Never>()
+    static let newTurn = PassthroughSubject<GKTurnBasedMatch, Never>()
     
-    public func player(_ player: GKPlayer, didModifySavedGame savedGame: GKSavedGame) {
-        print("modify saved game")
-    }
-    
-    public func player(_: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
+    public func player(_ player: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
         if Defaults.id == nil {
             receivedTurnEventFor.refresh {
                 var match: Match
@@ -21,18 +18,25 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
                     match = .init()
                     match.multiplayer()
                 }
-                Defaults.match = match
                 receivedTurnEventFor.next(match) {
                     Defaults.id = receivedTurnEventFor.matchID
-                    Self.synch.send()
+                    Self.newTurn.send(receivedTurnEventFor)
+                    Self.newMatch.send(match)
                 }
             }
             windows.first?.rootViewController?.dismiss(animated: true)
         } else {
             receivedTurnEventFor.refresh {
                 guard let match = $0 else { return }
-                Defaults.match = match
-                Self.synch.send()
+                Self.newTurn.send(receivedTurnEventFor)
+                Self.newMatch.send(match)
+                
+                if didBecomeActive {
+                    if (match.state == .first && player != receivedTurnEventFor.participants.first?.player)
+                        || (match.state == .second && player != receivedTurnEventFor.participants.last?.player) {
+                        receivedTurnEventFor.next(match, completion: nil)
+                    }
+                }
             }
         }
     }

@@ -1,7 +1,7 @@
 import SwiftUI
 import GameKit
 
-extension Multiplayer {
+extension Game {
     struct Matching: View {
         @Binding var session: Session
         
@@ -14,6 +14,7 @@ extension Multiplayer {
                 Spacer()
                 Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
                     session.match?.quitFirst()
+                    session.match = nil
                     session.multiplayer?.quit()
                     
                     Defaults.id = nil

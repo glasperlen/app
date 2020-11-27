@@ -18,10 +18,25 @@ struct Session {
     }
     
     var play: Bool {
-        guard let multiplayer = self.multiplayer else {
+        guard
+            let multiplayer = self.multiplayer,
+            let state = match?.state,
+            multiplayer.currentParticipant == GKLocalPlayer.local
+        else {
             return match?.state == .second
         }
-        return multiplayer.currentParticipant?.player == GKLocalPlayer.local
+        switch state {
+        case .first: return multiplayer.participants.first?.player == GKLocalPlayer.local
+        case .second: return multiplayer.participants.last?.player == GKLocalPlayer.local
+        default: return false
+        }
+    }
+    
+    var opponent: String {
+        guard let multiplayer = self.multiplayer else {
+            return match?.robot?.name ?? ""
+        }
+        return multiplayer.participants.filter { $0.player != GKLocalPlayer.local }.first?.player?.displayName ?? ""
     }
     
     var multiplayer: GKTurnBasedMatch?

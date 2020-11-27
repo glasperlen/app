@@ -13,8 +13,13 @@ extension Game {
                         Color("Background")
                             .opacity(0.95)
                             .edgesIgnoringSafeArea(.all)
-                        session.match?.robot.map {
-                            Text("\($0.name)'s turn")
+                        if session.play {
+                            Text("Your turn")
+                                .transition(.slide)
+                                .font(Font.title.bold())
+                                .transition(.slide)
+                        } else {
+                            Text("\(session.opponent)'s turn")
                                 .padding()
                                 .font(Font.title.bold())
                                 .transition(.slide)

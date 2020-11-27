@@ -24,10 +24,13 @@ extension GKTurnBasedMatch {
     }
     
     func next(_ match: Match, completion: (() -> Void)?) {
-        (try? JSONEncoder().encode(match)).map {
-            endTurn(withNextParticipants: players, turnTimeout: 10000, match: $0) { error in
-                print(error)
-                completion?()
+        (try? JSONEncoder().encode(match)).map { data in
+            saveCurrentTurn(withMatch: data) { [weak self] _ in
+                guard let self = self else { return }
+                self.endTurn(withNextParticipants: self.players, turnTimeout: 10000, match: data) { error in
+                    print(error)
+                    completion?()
+                }
             }
         }
     }

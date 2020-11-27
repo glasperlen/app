@@ -13,10 +13,17 @@ extension Game {
                         Color("Background")
                             .opacity(0.95)
                             .edgesIgnoringSafeArea(.all)
-                        Text("Your turn")
-                            .transition(.slide)
-                            .font(Font.title.bold())
-                            .transition(.slide)
+                        if session.play {
+                            Text("Your turn")
+                                .transition(.slide)
+                                .font(Font.title.bold())
+                                .transition(.slide)
+                        } else {
+                            Text("\(session.opponent)'s turn")
+                                .padding()
+                                .font(Font.title.bold())
+                                .transition(.slide)
+                        }
                     }
                 }
                 .onAppear {
