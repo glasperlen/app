@@ -1,4 +1,5 @@
 import SwiftUI
+import GameKit
 import Magister
 
 extension Magister.Bead.Color {
@@ -18,10 +19,7 @@ extension Magister.Bead.Color {
 }
 
 extension Match.State {
-    var color: Color {
-        switch self {
-        case .first: return .init("Opponent")
-        default: return .init("User")
-        }
+    func color(_ session: Session) -> Color {
+        session.me == self ? .init("User") : .init("Opponent")
     }
 }

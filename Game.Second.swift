@@ -19,7 +19,7 @@ extension Game {
                                 .font(Font.title.bold())
                                 .transition(.slide)
                         } else {
-                            Text("\(session.opponent)'s turn")
+                            Text("\(session.opponentName)'s turn")
                                 .padding()
                                 .font(Font.title.bold())
                                 .transition(.slide)

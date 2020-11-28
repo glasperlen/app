@@ -4,15 +4,11 @@ import Combine
 import Magister
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
-    static let newMatch = PassthroughSubject<Match, Never>()
-    static let newTurn = PassthroughSubject<GKTurnBasedMatch, Never>()
-    
-    public func player(_ player: GKPlayer, didModifySavedGame savedGame: GKSavedGame) {
-        print("modify saved game")
-    }
-    
+    static let match = PassthroughSubject<GKTurnBasedMatch, Never>()
+    static let data = PassthroughSubject<Match, Never>()
+
     public func player(_ player: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
-        Self.newTurn.send(receivedTurnEventFor)
+        Self.match.send(receivedTurnEventFor)
         
         if Defaults.id == nil {
             receivedTurnEventFor.refresh {
@@ -26,14 +22,14 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
                 }
                 receivedTurnEventFor.next(match) {
                     Defaults.id = receivedTurnEventFor.matchID
-                    Self.newMatch.send(match)
+                    Self.data.send(match)
                 }
             }
             windows.first?.rootViewController?.dismiss(animated: true)
         } else {
             receivedTurnEventFor.refresh {
                 guard let match = $0 else { return }
-                Self.newMatch.send(match)
+                Self.data.send(match)
                 
                 if didBecomeActive {
                     if (match.state == .first && player != receivedTurnEventFor.participants.first?.player)

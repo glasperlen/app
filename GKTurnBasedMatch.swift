@@ -2,6 +2,13 @@ import GameKit
 import Magister
 
 extension GKTurnBasedMatch {
+    var state: Match.State {
+        switch GKLocalPlayer.local {
+        case participants.first?.player: return .first
+        default: return .second
+        }
+    }
+    
     private var players: [GKTurnBasedParticipant] {
         participants
             .filter { $0.player != GKLocalPlayer.local }
@@ -24,13 +31,9 @@ extension GKTurnBasedMatch {
     }
     
     func next(_ match: Match, completion: (() -> Void)?) {
-        (try? JSONEncoder().encode(match)).map { data in
-            saveCurrentTurn(withMatch: data) { [weak self] _ in
-                guard let self = self else { return }
-                self.endTurn(withNextParticipants: self.players, turnTimeout: 10000, match: data) { error in
-                    print(error)
-                    completion?()
-                }
+        (try? JSONEncoder().encode(match)).map {
+            endTurn(withNextParticipants: players, turnTimeout: 10000, match: $0) { error in
+                completion?()
             }
         }
     }

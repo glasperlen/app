@@ -20,7 +20,7 @@ extension Game.Board {
                         .padding(5)
                 } else {
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(session.match![point]!.state.color, style: .init(lineWidth: 1))
+                        .stroke(session.match![point]!.state.color(session), style: .init(lineWidth: 1))
                         .padding(5)
                     Bead(bead: session.match![point]!.bead)
                         .frame(width: 60, height: 60)
@@ -37,7 +37,7 @@ extension Game.Board {
                 }
             }
             .onChange(of: session.match?[point]?.state) { [old = session.match?[point]?.state] in
-                guard let color = $0?.color else { return }
+                guard let color = $0?.color(session) else { return }
                 
                 if old == nil {
                     session.play(.Tink)

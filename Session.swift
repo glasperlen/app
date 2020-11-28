@@ -17,22 +17,24 @@ struct Session {
         }
     }
     
+    var me: Match.State {
+        multiplayer?.state ?? .second
+    }
+    
     var play: Bool {
-        guard
-            let multiplayer = self.multiplayer,
-            let state = match?.state,
-            multiplayer.currentParticipant?.player == GKLocalPlayer.local
-        else {
-            return match?.state == .second
-        }
-        switch state {
-        case .first: return multiplayer.participants.first?.player == GKLocalPlayer.local
-        case .second: return multiplayer.participants.last?.player == GKLocalPlayer.local
-        default: return false
+        guard let multiplayer = self.multiplayer else { return match?.state == .second }
+        guard multiplayer.currentParticipant?.player == GKLocalPlayer.local else { return false }
+        return me == match?.state
+    }
+    
+    var opponent: Match.State {
+        switch me {
+        case .first: return .second
+        default: return .first
         }
     }
     
-    var opponent: String {
+    var opponentName: String {
         guard let multiplayer = self.multiplayer else {
             return match?.robot?.name ?? ""
         }

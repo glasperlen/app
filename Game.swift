@@ -44,10 +44,10 @@ struct Game: View {
                 }
             }
         }
-        .onReceive(UIApplication.newTurn) {
+        .onReceive(UIApplication.match) {
             session.multiplayer = $0
         }
-        .onReceive(UIApplication.newMatch) {
+        .onReceive(UIApplication.data) {
             session.match = $0
         }
     }

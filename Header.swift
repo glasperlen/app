@@ -21,16 +21,16 @@ struct Header: View {
             session.match.map {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color("User"))
-                    .frame(width: 10, height: $0[.second] > $0[.first] ? 20 : 10)
+                    .frame(width: 10, height: $0[session.me] > $0[session.opponent] ? 20 : 10)
                     .animation(.easeInOut(duration: 0.5))
             }
             session.match.map {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color("Opponent"))
-                    .frame(width: 10, height: $0[.first] > $0[.second] ? 20 : 10)
+                    .frame(width: 10, height: $0[session.opponent] > $0[session.me] ? 20 : 10)
                     .animation(.easeInOut(duration: 0.5))
             }
-            Text(verbatim: session.opponent)
+            Text(verbatim: session.opponentName)
                 .bold()
                 .padding(.trailing)
                 .opacity(!session.play ? 1 : 0.3)
