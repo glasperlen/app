@@ -7,7 +7,13 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
     static let newMatch = PassthroughSubject<Match, Never>()
     static let newTurn = PassthroughSubject<GKTurnBasedMatch, Never>()
     
+    public func player(_ player: GKPlayer, didModifySavedGame savedGame: GKSavedGame) {
+        print("modify saved game")
+    }
+    
     public func player(_ player: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
+        Self.newTurn.send(receivedTurnEventFor)
+        
         if Defaults.id == nil {
             receivedTurnEventFor.refresh {
                 var match: Match
@@ -20,7 +26,6 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
                 }
                 receivedTurnEventFor.next(match) {
                     Defaults.id = receivedTurnEventFor.matchID
-                    Self.newTurn.send(receivedTurnEventFor)
                     Self.newMatch.send(match)
                 }
             }
@@ -28,7 +33,6 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         } else {
             receivedTurnEventFor.refresh {
                 guard let match = $0 else { return }
-                Self.newTurn.send(receivedTurnEventFor)
                 Self.newMatch.send(match)
                 
                 if didBecomeActive {

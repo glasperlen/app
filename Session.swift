@@ -21,7 +21,7 @@ struct Session {
         guard
             let multiplayer = self.multiplayer,
             let state = match?.state,
-            multiplayer.currentParticipant == GKLocalPlayer.local
+            multiplayer.currentParticipant?.player == GKLocalPlayer.local
         else {
             return match?.state == .second
         }
