@@ -61,6 +61,7 @@
 		CED9E479256FC68600DF3273 /* GKTurnBasedMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9E478256FC68600DF3273 /* GKTurnBasedMatch.swift */; };
 		CEDC6DB1257451DC0054F6F4 /* Game.PrizeFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC6DB0257451DC0054F6F4 /* Game.PrizeFirst.swift */; };
 		CEDC6DB42574527A0054F6F4 /* Game.PrizeSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC6DB32574527A0054F6F4 /* Game.PrizeSecond.swift */; };
+		CEDC6DB7257457600054F6F4 /* Game.Prize.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC6DB6257457600054F6F4 /* Game.Prize.Item.swift */; };
 		CEE2467825680E93005133F5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2467725680E93005133F5 /* GameKit.framework */; };
 		CEE2467A25680EB5005133F5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2467925680EB5005133F5 /* StoreKit.framework */; };
 		CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE409AB254B1DCA00A9D5EB /* Onboard.swift */; };
@@ -128,6 +129,7 @@
 		CED9E478256FC68600DF3273 /* GKTurnBasedMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKTurnBasedMatch.swift; sourceTree = "<group>"; };
 		CEDC6DB0257451DC0054F6F4 /* Game.PrizeFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.PrizeFirst.swift; sourceTree = "<group>"; };
 		CEDC6DB32574527A0054F6F4 /* Game.PrizeSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.PrizeSecond.swift; sourceTree = "<group>"; };
+		CEDC6DB6257457600054F6F4 /* Game.Prize.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Prize.Item.swift; sourceTree = "<group>"; };
 		CEE2467725680E93005133F5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CEE2467925680EB5005133F5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CEE409AB254B1DCA00A9D5EB /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
@@ -179,9 +181,10 @@
 				CE83135C256E8EA20014EEA4 /* Game.Loading.swift */,
 				CEEB8105256EB591005A03A4 /* Game.Matching.swift */,
 				CE7273BE2553FE0900A79BF2 /* Game.New.swift */,
+				CEDC6DB6257457600054F6F4 /* Game.Prize.Item.swift */,
 				CE55B3D02567D5CF006D3F83 /* Game.Prize.swift */,
-				CE93B28D256D1C4A00785FFD /* Game.PrizeRobot.swift */,
 				CEDC6DB0257451DC0054F6F4 /* Game.PrizeFirst.swift */,
+				CE93B28D256D1C4A00785FFD /* Game.PrizeRobot.swift */,
 				CEDC6DB32574527A0054F6F4 /* Game.PrizeSecond.swift */,
 				CE2B39EA256D24A0004AB84E /* Game.Remove.swift */,
 				CE73E553256D44B900406EA8 /* Game.Second.swift */,
@@ -338,6 +341,7 @@
 				CE63246F2549AB280051A470 /* Game.Board.swift in Sources */,
 				CE73E554256D44B900406EA8 /* Game.Second.swift in Sources */,
 				CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */,
+				CEDC6DB7257457600054F6F4 /* Game.Prize.Item.swift in Sources */,
 				CE6E727B25543014000AB7D2 /* Bead.Point.swift in Sources */,
 				CE34B9DB2564271700A2CD60 /* Pack.Detail.swift in Sources */,
 				CEB4C6A425627CD50068AEE9 /* Purchases.swift in Sources */,

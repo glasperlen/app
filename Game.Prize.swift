@@ -3,27 +3,45 @@ import Magister
 
 extension Game {
     struct Prize: View {
-        @Binding var selected: Magister.Bead?
-        let bead: Magister.Bead
+        @Binding var session: Session
+        let beads: [Magister.Bead]
+        @State private var selected: Magister.Bead?
         
         var body: some View {
-            Button {
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    selected = bead
+            Color("Background")
+                .opacity(0.95)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("Game Over")
+                    .bold()
+                    .padding(.top)
+                HStack {
+                    Text("You win!")
+                        .font(Font.largeTitle.bold())
+                        .padding(.leading)
+                        .padding(.top)
+                    Spacer()
                 }
-            } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(selected == bead ? .accentColor : Color(.secondarySystemBackground))
-                        .frame(width: 72, height: 72)
-                    Circle()
-                        .fill(Color.black.opacity(0.2))
-                        .frame(width: 62, height: 62)
-                    Bead(bead: bead)
+                HStack {
+                    Text("Choose your prize")
+                        .padding(.leading)
+                    Spacer()
+                }
+                ForEach(beads) {
+                    Item(selected: $selected, bead: $0)
+                }
+                Spacer()
+                if selected != nil {
+                    Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
+                        guard let bead = selected else { return }
+                        selected = nil
+                        session.beads.append(.init(selected: false, item: bead))
+                        session.match?.prize = bead
+                        UIApplication.shared.victory()
+                    }
+                    .padding(.bottom)
                 }
             }
-            .contentShape(Rectangle())
-            .padding(.horizontal)
         }
     }
 }
