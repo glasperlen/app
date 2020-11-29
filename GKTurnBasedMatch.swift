@@ -9,6 +9,10 @@ extension GKTurnBasedMatch {
         }
     }
     
+    var play: Bool {
+        currentParticipant?.player == GKLocalPlayer.local
+    }
+    
     private var players: [GKTurnBasedParticipant] {
         participants
             .filter { $0.player != GKLocalPlayer.local }

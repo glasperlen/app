@@ -17,7 +17,7 @@ struct Header: View {
             .contentShape(Rectangle())
             Spacer()
             Image(systemName: "person.fill")
-                .opacity(session.play ? 1 : 0.3)
+                .opacity(session.me == session.match?.state ? 1 : 0.3)
             session.match.map {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color("User"))
@@ -33,7 +33,7 @@ struct Header: View {
             Text(verbatim: session.opponentName)
                 .bold()
                 .padding(.trailing)
-                .opacity(!session.play ? 1 : 0.3)
+                .opacity(session.me != session.match?.state ? 1 : 0.3)
         }
         .padding(.horizontal)
         .actionSheet(isPresented: $abandon) {

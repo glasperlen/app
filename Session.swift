@@ -21,12 +21,6 @@ struct Session {
         multiplayer?.state ?? .second
     }
     
-    var play: Bool {
-        guard let multiplayer = self.multiplayer else { return match?.state == .second }
-        guard multiplayer.currentParticipant?.player == GKLocalPlayer.local else { return false }
-        return me == match?.state
-    }
-    
     var opponent: Match.State {
         switch me {
         case .first: return .second

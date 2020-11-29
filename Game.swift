@@ -26,7 +26,7 @@ struct Game: View {
                     Board(session: $session, positions: $positions)
                         .padding(.top, 30)
                 }
-                if session.play {
+                if session.match?.state == session.me && session.multiplayer?.play != false {
                     Deck(session: $session, positions: $positions)
                 }
                 First(session: $session)

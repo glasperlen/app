@@ -13,7 +13,7 @@ extension Game {
                         Color("Background")
                             .opacity(0.95)
                             .edgesIgnoringSafeArea(.all)
-                        if session.play {
+                        if session.me == .first {
                             Text("Your turn")
                                 .transition(.slide)
                                 .font(Font.title.bold())
