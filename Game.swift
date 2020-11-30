@@ -19,7 +19,7 @@ struct Game: View {
                 }
             } else if session.match?.state == .matching {
                 Matching(session: $session)
-            } else {
+            } else if session.match?.state != .cancel {
                 VStack {
                     Header(session: $session)
                     Spacer()
@@ -28,6 +28,8 @@ struct Game: View {
                     .padding(.top, 30)
                 if session.match!.state == .play(session.match![Defaults.id]) {
                     Deck(session: $session, positions: $positions)
+                } else if !session.match![session.match![Defaults.id].negative].id.isEmpty {
+                    Refresh(session: $session)
                 }
                 Play(session: $session, turn: .first)
                 Play(session: $session, turn: .second)

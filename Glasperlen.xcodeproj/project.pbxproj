@@ -52,6 +52,7 @@
 		CEBE5394255019550059F12C /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE5393255019550059F12C /* Inventory.swift */; };
 		CEBE5398255023580059F12C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE5397255023580059F12C /* Background.swift */; };
 		CECC2FCE256BF19D002EE72C /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC2FCD256BF19D002EE72C /* Positions.swift */; };
+		CED6BA352575446C002C0699 /* Game.Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6BA342575446C002C0699 /* Game.Refresh.swift */; };
 		CED8913A256583030083C128 /* Bottle.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CED89138256583030083C128 /* Bottle.aiff */; };
 		CED8913B256583030083C128 /* Hero.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CED89139256583030083C128 /* Hero.aiff */; };
 		CED891432565840E0083C128 /* Basso.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CED891422565840E0083C128 /* Basso.aiff */; };
@@ -115,6 +116,7 @@
 		CEBE5393255019550059F12C /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		CEBE5397255023580059F12C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		CECC2FCD256BF19D002EE72C /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
+		CED6BA342575446C002C0699 /* Game.Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Refresh.swift; sourceTree = "<group>"; };
 		CED89138256583030083C128 /* Bottle.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Bottle.aiff; sourceTree = "<group>"; };
 		CED89139256583030083C128 /* Hero.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Hero.aiff; sourceTree = "<group>"; };
 		CED891422565840E0083C128 /* Basso.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Basso.aiff; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				CE7273BE2553FE0900A79BF2 /* Game.New.swift */,
 				CEDC6DB6257457600054F6F4 /* Game.Win.Item.swift */,
 				CE55B3D02567D5CF006D3F83 /* Game.Win.swift */,
+				CED6BA342575446C002C0699 /* Game.Refresh.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
 				CE2317352556E6470074CD22 /* Game.Title.swift */,
 				CED9E478256FC68600DF3273 /* GKTurnBasedMatch.swift */,
@@ -361,6 +364,7 @@
 				CEB4C6AC25627DFA0068AEE9 /* Store.Item.swift in Sources */,
 				CE7273BF2553FE0900A79BF2 /* Game.New.swift in Sources */,
 				CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */,
+				CED6BA352575446C002C0699 /* Game.Refresh.swift in Sources */,
 				CE4495B925496A4300ECA6C0 /* App.swift in Sources */,
 				CE6E727625542CA5000AB7D2 /* Bead.Base.swift in Sources */,
 				CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */,
