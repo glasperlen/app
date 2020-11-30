@@ -1,5 +1,4 @@
 import SwiftUI
-import GameKit
 
 extension Game {
     struct Matching: View {
@@ -13,17 +12,9 @@ extension Game {
             VStack {
                 Spacer()
                 Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
-                    session.match?.quitFirst()
-                    session.match = nil
-                    session.multiplayer?.quit()
-                    
-                    Defaults.id = nil
-                    session.multiplayer = nil
+                    session.match?.cancel()
                 }
                 .padding(.bottom)
-            }
-            .onAppear {
-                session.multiplayer?.saveCurrentTurn(withMatch: try! JSONEncoder().encode(session.match!))
             }
         }
     }

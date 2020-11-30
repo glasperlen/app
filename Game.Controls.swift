@@ -28,7 +28,7 @@ extension Game {
                                             session.match = .init()
                                         },
                                         .default(.init("Multiplayer")) {
-                                            UIApplication.shared.requestMatch()
+                                            UIApplication.shared.request()
                                         },
                                         .cancel()])
                     } else {

@@ -1,7 +1,7 @@
 import SwiftUI
 import Magister
 
-extension Game.Prize {
+extension Game.Win {
     struct Item: View {
         @Binding var selected: Magister.Bead?
         let bead: Magister.Bead

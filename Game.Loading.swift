@@ -11,14 +11,7 @@ extension Game {
             Color("Background")
                 .edgesIgnoringSafeArea(.all)
                 .onReceive(GKLocalPlayer.local.publisher(for: \.isAuthenticated).debounce(for: .seconds(1), scheduler: DispatchQueue.main)) { _ in
-                    guard GKLocalPlayer.local.isAuthenticated, session.multiplayer == nil, let id = Defaults.id else { return }
-                    GKTurnBasedMatch.load(withID: id) {
-                        error = $1?.localizedDescription
-                        session.multiplayer = $0
-                        session.multiplayer?.refresh {
-                            session.match = $0
-                        }
-                    }
+                    UIApplication.shared.load()
                 }
             if error == nil {
                 Text("Loading match...")

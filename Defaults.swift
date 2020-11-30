@@ -2,9 +2,9 @@ import Foundation
 import Magister
 
 final class Defaults: UserDefaults {
-    class var id: UUID {
-        guard let id = standard.object(forKey: Key.id.rawValue) as? UUID else {
-            let id = UUID()
+    class var id: String {
+        guard let id = standard.string(forKey: Key.id.rawValue) else {
+            let id = UUID().uuidString
             standard.setValue(id, forKey: Key.id.rawValue)
             return id
         }

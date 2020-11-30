@@ -1,18 +1,7 @@
 import GameKit
 import Magister
 
-extension GKTurnBasedMatch {
-    var state: Match.State {
-        switch GKLocalPlayer.local {
-        case participants.first?.player: return .first
-        default: return .second
-        }
-    }
-    
-    var play: Bool {
-        currentParticipant?.player == GKLocalPlayer.local
-    }
-    
+extension GKTurnBasedMatch {    
     private var players: [GKTurnBasedParticipant] {
         participants
             .filter { $0.player != GKLocalPlayer.local }
@@ -42,13 +31,19 @@ extension GKTurnBasedMatch {
         }
     }
     
-    func quit() {
+    func quit(_ completion: @escaping () -> Void) {
         if currentParticipant?.player == GKLocalPlayer.local {
-            participantQuitInTurn(with: .quit, nextParticipants: players, turnTimeout: 0, match: matchData ?? .init()) {
-                print($0)
+            participantQuitInTurn(with: .quit, nextParticipants: players, turnTimeout: 0, match: matchData ?? .init()) { [weak self] _ in
+                self?.remove { _ in
+                    completion()
+                }
             }
         } else {
-            participantQuitOutOfTurn(with: .quit)
+            participantQuitOutOfTurn(with: .quit) { [weak self] _ in
+                self?.remove { _ in
+                    completion()
+                }
+            }
         }
     }
 }

@@ -63,9 +63,8 @@ final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProducts
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transation)
             case .restored, .purchased:
-                print("tran")
                 DispatchQueue.main.async { [weak self] in
-                    self?.beads.send(Factory.beads(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
+                    self?.beads.send(Magister.Bead.make(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
                         .map { .init(selected: false, item: $0) })
                 }
                 SKPaymentQueue.default().finishTransaction(transation)

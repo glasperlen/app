@@ -24,9 +24,9 @@ extension Game {
                                     }
                                     .onEnded { _ in
                                         if let drop = positions.drop {
-                                            session.match?[drop] = bead.item
-                                            session.match.map {
-                                                session.multiplayer?.next($0, completion: nil)
+                                            session.match![drop] = bead.item
+                                            if case .play = session.match!.state {
+                                                
                                             }
                                         } else {
                                             withAnimation(.easeInOut(duration: 0.3)) {

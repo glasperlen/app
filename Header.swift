@@ -16,24 +16,28 @@ struct Header: View {
             }
             .contentShape(Rectangle())
             Spacer()
-            Image(systemName: "person.fill")
-                .opacity(session.me == session.match?.state ? 1 : 0.3)
+            session.match.map {
+                Image(systemName: "person.fill")
+                    .opacity($0.state == .play($0[Defaults.id]) ? 1 : 0.3)
+            }
             session.match.map {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color("User"))
-                    .frame(width: 10, height: $0[session.me] > $0[session.opponent] ? 20 : 10)
+                    .frame(width: 10, height: $0[$0[Defaults.id]] > $0[$0[Defaults.id].negative] ? 20 : 10)
                     .animation(.easeInOut(duration: 0.5))
             }
             session.match.map {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color("Opponent"))
-                    .frame(width: 10, height: $0[session.opponent] > $0[session.me] ? 20 : 10)
+                    .frame(width: 10, height: $0[$0[Defaults.id].negative] > $0[$0[Defaults.id]] ? 20 : 10)
                     .animation(.easeInOut(duration: 0.5))
             }
-            Text(verbatim: session.opponentName)
-                .bold()
-                .padding(.trailing)
-                .opacity(session.me != session.match?.state ? 1 : 0.3)
+            session.match.map {
+                Text(verbatim: $0[$0[Defaults.id].negative].name)
+                    .bold()
+                    .padding(.trailing)
+                    .opacity($0.state == .play($0[Defaults.id].negative) ? 1 : 0.3)
+            }
         }
         .padding(.horizontal)
         .actionSheet(isPresented: $abandon) {
@@ -41,14 +45,8 @@ struct Header: View {
                     .cancel(.init("Cancel")),
                     .destructive(.init("Quit")) {
                         session.play(.Bottle)
-                        if let multiplayer = session.multiplayer {
-                            Defaults.id = nil
-                            session.match = nil
-                            Defaults.match = nil
-                        } else {
-                            withAnimation(.easeInOut(duration: 0.5)) {
-                                session.match?.quitSecond()
-                            }
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            session.match?.quit(Defaults.id)
                         }
                     }])
         }

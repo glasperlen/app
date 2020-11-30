@@ -4,47 +4,29 @@ import Combine
 import Magister
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
-    static let match = PassthroughSubject<GKTurnBasedMatch, Never>()
-    static let data = PassthroughSubject<Match, Never>()
+    static let match = PassthroughSubject<Match, Never>()
+    private static var game: GKTurnBasedMatch?
 
     public func player(_ player: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
-        Self.match.send(receivedTurnEventFor)
+        Self.game = receivedTurnEventFor
         
-        if Defaults.id == nil {
+        if Defaults.game == nil {
             receivedTurnEventFor.refresh {
-                var match: Match
-                if let loaded = $0 {
-                    match = loaded
-                    match.matched()
-                } else {
-                    match = .init()
-                    match.multiplayer()
-                }
-                receivedTurnEventFor.next(match) {
-                    Defaults.id = receivedTurnEventFor.matchID
-                    Self.data.send(match)
-                }
+                var match = $0 ?? .init()
+                match.join(.user(Defaults.id, GKLocalPlayer.local.displayName, Defaults.beads.filter(\.selected).map(\.item)))
+                self.next(match)
+                Defaults.game = receivedTurnEventFor.matchID
+                Self.match.send(match)
             }
             windows.first?.rootViewController?.dismiss(animated: true)
         } else {
-            receivedTurnEventFor.refresh {
-                guard let match = $0 else { return }
-                Self.data.send(match)
-                
-                if didBecomeActive {
-                    if (match.state == .first && player != receivedTurnEventFor.participants.first?.player)
-                        || (match.state == .second && player != receivedTurnEventFor.participants.last?.player) {
-                        receivedTurnEventFor.next(match, completion: nil)
-                    }
-                }
-            }
+            refresh()
         }
     }
     
     public func player(_: GKPlayer, wantsToQuitMatch: GKTurnBasedMatch) {
-        Defaults.id = nil
-        Defaults.match = nil
-        wantsToQuitMatch.quit()
+        Self.game = wantsToQuitMatch
+        quit()
     }
     
     public func turnBasedMatchmakerViewController(_ controller: GKTurnBasedMatchmakerViewController, didFailWithError: Error) {
@@ -62,7 +44,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
                 if error == nil {
                     GKLocalPlayer.local.register(self)
                 } else {
-                    self.signIn()
+                    self.sign()
                 }
                 return
             }
@@ -72,7 +54,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
     
     func leaderboards() {
         guard GKLocalPlayer.local.isAuthenticated else {
-            signIn()
+            sign()
             return
         }
         GKAccessPoint.shared.trigger(state: .leaderboards) { }
@@ -84,9 +66,9 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         GKLeaderboard.submitScore(Defaults.victories, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["glasperlen.victories"]) { _ in }
     }
     
-    func requestMatch() {
+    func request() {
         guard GKLocalPlayer.local.isAuthenticated else {
-            signIn()
+            sign()
             return
         }
         let request = GKMatchRequest()
@@ -98,7 +80,26 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         present(controller)
     }
     
-    private func signIn() {
+    func load() {
+        guard GKLocalPlayer.local.isAuthenticated, let game = Defaults.game else { return }
+        GKTurnBasedMatch.load(withID: game) { game, id in
+            Self.game = game
+            self.refresh()
+        }
+    }
+    
+    func next(_ match: Match) {
+        Self.game?.next(match, completion: nil)
+    }
+    
+    func quit() {
+        Self.game?.quit {
+            Self.game = nil
+            Defaults.game = nil
+        }
+    }
+    
+    private func sign() {
         let alert = UIAlertController(title: "Game Center account not found", message: "You can sign in on Settings", preferredStyle: .actionSheet)
         alert.addAction(.init(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         alert.addAction(.init(title: NSLocalizedString("Settings", comment: ""), style: .default) { _ in
@@ -113,5 +114,20 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
             root = presented
         }
         root.present(controller, animated: true)
+    }
+    
+    private func refresh() {
+        Self.game?.refresh {
+            guard let match = $0 else { return }
+            Self.match.send(match)
+            
+            if GKLocalPlayer.local == Self.game?.currentParticipant?.player {
+                if case let .play(turn) = match.state {
+                    if match[turn].id != Defaults.id {
+                        Self.game?.next(match, completion: nil)
+                    }
+                }
+            }
+        }
     }
 }

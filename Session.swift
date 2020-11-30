@@ -6,6 +6,10 @@ import Magister
 struct Session {
     var match = Defaults.match {
         didSet {
+            guard Defaults.game == nil else {
+                Defaults.match = nil
+                return
+            }
             Defaults.match = match
         }
     }
@@ -39,5 +43,9 @@ struct Session {
     func impact() {
         guard Defaults.settings_vibrate else { return }
         haptics.impactOccurred()
+    }
+    
+    subscript (_ turn: Match.Turn) -> Bool {
+        match?[turn].id == Defaults.id 
     }
 }

@@ -15,10 +15,11 @@ extension Game {
                     .edgesIgnoringSafeArea(.all)
                     .onAppear {
                         var match = session.match!
-                        match.robot = .init(session.beads.filter { $0.selected }.map(\.item))
-                        name = match.robot!.name
+                        match.join(.user(Defaults.id, "", session.beads.filter { $0.selected }.map(\.item)))
+                        match.join(.robot(match[.first]))
+                        name = match[.second].name
                         
-                        let rolls = match.state == .second ? 6 : 7
+                        let rolls = match.state == .play(.first) ? 6 : 7
                         
                         (0 ..< rolls).forEach { roll in
                             DispatchQueue.main.asyncAfter(deadline: .now() + (0.2 * .init(roll))) {

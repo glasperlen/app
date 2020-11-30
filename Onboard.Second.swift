@@ -29,7 +29,7 @@ extension Onboard {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         session.play(.Hero)
                         withAnimation(.easeInOut(duration: 1)) {
-                            session.beads = Factory.beads().map { .init(selected: true, item: $0) }
+                            session.beads = Magister.Bead.make().map { .init(selected: true, item: $0) }
                         }
                     }
                 }
