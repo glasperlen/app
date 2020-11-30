@@ -3,9 +3,10 @@ import Foundation
 extension Defaults {
     enum Key: String {
         case
+        id,
         beads,
         match,
-        id,
+        game,
         victories,
         onboard_start,
         settings_sound,

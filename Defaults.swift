@@ -2,6 +2,15 @@ import Foundation
 import Magister
 
 final class Defaults: UserDefaults {
+    class var id: UUID {
+        guard let id = standard.object(forKey: Key.id.rawValue) as? UUID else {
+            let id = UUID()
+            standard.setValue(id, forKey: Key.id.rawValue)
+            return id
+        }
+        return id
+    }
+    
     class var beads: [Session.Bead] {
         get { standard.data(forKey: Key.beads.rawValue).flatMap { try? JSONDecoder().decode([Session.Bead].self, from: $0) } ?? .init() }
         set { try? standard.setValue(JSONEncoder().encode(newValue), forKey: Key.beads.rawValue) }
@@ -18,14 +27,14 @@ final class Defaults: UserDefaults {
         }
     }
     
-    class var id: String? {
-        get { standard.string(forKey: Key.id.rawValue) }
+    class var game: String? {
+        get { standard.string(forKey: Key.game.rawValue) }
         set {
-            guard let id = newValue else {
-                standard.removeObject(forKey: Key.id.rawValue)
+            guard let game = newValue else {
+                standard.removeObject(forKey: Key.game.rawValue)
                 return
             }
-            standard.setValue(id, forKey: Key.id.rawValue)
+            standard.setValue(game, forKey: Key.game.rawValue)
         }
     }
     

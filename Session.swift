@@ -2,7 +2,6 @@ import UIKit
 import Combine
 import AVFoundation
 import Magister
-import GameKit
 
 struct Session {
     var match = Defaults.match {
@@ -17,27 +16,8 @@ struct Session {
         }
     }
     
-    var me: Match.State {
-        multiplayer?.state ?? .second
-    }
-    
-    var opponent: Match.State {
-        switch me {
-        case .first: return .second
-        default: return .first
-        }
-    }
-    
-    var opponentName: String {
-        guard let multiplayer = self.multiplayer else {
-            return match?.robot?.name ?? ""
-        }
-        return multiplayer.participants.filter { $0.player != GKLocalPlayer.local }.first?.player?.displayName ?? ""
-    }
-    
-    var multiplayer: GKTurnBasedMatch?
     private var subs = Set<AnyCancellable>()
-    private var players = Set<AVAudioPlayer>()
+    private var audios = Set<AVAudioPlayer>()
     private let haptics = UIImpactFeedbackGenerator(style: .heavy)
     
     init() {
@@ -45,15 +25,15 @@ struct Session {
     }
     
     mutating func play(_ audio: Audio) {
-        players.filter { !$0.isPlaying }.forEach {
-            players.remove($0)
+        audios.filter { !$0.isPlaying }.forEach {
+            audios.remove($0)
         }
         guard
             Defaults.settings_sound,
-            let player = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: audio.rawValue, withExtension: "aiff")!)
+            let audio = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: audio.rawValue, withExtension: "aiff")!)
         else { return }
-        players.insert(player)
-        player.play()
+        audios.insert(audio)
+        audio.play()
     }
     
     func impact() {
