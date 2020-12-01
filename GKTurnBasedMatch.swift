@@ -10,8 +10,6 @@ extension GKTurnBasedMatch {
         participants
             .filter { $0.player != GKLocalPlayer.local }
             .filter { $0.status != .declined }
-            .filter { $0.status != .done }
-            .filter { $0.status != .unknown }
             + participants.filter { $0.player == GKLocalPlayer.local }
     }
     
@@ -24,6 +22,13 @@ extension GKTurnBasedMatch {
             completion($0.flatMap {
                 try? JSONDecoder().decode(Match.self, from: $0)
             })
+        }
+    }
+    
+    func save(_ match: Match) {
+        guard active else { return }
+        (try? JSONEncoder().encode(match)).map {
+            saveCurrentTurn(withMatch: $0, completionHandler: nil)
         }
     }
     

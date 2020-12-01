@@ -12,9 +12,10 @@ extension Game {
                 Spacer()
                 if wait != nil {
                     Timer(session: $session, wait: wait!)
+                        .padding(.bottom)
                 }
                 Control.Circle(image: "arrow.clockwise") {
-                    UIApplication.shared.refresh()
+                    UIApplication.shared.load()
                     withAnimation(.easeInOut(duration: 0.3)) {
                         visible = false
                     }

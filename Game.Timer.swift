@@ -9,20 +9,13 @@ extension Game {
         var body: some View {
             if session.match?[wait.player.negative].id.isEmpty == false {
                 VStack {
-                    HStack {
-                        Text("Times out in")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                            .padding(.leading)
-                        Spacer()
+                    if !session[wait.player] {
+                        Text("Waiting")
+                            .font(.caption2)
                     }
-                    HStack {
-                        Text(wait.timeout, style: .relative)
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                            .padding(.leading)
-                        Spacer()
-                    }
+                    Text(wait.timeout, style: .relative)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
                 }
             }
         }

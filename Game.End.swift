@@ -39,7 +39,15 @@ extension Game {
                     .padding(.bottom)
                 }
             }.onAppear {
-                if !session[result.winner] {
+                if session[result.winner] {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        session.beads.append(.init(selected: false, item: result.bead))
+                        UIApplication.shared.victory()
+                        UIApplication.shared.remove()
+                        session.match = nil
+                        Defaults.game = nil
+                    }
+                } else {
                     session.beads.removeAll { $0.item == result.bead }
                     visible = true
                 }

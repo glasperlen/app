@@ -26,7 +26,7 @@ extension Game {
                         }
                         HStack {
                             session.match.map {
-                                Text("\($0[wait.player].name) is choosing a prize")
+                                Text("\($0[wait.player.negative].name) is choosing a prize")
                                     .padding(.horizontal)
                             }
                             Spacer()

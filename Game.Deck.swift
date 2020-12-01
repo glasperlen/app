@@ -12,6 +12,7 @@ extension Game {
             VStack {
                 Spacer()
                 Timer(session: $session, wait: wait)
+                    .padding(.bottom)
                 HStack {
                     ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.item.id) { bead in
                         Spacer()
@@ -28,7 +29,7 @@ extension Game {
                                     .onEnded { _ in
                                         if let drop = positions.drop {
                                             session.match![drop] = bead.item
-                                            UIApplication.shared.next(session.match!, completion: nil)
+                                            UIApplication.shared.next(session.match!)
                                         } else {
                                             withAnimation(.easeInOut(duration: 0.3)) {
                                                 offset[bead.item.id] = nil

@@ -14,7 +14,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
             receivedTurnEventFor.refresh {
                 var match = $0 ?? .init()
                 match.join(.user(Defaults.id, GKLocalPlayer.local.displayName, Defaults.beads.filter(\.selected).map(\.item)))
-                self.next(match, completion: nil)
+                self.next(match)
                 Defaults.game = receivedTurnEventFor.matchID
                 Self.match.send(match)
             }
@@ -88,27 +88,8 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         }
     }
     
-    func refresh() {
-        Self.game?.refresh {
-            guard var match = $0 else { return }
-            if Self.game?.active == true {
-                switch match.state {
-                case let .play(wait), let .win(wait), let .timeout(wait):
-                    if wait.timeout < .init() {
-                        match.timeout()
-                        Self.game?.next(match, completion: nil)
-                    } else if match[wait.player].id != Defaults.id {
-                        Self.game?.next(match, completion: nil)
-                    }
-                default: break
-                }
-            }
-            Self.match.send(match)
-        }
-    }
-    
-    func next(_ match: Match, completion: (() -> Void)?) {
-        Self.game?.next(match, completion: completion)
+    func next(_ match: Match) {
+        Self.game?.next(match, completion: nil)
     }
     
     func remove() {
@@ -125,6 +106,47 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         Self.game?.quit {
             Self.game = nil
             Defaults.game = nil
+        }
+    }
+    
+    private func refresh() {
+        Self.game?.refresh {
+            guard var match = $0 else { return }
+            if Self.game?.active == true {
+                if case let .play(wait) = match.state {
+                    if wait.timeout < .init() {
+                        match.timeout()
+                        if case let .timeout(next) = match.state {
+                            if match[next.player.negative].id == Defaults.id {
+                                Self.game?.save(match)
+                            } else {
+                                Self.game?.next(match, completion: nil)
+                            }
+                        }
+                    } else if match[wait.player].id != Defaults.id {
+                        Self.game?.next(match, completion: nil)
+                    }
+                } else if case let .win(wait) = match.state {
+                    if wait.timeout < .init() {
+                        match.timeout()
+                        Self.game?.next(match, completion: nil)
+                    } else if match[wait.player].id != Defaults.id {
+                        Self.game?.next(match, completion: nil)
+                    }
+                } else if case let .timeout(wait) = match.state {
+                    if wait.timeout < .init() {
+                        match.timeout()
+                        Self.game?.next(match, completion: nil)
+                    } else if match[wait.player].id == Defaults.id {
+                        Self.game?.next(match, completion: nil)
+                    }
+                } else if case let .end(result) = match.state {
+                    if match[result.winner].id == Defaults.id {
+                        Self.game?.next(match, completion: nil)
+                    }
+                }
+            }
+            Self.match.send(match)
         }
     }
     

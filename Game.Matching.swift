@@ -13,7 +13,7 @@ extension Game {
                     .foregroundColor(.secondary)
                 Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
                     session.match!.cancel()
-                    UIApplication.shared.next(session.match!, completion: nil)
+                    UIApplication.shared.next(session.match!)
                 }
                 .padding(.vertical)
                 Spacer()

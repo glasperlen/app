@@ -51,7 +51,7 @@ struct Header: View {
                     .destructive(.init("Quit")) {
                         session.play(.Bottle)
                         session.match!.quit(Defaults.id)
-                        UIApplication.shared.next(session.match!, completion: nil)
+                        UIApplication.shared.next(session.match!)
                     }])
         }
     }

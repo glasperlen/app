@@ -38,15 +38,8 @@ extension Game {
             if selected != nil {
                 Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
                     guard let bead = selected else { return }
-                    selected = nil
-                    session.beads.append(.init(selected: false, item: bead))
                     session.match!.prize(bead)
-                    UIApplication.shared.next(session.match!) {
-                        UIApplication.shared.victory()
-                        UIApplication.shared.remove()
-                        session.match = nil
-                        Defaults.game = nil
-                    }
+                    UIApplication.shared.next(session.match!)
                 }
                 .padding(.bottom)
             }
