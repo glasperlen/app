@@ -38,8 +38,9 @@ extension Game {
                                 guard let bead = selected else { return }
                                 selected = nil
                                 session.beads.append(.init(selected: false, item: bead))
-                                session.match?.prize(bead)
+                                session.match!.prize(bead)
                                 UIApplication.shared.victory()
+                                UIApplication.shared.next(session.match!)
                             }
                             .padding(.bottom)
                         }

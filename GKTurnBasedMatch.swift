@@ -1,7 +1,11 @@
 import GameKit
 import Magister
 
-extension GKTurnBasedMatch {    
+extension GKTurnBasedMatch {
+    var active: Bool {
+        currentParticipant?.player == GKLocalPlayer.local
+    }
+    
     private var players: [GKTurnBasedParticipant] {
         participants
             .filter { $0.player != GKLocalPlayer.local }
@@ -24,6 +28,7 @@ extension GKTurnBasedMatch {
     }
     
     func next(_ match: Match, completion: (() -> Void)?) {
+        guard active else { return }
         (try? JSONEncoder().encode(match)).map {
             endTurn(withNextParticipants: players, turnTimeout: 10000, match: $0) { error in
                 completion?()
@@ -31,8 +36,20 @@ extension GKTurnBasedMatch {
         }
     }
     
+    func end(_ completion: @escaping () -> Void) {
+        guard active else { return }
+        participants.forEach {
+            $0.matchOutcome = $0.player == GKLocalPlayer.local ? .lost : .won
+        }
+        endMatchInTurn(withMatch: .init()) { [weak self] _ in
+//            self?.remove { _ in
+                completion()
+//            }
+        }
+    }
+    
     func quit(_ completion: @escaping () -> Void) {
-        if currentParticipant?.player == GKLocalPlayer.local {
+        if active {
             participantQuitInTurn(with: .quit, nextParticipants: players, turnTimeout: 0, match: matchData ?? .init()) { [weak self] _ in
                 self?.remove { _ in
                     completion()

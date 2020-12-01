@@ -29,8 +29,11 @@ extension Game {
                         .padding(.top)
                     Text("removed from your inventory.")
                     Spacer()
-                    Control.Capsule(text: "Done", background: .primary, foreground: .init("Background"), action: done)
-                        .padding(.bottom)
+                    Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
+                        UIApplication.shared.end()
+                        done()
+                    }
+                    .padding(.bottom)
                 }
             }.onAppear {
                 if session.beads.contains(where: { $0.item == bead }) {
