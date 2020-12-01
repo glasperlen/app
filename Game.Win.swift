@@ -24,7 +24,7 @@ extension Game {
                                 .padding(.top)
                             Spacer()
                         }
-                        Prize(session: $session, beads: session.match?[wait.player.negative].beads ?? [])
+                        Prize(session: $session, wait: wait, beads: session.match?[wait.player.negative].beads ?? [])
                     } else {
                         HStack {
                             Text("You loose!")

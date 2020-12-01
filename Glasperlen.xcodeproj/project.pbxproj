@@ -46,6 +46,7 @@
 		CE83135D256E8EA20014EEA4 /* Game.Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83135C256E8EA20014EEA4 /* Game.Loading.swift */; };
 		CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */; };
 		CEA923CA257688A800273861 /* Game.Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA923C9257688A800273861 /* Game.Cancel.swift */; };
+		CEA923CE25768F4300273861 /* Game.Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA923CD25768F4300273861 /* Game.Timer.swift */; };
 		CEAEB56425557CDB0046E4E9 /* Game.Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEB56325557CDB0046E4E9 /* Game.Card.swift */; };
 		CEB4C69E25627A5D0068AEE9 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C69D25627A5D0068AEE9 /* Store.swift */; };
 		CEB4C6A425627CD50068AEE9 /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C6A325627CD50068AEE9 /* Purchases.swift */; };
@@ -114,6 +115,7 @@
 		CE83135C256E8EA20014EEA4 /* Game.Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Loading.swift; sourceTree = "<group>"; };
 		CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Third.swift; sourceTree = "<group>"; };
 		CEA923C9257688A800273861 /* Game.Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Cancel.swift; sourceTree = "<group>"; };
+		CEA923CD25768F4300273861 /* Game.Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Timer.swift; sourceTree = "<group>"; };
 		CEAEB56325557CDB0046E4E9 /* Game.Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Card.swift; sourceTree = "<group>"; };
 		CEB4C69D25627A5D0068AEE9 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		CEB4C6A325627CD50068AEE9 /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				CED6BA342575446C002C0699 /* Game.Refresh.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
 				CE4B648F25766D9F00CD3ED4 /* Game.Timeout.swift */,
+				CEA923CD25768F4300273861 /* Game.Timer.swift */,
 				CE2317352556E6470074CD22 /* Game.Title.swift */,
 				CE55B3D02567D5CF006D3F83 /* Game.Win.swift */,
 				CED9E478256FC68600DF3273 /* GKTurnBasedMatch.swift */,
@@ -353,6 +356,7 @@
 				CE73E551256D43B300406EA8 /* Game.Play.swift in Sources */,
 				CEB4C6A725627D130068AEE9 /* Purchases.Item.swift in Sources */,
 				CEE409B0254B242C00A9D5EB /* Control.Style.swift in Sources */,
+				CEA923CE25768F4300273861 /* Game.Timer.swift in Sources */,
 				CEE409AC254B1DCA00A9D5EB /* Onboard.swift in Sources */,
 				CE7273BC2553F88400A79BF2 /* Game.Controls.swift in Sources */,
 				CE2535FD255967BC00DBA035 /* Defaults.swift in Sources */,

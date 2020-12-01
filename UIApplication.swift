@@ -90,20 +90,20 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
     
     func refresh() {
         Self.game?.refresh {
-            guard let match = $0 else { return }
-            Self.match.send(match)
-            
+            guard var match = $0 else { return }
             if Self.game?.active == true {
-                if case let .play(wait) = match.state {
-                    if match[wait.player].id != Defaults.id {
+                switch match.state {
+                case let .play(wait), let .win(wait), let .timeout(wait):
+                    if wait.timeout < .init() {
+                        match.timeout()
+                        Self.game?.next(match, completion: nil)
+                    } else if match[wait.player].id != Defaults.id {
                         Self.game?.next(match, completion: nil)
                     }
-                } else if case let .win(wait) = match.state {
-                    if match[wait.player].id != Defaults.id {
-                        Self.game?.next(match, completion: nil)
-                    }
+                default: break
                 }
             }
+            Self.match.send(match)
         }
     }
     

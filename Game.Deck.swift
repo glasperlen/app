@@ -1,14 +1,17 @@
 import SwiftUI
+import Magister
 
 extension Game {
     struct Deck: View {
         @Binding var session: Session
         @Binding var positions: Positions
+        let wait: Match.Wait
         @State private var offset = [UUID : CGSize]()
         
         var body: some View {
             VStack {
                 Spacer()
+                Timer(session: $session, wait: wait)
                 HStack {
                     ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.item.id) { bead in
                         Spacer()

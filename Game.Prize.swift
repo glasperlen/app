@@ -4,6 +4,7 @@ import Magister
 extension Game {
     struct Prize: View {
         @Binding var session: Session
+        let wait: Match.Wait
         let beads: [Magister.Bead]
         @State private var selected: Magister.Bead?
         
@@ -13,6 +14,7 @@ extension Game {
                     .padding(.leading)
                 Spacer()
             }
+            Timer(session: $session, wait: wait)
             ForEach(beads) { bead in
                 Button {
                     withAnimation(.easeInOut(duration: 0.5)) {

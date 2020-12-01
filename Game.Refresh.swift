@@ -1,13 +1,18 @@
 import SwiftUI
+import Magister
 
 extension Game {
     struct Refresh: View {
         @Binding var session: Session
+        let wait: Match.Wait?
         @State private var visible = false
         
         var body: some View {
             VStack {
                 Spacer()
+                if wait != nil {
+                    Timer(session: $session, wait: wait!)
+                }
                 Control.Circle(image: "arrow.clockwise") {
                     UIApplication.shared.refresh()
                     withAnimation(.easeInOut(duration: 0.3)) {

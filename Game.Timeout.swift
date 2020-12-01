@@ -42,7 +42,7 @@ extension Game {
                             }
                             Spacer()
                         }
-                        Prize(session: $session, beads: session.match?[wait.player].beads ?? [])
+                        Prize(session: $session, wait: wait, beads: session.match?[wait.player].beads ?? [])
                     }
                 }
             }

@@ -21,7 +21,7 @@ struct Game: View {
                 Cancel(session: $session)
             } else if session.match?.state == .matching {
                 Matching(session: $session)
-                Refresh(session: $session)
+                Refresh(session: $session, wait: nil)
             } else if case let .end(result) = session.match?.state {
                 End(session: $session, result: result)
             } else {
@@ -30,22 +30,22 @@ struct Game: View {
                 if case let .play(wait) = session.match?.state {
                     Header(session: $session, turn: wait.player)
                     if session[wait.player] {
-                        Deck(session: $session, positions: $positions)
+                        Deck(session: $session, positions: $positions, wait: wait)
                     } else {
-                        Refresh(session: $session)
+                        Refresh(session: $session, wait: wait)
                     }
                     Play(session: $session, wait: wait)
                 }
                 if case let .win(wait) = session.match?.state {
                     Win(session: $session, wait: wait)
                     if !session[wait.player] {
-                        Refresh(session: $session)
+                        Refresh(session: $session, wait: wait)
                     }
                 }
                 if case let .timeout(wait) = session.match?.state {
                     Timeout(session: $session, wait: wait)
                     if session[wait.player] {
-                        Refresh(session: $session)
+                        Refresh(session: $session, wait: wait)
                     }
                 }
                 New(session: $session)
