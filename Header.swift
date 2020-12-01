@@ -6,15 +6,19 @@ struct Header: View {
     
     var body: some View {
         HStack {
-            Button {
-                abandon = true
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(.init("Opponent"))
-                    .font(.title3)
-                    .frame(width: 50, height: 40)
+            session.match.map {
+                Button {
+                    abandon = true
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.init("Opponent"))
+                        .font(.title3)
+                        .frame(width: 50, height: 40)
+                }
+                .contentShape(Rectangle())
+                .allowsHitTesting($0.state == .play($0[Defaults.id]))
+                .opacity($0.state == .play($0[Defaults.id]) ? 1 : 0)
             }
-            .contentShape(Rectangle())
             Spacer()
             session.match.map {
                 Image(systemName: "person.fill")
@@ -45,9 +49,8 @@ struct Header: View {
                     .cancel(.init("Cancel")),
                     .destructive(.init("Quit")) {
                         session.play(.Bottle)
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            session.match?.quit(Defaults.id)
-                        }
+                        session.match!.quit(Defaults.id)
+                        UIApplication.shared.next(session.match!, completion: nil)
                     }])
         }
     }
