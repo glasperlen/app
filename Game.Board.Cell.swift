@@ -36,7 +36,8 @@ extension Game.Board {
                         .padding(5)
                 }
             }
-            .onChange(of: session.match?[point]?.player) { [old = session.match?[point]?.player] player in
+            .onChange(of: session.match?[point]?.player) { [old = session.match?[point]?.player] in
+                guard let player = $0 else { return }
                 if old == nil {
                     session.play(.Tink)
                 } else {
@@ -44,7 +45,7 @@ extension Game.Board {
                 }
                 
                 withAnimation(.easeInOut(duration: 0.4)) {
-                    flash = session[player!] ? Color("User") : .init("Opponent")
+                    flash = session[player] ? Color("User") : .init("Opponent")
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {

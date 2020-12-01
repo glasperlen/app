@@ -19,6 +19,7 @@ struct Game: View {
                 }
             } else if session.match?.state == .matching {
                 Matching(session: $session)
+                Refresh(session: $session)
             } else if case let .end(bead) = session.match?.state {
                 End(session: $session, bead: bead)
             } else if session.match?.state != .cancel {
@@ -28,22 +29,18 @@ struct Game: View {
                 }
                 Board(session: $session, positions: $positions)
                     .padding(.top, 30)
+                Win(session: $session, turn: .first)
+                Win(session: $session, turn: .second)
                 if session.match!.state == .play(session.match![Defaults.id]) {
                     Deck(session: $session, positions: $positions)
-                } else if !session.match![session.match![Defaults.id].negative].id.isEmpty {
+                } else if session.match!.state == .play(session.match![Defaults.id].negative) {
+                    Refresh(session: $session)
+                } else if session.match!.state == .win(session.match![Defaults.id].negative) {
                     Refresh(session: $session)
                 }
                 Play(session: $session, turn: .first)
                 Play(session: $session, turn: .second)
-                Win(session: $session, turn: .first)
-                Win(session: $session, turn: .second)
                 New(session: $session)
-            }
-        }
-        .onChange(of: session.match?.state) {
-            if $0 == .cancel {
-                session.match = nil
-                UIApplication.shared.quit()
             }
         }
         .onReceive(UIApplication.match) {

@@ -7,14 +7,18 @@ extension Game {
         var body: some View {
             Color("Background")
                 .edgesIgnoringSafeArea(.all)
-            Text("Waiting for second player...")
-                .foregroundColor(.secondary)
             VStack {
                 Spacer()
+                Text("Waiting for second player...")
+                    .foregroundColor(.secondary)
                 Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
                     session.match?.cancel()
+                    UIApplication.shared.quit()
+                    Defaults.game = nil
+                    session.match = nil
                 }
-                .padding(.bottom)
+                .padding(.vertical)
+                Spacer()
             }
         }
     }

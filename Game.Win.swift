@@ -39,8 +39,12 @@ extension Game {
                                 selected = nil
                                 session.beads.append(.init(selected: false, item: bead))
                                 session.match!.prize(bead)
-                                UIApplication.shared.victory()
-                                UIApplication.shared.next(session.match!)
+                                UIApplication.shared.next(session.match!) {
+                                    UIApplication.shared.victory()
+                                    UIApplication.shared.remove()
+                                    session.match = nil
+                                    Defaults.game = nil
+                                }
                             }
                             .padding(.bottom)
                         }

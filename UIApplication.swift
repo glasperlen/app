@@ -14,7 +14,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
             receivedTurnEventFor.refresh {
                 var match = $0 ?? .init()
                 match.join(.user(Defaults.id, GKLocalPlayer.local.displayName, Defaults.beads.filter(\.selected).map(\.item)))
-                self.next(match)
+                self.next(match, completion: nil)
                 Defaults.game = receivedTurnEventFor.matchID
                 Self.match.send(match)
             }
@@ -107,8 +107,12 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         }
     }
     
-    func next(_ match: Match) {
-        Self.game?.next(match, completion: nil)
+    func next(_ match: Match, completion: (() -> Void)?) {
+        Self.game?.next(match, completion: completion)
+    }
+    
+    func remove() {
+        Self.game?.remove(completionHandler: nil)
     }
     
     func end() {

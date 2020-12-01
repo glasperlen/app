@@ -42,9 +42,9 @@ extension GKTurnBasedMatch {
             $0.matchOutcome = $0.player == GKLocalPlayer.local ? .lost : .won
         }
         endMatchInTurn(withMatch: .init()) { [weak self] _ in
-//            self?.remove { _ in
+            self?.remove { _ in
                 completion()
-//            }
+            }
         }
     }
     

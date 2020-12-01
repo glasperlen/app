@@ -31,24 +31,20 @@ extension Game {
                     Spacer()
                     Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
                         UIApplication.shared.end()
-                        done()
+                        withAnimation(.easeInOut(duration: 1)) {
+                            session.match = nil
+                            Defaults.game = nil
+                        }
                     }
                     .padding(.bottom)
                 }
             }.onAppear {
-                if session.beads.contains(where: { $0.item == bead }) {
-                    session.beads.removeAll { $0.item == bead }
-                    visible = true
-                } else {
-                    done()
+                session.match.map {
+                    if $0[$0[Defaults.id]] < $0[$0[Defaults.id].negative] {
+                        session.beads.removeAll { $0.item == bead }
+                        visible = true
+                    }
                 }
-            }
-        }
-        
-        private func done() {
-            withAnimation(.easeInOut(duration: 1)) {
-                session.match = nil
-                Defaults.game = nil
             }
         }
     }
