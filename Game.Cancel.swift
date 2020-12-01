@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Game {
-    struct Matching: View {
+    struct Cancel: View {
         @Binding var session: Session
         
         var body: some View {
@@ -9,11 +9,12 @@ extension Game {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
-                Text("Waiting for second player...")
+                Text("Game was cancelled")
                     .foregroundColor(.secondary)
-                Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
-                    session.match!.cancel()
-                    UIApplication.shared.next(session.match!, completion: nil)
+                Control.Capsule(text: "Done", background: .primary, foreground: .black) {
+                    UIApplication.shared.quit()
+                    Defaults.game = nil
+                    session.match = nil
                 }
                 .padding(.vertical)
                 Spacer()

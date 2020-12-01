@@ -2,13 +2,13 @@ import SwiftUI
 import Magister
 
 extension Game {
-    struct Win: View {
+    struct Timeout: View {
         @Binding var session: Session
         @State private var selected: Magister.Bead?
         let wait: Match.Wait
         
         var body: some View {
-            Card(session: $session, state: .win(wait)) {
+            Card(session: $session, state: .timeout(wait)) {
                 Color("Background")
                     .opacity(0.95)
                     .edgesIgnoringSafeArea(.all)
@@ -18,16 +18,7 @@ extension Game {
                         .padding(.top)
                     if session[wait.player] {
                         HStack {
-                            Text("You win!")
-                                .font(Font.largeTitle.bold())
-                                .padding(.leading)
-                                .padding(.top)
-                            Spacer()
-                        }
-                        Prize(session: $session, beads: session.match?[wait.player.negative].beads ?? [])
-                    } else {
-                        HStack {
-                            Text("You loose!")
+                            Text("You timed out!")
                                 .font(Font.largeTitle.bold())
                                 .padding(.leading)
                                 .padding(.top)
@@ -40,16 +31,18 @@ extension Game {
                             }
                             Spacer()
                         }
-                        .onAppear {
-                            session.match.map { match in
-                                if match[wait.player].id.isEmpty {
-                                    withAnimation(.easeInOut(duration: 1)) {
-                                        session.match?.prize(match[wait.player.negative].beads.randomElement()!)
-                                    }
-                                }
-                            }
-                        }
                         Spacer()
+                    } else {
+                        HStack {
+                            session.match.map {
+                                Text("\($0[wait.player].name) timed out")
+                                    .font(Font.largeTitle.bold())
+                                    .padding(.leading)
+                                    .padding(.top)
+                            }
+                            Spacer()
+                        }
+                        Prize(session: $session, beads: session.match?[wait.player].beads ?? [])
                     }
                 }
             }

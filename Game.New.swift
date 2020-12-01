@@ -19,7 +19,12 @@ extension Game {
                         match.join(.robot(match[.first]))
                         name = match[.second].name
                         
-                        let rolls = match.state == .play(.first) ? 6 : 7
+                        var rolls = 7
+                        if case let .play(wait) = match.state {
+                            if wait.player == .first {
+                                rolls = 6
+                            }
+                        }
                         
                         (0 ..< rolls).forEach { roll in
                             DispatchQueue.main.asyncAfter(deadline: .now() + (0.2 * .init(roll))) {

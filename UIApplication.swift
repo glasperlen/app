@@ -94,12 +94,12 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
             Self.match.send(match)
             
             if Self.game?.active == true {
-                if case let .play(turn) = match.state {
-                    if match[turn].id != Defaults.id {
+                if case let .play(wait) = match.state {
+                    if match[wait.player].id != Defaults.id {
                         Self.game?.next(match, completion: nil)
                     }
-                } else if case let .win(turn) = match.state {
-                    if match[turn].id != Defaults.id {
+                } else if case let .win(wait) = match.state {
+                    if match[wait.player].id != Defaults.id {
                         Self.game?.next(match, completion: nil)
                     }
                 }

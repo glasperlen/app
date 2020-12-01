@@ -4,7 +4,7 @@ import Magister
 extension Game {
     struct End: View {
         @Binding var session: Session
-        let bead: Magister.Bead
+        let result: Match.Result
         @State private var visible = false
         
         var body: some View {
@@ -22,7 +22,7 @@ extension Game {
                         Circle()
                             .fill(Color.black.opacity(0.2))
                             .frame(width: 80, height: 80)
-                        Bead(bead: bead)
+                        Bead(bead: result.bead)
                     }
                     .padding(.top, 50)
                     Text("This bead will be")
@@ -39,11 +39,9 @@ extension Game {
                     .padding(.bottom)
                 }
             }.onAppear {
-                session.match.map {
-                    if $0[$0[Defaults.id]] < $0[$0[Defaults.id].negative] {
-                        session.beads.removeAll { $0.item == bead }
-                        visible = true
-                    }
+                if !session[result.winner] {
+                    session.beads.removeAll { $0.item == result.bead }
+                    visible = true
                 }
             }
         }
