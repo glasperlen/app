@@ -25,9 +25,7 @@ extension Game {
                                     .onEnded { _ in
                                         if let drop = positions.drop {
                                             session.match![drop] = bead.item
-                                            if case .play = session.match!.state {
-                                                UIApplication.shared.next(session.match!)
-                                            }
+                                            UIApplication.shared.next(session.match!)
                                         } else {
                                             withAnimation(.easeInOut(duration: 0.3)) {
                                                 offset[bead.item.id] = nil

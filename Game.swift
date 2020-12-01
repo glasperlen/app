@@ -19,6 +19,8 @@ struct Game: View {
                 }
             } else if session.match?.state == .matching {
                 Matching(session: $session)
+            } else if case let .end(bead) = session.match?.state {
+                End(session: $session, bead: bead)
             } else if session.match?.state != .cancel {
                 VStack {
                     Header(session: $session)
@@ -42,11 +44,6 @@ struct Game: View {
             if $0 == .cancel {
                 session.match = nil
                 UIApplication.shared.quit()
-            } else if case let .end(bead) = $0 {
-                withAnimation(.easeInOut(duration: 1)) {
-                    session.match = nil
-                    Defaults.game = nil
-                }
             }
         }
         .onReceive(UIApplication.match) {

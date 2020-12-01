@@ -13,18 +13,18 @@ extension Game {
                     withAnimation(.easeInOut(duration: 0.3)) {
                         visible = false
                     }
-                    withAnimation(Animation.easeInOut(duration: 0.3).delay(6)) {
-                        visible = true
-                    }
+                    refresh()
                 }
                 .padding()
                 .opacity(visible ? 1 : 0)
                 .allowsHitTesting(visible)
             }
-            .onAppear {
-                withAnimation(Animation.easeInOut(duration: 0.3).delay(6)) {
-                    visible = true
-                }
+            .onAppear(perform: refresh)
+        }
+        
+        private func refresh() {
+            withAnimation(Animation.easeInOut(duration: 0.3).delay(10)) {
+                visible = true
             }
         }
     }

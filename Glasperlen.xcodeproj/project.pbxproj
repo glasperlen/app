@@ -16,6 +16,7 @@
 		CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DF25642A5200A2CD60 /* Pack.swift */; };
 		CE4495B925496A4300ECA6C0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4495B825496A4300ECA6C0 /* App.swift */; };
 		CE4495BD25496A4300ECA6C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4495BC25496A4300ECA6C0 /* Assets.xcassets */; };
+		CE4B648C2576490C00CD3ED4 /* Game.End.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B648B2576490C00CD3ED4 /* Game.End.swift */; };
 		CE55B3C62567C649006D3F83 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE55B3C52567C649006D3F83 /* Settings.bundle */; };
 		CE55B3D12567D5CF006D3F83 /* Game.Win.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55B3D02567D5CF006D3F83 /* Game.Win.swift */; };
 		CE60EDB0254D8D26007056BC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE60EDAF254D8D26007056BC /* Color.swift */; };
@@ -81,6 +82,7 @@
 		CE4495B825496A4300ECA6C0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CE4495BC25496A4300ECA6C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE4495C125496A4300ECA6C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE4B648B2576490C00CD3ED4 /* Game.End.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.End.swift; sourceTree = "<group>"; };
 		CE55B3C52567C649006D3F83 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CE55B3D02567D5CF006D3F83 /* Game.Win.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Win.swift; sourceTree = "<group>"; };
 		CE60EDAF254D8D26007056BC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				CEDC6DB6257457600054F6F4 /* Game.Win.Item.swift */,
 				CE55B3D02567D5CF006D3F83 /* Game.Win.swift */,
 				CED6BA342575446C002C0699 /* Game.Refresh.swift */,
+				CE4B648B2576490C00CD3ED4 /* Game.End.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
 				CE2317352556E6470074CD22 /* Game.Title.swift */,
 				CED9E478256FC68600DF3273 /* GKTurnBasedMatch.swift */,
@@ -357,6 +360,7 @@
 				CECC2FCE256BF19D002EE72C /* Positions.swift in Sources */,
 				CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */,
 				CEECC8E1256697DD00395B05 /* Menu.Switch.swift in Sources */,
+				CE4B648C2576490C00CD3ED4 /* Game.End.swift in Sources */,
 				CE60EDBC254DA523007056BC /* Bead.swift in Sources */,
 				CE55B3D12567D5CF006D3F83 /* Game.Win.swift in Sources */,
 				CE65FC38254C3B8A000A78C1 /* Onboard.Second.swift in Sources */,

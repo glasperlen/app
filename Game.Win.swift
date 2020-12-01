@@ -16,31 +16,59 @@ extension Game {
                     Text("Game Over")
                         .bold()
                         .padding(.top)
-                    HStack {
-                        Text("You win!")
-                            .font(Font.largeTitle.bold())
-                            .padding(.leading)
-                            .padding(.top)
-                        Spacer()
-                    }
-                    HStack {
-                        Text("Choose your prize")
-                            .padding(.leading)
-                        Spacer()
-                    }
-                    ForEach(session.match?[turn.negative].beads ?? []) {
-                        Item(selected: $selected, bead: $0)
-                    }
-                    Spacer()
-                    if selected != nil {
-                        Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
-                            guard let bead = selected else { return }
-                            selected = nil
-                            session.beads.append(.init(selected: false, item: bead))
-                            session.match?.prize(bead)
-                            UIApplication.shared.victory()
+                    if session[turn] {
+                        HStack {
+                            Text("You win!")
+                                .font(Font.largeTitle.bold())
+                                .padding(.leading)
+                                .padding(.top)
+                            Spacer()
                         }
-                        .padding(.bottom)
+                        HStack {
+                            Text("Choose your prize")
+                                .padding(.leading)
+                            Spacer()
+                        }
+                        ForEach(session.match?[turn.negative].beads ?? []) {
+                            Item(selected: $selected, bead: $0)
+                        }
+                        Spacer()
+                        if selected != nil {
+                            Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
+                                guard let bead = selected else { return }
+                                selected = nil
+                                session.beads.append(.init(selected: false, item: bead))
+                                session.match?.prize(bead)
+                                UIApplication.shared.victory()
+                            }
+                            .padding(.bottom)
+                        }
+                    } else {
+                        HStack {
+                            Text("You loose!")
+                                .font(Font.largeTitle.bold())
+                                .padding(.leading)
+                                .padding(.top)
+                            Spacer()
+                        }
+                        HStack {
+                            session.match.map {
+                                Text("\($0[turn].name) is choosing a prize")
+                                    .padding(.horizontal)
+                            }
+                            Spacer()
+                        }
+                        .onAppear {
+                            session.match.map { match in
+                                guard match.state == .win(turn) else { return }
+                                if match[turn].id.isEmpty {
+                                    withAnimation(.easeInOut(duration: 1)) {
+                                        session.match?.prize(match[turn.negative].beads.randomElement()!)
+                                    }
+                                }
+                            }
+                        }
+                        Spacer()
                     }
                 }
             }
