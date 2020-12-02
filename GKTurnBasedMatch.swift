@@ -32,7 +32,7 @@ extension GKTurnBasedMatch {
         }
     }
     
-    func next(_ match: Match, completion: (() -> Void)?) {
+    func next(_ match: Match) {
         guard active else { return }
         (try? JSONEncoder().encode(match)).map {
             endTurn(withNextParticipants: players, turnTimeout: {
@@ -42,9 +42,7 @@ extension GKTurnBasedMatch {
                 case let .timeout(wait): return wait.timeout.timeIntervalSince1970 - Date().timeIntervalSince1970
                 default: return GKTurnTimeoutNone
                 }
-            } (), match: $0) { error in
-                completion?()
-            }
+            } (), match: $0)
         }
     }
     

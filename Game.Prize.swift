@@ -14,7 +14,6 @@ extension Game {
                     .padding(.leading)
                 Spacer()
             }
-            Timer(session: $session, wait: wait)
             ForEach(beads) { bead in
                 Button {
                     withAnimation(.easeInOut(duration: 0.5)) {
@@ -34,6 +33,8 @@ extension Game {
                 .contentShape(Rectangle())
                 .padding(.horizontal)
             }
+            Timer(session: $session, wait: wait)
+                .padding(.top)
             Spacer()
             if selected != nil {
                 Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {

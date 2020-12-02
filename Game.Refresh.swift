@@ -29,7 +29,7 @@ extension Game {
         }
         
         private func refresh() {
-            withAnimation(Animation.easeInOut(duration: 0.3).delay(10)) {
+            withAnimation(Animation.easeInOut(duration: 0.3).delay(5)) {
                 visible = true
             }
         }

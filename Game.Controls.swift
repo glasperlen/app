@@ -22,7 +22,6 @@ extension Game {
                 .actionSheet(isPresented: $alert) {
                     if session.beads.filter(\.selected).count == 5 {
                         return .init(title: .init("New game"),
-                                     message: .init("Choose your opponent"),
                                      buttons: [
                                         .default(.init("Single")) {
                                             session.match = .init()

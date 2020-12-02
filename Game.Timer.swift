@@ -6,6 +6,7 @@ extension Game {
         @Binding var session: Session
         let wait: Match.Wait
         @State private var date = ""
+        @State private var formatter = DateComponentsFormatter()
         private let timer = SwiftUI.Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
         var body: some View {
@@ -18,14 +19,16 @@ extension Game {
                     Text(verbatim: date)
                         .font(Font.footnote.monospacedDigit())
                         .foregroundColor(.secondary)
-                }.onReceive(timer) {
-                    let formatter = DateComponentsFormatter()
-                    formatter.allowedUnits = [.second]
-                    formatter.unitsStyle = .short
-                    if $0 > wait.timeout {
+                }
+                .onAppear {
+                    formatter.allowedUnits = [.minute, .second]
+                    formatter.unitsStyle = .positional
+                    formatter.zeroFormattingBehavior = .pad
+                }
+                .onReceive(timer) {
+                    if $0 < wait.timeout {
                         date = formatter.string(from: $0, to: wait.timeout)!
                     } else {
-                        print("cancelled timer")
                         timer.upstream.connect().cancel()
                         date = ""
                         UIApplication.shared.load()

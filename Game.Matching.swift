@@ -9,11 +9,10 @@ extension Game {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
-                Text("Waiting for second player...")
+                Text("Waiting for player two...")
                     .foregroundColor(.secondary)
                 Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
                     session.match!.cancel()
-                    UIApplication.shared.next(session.match!)
                 }
                 .padding(.vertical)
                 Spacer()

@@ -14,7 +14,15 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
             receivedTurnEventFor.refresh {
                 var match = $0 ?? .init()
                 match.join(.user(Defaults.id, GKLocalPlayer.local.displayName, Defaults.beads.filter(\.selected).map(\.item)))
-                self.next(match)
+                if case let .play(wait) = match.state {
+                    if match[wait.player].id == Defaults.id {
+                        self.save(match)
+                    } else {
+                        self.next(match)
+                    }
+                } else {
+                    self.next(match)
+                }
                 Defaults.game = receivedTurnEventFor.matchID
                 Self.match.send(match)
             }
@@ -77,6 +85,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         
         let controller = GKTurnBasedMatchmakerViewController(matchRequest: request)
         controller.turnBasedMatchmakerDelegate = self
+        controller.showExistingMatches = false
         present(controller)
     }
     
@@ -89,7 +98,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
     }
     
     func next(_ match: Match) {
-        Self.game?.next(match, completion: nil)
+        Self.game?.next(match)
     }
     
     func remove() {
@@ -118,31 +127,31 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
                         match.timeout()
                         if case let .timeout(next) = match.state {
                             if match[next.player.negative].id == Defaults.id {
-                                Self.game?.save(match)
+                                self.save(match)
                             } else {
-                                Self.game?.next(match, completion: nil)
+                                self.next(match)
                             }
                         }
                     } else if match[wait.player].id != Defaults.id {
-                        Self.game?.next(match, completion: nil)
+                        self.next(match)
                     }
                 } else if case let .win(wait) = match.state {
                     if wait.timeout < .init() {
                         match.timeout()
-                        Self.game?.next(match, completion: nil)
+                        self.next(match)
                     } else if match[wait.player].id != Defaults.id {
-                        Self.game?.next(match, completion: nil)
+                        self.next(match)
                     }
                 } else if case let .timeout(wait) = match.state {
                     if wait.timeout < .init() {
                         match.timeout()
-                        Self.game?.next(match, completion: nil)
+                        self.next(match)
                     } else if match[wait.player].id == Defaults.id {
-                        Self.game?.next(match, completion: nil)
+                        self.next(match)
                     }
                 } else if case let .end(result) = match.state {
                     if match[result.winner].id == Defaults.id {
-                        Self.game?.next(match, completion: nil)
+                        self.next(match)
                     }
                 }
             } else {
@@ -154,6 +163,10 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
             }
             Self.match.send(match)
         }
+    }
+    
+    private func save(_ match: Match) {
+        Self.game?.save(match)
     }
     
     private func sign() {
