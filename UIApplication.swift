@@ -170,7 +170,8 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
     }
     
     private func sign() {
-        let alert = UIAlertController(title: "Game Center account not found", message: "You can sign in on Settings", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Game Center account not found", message: "You can sign in on Settings", preferredStyle:
+                                        UIDevice.current.userInterfaceIdiom == .pad ? .alert : .actionSheet)
         alert.addAction(.init(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         alert.addAction(.init(title: NSLocalizedString("Settings", comment: ""), style: .default) { _ in
             self.open(URL(string: UIApplication.openSettingsURLString)!)

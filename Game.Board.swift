@@ -27,6 +27,7 @@ extension Game {
                 }
                 .frame(height: geo.size.width)
             }
+            .frame(maxWidth: 600)
         }
     }
 }
