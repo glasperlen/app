@@ -21,7 +21,7 @@ extension Onboard {
                     Spacer()
                 }
                 HStack {
-                    Text("As a new player you will receive 5 beads.\n\nYou can get more beads by winning matches.")
+                    Text("As a new player you will receive 5 new beads.")
                         .foregroundColor(.secondary)
                     Spacer()
                 }
