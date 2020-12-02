@@ -20,6 +20,16 @@ struct Session {
         }
     }
     
+    var multiplayer: Bool {
+        match.map {
+            switch $0.state {
+            case .new: return false
+            case .matching, .cancel: return true
+            default: return !$0[.first].id.isEmpty && !$0[.second].id.isEmpty
+            }
+        } ?? false
+    }
+    
     private var subs = Set<AnyCancellable>()
     private var audios = Set<AVAudioPlayer>()
     private let haptics = UIImpactFeedbackGenerator(style: .heavy)

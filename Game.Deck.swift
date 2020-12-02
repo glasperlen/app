@@ -41,7 +41,7 @@ extension Game {
                     }
                     Spacer()
                 }
-                .padding(.bottom, 20)
+                .padding(.bottom, 30)
             }
         }
     }

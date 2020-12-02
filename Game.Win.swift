@@ -17,37 +17,33 @@ extension Game {
                         .bold()
                         .padding(.top)
                     if session[wait.player] {
-                        HStack {
-                            Text("You win!")
-                                .font(Font.largeTitle.bold())
-                                .padding(.leading)
-                                .padding(.top)
-                            Spacer()
-                        }
+                        Text("You win!")
+                            .font(Font.largeTitle.bold())
+                            .padding(.horizontal)
+                            .padding(.top)
                         Prize(session: $session, wait: wait, beads: session.match?[wait.player.negative].beads ?? [])
                     } else {
-                        HStack {
-                            Text("You loose!")
-                                .font(Font.largeTitle.bold())
-                                .padding(.leading)
-                                .padding(.top)
-                            Spacer()
-                        }
-                        HStack {
+                        Text("You loose!")
+                            .font(Font.largeTitle.bold())
+                            .padding(.horizontal)
+                            .padding(.top)
+                        if session.multiplayer {
                             session.match.map {
                                 Text("\($0[wait.player].name) is choosing a prize")
                                     .padding(.horizontal)
                             }
+                        } else {
                             Spacer()
-                        }
-                        .onAppear {
-                            session.match.map { match in
-                                if match[wait.player].id.isEmpty {
-                                    withAnimation(.easeInOut(duration: 1)) {
-                                        session.match?.prize(match[wait.player.negative].beads.randomElement()!)
+                            Control.Capsule(text: "Continue", background: .primary, foreground: .black) {
+                                session.match.map { match in
+                                    if match[wait.player].id.isEmpty {
+                                        withAnimation(.easeInOut(duration: 0.5)) {
+                                            session.match?.prize(match[wait.player.negative].beads.randomElement()!)
+                                        }
                                     }
                                 }
                             }
+                            .padding(.vertical)
                         }
                         Spacer()
                     }

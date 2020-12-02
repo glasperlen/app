@@ -17,30 +17,21 @@ extension Game {
                         .bold()
                         .padding(.top)
                     if session[wait.player] {
-                        HStack {
-                            Text("You timed out!")
-                                .font(Font.largeTitle.bold())
-                                .padding(.leading)
-                                .padding(.top)
-                            Spacer()
-                        }
-                        HStack {
-                            session.match.map {
-                                Text("\($0[wait.player.negative].name) is choosing a prize")
-                                    .padding(.horizontal)
-                            }
-                            Spacer()
+                        Text("You timed out!")
+                            .font(Font.largeTitle.bold())
+                            .padding(.horizontal)
+                            .padding(.top)
+                        session.match.map {
+                            Text("\($0[wait.player.negative].name) is choosing a prize")
+                                .padding(.horizontal)
                         }
                         Spacer()
                     } else {
-                        HStack {
-                            session.match.map {
-                                Text("\($0[wait.player].name) timed out")
-                                    .font(Font.largeTitle.bold())
-                                    .padding(.leading)
-                                    .padding(.top)
-                            }
-                            Spacer()
+                        session.match.map {
+                            Text("\($0[wait.player].name) timed out")
+                                .font(Font.largeTitle.bold())
+                                .padding(.horizontal)
+                                .padding(.top)
                         }
                         Prize(session: $session, wait: wait, beads: session.match?[wait.player].beads ?? [])
                     }

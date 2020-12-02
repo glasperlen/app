@@ -10,7 +10,7 @@ extension Game {
         private let timer = SwiftUI.Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
         var body: some View {
-            if session.match?[wait.player.negative].id.isEmpty == false {
+            if session.multiplayer {
                 VStack {
                     if !session[wait.player] {
                         Text("Waiting")

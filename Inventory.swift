@@ -20,7 +20,7 @@ struct Inventory: View {
                 Image(systemName: "xmark.circle.fill")
                     .foregroundColor(.secondary)
                     .font(.title2)
-                    .frame(width: 60, height: 40)
+                    .frame(width: 60, height: 50)
             }
             .contentShape(Rectangle())
         }

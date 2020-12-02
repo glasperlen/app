@@ -50,12 +50,9 @@ extension Game {
                     }
                 if visible {
                     VStack {
-                        HStack {
-                            Text("Start")
-                                .font(Font.largeTitle.bold())
-                                .padding(40)
-                            Spacer()
-                        }
+                        Text("Start")
+                            .font(Font.largeTitle.bold())
+                            .padding(40)
                         Spacer()
                     }
                     VStack {

@@ -61,16 +61,17 @@ final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProducts
         transactions.forEach { transation in
             switch transation.transactionState {
             case .failed:
-                SKPaymentQueue.default().finishTransaction(transation)
+                DispatchQueue.main.async { [weak self] in
+                    self?.error = NSLocalizedString("Purchase failed", comment: "")
+                }
             case .restored, .purchased:
                 DispatchQueue.main.async { [weak self] in
                     self?.beads.send(Magister.Bead.make(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
                         .map { .init(selected: false, item: $0) })
                 }
-                SKPaymentQueue.default().finishTransaction(transation)
-            default:
-                break
+            default: break
             }
+            SKPaymentQueue.default().finishTransaction(transation)
         }
         DispatchQueue.main.async { [weak self] in
             self?.loading = false
@@ -78,11 +79,9 @@ final class Purchases: NSObject, ObservableObject, SKRequestDelegate, SKProducts
     }
     
     func purchase(_ product: SKProduct) {
-        loading = true
-        SKPaymentQueue.default().add(.init(product: product))
-    }
-    
-    @objc func restore() {
-        SKPaymentQueue.default().restoreCompletedTransactions()
+        DispatchQueue.main.async { [weak self] in
+            self?.loading = true
+            SKPaymentQueue.default().add(.init(product: product))
+        }
     }
 }

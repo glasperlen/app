@@ -34,7 +34,6 @@ struct Game: View {
                     } else {
                         Refresh(session: $session, wait: wait)
                     }
-                    Play(session: $session, wait: wait)
                 }
                 if case let .win(wait) = session.match?.state {
                     Win(session: $session, wait: wait)
@@ -48,6 +47,7 @@ struct Game: View {
                         Refresh(session: $session, wait: wait)
                     }
                 }
+                Play(session: $session)
                 New(session: $session)
             }
         }

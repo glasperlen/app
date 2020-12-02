@@ -9,11 +9,9 @@ extension Game {
         @State private var selected: Magister.Bead?
         
         var body: some View {
-            HStack {
-                Text("Choose your prize")
-                    .padding(.leading)
-                Spacer()
-            }
+            Text("Choose your prize")
+                .padding(.horizontal)
+                .padding(.bottom)
             ForEach(beads) { bead in
                 Button {
                     withAnimation(.easeInOut(duration: 0.5)) {

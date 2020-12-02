@@ -7,6 +7,7 @@ struct Store: View {
     @Environment(\.presentationMode) private var visible
     @State private var formatter = NumberFormatter()
     @State private var pack = false
+    @State private var done = false
     
     var body: some View {
         HStack {
@@ -20,13 +21,29 @@ struct Store: View {
                 Image(systemName: "xmark.circle.fill")
                     .foregroundColor(.secondary)
                     .font(.title2)
-                    .frame(width: 60, height: 40)
+                    .frame(width: 60, height: 50)
             }
             .contentShape(Rectangle())
         }
         .padding(.top, 20)
         ScrollView {
-            if purchases.error != nil {
+            if done {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.title)
+                    .foregroundColor(.accentColor)
+                    .padding(.top, 50)
+                HStack {
+                    Spacer()
+                    Text("Purchase successful")
+                        .font(.headline)
+                        .padding()
+                    Spacer()
+                }
+                Control.Capsule(text: "Done", background: .primary, foreground: .black) {
+                    visible.wrappedValue.dismiss()
+                }
+                .padding(.vertical)
+            } else if purchases.error != nil {
                 HStack {
                     Text(verbatim: purchases.error!)
                         .foregroundColor(.secondary)
@@ -36,7 +53,7 @@ struct Store: View {
             } else if purchases.loading || purchases.products.isEmpty {
                 HStack {
                     Text("Loading")
-                        .font(Font.caption.bold())
+                        .font(Font.footnote.bold())
                         .foregroundColor(.secondary)
                         .padding()
                     Spacer()
@@ -67,14 +84,16 @@ struct Store: View {
             Pack.Detail(beads: session.beads.suffix(5))
         }
         .onReceive(purchases.beads) {
-            visible.wrappedValue.dismiss()
-            session.play(.Hero)
-            session.beads.append(contentsOf: $0)
-            pack = true
+            if !done {
+                session.play(.Hero)
+                session.beads.append(contentsOf: $0)
+                done = true
+                pack = true
+            }
         }
         .onAppear {
             formatter.numberStyle = .currencyISOCode
-            if purchases.products.isEmpty {
+            if !done && purchases.products.isEmpty {
                 purchases.load()
             }
         }
