@@ -4,6 +4,7 @@ struct Menu: View {
     @Binding var session: Session
     @State private var formatter = NumberFormatter()
     @State private var store = false
+    @State private var tutorial = false
     @AppStorage(Defaults.Key.settings_sound.rawValue) private var sound = true
     @AppStorage(Defaults.Key.settings_vibrate.rawValue) private var vibrate = true
     @Environment(\.presentationMode) private var visible
@@ -51,7 +52,10 @@ struct Menu: View {
                 }
             }
             Item(text: "How to play?", image: "info.circle") {
-
+                tutorial = true
+            }
+            .sheet(isPresented: $tutorial) {
+                Tutorial()
             }
             Switch(text: "Sounds", value: $sound)
                 .padding(.top)

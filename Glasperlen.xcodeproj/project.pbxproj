@@ -12,6 +12,8 @@
 		CE2535FD255967BC00DBA035 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FC255967BC00DBA035 /* Defaults.swift */; };
 		CE253600255967E900DBA035 /* Session.Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FF255967E900DBA035 /* Session.Bead.swift */; };
 		CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25360325596A2200DBA035 /* Defaults.Key.swift */; };
+		CE31057D2577C1F200FEC4D9 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31057C2577C1F200FEC4D9 /* Tutorial.swift */; };
+		CE3105812577C28A00FEC4D9 /* Tutorial.Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3105802577C28A00FEC4D9 /* Tutorial.Card.swift */; };
 		CE34B9DB2564271700A2CD60 /* Pack.Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */; };
 		CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DF25642A5200A2CD60 /* Pack.swift */; };
 		CE4495B925496A4300ECA6C0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4495B825496A4300ECA6C0 /* App.swift */; };
@@ -79,6 +81,8 @@
 		CE2535FC255967BC00DBA035 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2535FF255967E900DBA035 /* Session.Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Bead.swift; sourceTree = "<group>"; };
 		CE25360325596A2200DBA035 /* Defaults.Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.Key.swift; sourceTree = "<group>"; };
+		CE31057C2577C1F200FEC4D9 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
+		CE3105802577C28A00FEC4D9 /* Tutorial.Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.Card.swift; sourceTree = "<group>"; };
 		CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.Detail.swift; sourceTree = "<group>"; };
 		CE34B9DF25642A5200A2CD60 /* Pack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.swift; sourceTree = "<group>"; };
 		CE4495B525496A4300ECA6C0 /* Glasperlen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glasperlen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +217,8 @@
 				CE6324842549D8470051A470 /* Session.swift */,
 				CEB4C6AB25627DFA0068AEE9 /* Store.Item.swift */,
 				CEB4C69D25627A5D0068AEE9 /* Store.swift */,
+				CE3105802577C28A00FEC4D9 /* Tutorial.Card.swift */,
+				CE31057C2577C1F200FEC4D9 /* Tutorial.swift */,
 				CE063850256190A4006ED1AD /* UIApplication.swift */,
 				CE4495BC25496A4300ECA6C0 /* Assets.xcassets */,
 				CEE2467625680E93005133F5 /* Frameworks */,
@@ -332,8 +338,10 @@
 			files = (
 				CEB4C69E25627A5D0068AEE9 /* Store.swift in Sources */,
 				CE6324852549D8470051A470 /* Session.swift in Sources */,
+				CE3105812577C28A00FEC4D9 /* Tutorial.Card.swift in Sources */,
 				CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */,
 				CEECC8DD25668F9800395B05 /* Menu.Item.swift in Sources */,
+				CE31057D2577C1F200FEC4D9 /* Tutorial.swift in Sources */,
 				CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */,
 				CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */,
 				CE83135D256E8EA20014EEA4 /* Game.Loading.swift in Sources */,
