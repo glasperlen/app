@@ -22,7 +22,14 @@ extension Game {
                     let formatter = DateComponentsFormatter()
                     formatter.allowedUnits = [.second]
                     formatter.unitsStyle = .short
-                    date = formatter.string(from: $0, to: wait.timeout)!
+                    if $0 > wait.timeout {
+                        date = formatter.string(from: $0, to: wait.timeout)!
+                    } else {
+                        print("cancelled timer")
+                        timer.upstream.connect().cancel()
+                        date = ""
+                        UIApplication.shared.load()
+                    }
                 }
             }
         }

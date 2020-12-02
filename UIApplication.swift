@@ -145,6 +145,12 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
                         Self.game?.next(match, completion: nil)
                     }
                 }
+            } else {
+                if case let .timeout(wait) = match.state {
+                    if wait.timeout < .init() {
+                        match.timeout()
+                    }
+                }
             }
             Self.match.send(match)
         }
