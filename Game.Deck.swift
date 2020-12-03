@@ -12,10 +12,10 @@ extension Game {
             VStack {
                 Spacer()
                 Timer(session: $session, wait: wait)
-                    .padding(.bottom)
+                    .padding(.vertical)
                 HStack {
+                    Spacer()
                     ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.item.id) { bead in
-                        Spacer()
                         Bead(bead: bead.item)
                             .offset(offset[bead.item.id] ?? .zero)
                             .gesture(
@@ -41,7 +41,7 @@ extension Game {
                     }
                     Spacer()
                 }
-                .padding(.bottom, 30)
+                .padding(.bottom, UIDevice.current.userInterfaceIdiom == .pad ? 150 : 40)
             }
         }
     }

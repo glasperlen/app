@@ -23,7 +23,6 @@ struct Game: View {
             } else if case let .play(wait) = session.match?.state {
                Header(session: $session, turn: wait.player)
                Board(session: $session, positions: $positions)
-                   .padding(.top, 30)
                if session[wait.player] {
                    Deck(session: $session, positions: $positions, wait: wait)
                } else {

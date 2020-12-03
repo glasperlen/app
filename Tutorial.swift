@@ -245,7 +245,7 @@ private struct E: View {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 350)
             .padding(.top)
             Text("Board")
                 .padding(.top)
@@ -302,7 +302,7 @@ private struct G: View {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 350)
             .padding(.top)
             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
                 .padding(.vertical)
@@ -350,7 +350,7 @@ private struct H: View {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 350)
             .padding(.top)
             Text("Own")
                 .padding(.top)
@@ -414,7 +414,7 @@ private struct J: View {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 350)
             .padding(.top)
             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
                 .padding(.vertical)
@@ -465,7 +465,7 @@ private struct K: View {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 350)
             .padding(.top)
             Text("""
 The defense can't hold against your attack.
@@ -519,7 +519,7 @@ private struct L: View {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 350)
             .padding(.top)
             Text("""
 In this case the defense's Bottom (1) can hold against your attack Top (1).
@@ -570,7 +570,7 @@ private struct M: View {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 400)
+            .frame(maxWidth: 350)
             .padding(.top)
             Text("""
 In this case the cells are not adjacents and there is no attack.

@@ -45,14 +45,12 @@ struct Header: View {
             Spacer()
         }
         .padding(.horizontal)
-        .actionSheet(isPresented: $abandon) {
-            .init(title: .init("Quit game?"), message: .init("You will loose"), buttons: [
-                    .cancel(.init("Cancel")),
-                    .destructive(.init("Quit")) {
-                        session.play(.Bottle)
-                        session.match!.quit(Defaults.id)
-                        UIApplication.shared.next(session.match!)
-                    }])
+        .alert(isPresented: $abandon) {
+            .init(title: .init("Quit game?"), message: .init("You will loose"), primaryButton: .destructive(.init("Quit")) {
+                session.play(.Bottle)
+                session.match!.quit(Defaults.id)
+                UIApplication.shared.next(session.match!)
+            }, secondaryButton: .cancel(.init("Cancel")))
         }
     }
 }

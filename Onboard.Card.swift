@@ -18,6 +18,7 @@ extension Onboard {
                 }
                 .padding(30)
             }
+            .frame(maxWidth: 400)
             .frame(height: 380)
             .padding(.horizontal, 40)
         }
