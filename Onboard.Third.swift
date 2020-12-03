@@ -21,13 +21,13 @@ extension Onboard {
                 }
                 .padding(.vertical)
                 Spacer()
-                Control.Capsule(text: "Tutorial", background: .secondary, foreground: .init("Background")) {
+                Control.Capsule(text: "Tutorial", background: .clear, foreground: .primary) {
                     tutorial = true
                 }
                 .sheet(isPresented: $tutorial) {
                     Tutorial()
                 }
-                Control.Capsule(text: "Start", background: .primary, foreground: .init("Background")) {
+                Control.Capsule(text: "Start", background: .primary, foreground: .black) {
                     visible.wrappedValue.dismiss()
                 }
             }

@@ -8,21 +8,21 @@ extension Pack {
         var body: some View {
             HStack {
                 Text("New beads")
-                    .font(.headline)
+                    .font(Font.title.bold())
                     .padding(.leading)
                 Spacer()
                 Button {
                     visible.wrappedValue.dismiss()
                 } label: {
-                    Text("Done")
-                        .bold()
-                        .foregroundColor(.accentColor)
-                        .frame(height: 40)
-                        .padding(.trailing)
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.secondary)
+                        .font(.title2)
+                        .frame(width: 60, height: 35)
                 }
                 .contentShape(Rectangle())
             }
             .padding(.top, 20)
+            .padding(.bottom, 10)
             VStack {
                 HStack {
                     Spacer()

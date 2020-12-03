@@ -1,8 +1,10 @@
 import SwiftUI
+import GameKit
 
 struct Menu: View {
     @Binding var session: Session
     @State private var formatter = NumberFormatter()
+    @State private var user = ""
     @State private var store = false
     @State private var tutorial = false
     @AppStorage(Defaults.Key.settings_sound.rawValue) private var sound = true
@@ -28,16 +30,29 @@ struct Menu: View {
         .padding(.top, 20)
         ScrollView {
             HStack {
-                Image(systemName: "person.fill")
-                    .font(.largeTitle)
-                    .padding()
-                Text(NSNumber(value: Defaults.victories), formatter: formatter)
+                Image(systemName: "person.circle.fill")
+                    .font(Font.largeTitle.bold())
+                    .padding(.leading)
+                    .padding(.vertical)
+                Text(verbatim: user)
                     .font(Font.title.bold())
-                Text(Defaults.victories == 1 ? "Victory" : "Victories")
-                    .font(.footnote)
+                    .padding(.trailing)
                 Spacer()
+                VStack {
+                    Text(NSNumber(value: Defaults.beads.count), formatter: formatter)
+                        .font(Font.title.bold().monospacedDigit())
+                    Text(Defaults.beads.count == 1 ? "Bead" : "Beads")
+                        .font(.caption)
+                }
+                VStack {
+                    Text(NSNumber(value: Defaults.victories), formatter: formatter)
+                        .font(Font.title.bold().monospacedDigit())
+                    Text(Defaults.victories == 1 ? "Victory" : "Victories")
+                        .font(.caption)
+                }
+                .padding(.horizontal)
             }
-            .padding(.leading)
+            .padding(.horizontal)
             .padding(.top)
             Item(text: "Purchases", image: "cart") {
                 store = true
@@ -64,6 +79,9 @@ struct Menu: View {
         .modifier(Background())
         .onAppear {
             formatter.numberStyle = .decimal
+            if GKLocalPlayer.local.isAuthenticated {
+                user = GKLocalPlayer.local.displayName
+            }
         }
     }
 }
