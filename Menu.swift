@@ -12,7 +12,7 @@ struct Menu: View {
     var body: some View {
         HStack {
             Text("Menu")
-                .font(.headline)
+                .font(Font.title.bold())
                 .padding(.leading)
             Spacer()
             Button {
@@ -21,7 +21,7 @@ struct Menu: View {
                 Image(systemName: "xmark.circle.fill")
                     .foregroundColor(.secondary)
                     .font(.title2)
-                    .frame(width: 60, height: 50)
+                    .frame(width: 60, height: 35)
             }
             .contentShape(Rectangle())
         }

@@ -8,10 +8,11 @@ struct Inventory: View {
     var body: some View {
         HStack {
             Text("Inventory")
-                .font(.headline)
+                .font(Font.title.bold())
                 .padding(.leading)
             Spacer()
             Text(verbatim: "\(session.beads.filter(\.selected).count)/5")
+                .font(Font.body.monospacedDigit())
                 .foregroundColor(session.beads.filter(\.selected).count == 5 ? .primary : .red)
                 .bold()
             Button {
@@ -20,7 +21,7 @@ struct Inventory: View {
                 Image(systemName: "xmark.circle.fill")
                     .foregroundColor(.secondary)
                     .font(.title2)
-                    .frame(width: 60, height: 50)
+                    .frame(width: 60, height: 35)
             }
             .contentShape(Rectangle())
         }

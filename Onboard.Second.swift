@@ -5,13 +5,14 @@ extension Onboard {
     struct Second: View {
         @Binding var session: Session
         @Binding var tab: Int
+        @AppStorage(Defaults.Key.onboard_beads.rawValue) private var beads = true
         
         var body: some View {
             Card {
                 Image(systemName: "bag.fill")
                     .font(.largeTitle)
                     .padding(.vertical)
-                Pack(beads: session.beads)
+                Pack(beads: .init(session.beads.prefix(5)))
                 Spacer()
                 Button {
                     withAnimation(.easeInOut(duration: 1)) {
@@ -25,7 +26,8 @@ extension Onboard {
                 }
             }
             .onAppear {
-                if session.beads.isEmpty {
+                if beads {
+                    beads = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         session.play(.Hero)
                         withAnimation(.easeInOut(duration: 1)) {

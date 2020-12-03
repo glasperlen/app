@@ -9,6 +9,7 @@ extension Defaults {
         game,
         victories,
         onboard_start,
+        onboard_beads,
         settings_sound,
         settings_vibrate
     }

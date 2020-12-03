@@ -13,7 +13,7 @@ struct Store: View {
     var body: some View {
         HStack {
             Text("Store")
-                .font(.headline)
+                .font(Font.title.bold())
                 .padding(.leading)
             Spacer()
             Button {
@@ -22,7 +22,7 @@ struct Store: View {
                 Image(systemName: "xmark.circle.fill")
                     .foregroundColor(.secondary)
                     .font(.title2)
-                    .frame(width: 60, height: 50)
+                    .frame(width: 60, height: 35)
             }
             .contentShape(Rectangle())
         }
@@ -46,16 +46,20 @@ struct Store: View {
                 .padding(.vertical)
             } else if error != nil {
                 HStack {
+                    Spacer()
                     Text(verbatim: error!)
                         .foregroundColor(.secondary)
+                        .padding(.top)
                         .padding()
                     Spacer()
                 }
             } else if loading {
                 HStack {
+                    Spacer()
                     Text("Loading")
-                        .font(Font.footnote.bold())
+                        .font(Font.body.bold())
                         .foregroundColor(.secondary)
+                        .padding(.top)
                         .padding()
                     Spacer()
                 }
