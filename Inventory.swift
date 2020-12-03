@@ -8,10 +8,10 @@ struct Inventory: View {
         HStack {
             Text("Inventory")
                 .font(Font.title.bold())
-                .padding(.leading)
+                .padding(.horizontal)
             Spacer()
             Text(verbatim: "\(session.beads.filter(\.selected).count)/5")
-                .font(Font.body.monospacedDigit())
+                .font(Font.title.monospacedDigit())
                 .foregroundColor(session.beads.filter(\.selected).count == 5 ? .primary : .red)
                 .bold()
             Button {

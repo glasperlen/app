@@ -25,10 +25,11 @@ extension Onboard {
                 .sheet(isPresented: $tutorial) {
                     Tutorial()
                 }
-                Control.Capsule(text: "Start", background: .primary, foreground: .black) {
-                    guard !beads else { return }
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        start = false
+                if !beads {
+                    Control.Capsule(text: "Start", background: .primary, foreground: .black) {
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            start = false
+                        }
                     }
                 }
             }
