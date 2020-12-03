@@ -29,11 +29,11 @@ struct Tutorial: View {
                     Card {
                         G()
                     }
-                }
-                Group {
                     Card {
                         H()
                     }
+                }
+                Group {
                     Card {
                         I()
                     }
@@ -54,6 +54,9 @@ struct Tutorial: View {
                     }
                     Card {
                         O()
+                    }
+                    Card {
+                        P()
                     }
                 }
             }
@@ -616,6 +619,23 @@ You can't attack your own cells.
 }
 
 private struct O: View {
+    var body: some View {
+        VStack {
+            Text(verbatim: "Time Out")
+                .font(Font.largeTitle.bold())
+                .padding(.vertical)
+            Text("""
+When playing in single player mode you have no restriction of time; play as relaxed as you want and take your time.
+
+However, in multiplayer matches you have a limit of maximum 1 minute to take your turn; if you get a time out you will automatically loose the game and your opponent is entitled to 1 of your beads.
+""")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+        }
+    }
+}
+
+private struct P: View {
     var body: some View {
         VStack {
             Text(verbatim: "End Game")
