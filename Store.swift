@@ -3,11 +3,12 @@ import StoreKit
 
 struct Store: View {
     @Binding var session: Session
-    @ObservedObject private var purchases = Purchases()
-    @Environment(\.presentationMode) private var visible
-    @State private var formatter = NumberFormatter()
+    @State private var products = [(SKProduct, String)]()
+    @State private var error: String?
+    @State private var loading = true
     @State private var pack = false
     @State private var done = false
+    @Environment(\.presentationMode) private var visible
     
     var body: some View {
         HStack {
@@ -43,14 +44,14 @@ struct Store: View {
                     visible.wrappedValue.dismiss()
                 }
                 .padding(.vertical)
-            } else if purchases.error != nil {
+            } else if error != nil {
                 HStack {
-                    Text(verbatim: purchases.error!)
+                    Text(verbatim: error!)
                         .foregroundColor(.secondary)
                         .padding()
                     Spacer()
                 }
-            } else if purchases.loading || purchases.products.isEmpty {
+            } else if loading {
                 HStack {
                     Text("Loading")
                         .font(Font.footnote.bold())
@@ -65,10 +66,10 @@ struct Store: View {
                         .foregroundColor(.secondary)
                     Spacer()
                 }
-                ForEach(purchases.products, id: \.self) { product in
-                    Item(purchase: Purchases.Item(rawValue: product.productIdentifier)!, price: price(product)) {
+                ForEach(products, id: \.0.productIdentifier) { product in
+                    Item(purchase: Purchases.Item(rawValue: product.0.productIdentifier)!, price: product.1) {
                         withAnimation(.easeInOut(duration: 0.5)) {   
-                            purchases.purchase(product)
+                            session.purchases.purchase(product.0)
                         }
                     }
                     .padding(.vertical)
@@ -83,7 +84,16 @@ struct Store: View {
         .sheet(isPresented: $pack) {
             Pack.Detail(beads: session.beads.suffix(5))
         }
-        .onReceive(purchases.beads) {
+        .onReceive(session.purchases.loading) {
+            loading = $0
+        }
+        .onReceive(session.purchases.error) {
+            error = $0
+        }
+        .onReceive(session.purchases.products) {
+            products = $0
+        }
+        .onReceive(session.purchases.beads) {
             if !done {
                 session.play(.Hero)
                 session.beads.append(contentsOf: $0)
@@ -92,15 +102,7 @@ struct Store: View {
             }
         }
         .onAppear {
-            formatter.numberStyle = .currencyISOCode
-            if !done && purchases.products.isEmpty {
-                purchases.load()
-            }
+            session.purchases.load()
         }
-    }
-    
-    private func price(_ product: SKProduct) -> String {
-        formatter.locale = product.priceLocale
-        return formatter.string(from: product.price)!
     }
 }

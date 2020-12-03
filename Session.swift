@@ -33,6 +33,7 @@ struct Session {
     private var subs = Set<AnyCancellable>()
     private var audios = Set<AVAudioPlayer>()
     private let haptics = UIImpactFeedbackGenerator(style: .heavy)
+    let purchases = Purchases()
     
     init() {
         haptics.prepare()
