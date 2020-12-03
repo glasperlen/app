@@ -5,34 +5,39 @@ extension Onboard {
     struct Second: View {
         @Binding var session: Session
         @Binding var tab: Int
+        @State private var tutorial = false
         @AppStorage(Defaults.Key.onboard_beads.rawValue) private var beads = true
+        @AppStorage(Defaults.Key.onboard_start.rawValue) private var start = true
         
         var body: some View {
             Card {
-                Image(systemName: "bag.fill")
-                    .font(.largeTitle)
-                    .padding(.vertical)
+                Spacer()
                 Pack(beads: beads ? [] : .init(session.beads.suffix(5)))
                 Spacer()
                 Button {
-                    withAnimation(.easeInOut(duration: 1)) {
-                        tab = 2
-                    }
+                    tutorial = true
                 } label: {
-                    Text("Continue")
+                    Text("Tutorial")
                         .foregroundColor(.primary)
                         .font(Font.footnote.bold())
                         .frame(minWidth: 100, minHeight: 50)
+                }
+                .sheet(isPresented: $tutorial) {
+                    Tutorial()
+                }
+                Control.Capsule(text: "Start", background: .primary, foreground: .black) {
+                    guard !beads else { return }
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        start = false
+                    }
                 }
             }
             .onAppear {
                 if beads {
                     beads = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         session.play(.Hero)
-                        withAnimation(.easeInOut(duration: 1)) {
-                            session.beads = Magister.Bead.make().map { .init(selected: true, item: $0) }
-                        }
+                        session.beads = Magister.Bead.make().map { .init(selected: true, item: $0) }
                     }
                 }
             }

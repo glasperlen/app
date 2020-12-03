@@ -9,7 +9,7 @@ extension Bead {
                 .fill(color)
                 .overlay(
                     Circle()
-                        .fill(Color.black.opacity(0.5))
+                        .fill(Color.black.opacity(0.35))
                         .blur(radius: 10)
                         .mask(
                             Circle()

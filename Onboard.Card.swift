@@ -16,11 +16,10 @@ extension Onboard {
                 VStack {
                     content
                 }
-                .padding(.top, 10)
                 .padding(30)
             }
-            .padding(.bottom, 80)
-            .padding(40)
+            .frame(height: 380)
+            .padding(.horizontal, 40)
         }
     }
 }

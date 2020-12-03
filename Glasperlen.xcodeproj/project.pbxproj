@@ -45,7 +45,6 @@
 		CE73E551256D43B300406EA8 /* Game.Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73E550256D43B300406EA8 /* Game.Play.swift */; };
 		CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */; };
 		CE83135D256E8EA20014EEA4 /* Game.Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83135C256E8EA20014EEA4 /* Game.Loading.swift */; };
-		CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */; };
 		CEA923CA257688A800273861 /* Game.Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA923C9257688A800273861 /* Game.Cancel.swift */; };
 		CEA923CE25768F4300273861 /* Game.Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA923CD25768F4300273861 /* Game.Timer.swift */; };
 		CEB4C69E25627A5D0068AEE9 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C69D25627A5D0068AEE9 /* Store.swift */; };
@@ -113,7 +112,6 @@
 		CE73E550256D43B300406EA8 /* Game.Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Play.swift; sourceTree = "<group>"; };
 		CE7FDC57255A8F69004D46A5 /* Inventory.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.Item.swift; sourceTree = "<group>"; };
 		CE83135C256E8EA20014EEA4 /* Game.Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Loading.swift; sourceTree = "<group>"; };
-		CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Third.swift; sourceTree = "<group>"; };
 		CEA923C9257688A800273861 /* Game.Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Cancel.swift; sourceTree = "<group>"; };
 		CEA923CD25768F4300273861 /* Game.Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Timer.swift; sourceTree = "<group>"; };
 		CEB4C69D25627A5D0068AEE9 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 				CE65FC34254C3AC1000A78C1 /* Onboard.First.swift */,
 				CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */,
 				CEE409AB254B1DCA00A9D5EB /* Onboard.swift */,
-				CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */,
 				CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */,
 				CE34B9DF25642A5200A2CD60 /* Pack.swift */,
 				CECC2FCD256BF19D002EE72C /* Positions.swift */,
@@ -374,7 +371,6 @@
 				CE60EDB8254D9759007056BC /* Onboard.Card.swift in Sources */,
 				CEB4C6AC25627DFA0068AEE9 /* Store.Item.swift in Sources */,
 				CE7273BF2553FE0900A79BF2 /* Game.New.swift in Sources */,
-				CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */,
 				CED6BA352575446C002C0699 /* Game.Refresh.swift in Sources */,
 				CE4B649025766D9F00CD3ED4 /* Game.Timeout.swift in Sources */,
 				CE4495B925496A4300ECA6C0 /* App.swift in Sources */,

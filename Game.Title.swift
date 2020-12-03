@@ -6,41 +6,22 @@ extension Game {
         @AppStorage(Defaults.Key.onboard_start.rawValue) private var start = true
         
         var body: some View {
-            VStack {
+            if start {
+                Onboard(session: $session)
+            } else {
                 VStack {
-                    HStack {
-                        Text("The")
-                            .font(.body)
+                    VStack {
+                        HStack {
+                            Text(verbatim: "The\nGlass\nBead\nGame")
+                                .font(Font.largeTitle.bold())
+                            Spacer()
+                        }
                         Spacer()
                     }
-                    HStack {
-                        Text("Glass")
-                            .font(Font.largeTitle.bold())
-                        Spacer()
-                    }
-                    HStack {
-                        Text("Bead")
-                            .font(Font.largeTitle.bold())
-                        Spacer()
-                    }
-                    HStack {
-                        Text("Game")
-                            .font(Font.largeTitle.bold())
-                        Spacer()
-                    }
+                    .padding(40)
                     Spacer()
+                    Controls(session: $session)
                 }
-                .padding(40)
-                .fullScreenCover(isPresented: $start, onDismiss: {
-                    start = false
-                }) {
-                    Onboard(session: $session)
-                        .background(Color("Background")
-                                        .edgesIgnoringSafeArea(.all))
-                        .preferredColorScheme(.dark)
-                }
-                Spacer()
-                Controls(session: $session)
             }
         }
     }

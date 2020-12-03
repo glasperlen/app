@@ -30,7 +30,7 @@ extension Pack {
                 }
                 ForEach(beads, id: \.item.id) {
                     Bead(bead: $0.item)
-                        .padding(.vertical)
+                        .padding(.top)
                 }
                 Spacer()
             }

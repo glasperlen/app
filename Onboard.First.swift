@@ -7,24 +7,20 @@ extension Onboard {
         
         var body: some View {
             Card {
-                Image(systemName: "person.fill")
+                Spacer()
+                Image(systemName: "person.circle.fill")
                     .font(.largeTitle)
-                    .padding(.vertical)
-                HStack {
-                    Text("Welcome to")
-                        .font(.footnote)
-                    Spacer()
-                }
-                HStack {
-                    Text("The Glass Bead Game")
-                        .font(.headline)
-                    Spacer()
-                }
-                HStack {
-                    Text("As a new player you will receive 5 new beads.")
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
+                    .padding(.bottom)
+                Text("Welcome to")
+                Text("The Glass\nBead Game")
+                    .multilineTextAlignment(.center)
+                    .font(Font.title.bold())
+                Text("As a new player you will receive 5 new beads.")
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .padding(.top)
+                    .padding(.horizontal)
                 Spacer()
                 Button {
                     withAnimation(.easeInOut(duration: 1)) {
