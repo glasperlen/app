@@ -8,8 +8,6 @@ extension Game {
         @State private var visible = false
         
         var body: some View {
-            Color("Background")
-                .edgesIgnoringSafeArea(.all)
             VStack {
                 Text("Game Over")
                     .bold()
@@ -38,7 +36,8 @@ extension Game {
                     }
                     .padding(.bottom)
                 }
-            }.onAppear {
+            }
+            .onAppear {
                 if session[result.winner] {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         session.beads.append(.init(selected: false, item: result.bead))

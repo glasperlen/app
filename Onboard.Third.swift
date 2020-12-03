@@ -21,8 +21,13 @@ extension Onboard {
                 }
                 .padding(.vertical)
                 Spacer()
-                Control.Capsule(text: "Tutorial", background: .clear, foreground: .primary) {
+                Button {
                     tutorial = true
+                } label: {
+                    Text("Tutorial")
+                        .foregroundColor(.primary)
+                        .font(Font.footnote.bold())
+                        .frame(minWidth: 100, minHeight: 50)
                 }
                 .sheet(isPresented: $tutorial) {
                     Tutorial()

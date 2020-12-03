@@ -9,46 +9,39 @@ struct Game: View {
         ZStack {
             if session.match == nil {
                 if game == nil {
-                    VStack {
-                        Title(session: $session)
-                        Spacer()
-                        Controls(session: $session)
-                    }
+                    Title(session: $session)
                 } else {
                     Loading(session: $session)
                 }
-            } else if session.match?.state == .cancel {
-                Cancel(session: $session)
             } else if session.match?.state == .matching {
                 Matching(session: $session)
                 Refresh(session: $session, wait: nil)
+            } else if session.match?.state == .new {
+                New(session: $session)
+            } else if session.match?.state == .cancel {
+                Cancel(session: $session)
+            } else if case let .play(wait) = session.match?.state {
+               Header(session: $session, turn: wait.player)
+               Board(session: $session, positions: $positions)
+                   .padding(.top, 30)
+               if session[wait.player] {
+                   Deck(session: $session, positions: $positions, wait: wait)
+               } else {
+                   Refresh(session: $session, wait: wait)
+               }
+               Play(session: $session)
+            } else if case let .win(wait) = session.match?.state {
+                Win(session: $session, wait: wait)
+                if !session[wait.player] {
+                    Refresh(session: $session, wait: wait)
+                }
+            } else if case let .timeout(wait) = session.match?.state {
+                Timeout(session: $session, wait: wait)
+                if session[wait.player] {
+                    Refresh(session: $session, wait: wait)
+                }
             } else if case let .end(result) = session.match?.state {
                 End(session: $session, result: result)
-            } else {
-                Board(session: $session, positions: $positions)
-                    .padding(.top, 30)
-                if case let .play(wait) = session.match?.state {
-                    Header(session: $session, turn: wait.player)
-                    if session[wait.player] {
-                        Deck(session: $session, positions: $positions, wait: wait)
-                    } else {
-                        Refresh(session: $session, wait: wait)
-                    }
-                }
-                if case let .win(wait) = session.match?.state {
-                    Win(session: $session, wait: wait)
-                    if !session[wait.player] {
-                        Refresh(session: $session, wait: wait)
-                    }
-                }
-                if case let .timeout(wait) = session.match?.state {
-                    Timeout(session: $session, wait: wait)
-                    if session[wait.player] {
-                        Refresh(session: $session, wait: wait)
-                    }
-                }
-                Play(session: $session)
-                New(session: $session)
             }
         }
         .onReceive(UIApplication.match) {

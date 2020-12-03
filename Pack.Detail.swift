@@ -34,7 +34,8 @@ extension Pack {
                 }
                 Spacer()
             }
-            .modifier(Background())
+            .background(Color("Background")
+                            .edgesIgnoringSafeArea(.all))
         }
     }
 

@@ -5,8 +5,6 @@ extension Game {
         @Binding var session: Session
         
         var body: some View {
-            Color("Background")
-                .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
                 Text("Waiting for player two...")

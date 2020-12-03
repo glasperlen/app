@@ -11,13 +11,13 @@ extension Game {
             ZStack {
                 if visible {
                     Color("Background")
-                        .opacity(0.95)
+                        .opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
                     session.match.map { match in
                         player.map {
                             Text(session[$0] ? "Your turn" : "\(match[$0].name)'s turn")
                                 .padding()
-                                .font(Font.title.bold())
+                                .font(Font.title2.bold())
                                 .transition(.slide)
                         }
                     }
@@ -35,13 +35,13 @@ extension Game {
                     player = wait.player
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation(.easeInOut(duration: 0.25)) {
+                        withAnimation(.easeInOut(duration: 0.2)) {
                             visible = true
                         }
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation(.easeInOut(duration: 0.25)) {
+                        withAnimation(.easeInOut(duration: 0.2)) {
                             visible = false
                         }
                     }

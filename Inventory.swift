@@ -2,7 +2,6 @@ import SwiftUI
 
 struct Inventory: View {
     @Binding var session: Session
-    @State private var store = false
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
@@ -43,10 +42,7 @@ struct Inventory: View {
                 }
                 Spacer()
                 Control.Circle(image: "cart") {
-                    store = true
-                }
-                .sheet(isPresented: $store) {
-                    Store(session: $session)
+                    session.purchases.open.send()
                 }
             }
             .padding()
@@ -62,6 +58,7 @@ struct Inventory: View {
             Spacer()
                 .frame(height: 20)
         }
-        .modifier(Background())
+        .background(Color("Background")
+                        .edgesIgnoringSafeArea(.all))
     }
 }

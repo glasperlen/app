@@ -1,12 +1,13 @@
 import StoreKit
-import Magister
 import Combine
+import Magister
 
 final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     let products = CurrentValueSubject<[(SKProduct, String)], Never>([])
     let loading = CurrentValueSubject<Bool, Never>(true)
     let error = CurrentValueSubject<String?, Never>(nil)
-    let beads = PassthroughSubject<[Session.Bead], Never>()
+    let open = PassthroughSubject<Void, Never>()
+    let done = PassthroughSubject<[Session.Bead], Never>()
     private weak var request: SKProductsRequest?
     
     
@@ -49,6 +50,11 @@ final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, S
         }
     }
     
+    func paymentQueue(_: SKPaymentQueue, shouldAddStorePayment: SKPayment, for: SKProduct) -> Bool {
+        open.send()
+        return true
+    }
+    
     func paymentQueueRestoreCompletedTransactionsFinished(_: SKPaymentQueue) {
         DispatchQueue.main.async {
             self.loading.value = false
@@ -85,10 +91,10 @@ final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, S
                 DispatchQueue.main.async {
                     self.error.value = NSLocalizedString("Purchase failed", comment: "")
                 }
-            case .restored, .purchased:
+            case .purchased:
                 DispatchQueue.main.async {
-                    self.beads.send(Magister.Bead.make(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
-                        .map { .init(selected: false, item: $0) })
+                    self.done.send(Magister.Bead.make(tier: Item(rawValue: transation.payment.productIdentifier)!.tier)
+                                    .map { .init(selected: false, item: $0) })
                 }
             default: break
             }

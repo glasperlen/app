@@ -5,7 +5,6 @@ struct Menu: View {
     @Binding var session: Session
     @State private var formatter = NumberFormatter()
     @State private var user = ""
-    @State private var store = false
     @State private var tutorial = false
     @AppStorage(Defaults.Key.settings_sound.rawValue) private var sound = true
     @AppStorage(Defaults.Key.settings_vibrate.rawValue) private var vibrate = true
@@ -55,10 +54,7 @@ struct Menu: View {
             .padding(.horizontal)
             .padding(.top)
             Item(text: "Purchases", image: "cart") {
-                store = true
-            }
-            .sheet(isPresented: $store) {
-                Store(session: $session)
+                session.purchases.open.send()
             }
             Item(text: "Leaderboards", image: "star") {
                 visible.wrappedValue.dismiss()
@@ -76,7 +72,8 @@ struct Menu: View {
                 .padding(.top)
             Switch(text: "Vibrate", value: $vibrate)
         }
-        .modifier(Background())
+        .background(Color("Background")
+                        .edgesIgnoringSafeArea(.all))
         .onAppear {
             formatter.numberStyle = .decimal
             if GKLocalPlayer.local.isAuthenticated {

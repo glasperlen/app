@@ -84,7 +84,8 @@ struct Store: View {
                 }
             }
         }
-        .modifier(Background())
+        .background(Color("Background")
+                        .edgesIgnoringSafeArea(.all))
         .sheet(isPresented: $pack) {
             Pack.Detail(beads: session.beads.suffix(5))
         }
@@ -97,7 +98,7 @@ struct Store: View {
         .onReceive(session.purchases.products) {
             products = $0
         }
-        .onReceive(session.purchases.beads) {
+        .onReceive(session.purchases.done) {
             if !done {
                 session.play(.Hero)
                 session.beads.append(contentsOf: $0)

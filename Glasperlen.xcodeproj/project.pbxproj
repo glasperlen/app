@@ -13,7 +13,6 @@
 		CE253600255967E900DBA035 /* Session.Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FF255967E900DBA035 /* Session.Bead.swift */; };
 		CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25360325596A2200DBA035 /* Defaults.Key.swift */; };
 		CE31057D2577C1F200FEC4D9 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31057C2577C1F200FEC4D9 /* Tutorial.swift */; };
-		CE3105812577C28A00FEC4D9 /* Tutorial.Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3105802577C28A00FEC4D9 /* Tutorial.Card.swift */; };
 		CE34B9DB2564271700A2CD60 /* Pack.Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */; };
 		CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DF25642A5200A2CD60 /* Pack.swift */; };
 		CE4495B925496A4300ECA6C0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4495B825496A4300ECA6C0 /* App.swift */; };
@@ -49,7 +48,6 @@
 		CE938BC4254C69BD00A7BEC2 /* Onboard.Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */; };
 		CEA923CA257688A800273861 /* Game.Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA923C9257688A800273861 /* Game.Cancel.swift */; };
 		CEA923CE25768F4300273861 /* Game.Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA923CD25768F4300273861 /* Game.Timer.swift */; };
-		CEAEB56425557CDB0046E4E9 /* Game.Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEB56325557CDB0046E4E9 /* Game.Card.swift */; };
 		CEB4C69E25627A5D0068AEE9 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C69D25627A5D0068AEE9 /* Store.swift */; };
 		CEB4C6A425627CD50068AEE9 /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C6A325627CD50068AEE9 /* Purchases.swift */; };
 		CEB4C6A725627D130068AEE9 /* Purchases.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4C6A625627D130068AEE9 /* Purchases.Item.swift */; };
@@ -57,7 +55,6 @@
 		CEB90ED3254AD52D00F92A7C /* Magister in Frameworks */ = {isa = PBXBuildFile; productRef = CEB90ED2254AD52D00F92A7C /* Magister */; };
 		CEB90ED9254ADA5E00F92A7C /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB90ED8254ADA5E00F92A7C /* Header.swift */; };
 		CEBE5394255019550059F12C /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE5393255019550059F12C /* Inventory.swift */; };
-		CEBE5398255023580059F12C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE5397255023580059F12C /* Background.swift */; };
 		CECC2FCE256BF19D002EE72C /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC2FCD256BF19D002EE72C /* Positions.swift */; };
 		CED6BA352575446C002C0699 /* Game.Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6BA342575446C002C0699 /* Game.Refresh.swift */; };
 		CED8913A256583030083C128 /* Bottle.aiff in Resources */ = {isa = PBXBuildFile; fileRef = CED89138256583030083C128 /* Bottle.aiff */; };
@@ -82,7 +79,6 @@
 		CE2535FF255967E900DBA035 /* Session.Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Bead.swift; sourceTree = "<group>"; };
 		CE25360325596A2200DBA035 /* Defaults.Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.Key.swift; sourceTree = "<group>"; };
 		CE31057C2577C1F200FEC4D9 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
-		CE3105802577C28A00FEC4D9 /* Tutorial.Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.Card.swift; sourceTree = "<group>"; };
 		CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.Detail.swift; sourceTree = "<group>"; };
 		CE34B9DF25642A5200A2CD60 /* Pack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.swift; sourceTree = "<group>"; };
 		CE4495B525496A4300ECA6C0 /* Glasperlen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glasperlen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,14 +116,12 @@
 		CE938BC3254C69BD00A7BEC2 /* Onboard.Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.Third.swift; sourceTree = "<group>"; };
 		CEA923C9257688A800273861 /* Game.Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Cancel.swift; sourceTree = "<group>"; };
 		CEA923CD25768F4300273861 /* Game.Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Timer.swift; sourceTree = "<group>"; };
-		CEAEB56325557CDB0046E4E9 /* Game.Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Card.swift; sourceTree = "<group>"; };
 		CEB4C69D25627A5D0068AEE9 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		CEB4C6A325627CD50068AEE9 /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
 		CEB4C6A625627D130068AEE9 /* Purchases.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.Item.swift; sourceTree = "<group>"; };
 		CEB4C6AB25627DFA0068AEE9 /* Store.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.Item.swift; sourceTree = "<group>"; };
 		CEB90ED8254ADA5E00F92A7C /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		CEBE5393255019550059F12C /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		CEBE5397255023580059F12C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		CECC2FCD256BF19D002EE72C /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		CED6BA342575446C002C0699 /* Game.Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Refresh.swift; sourceTree = "<group>"; };
 		CED89138256583030083C128 /* Bottle.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Bottle.aiff; sourceTree = "<group>"; };
@@ -165,7 +159,6 @@
 				CE55B3C52567C649006D3F83 /* Settings.bundle */,
 				CE4495C125496A4300ECA6C0 /* Info.plist */,
 				CE4495B825496A4300ECA6C0 /* App.swift */,
-				CEBE5397255023580059F12C /* Background.swift */,
 				CE6E727525542CA5000AB7D2 /* Bead.Base.swift */,
 				CE6E727A25543014000AB7D2 /* Bead.Point.swift */,
 				CE60EDBB254DA523007056BC /* Bead.swift */,
@@ -179,7 +172,6 @@
 				CE6324712549AB580051A470 /* Game.Board.Cell.swift */,
 				CE63246E2549AB280051A470 /* Game.Board.swift */,
 				CEA923C9257688A800273861 /* Game.Cancel.swift */,
-				CEAEB56325557CDB0046E4E9 /* Game.Card.swift */,
 				CE7273BB2553F88400A79BF2 /* Game.Controls.swift */,
 				CE6E72672554281A000AB7D2 /* Game.Deck.swift */,
 				CE4B648B2576490C00CD3ED4 /* Game.End.swift */,
@@ -217,7 +209,6 @@
 				CE6324842549D8470051A470 /* Session.swift */,
 				CEB4C6AB25627DFA0068AEE9 /* Store.Item.swift */,
 				CEB4C69D25627A5D0068AEE9 /* Store.swift */,
-				CE3105802577C28A00FEC4D9 /* Tutorial.Card.swift */,
 				CE31057C2577C1F200FEC4D9 /* Tutorial.swift */,
 				CE063850256190A4006ED1AD /* UIApplication.swift */,
 				CE4495BC25496A4300ECA6C0 /* Assets.xcassets */,
@@ -338,7 +329,6 @@
 			files = (
 				CEB4C69E25627A5D0068AEE9 /* Store.swift in Sources */,
 				CE6324852549D8470051A470 /* Session.swift in Sources */,
-				CE3105812577C28A00FEC4D9 /* Tutorial.Card.swift in Sources */,
 				CE63247B2549CA3E0051A470 /* Control.Circle.swift in Sources */,
 				CEECC8DD25668F9800395B05 /* Menu.Item.swift in Sources */,
 				CE31057D2577C1F200FEC4D9 /* Tutorial.swift in Sources */,
@@ -359,7 +349,6 @@
 				CEBE5394255019550059F12C /* Inventory.swift in Sources */,
 				CE63247C2549CA3E0051A470 /* Control.swift in Sources */,
 				CE70C20F2565770C00E5FCC0 /* Session.Audio.swift in Sources */,
-				CEBE5398255023580059F12C /* Background.swift in Sources */,
 				CE65FC35254C3AC1000A78C1 /* Onboard.First.swift in Sources */,
 				CE73E551256D43B300406EA8 /* Game.Play.swift in Sources */,
 				CEB4C6A725627D130068AEE9 /* Purchases.Item.swift in Sources */,
@@ -372,7 +361,6 @@
 				CEA923CA257688A800273861 /* Game.Cancel.swift in Sources */,
 				CE2317362556E6470074CD22 /* Game.Title.swift in Sources */,
 				CE6324722549AB580051A470 /* Game.Board.Cell.swift in Sources */,
-				CEAEB56425557CDB0046E4E9 /* Game.Card.swift in Sources */,
 				CED9E479256FC68600DF3273 /* GKTurnBasedMatch.swift in Sources */,
 				CE60EDB4254D959A007056BC /* Neumorphic.swift in Sources */,
 				CEECC8DA256686F600395B05 /* Menu.swift in Sources */,

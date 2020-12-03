@@ -12,7 +12,7 @@ extension Onboard {
                 Image(systemName: "bag.fill")
                     .font(.largeTitle)
                     .padding(.vertical)
-                Pack(beads: .init(session.beads.prefix(5)))
+                Pack(beads: beads ? [] : .init(session.beads.suffix(5)))
                 Spacer()
                 Button {
                     withAnimation(.easeInOut(duration: 1)) {

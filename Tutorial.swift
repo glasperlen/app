@@ -8,65 +8,43 @@ struct Tutorial: View {
         VStack {
             TabView {
                 Group {
-                    Card {
-                        A()
-                    }
-                    Card {
-                        B()
-                    }
-                    Card {
-                        C()
-                    }
-                    Card {
-                        D()
-                    }
-                    Card {
-                        E()
-                    }
-                    Card {
-                        F()
-                    }
-                    Card {
-                        G()
-                    }
-                    Card {
-                        H()
-                    }
+                    A()
+                    B()
+                    C()
+                    D()
+                    E()
+                    F()
+                    G()
+                    H()
                 }
+                .padding(35)
+                .padding(.bottom, 40)
                 Group {
-                    Card {
-                        I()
-                    }
-                    Card {
-                        J()
-                    }
-                    Card {
-                        K()
-                    }
-                    Card {
-                        L()
-                    }
-                    Card {
-                        M()
-                    }
-                    Card {
-                        N()
-                    }
-                    Card {
-                        O()
-                    }
-                    Card {
-                        P()
-                    }
+                    I()
+                    J()
+                    K()
+                    L()
+                    M()
+                    N()
+                    O()
+                    P()
                 }
+                .padding(35)
+                .padding(.bottom, 40)
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-            Control.Capsule(text: "Done", background: .secondary, foreground: .black) {
+            Button {
                 visible.wrappedValue.dismiss()
+            } label: {
+                Text("Done")
+                    .foregroundColor(.primary)
+                    .font(Font.body.bold())
+                    .frame(minWidth: 100, minHeight: 60)
             }
-            .padding(.bottom)
         }
+        .background(Color("Background")
+                        .edgesIgnoringSafeArea(.all))
     }
 }
 
