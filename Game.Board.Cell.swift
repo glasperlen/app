@@ -20,9 +20,9 @@ extension Game.Board {
                         .padding(5)
                 } else {
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(session[session.match![point]!.player] ? Color("User") : .init("Opponent"), style: .init(lineWidth: 1))
+                        .stroke(session[session.match![point].item!.player] ? Color("User") : .init("Opponent"), style: .init(lineWidth: 1))
                         .padding(5)
-                    Bead(bead: session.match![point]!.bead)
+                    Bead(bead: session.match![point].item!.bead)
                         .frame(width: 60, height: 60)
                 }
                 if flash != nil {
@@ -36,7 +36,7 @@ extension Game.Board {
                         .padding(5)
                 }
             }
-            .onChange(of: session.match?[point]?.player) { [old = session.match?[point]?.player] in
+            .onChange(of: session.match?[point].item?.player) { [old = session.match?[point].item?.player] in
                 guard let player = $0 else { return }
                 if old == nil {
                     session.play(.Tink)

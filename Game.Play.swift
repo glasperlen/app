@@ -52,7 +52,7 @@ extension Game {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                     withAnimation(.easeInOut(duration: 1)) {
                                         session.match?[wait.player].play(match).map {
-                                            session.match?[$0.point] = $0.bead
+                                            session.match?[$0.point] = $0.item?.bead
                                         }
                                     }
                                 }
