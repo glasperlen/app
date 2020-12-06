@@ -21,14 +21,23 @@ struct Game: View {
             } else if session.match?.state == .cancel {
                 Cancel(session: $session)
             } else if case let .play(wait) = session.match?.state {
-               Header(session: $session, turn: wait.player)
-               Board(session: $session, positions: $positions)
-               if session[wait.player] {
-                   Deck(session: $session, positions: $positions, wait: wait)
-               } else {
-                   Refresh(session: $session, wait: wait)
-               }
-               Play(session: $session)
+                VStack {
+                    Header(session: $session, turn: wait.player)
+                    Spacer()
+                    Board(session: $session, positions: $positions)
+                    VStack {
+                        Spacer()
+                        if session[wait.player] {
+                            Deck(session: $session, positions: $positions, wait: wait)
+                        }
+                    }
+                    .frame(height: 180)
+                    Spacer()
+                }
+                if !session[wait.player] {
+                    Refresh(session: $session, wait: wait)
+                }
+                Play(session: $session)
             } else if case let .win(wait) = session.match?.state {
                 Win(session: $session, wait: wait)
                 if !session[wait.player] {
@@ -43,6 +52,7 @@ struct Game: View {
                 End(session: $session, result: result)
             }
         }
+        .transition(.opacity)
         .onReceive(UIApplication.match) {
             session.match = $0
         }

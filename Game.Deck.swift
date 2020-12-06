@@ -9,40 +9,41 @@ extension Game {
         @State private var offset = [Session.Bead : CGSize]()
         
         var body: some View {
-            VStack {
+            Timer(session: $session, wait: wait)
+                .padding(.vertical)
+            HStack {
                 Spacer()
-                Timer(session: $session, wait: wait)
-                    .padding(.vertical)
-                HStack {
-                    Spacer()
-                    ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.self) { bead in
-                        Bead(bead: bead.item)
-                            .offset(offset[bead] ?? .zero)
-                            .gesture(
-                                DragGesture(coordinateSpace: .global)
-                                    .onChanged { gesture in
-                                        positions.drop = positions.cells
-                                            .filter { session.match?[$0.0] == nil }
-                                            .first { $0.1.contains(gesture.location) }?.0
-                                        offset[bead] = gesture.translation
-                                    }
-                                    .onEnded { _ in
-                                        if let drop = positions.drop {
+                ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.self) { bead in
+                    Bead(bead: bead.item)
+                        .frame(width: 50, height: 50)
+                        .scaleEffect(0.85)
+                        .offset(offset[bead] ?? .zero)
+                        .gesture(
+                            DragGesture(coordinateSpace: .global)
+                                .onChanged { gesture in
+                                    positions.drop = positions.cells
+                                        .filter { session.match?[$0.0] == nil }
+                                        .first { $0.1.contains(gesture.location) }?.0
+                                    offset[bead] = gesture.translation
+                                }
+                                .onEnded { _ in
+                                    if let drop = positions.drop {
+                                        withAnimation(.easeInOut(duration: 1)) {
                                             session.match![drop] = bead.item
                                             UIApplication.shared.next(session.match!)
-                                        } else {
-                                            withAnimation(.easeInOut(duration: 0.3)) {
-                                                offset[bead] = nil
-                                            }
                                         }
-                                        positions.drop = nil
+                                    } else {
+                                        withAnimation(.easeInOut(duration: 0.3)) {
+                                            offset[bead] = nil
+                                        }
                                     }
-                            )
-                    }
-                    Spacer()
+                                    positions.drop = nil
+                                }
+                        )
                 }
-                .padding(.bottom, UIDevice.current.userInterfaceIdiom == .pad ? 150 : 40)
+                Spacer()
             }
+            .padding(.vertical)
         }
     }
 }

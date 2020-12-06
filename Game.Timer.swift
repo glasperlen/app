@@ -14,7 +14,7 @@ extension Game {
                 VStack {
                     if !session[wait.player] {
                         Text("Waiting")
-                            .font(.caption2)
+                            .font(.footnote)
                     }
                     Text(verbatim: date)
                         .font(Font.footnote.monospacedDigit())

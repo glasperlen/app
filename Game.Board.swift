@@ -27,8 +27,8 @@ extension Game {
                 }
                 .frame(height: geo.size.width)
             }
-            .frame(maxWidth: 500)
-            .padding(.top, UIDevice.current.userInterfaceIdiom == .pad ? 150 : 30)
+            .frame(maxWidth: 300, maxHeight: 300)
+            .padding(.vertical)
         }
     }
 }

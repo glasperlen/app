@@ -49,7 +49,7 @@ extension Game {
                     if !session.multiplayer {
                         session.match.map { match in
                             if match[wait.player].id.isEmpty {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                     withAnimation(.easeInOut(duration: 1)) {
                                         session.match?[wait.player].play(match).map {
                                             session.match?[$0.point] = $0.item?.bead
