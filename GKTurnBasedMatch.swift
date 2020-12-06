@@ -35,6 +35,7 @@ extension GKTurnBasedMatch {
     func next(_ match: Match) {
         guard active else { return }
         (try? JSONEncoder().encode(match)).map {
+            print("sending data \($0.count)")
             endTurn(withNextParticipants: players, turnTimeout: {
                 switch match.state {
                 case let .play(wait): return wait.timeout.timeIntervalSince1970 - Date().timeIntervalSince1970

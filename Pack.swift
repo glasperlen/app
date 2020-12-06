@@ -13,7 +13,7 @@ struct Pack: View {
                     .font(.title)
                     .foregroundColor(.primary)
                 HStack {
-                    ForEach(beads, id: \.item.id) {
+                    ForEach(beads, id: \.self) {
                         Bead.Base(color: $0.item.color.color)
                             .frame(width: 30, height: 20)
                     }

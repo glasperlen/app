@@ -28,7 +28,7 @@ extension Pack {
                     Spacer()
                         .frame(height: 20)
                 }
-                ForEach(beads, id: \.item.id) {
+                ForEach(beads, id: \.self) {
                     Bead(bead: $0.item)
                         .padding(.top)
                 }

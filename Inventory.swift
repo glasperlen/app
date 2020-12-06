@@ -49,7 +49,7 @@ struct Inventory: View {
             ForEach(0 ..< .init(ceil(Float(session.beads.count) / 3)), id: \.self) { row in
                 HStack {
                     Spacer()
-                    ForEach(session.beads.dropFirst(row * 3).prefix(3), id: \.item.id) {
+                    ForEach(session.beads.dropFirst(row * 3).prefix(3), id: \.self) {
                         Item(session: $session, bead: $0)
                     }
                     Spacer()

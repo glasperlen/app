@@ -12,7 +12,7 @@ extension Game {
             Text("Choose your prize")
                 .padding(.horizontal)
                 .padding(.bottom)
-            ForEach(beads) { bead in
+            ForEach(beads, id: \.self) { bead in
                 Button {
                     withAnimation(.easeInOut(duration: 0.5)) {
                         selected = bead
