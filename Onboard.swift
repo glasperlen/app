@@ -10,6 +10,8 @@ struct Onboard: View {
                 .tag(0)
             Second(session: $session, tab: $tab)
                 .tag(1)
+            Third(session: $session)
+                .tag(2)
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

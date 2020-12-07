@@ -18,7 +18,7 @@ extension Game {
                         }
                         Spacer()
                     }
-                    .padding(40)
+                    .padding(60)
                     Spacer()
                     Controls(session: $session)
                 }

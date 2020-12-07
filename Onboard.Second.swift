@@ -12,33 +12,35 @@ extension Onboard {
         var body: some View {
             Card {
                 Spacer()
-                Pack(beads: beads ? [] : .init(session.beads.suffix(5)))
+                if !beads && session.beads.count >= 5 {
+                    Pack(beads: .init(session.beads.suffix(5)))
+                }
                 Spacer()
+                Text("As a new player\nyou receive 5 new beads.")
+                    .foregroundColor(.secondary)
+                    .font(.footnote)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
                 Button {
-                    tutorial = true
+                    withAnimation(.easeInOut(duration: 1)) {
+                        tab = 2
+                    }
                 } label: {
-                    Text("Tutorial")
+                    Text("Continue")
                         .foregroundColor(.primary)
                         .font(Font.footnote.bold())
                         .frame(minWidth: 100, minHeight: 50)
                 }
-                .sheet(isPresented: $tutorial) {
-                    Tutorial()
-                }
-                if !beads {
-                    Control.Capsule(text: "Start", background: .primary, foreground: .black) {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            start = false
-                        }
-                    }
-                }
+                .contentShape(Rectangle())
             }
             .onAppear {
                 if beads {
                     beads = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         session.play(.Hero)
-                        session.beads = Magister.Bead.make().map { .init(selected: true, item: $0) }
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            session.beads = Magister.Bead.make().map { .init(selected: true, item: $0) }
+                        }
                     }
                 }
             }

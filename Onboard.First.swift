@@ -15,12 +15,6 @@ extension Onboard {
                 Text("The Glass\nBead Game")
                     .multilineTextAlignment(.center)
                     .font(Font.title.bold())
-                Text("As a new player you will receive 5 new beads.")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
-                    .padding(.top)
-                    .padding(.horizontal)
                 Spacer()
                 Button {
                     withAnimation(.easeInOut(duration: 1)) {

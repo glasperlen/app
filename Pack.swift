@@ -2,27 +2,62 @@ import SwiftUI
 
 struct Pack: View {
     let beads: [Session.Bead]
-    @State private var detail = false
+    @State private var zoom = false
+    @Namespace private var animation
     
     var body: some View {
-        Button {
-            detail = true
-        } label: {
-            VStack {
-                Image(systemName: "bag.fill")
-                    .font(.title)
-                    .foregroundColor(.primary)
-                HStack {
-                    ForEach(beads, id: \.self) {
-                        Bead.Base(color: $0.item.color.color)
-                            .frame(width: 20, height: 20)
+        Group {
+            if zoom {
+                VStack {
+                    HStack {
+                        Bead(bead: beads[0].item)
+                            .matchedGeometryEffect(id: "0", in: animation)
+                            .frame(width: 50, height: 50)
+                        Bead(bead: beads[1].item)
+                            .matchedGeometryEffect(id: "1", in: animation)
+                            .frame(width: 50, height: 50)
+                    }
+                    HStack {
+                        Bead(bead: beads[2].item)
+                            .matchedGeometryEffect(id: "2", in: animation)
+                            .frame(width: 50, height: 50)
+                        Bead(bead: beads[3].item)
+                            .matchedGeometryEffect(id: "3", in: animation)
+                            .frame(width: 50, height: 50)
+                        Bead(bead: beads[4].item)
+                            .matchedGeometryEffect(id: "4", in: animation)
+                            .frame(width: 50, height: 50)
+                    }
+                }
+            } else {
+                VStack {
+                    HStack {
+                        Bead.Base(color: beads[0].item.color.color)
+                            .matchedGeometryEffect(id: "0", in: animation)
+                            .frame(width: 15, height: 15)
+                        Bead.Base(color: beads[1].item.color.color)
+                            .matchedGeometryEffect(id: "1", in: animation)
+                            .frame(width: 15, height: 15)
+                    }
+                    HStack {
+                        Bead.Base(color: beads[2].item.color.color)
+                            .matchedGeometryEffect(id: "2", in: animation)
+                            .frame(width: 15, height: 15)
+                        Bead.Base(color: beads[3].item.color.color)
+                            .matchedGeometryEffect(id: "3", in: animation)
+                            .frame(width: 15, height: 15)
+                        Bead.Base(color: beads[4].item.color.color)
+                            .matchedGeometryEffect(id: "4", in: animation)
+                            .frame(width: 15, height: 15)
                     }
                 }
             }
         }
         .contentShape(Rectangle())
-        .fullScreenCover(isPresented: $detail) {
-            Detail(beads: beads)
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                zoom.toggle()
+            }
         }
     }
 }
