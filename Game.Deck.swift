@@ -15,15 +15,16 @@ extension Game {
                 Spacer()
                 ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.self) { bead in
                     Bead(bead: bead.item)
-                        .frame(width: 50, height: 50)
-                        .scaleEffect(0.9)
+                        .frame(width: 52, height: 52)
                         .offset(offset[bead] ?? .zero)
                         .gesture(
                             DragGesture(coordinateSpace: .global)
                                 .onChanged { gesture in
-                                    positions.drop = positions.cells
-                                        .filter { session.match?[$0.0]?.player == nil }
-                                        .first { $0.1.contains(gesture.location) }?.0
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        positions.drop = positions.cells
+                                            .filter { session.match?[$0.0]?.player == nil }
+                                            .first { $0.1.contains(gesture.location) }?.0
+                                    }
                                     offset[bead] = gesture.translation
                                 }
                                 .onEnded { _ in

@@ -29,12 +29,12 @@ struct Inventory: View {
             HStack {
                 VStack {
                     HStack {
-                        Text("Get beads")
+                        Text("Get more beads")
                             .font(.headline)
                         Spacer()
                     }
                     HStack {
-                        Text("You can purchase beads on the Store")
+                        Text("You can purchase them on the store")
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         Spacer()

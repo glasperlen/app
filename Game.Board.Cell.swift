@@ -13,27 +13,26 @@ extension Game.Board {
             ZStack {
                 Rectangle()
                     .hidden()
-                if session.match?[point]?.player == nil {
+                if positions.drop == point {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color("User"))
+                        .padding(5)
+                } else if session.match?[point]?.player == nil {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(Color("Background"))
                         .modifier(Neumorphic())
                         .padding(5)
                 } else {
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(session[session.match![point]!.player] ? Color("User") : .init("Opponent"), style: .init(lineWidth: 1))
-                        .padding(5)
+                        .stroke(session[session.match![point]!.player] ? Color("User") : .init("Opponent"), style: .init(lineWidth: 3))
+                        .padding(3)
                     Bead(bead: session.match![point]!.bead)
-                        .frame(width: 60, height: 60)
+                        .frame(width: 54, height: 54)
                 }
                 if flash != nil {
-                    RoundedRectangle(cornerRadius: 12)
+                    RoundedRectangle(cornerRadius: 11)
                         .fill(flash!)
-                        .padding(5)
-                }
-                if positions.drop == point {
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color("User"), style: .init(lineWidth: 1))
-                        .padding(5)
+                        .padding(9)
                 }
             }
             .onChange(of: session.match?[point]?.player) { [old = session.match?[point]?.player] in
@@ -44,16 +43,16 @@ extension Game.Board {
                     session.impact()
                 }
                 
-                withAnimation(.easeInOut(duration: 0.4)) {
+                withAnimation(.easeInOut(duration: 0.5)) {
                     flash = session[player] ? Color("User") : .init("Opponent")
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if old != nil {
                         session.play(.Pop)
                     }
                     
-                    withAnimation(.easeInOut(duration: 0.4)) {
+                    withAnimation(.easeInOut(duration: 0.5)) {
                         flash = nil
                     }
                 }
