@@ -15,14 +15,13 @@ struct Pack: View {
                 HStack {
                     ForEach(beads, id: \.self) {
                         Bead.Base(color: $0.item.color.color)
-                            .frame(width: 30, height: 20)
+                            .frame(width: 20, height: 20)
                     }
                 }
-                .scaleEffect(0.3)
             }
         }
         .contentShape(Rectangle())
-        .sheet(isPresented: $detail) {
+        .fullScreenCover(isPresented: $detail) {
             Detail(beads: beads)
         }
     }

@@ -9,10 +9,10 @@ extension Bead {
                 Circle()
                     .fill(Color.clear)
                 Text(verbatim: "\(point)")
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .font(Font.caption2.bold().monospacedDigit())
             }
-            .frame(width: 26, height: 26)
+            .frame(width: 24, height: 24)
         }
     }
 }
