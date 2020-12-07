@@ -15,6 +15,7 @@ extension Game {
                 .padding(.vertical)
                 Spacer()
             }
+            Refresh(session: $session, wait: nil)
         }
     }
 }

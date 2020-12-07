@@ -32,6 +32,9 @@ extension Game {
                     Prize(session: $session, wait: wait, beads: session.match?[wait.player].beads ?? [])
                 }
             }
+            if session[wait.player] {
+                Refresh(session: $session, wait: wait)
+            }
         }
     }
 }

@@ -44,6 +44,9 @@ extension Game {
                     Spacer()
                 }
             }
+            if !session[wait.player] {
+                Refresh(session: $session, wait: wait)
+            }
         }
     }
 }
