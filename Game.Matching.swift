@@ -13,9 +13,10 @@ extension Game {
                     session.match!.cancel()
                 }
                 .padding(.vertical)
+                Refresh(session: $session)
+                    .padding(.vertical)
                 Spacer()
             }
-            Refresh(session: $session, wait: nil)
         }
     }
 }

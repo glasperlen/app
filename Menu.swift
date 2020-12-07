@@ -1,10 +1,8 @@
 import SwiftUI
-import GameKit
 
 struct Menu: View {
     @Binding var session: Session
     @State private var formatter = NumberFormatter()
-    @State private var user = ""
     @State private var tutorial = false
     @AppStorage(Defaults.Key.settings_sound.rawValue) private var sound = true
     @AppStorage(Defaults.Key.settings_vibrate.rawValue) private var vibrate = true
@@ -33,7 +31,7 @@ struct Menu: View {
                     .font(Font.largeTitle.bold())
                     .padding(.leading)
                     .padding(.vertical)
-                Text(verbatim: user)
+                Text(verbatim: UIApplication.name.value)
                     .font(Font.title.bold())
                     .padding(.trailing)
                 Spacer()
@@ -76,9 +74,6 @@ struct Menu: View {
                         .edgesIgnoringSafeArea(.all))
         .onAppear {
             formatter.numberStyle = .decimal
-            if GKLocalPlayer.local.isAuthenticated {
-                user = GKLocalPlayer.local.displayName
-            }
         }
     }
 }

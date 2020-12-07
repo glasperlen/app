@@ -19,8 +19,12 @@ extension Game {
                         .padding(.top)
                     session.match.map {
                         Text("\($0[wait.player.negative].name) is choosing a prize")
-                            .padding(.horizontal)
+                            .padding()
                     }
+                    Timer(session: $session, wait: wait)
+                        .padding(.vertical)
+                    Refresh(session: $session)
+                        .padding(.vertical)
                     Spacer()
                 } else {
                     session.match.map {
@@ -31,9 +35,6 @@ extension Game {
                     }
                     Prize(session: $session, wait: wait, beads: session.match?[wait.player].beads ?? [])
                 }
-            }
-            if session[wait.player] {
-                Refresh(session: $session, wait: wait)
             }
         }
     }

@@ -8,21 +8,19 @@ extension Game {
         @State private var positions = Positions()
         
         var body: some View {
-            VStack {
-                Header(session: $session, turn: wait.player)
-                Spacer()
+            ZStack {
                 Board(session: $session, positions: $positions)
                 VStack {
+                    Header(session: $session, wait: wait)
                     Spacer()
                     if session[wait.player] {
-                        Deck(session: $session, positions: $positions, wait: wait)
+                        Deck(session: $session, positions: $positions)
+                    } else if session.multiplayer {
+                        Refresh(session: $session)
                     }
+                    Spacer()
+                        .frame(height: 70)
                 }
-                .frame(height: 180)
-                Spacer()
-            }
-            if !session[wait.player] {
-                Refresh(session: $session, wait: wait)
             }
             Play(session: $session)
         }

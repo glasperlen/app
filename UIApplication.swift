@@ -5,6 +5,7 @@ import Magister
 
 extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPlayerListener {
     static let match = PassthroughSubject<Match, Never>()
+    static let name = CurrentValueSubject<String, Never>("You")
     private static var game: GKTurnBasedMatch?
 
     public func player(_ player: GKPlayer, receivedTurnEventFor: GKTurnBasedMatch, didBecomeActive: Bool) {
@@ -50,6 +51,7 @@ extension UIApplication: GKTurnBasedMatchmakerViewControllerDelegate, GKLocalPla
         GKLocalPlayer.local.authenticateHandler = { controller, error in
             guard let controller = controller else {
                 if error == nil {
+                    Self.name.value = GKLocalPlayer.local.displayName
                     GKLocalPlayer.local.register(self)
                 } else {
                     self.sign()

@@ -26,8 +26,12 @@ extension Game {
                     if session.multiplayer {
                         session.match.map {
                             Text("\($0[wait.player].name) is choosing a prize")
-                                .padding(.horizontal)
+                                .padding()
                         }
+                        Timer(session: $session, wait: wait)
+                            .padding(.vertical)
+                        Refresh(session: $session)
+                            .padding(.vertical)
                     } else {
                         Spacer()
                         Control.Capsule(text: "Continue", background: .primary, foreground: .black) {
@@ -43,9 +47,6 @@ extension Game {
                     }
                     Spacer()
                 }
-            }
-            if !session[wait.player] {
-                Refresh(session: $session, wait: wait)
             }
         }
     }

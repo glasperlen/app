@@ -5,40 +5,34 @@ extension Game {
     struct New: View {
         @Binding var session: Session
         @State private var me = true
-        @State private var name = ""
+        @State private var opponent = ""
         
         var body: some View {
             VStack {
-                Text("Start")
-                    .font(Font.largeTitle.bold())
-                    .padding(40)
                 Spacer()
-            }
-            VStack {
-                Spacer()
-                Text(verbatim: name)
+                Text(verbatim: opponent)
                     .font(Font.title.bold())
                     .padding()
                 if me {
                     Image(systemName: "arrowtriangle.down.fill")
                         .font(.title)
                         .foregroundColor(.init("User"))
-                        .padding()
+                        .padding(.vertical)
                 } else {
                     Image(systemName: "arrowtriangle.up.fill")
                         .font(.title)
                         .foregroundColor(.init("Opponent"))
-                        .padding()
+                        .padding(.vertical)
                 }
-                Image(systemName: "person.fill")
-                    .font(.largeTitle)
+                Text(verbatim: UIApplication.name.value)
+                    .font(Font.title.bold())
                     .padding()
                 Spacer()
             }.onAppear {
                 var match = session.match!
                 match.join(.user(Defaults.id, "", session.beads.filter { $0.selected }.map(\.item)))
                 match.join(.robot(match[.first]))
-                name = match[.second].name
+                opponent = match[.second].name
                 
                 var rolls = 7
                 if case let .play(wait) = match.state {

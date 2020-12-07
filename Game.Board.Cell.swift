@@ -15,7 +15,11 @@ extension Game.Board {
                     .hidden()
                 if positions.drop == point {
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color("User"))
+                        .fill(Color("Background"))
+                        .shadow(color: Color("User"), radius: 7)
+                        .padding(5)
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color("User"), style: .init(lineWidth: 1))
                         .padding(5)
                 } else if session.match?[point]?.player == nil {
                     RoundedRectangle(cornerRadius: 12)
@@ -24,8 +28,12 @@ extension Game.Board {
                         .padding(5)
                 } else {
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(session[session.match![point]!.player] ? Color("User") : .init("Opponent"), style: .init(lineWidth: 3))
-                        .padding(3)
+                        .fill(Color("Background"))
+                        .shadow(color: session[session.match![point]!.player] ? Color("User") : .init("Opponent"), radius: 7)
+                        .padding(5)
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(session[session.match![point]!.player] ? Color("User") : .init("Opponent"), style: .init(lineWidth: 1))
+                        .padding(5)
                     Bead(bead: session.match![point]!.bead)
                         .frame(width: 54, height: 54)
                 }

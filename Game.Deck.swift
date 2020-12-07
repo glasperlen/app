@@ -5,22 +5,20 @@ extension Game {
     struct Deck: View {
         @Binding var session: Session
         @Binding var positions: Positions
-        let wait: Match.Wait
         @State private var offset = [Session.Bead : CGSize]()
         
         var body: some View {
-            Timer(session: $session, wait: wait)
-                .padding(.vertical)
             HStack {
                 Spacer()
                 ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.self) { bead in
                     Bead(bead: bead.item)
-                        .frame(width: 52, height: 52)
+                        .zIndex(offset[bead] == nil ? 0 : 1)
+                        .frame(width: 54, height: 54)
                         .offset(offset[bead] ?? .zero)
                         .gesture(
                             DragGesture(coordinateSpace: .global)
                                 .onChanged { gesture in
-                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                    withAnimation(.easeInOut(duration: 0.2)) {
                                         positions.drop = positions.cells
                                             .filter { session.match?[$0.0]?.player == nil }
                                             .first { $0.1.contains(gesture.location) }?.0
@@ -34,7 +32,7 @@ extension Game {
                                             UIApplication.shared.next(session.match!)
                                         }
                                     } else {
-                                        withAnimation(.easeInOut(duration: 0.3)) {
+                                        withAnimation(.easeInOut(duration: 0.5)) {
                                             offset[bead] = nil
                                         }
                                     }
@@ -44,7 +42,6 @@ extension Game {
                 }
                 Spacer()
             }
-            .padding(.vertical)
         }
     }
 }
