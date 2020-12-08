@@ -11,23 +11,22 @@ struct Store: View {
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
-        HStack {
-            Text("Store")
-                .font(Font.title.bold())
-                .padding(.leading)
-            Spacer()
-            Button {
-                visible.wrappedValue.dismiss()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(.secondary)
-                    .font(.title2)
-                    .frame(width: 60, height: 35)
-            }
-            .contentShape(Rectangle())
-        }
-        .padding(.top, 20)
         ScrollView {
+            HStack {
+                Image(systemName: "cart.fill")
+                    .frame(width: 60)
+                Spacer()
+                Button {
+                    visible.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                        .font(.title3)
+                        .frame(width: 60, height: 50)
+                }
+                .contentShape(Rectangle())
+                .padding(.top)
+            }
             if done {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.title)
@@ -65,8 +64,9 @@ struct Store: View {
                 }
             } else {
                 HStack {
-                    Text("You can purchase packs with new beads, each pack is unique and every time you purchase them they will contain different beads.\n\nThe points of the beads in the packs will be influenced by the quality of the pack you choose.\n\nAll purchases are consumable, you can purchase them many times but you won't be able to restore them.")
-                        .padding()
+                    Text("These packs are unique and always contain different beads defined by the quality of the pack.\n\nPurchases are consumable, you can purchase them many times but can't be restored.")
+                        .padding(.horizontal)
+                        .padding(.bottom, 20)
                         .foregroundColor(.secondary)
                     Spacer()
                 }
@@ -76,11 +76,6 @@ struct Store: View {
                             session.purchases.purchase(product.0)
                         }
                     }
-                    .padding(.vertical)
-                    Rectangle()
-                        .fill(Color.white.opacity(0.2))
-                        .frame(height: 1)
-                        .padding(.horizontal)
                 }
             }
         }

@@ -9,51 +9,44 @@ struct Menu: View {
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
-        HStack {
-            Text("Menu")
-                .font(Font.title.bold())
-                .padding(.leading)
-            Spacer()
-            Button {
-                visible.wrappedValue.dismiss()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(.secondary)
-                    .font(.title2)
-                    .frame(width: 60, height: 35)
-            }
-            .contentShape(Rectangle())
-        }
-        .padding(.top, 20)
         ScrollView {
+            HStack {
+                Spacer()
+                Button {
+                    visible.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                        .font(.title3)
+                        .frame(width: 60, height: 50)
+                }
+                .contentShape(Rectangle())
+                .padding(.top)
+            }
             HStack {
                 Image(systemName: "person.circle.fill")
                     .font(Font.largeTitle.bold())
-                    .padding(.leading)
-                    .padding(.vertical)
                 Text(verbatim: UIApplication.name.value)
                     .font(Font.title.bold())
-                    .padding(.trailing)
                 Spacer()
                 VStack {
                     Text(NSNumber(value: Defaults.beads.count), formatter: formatter)
                         .font(Font.title.bold().monospacedDigit())
                     Text(Defaults.beads.count == 1 ? "Bead" : "Beads")
-                        .font(.caption)
+                        .font(.caption2)
                 }
                 VStack {
                     Text(NSNumber(value: Defaults.victories), formatter: formatter)
                         .font(Font.title.bold().monospacedDigit())
                     Text(Defaults.victories == 1 ? "Victory" : "Victories")
-                        .font(.caption)
+                        .font(.caption2)
                 }
-                .padding(.horizontal)
             }
-            .padding(.horizontal)
-            .padding(.top)
+            .padding()
             Item(text: "Purchases", image: "cart") {
                 session.purchases.open.send()
             }
+            .padding(.top)
             Item(text: "Leaderboards", image: "star") {
                 visible.wrappedValue.dismiss()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {

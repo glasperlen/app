@@ -39,9 +39,10 @@ struct Tutorial: View {
             } label: {
                 Text("Done")
                     .foregroundColor(.primary)
-                    .font(Font.body.bold())
-                    .frame(minWidth: 100, minHeight: 60)
+                    .font(Font.title2.bold())
+                    .frame(minWidth: 100, minHeight: 40)
             }
+            .padding(.bottom)
         }
         .background(Color.background.edgesIgnoringSafeArea(.all))
     }
@@ -177,42 +178,20 @@ Notice the different colours between you and your opponent.
 """)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-            Spacer()
-            HStack {
-                HStack {
-                    Text("Opponent")
-                        .bold()
-                    Spacer()
-                }
-                .frame(width: 120)
-                VStack {
-                    Image(systemName: "person.fill")
-                        .foregroundColor(.opponent)
-                        .font(.largeTitle)
-                        .padding(.bottom)
-                    Image(systemName: "arrowtriangle.up.fill")
-                        .font(.title)
-                        .foregroundColor(.opponent)
-                }
-            }
-            HStack {
-                HStack {
-                    Text("You")
-                        .bold()
-                    Spacer()
-                }
-                .frame(width: 120)
-                VStack {
-                    Image(systemName: "arrowtriangle.down.fill")
-                        .font(.title)
-                        .foregroundColor(.user)
-                        .padding(.bottom)
-                    Image(systemName: "person.fill")
-                        .foregroundColor(.user)
-                        .font(.largeTitle)
-                }
-            }
-            .padding(.top)
+                .padding(.bottom)
+            Text("Opponent")
+                .font(Font.title.bold())
+                .padding(.top)
+            Image(systemName: "arrowtriangle.up.fill")
+                .font(.title)
+                .foregroundColor(.opponent)
+                .padding(.vertical)
+            Image(systemName: "arrowtriangle.down.fill")
+                .font(.title)
+                .foregroundColor(.user)
+                .padding(.vertical)
+            Text("You")
+                .font(Font.title.bold())
         }
     }
 }

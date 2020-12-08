@@ -7,41 +7,29 @@ extension Store {
         let action: () -> Void
         
         var body: some View {
-            HStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.background)
+                    .modifier(Neumorphic())
                 VStack {
                     Image(purchase.image)
                         .padding()
-                    Text(verbatim: price)
-                        .font(.footnote)
-                    Control.Capsule(text: "Purchase", background: .accentColor, foreground: .white, width: 100, action: action)
-                }
-                VStack {
-                    HStack {
-                        Text(verbatim: purchase.heading)
-                            .font(Font.title.bold())
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.trailing)
-                            .padding(.top)
-                        Spacer()
-                    }
-                    HStack {
-                        Text(verbatim: purchase.title)
-                            .font(Font.title3.bold())
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.trailing)
-                        Spacer()
-                    }
-                    HStack {
-                        Text(verbatim: purchase.subtitle)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .foregroundColor(.secondary)
-                            .padding(.trailing)
-                        Spacer()
-                    }
+                    Text(verbatim: purchase.title)
+                        .font(Font.title.bold())
+                    Text(verbatim: purchase.subtitle)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.secondary)
+                        .padding()
                     Spacer()
+                    Text(verbatim: price)
+                        .bold()
+                    Control.Capsule(text: "Purchase", background: .accentColor, foreground: .white, action: action)
+                        .padding(.bottom)
                 }
-                Spacer()
+                .padding()
             }
+            .frame(width: 300, height: 470)
+            .padding(.vertical)
         }
     }
 }

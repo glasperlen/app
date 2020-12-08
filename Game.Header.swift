@@ -40,7 +40,7 @@ extension Game {
                         Button {
                             abandon = true
                         } label: {
-                            Image(systemName: "xmark.circle")
+                            Image(systemName: "xmark")
                                 .foregroundColor(.opponent)
                                 .font(Font.title2.bold())
                                 .frame(width: 40, height: 25)
