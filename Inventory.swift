@@ -5,47 +5,36 @@ struct Inventory: View {
     @Environment(\.presentationMode) private var visible
     
     var body: some View {
-        HStack {
-            Text("Inventory")
-                .font(Font.title.bold())
-                .padding(.horizontal)
-            Spacer()
-            Text(verbatim: "\(session.beads.filter(\.selected).count)/5")
-                .font(Font.title.monospacedDigit())
-                .foregroundColor(session.beads.filter(\.selected).count == 5 ? .primary : .red)
-                .bold()
-            Button {
-                visible.wrappedValue.dismiss()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(.secondary)
-                    .font(.title2)
-                    .frame(width: 60, height: 35)
-            }
-            .contentShape(Rectangle())
-        }
-        .padding(.top, 20)
         ScrollView {
             HStack {
-                VStack {
-                    HStack {
-                        Text("Get more beads")
-                            .font(.headline)
-                        Spacer()
-                    }
-                    HStack {
-                        Text("You can purchase them on the store")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                        Spacer()
-                    }
-                }
                 Spacer()
-                Control.Circle(image: "cart") {
-                    session.purchases.open.send()
+                Button {
+                    visible.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                        .font(.title3)
+                        .frame(width: 60, height: 50)
+                }
+                .contentShape(Rectangle())
+                .padding(.top)
+            }
+            Text(verbatim: "\(session.beads.filter(\.selected).count)")
+                .font(Font.largeTitle.bold())
+            HStack {
+                ForEach(0 ..< 5) { index in
+                    if index < session.beads.filter(\.selected).count {
+                        Circle()
+                            .fill(Color.user)
+                            .frame(width: 12, height: 12)
+                    } else {
+                        Circle()
+                            .stroke(Color.opponent, style: .init(lineWidth: 2))
+                            .frame(width: 12, height: 12)
+                    }
                 }
             }
-            .padding()
+            .padding(.bottom, 30)
             ForEach(0 ..< .init(ceil(Float(session.beads.count) / 3)), id: \.self) { row in
                 HStack {
                     Spacer()
@@ -55,10 +44,22 @@ struct Inventory: View {
                     Spacer()
                 }
             }
-            Spacer()
-                .frame(height: 20)
+            HStack {
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("Get more beads")
+                        .font(.headline)
+                    Text("Purchase them on the store")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+                Control.Circle(image: "cart") {
+                    session.purchases.open.send()
+                }
+                .padding(.trailing)
+            }
+            .padding(.vertical, 40)
         }
-        .background(Color("Background")
-                        .edgesIgnoringSafeArea(.all))
+        .background(Color.background.edgesIgnoringSafeArea(.all))
     }
 }

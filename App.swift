@@ -9,7 +9,7 @@ import AVFoundation
     var body: some Scene {
         WindowGroup {
             ZStack {
-                Color("Background")
+                Color.background
                     .edgesIgnoringSafeArea(.all)
                     .sheet(isPresented: $store) {
                         Store(session: $session)

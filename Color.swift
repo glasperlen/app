@@ -4,6 +4,7 @@ import Magister
 extension Color {
     static let user = Self("User")
     static let opponent = Self("Opponent")
+    static let background = Self("Background")
 }
 
 extension Magister.Bead.Color {

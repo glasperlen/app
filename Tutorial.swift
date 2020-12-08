@@ -43,8 +43,7 @@ struct Tutorial: View {
                     .frame(minWidth: 100, minHeight: 60)
             }
         }
-        .background(Color("Background")
-                        .edgesIgnoringSafeArea(.all))
+        .background(Color.background.edgesIgnoringSafeArea(.all))
     }
 }
 

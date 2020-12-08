@@ -33,7 +33,7 @@ extension Game {
             }
             Spacer()
             if selected != nil {
-                Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
+                Control.Capsule(text: "Done", background: .primary, foreground: .black) {
                     guard let bead = selected else { return }
                     session.match!.prize(bead)
                     UIApplication.shared.next(session.match!)

@@ -27,7 +27,7 @@ extension Game {
                         .padding(.top)
                     Text("removed from your inventory.")
                     Spacer()
-                    Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {
+                    Control.Capsule(text: "Done", background: .primary, foreground: .black) {
                         UIApplication.shared.end()
                         withAnimation(.easeInOut(duration: 1)) {
                             session.match = nil

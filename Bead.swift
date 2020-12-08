@@ -3,25 +3,19 @@ import Magister
 
 struct Bead: View {
     let bead: Magister.Bead
-    @State private var offset = CGFloat()
     
     var body: some View {
         ZStack {
             Base(color: bead.color.color)
             Point(point: bead[.top])
-                .offset(y: -offset)
+                .offset(y: -12)
             Point(point: bead[.bottom])
-                .offset(y: offset)
+                .offset(y: 12)
             Point(point: bead[.left])
-                .offset(x: -offset)
+                .offset(x: -12)
             Point(point: bead[.right])
-                .offset(x: offset)
+                .offset(x: 12)
         }
         .frame(width: 54, height: 54)
-        .onAppear {
-            withAnimation(.easeInOut(duration: 0.3)) {
-                offset = 12
-            }
-        }
     }
 }

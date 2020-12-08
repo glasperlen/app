@@ -70,8 +70,7 @@ struct Menu: View {
                 .padding(.top)
             Switch(text: "Vibrate", value: $vibrate)
         }
-        .background(Color("Background")
-                        .edgesIgnoringSafeArea(.all))
+        .background(Color.background.edgesIgnoringSafeArea(.all))
         .onAppear {
             formatter.numberStyle = .decimal
         }

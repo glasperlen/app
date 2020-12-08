@@ -10,7 +10,7 @@ extension Game {
         var body: some View {
             ZStack {
                 if visible {
-                    Color("Background")
+                    Color.background
                         .opacity(0.8)
                         .edgesIgnoringSafeArea(.all)
                     session.match.map { match in

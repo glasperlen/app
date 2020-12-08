@@ -84,8 +84,7 @@ struct Store: View {
                 }
             }
         }
-        .background(Color("Background")
-                        .edgesIgnoringSafeArea(.all))
+        .background(Color.background.edgesIgnoringSafeArea(.all))
         .sheet(isPresented: $pack) {
             Pack.Detail(beads: session.beads.suffix(5))
         }

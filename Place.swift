@@ -8,7 +8,7 @@ struct Place: View {
             switch state {
             case .empty:
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color("Background"))
+                    .fill(Color.background)
                     .modifier(Neumorphic())
             case .hover:
                 Highlight(color: .user)
@@ -32,7 +32,7 @@ private struct Highlight: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 12)
-            .fill(Color("Background"))
+            .fill(Color.background)
             .shadow(color: color, radius: 7)
         RoundedRectangle(cornerRadius: 12)
             .stroke(color, style: .init(lineWidth: 1))
