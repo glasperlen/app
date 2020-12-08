@@ -13,7 +13,6 @@
 		CE253600255967E900DBA035 /* Session.Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FF255967E900DBA035 /* Session.Bead.swift */; };
 		CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25360325596A2200DBA035 /* Defaults.Key.swift */; };
 		CE31057D2577C1F200FEC4D9 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31057C2577C1F200FEC4D9 /* Tutorial.swift */; };
-		CE34B9DB2564271700A2CD60 /* Pack.Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */; };
 		CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DF25642A5200A2CD60 /* Pack.swift */; };
 		CE4495B925496A4300ECA6C0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4495B825496A4300ECA6C0 /* App.swift */; };
 		CE4495BD25496A4300ECA6C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4495BC25496A4300ECA6C0 /* Assets.xcassets */; };
@@ -82,7 +81,6 @@
 		CE2535FF255967E900DBA035 /* Session.Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Bead.swift; sourceTree = "<group>"; };
 		CE25360325596A2200DBA035 /* Defaults.Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.Key.swift; sourceTree = "<group>"; };
 		CE31057C2577C1F200FEC4D9 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
-		CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.Detail.swift; sourceTree = "<group>"; };
 		CE34B9DF25642A5200A2CD60 /* Pack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.swift; sourceTree = "<group>"; };
 		CE4495B525496A4300ECA6C0 /* Glasperlen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glasperlen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4495B825496A4300ECA6C0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 				CE65FC37254C3B8A000A78C1 /* Onboard.Second.swift */,
 				CEE409AB254B1DCA00A9D5EB /* Onboard.swift */,
 				CEE26A35257E5F89005BD684 /* Onboard.Third.swift */,
-				CE34B9DA2564271700A2CD60 /* Pack.Detail.swift */,
 				CE34B9DF25642A5200A2CD60 /* Pack.swift */,
 				CE594351257F9AA900A86D50 /* Place.State.swift */,
 				CE594346257F97EA00A86D50 /* Place.swift */,
@@ -349,7 +346,6 @@
 				CE4B649325766F8D00CD3ED4 /* Game.Prize.swift in Sources */,
 				CEE409B3254B245600A9D5EB /* Control.Capsule.swift in Sources */,
 				CE6E727B25543014000AB7D2 /* Bead.Point.swift in Sources */,
-				CE34B9DB2564271700A2CD60 /* Pack.Detail.swift in Sources */,
 				CEB4C6A425627CD50068AEE9 /* Purchases.swift in Sources */,
 				CEE26A36257E5F89005BD684 /* Onboard.Third.swift in Sources */,
 				CE063851256190A4006ED1AD /* UIApplication.swift in Sources */,

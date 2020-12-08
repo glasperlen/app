@@ -35,6 +35,7 @@ struct Menu: View {
                     Text(Defaults.beads.count == 1 ? "Bead" : "Beads")
                         .font(.caption2)
                 }
+                .padding(.trailing)
                 VStack {
                     Text(NSNumber(value: Defaults.victories), formatter: formatter)
                         .font(Font.title.bold().monospacedDigit())

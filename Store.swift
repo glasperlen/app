@@ -6,7 +6,6 @@ struct Store: View {
     @State private var products = [(SKProduct, String)]()
     @State private var error: String?
     @State private var loading = true
-    @State private var pack = false
     @State private var done = false
     @Environment(\.presentationMode) private var visible
     
@@ -29,16 +28,18 @@ struct Store: View {
             }
             if done {
                 Image(systemName: "checkmark.circle.fill")
-                    .font(.title)
+                    .font(Font.largeTitle.bold())
                     .foregroundColor(.accentColor)
-                    .padding(.top, 50)
+                    .padding(.vertical)
+                Pack(beads: .init(session.beads.suffix(5)))
+                    .padding(.vertical)
                 HStack {
                     Spacer()
                     Text("Purchase successful")
-                        .font(.headline)
-                        .padding()
+                        .font(Font.footnote.bold())
                     Spacer()
                 }
+                .padding(.vertical)
                 Control.Capsule(text: "Done", background: .primary, foreground: .black) {
                     visible.wrappedValue.dismiss()
                 }
@@ -80,9 +81,6 @@ struct Store: View {
             }
         }
         .background(Color.background.edgesIgnoringSafeArea(.all))
-        .sheet(isPresented: $pack) {
-            Pack.Detail(beads: session.beads.suffix(5))
-        }
         .onReceive(session.purchases.loading) {
             loading = $0
         }
@@ -97,7 +95,6 @@ struct Store: View {
                 session.play(.Hero)
                 session.beads.append(contentsOf: $0)
                 done = true
-                pack = true
             }
         }
         .onAppear {

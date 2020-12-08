@@ -33,25 +33,6 @@ extension Game {
                                      .default(.init("Inventory")) { inventory = true },
                                      .cancel()])
                 }
-//                .actionSheet(isPresented: $alert) {
-//                    if session.beads.filter(\.selected).count == 5 {
-//                        return .init(title: .init("New game"),
-//                                     buttons: [
-//                                        .default(.init("Single")) {
-//                                            session.match = .init()
-//                                        },
-//                                        .default(.init("Multiplayer")) {
-//                                            UIApplication.shared.request()
-//                                        },
-//                                        .cancel()])
-//                    } else {
-//                        return .init(title: .init("Need 5 beads selected to play"),
-//                                     message: .init("Select them in your inventory"),
-//                                     buttons: [
-//                                         .default(.init("Inventory")) { inventory = true },
-//                                         .cancel()])
-//                    }
-//                }
                 Control.Circle(image: "slider.vertical.3") {
                     menu = true
                 }

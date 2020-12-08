@@ -55,15 +55,12 @@ extension Game {
                 }
             } else {
                 VStack {
-                    VStack {
-                        HStack {
-                            Text(verbatim: "The\nGlass\nBead\nGame")
-                                .font(Font.largeTitle.bold())
-                            Spacer()
-                        }
+                    HStack {
+                        Text(verbatim: "The\nGlass\nBead\nGame")
+                            .font(Font.largeTitle.bold())
+                            .padding(80)
                         Spacer()
                     }
-                    .padding(60)
                     Spacer()
                     Controls(session: $session, new: $new)
                 }
