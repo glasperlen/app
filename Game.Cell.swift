@@ -20,7 +20,7 @@ extension Game {
                     }
                     
                     withAnimation(.easeInOut(duration: 0.5)) {
-                        flash = session[player] ? Color("User") : .init("Opponent")
+                        flash = session[player] ? .user : .opponent
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -41,7 +41,7 @@ extension Game {
         private var state: Place.State {
             positions.drop == point ? .hover :
                 session.match?[point]?.player == nil ? .empty :
-                flash == nil ? .taken(session.match![point]!.bead, session[session.match![point]!.player] ? .init("User") : .init("Opponent")) :
+                flash == nil ? .taken(session.match![point]!.bead, session[session.match![point]!.player] ? .user : .opponent) :
                 .flash(session.match![point]!.bead, flash!)
         }
     }

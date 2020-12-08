@@ -11,7 +11,7 @@ struct Place: View {
                     .fill(Color("Background"))
                     .modifier(Neumorphic())
             case .hover:
-                Highlight(color: .init("User"))
+                Highlight(color: .user)
             case let .taken(bead, color):
                 Highlight(color: color)
                 Bead(bead: bead)

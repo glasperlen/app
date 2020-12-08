@@ -26,7 +26,7 @@ extension Game {
                 HStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 6)
-                            .fill(Color("User"))
+                            .fill(Color.user)
                             .frame(width: 25, height: 25)
                             .opacity(session[wait.player] ? 1 : 0.5)
                         session.match.map {
@@ -41,7 +41,7 @@ extension Game {
                             abandon = true
                         } label: {
                             Image(systemName: "xmark.circle")
-                                .foregroundColor(.init("Opponent"))
+                                .foregroundColor(.opponent)
                                 .font(Font.title2.bold())
                                 .frame(width: 40, height: 25)
                         }
@@ -50,7 +50,7 @@ extension Game {
                     Spacer()
                     ZStack {
                         RoundedRectangle(cornerRadius: 6)
-                            .fill(Color("Opponent"))
+                            .fill(Color.opponent)
                             .frame(width: 25, height: 25)
                             .opacity(session[wait.player.negative] ? 1 : 0.5)
                         session.match.map {

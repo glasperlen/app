@@ -188,12 +188,12 @@ Notice the different colours between you and your opponent.
                 .frame(width: 120)
                 VStack {
                     Image(systemName: "person.fill")
-                        .foregroundColor(.init("Opponent"))
+                        .foregroundColor(.opponent)
                         .font(.largeTitle)
                         .padding(.bottom)
                     Image(systemName: "arrowtriangle.up.fill")
                         .font(.title)
-                        .foregroundColor(.init("Opponent"))
+                        .foregroundColor(.opponent)
                 }
             }
             HStack {
@@ -206,10 +206,10 @@ Notice the different colours between you and your opponent.
                 VStack {
                     Image(systemName: "arrowtriangle.down.fill")
                         .font(.title)
-                        .foregroundColor(.init("User"))
+                        .foregroundColor(.user)
                         .padding(.bottom)
                     Image(systemName: "person.fill")
-                        .foregroundColor(.init("User"))
+                        .foregroundColor(.user)
                         .font(.largeTitle)
                 }
             }
@@ -277,7 +277,7 @@ private struct H: View {
     var body: some View {
         VStack {
             Board {
-                Place(state: $0.x == 1 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
+                Place(state: $0.x == 1 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .user) : .empty)
             }
             Spacer()
             Text("Own")
@@ -312,7 +312,7 @@ private struct J: View {
     var body: some View {
         VStack {
             Board {
-                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("Opponent")) : .empty)
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .opponent) : .empty)
             }
             Spacer()
             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
@@ -328,8 +328,8 @@ private struct K: View {
     var body: some View {
         VStack {
             Board {
-                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("User")) :
-                        $0.x == 1 && $0.y == 0 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .user) :
+                        $0.x == 1 && $0.y == 0 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .user) : .empty)
             }
             Spacer()
             Text("""
@@ -347,8 +347,8 @@ private struct L: View {
     var body: some View {
         VStack {
             Board {
-                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("Opponent")) :
-                        $0.x == 0 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .opponent) :
+                        $0.x == 0 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .user) : .empty)
             }
             Spacer()
             Text("""
@@ -364,8 +364,8 @@ private struct M: View {
     var body: some View {
         VStack {
             Board {
-                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("Opponent")) :
-                        $0.x == 1 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .opponent) :
+                        $0.x == 1 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .user) : .empty)
             }
             Spacer()
             Text("""

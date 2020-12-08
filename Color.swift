@@ -1,6 +1,11 @@
 import SwiftUI
 import Magister
 
+extension Color {
+    static let user = Self("User")
+    static let opponent = Self("Opponent")
+}
+
 extension Magister.Bead.Color {
     var color: Color {
         switch self {

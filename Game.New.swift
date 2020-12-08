@@ -16,12 +16,12 @@ extension Game {
                 if me {
                     Image(systemName: "arrowtriangle.down.fill")
                         .font(.title)
-                        .foregroundColor(.init("User"))
+                        .foregroundColor(.user)
                         .padding(.vertical)
                 } else {
                     Image(systemName: "arrowtriangle.up.fill")
                         .font(.title)
-                        .foregroundColor(.init("Opponent"))
+                        .foregroundColor(.opponent)
                         .padding(.vertical)
                 }
                 Text(verbatim: UIApplication.name.value)
