@@ -31,8 +31,6 @@ extension Game {
                 .contentShape(Rectangle())
                 .padding(.horizontal)
             }
-            Timer(session: $session, wait: wait)
-                .padding(.top)
             Spacer()
             if selected != nil {
                 Control.Capsule(text: "Done", background: .primary, foreground: .init("Background")) {

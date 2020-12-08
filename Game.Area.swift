@@ -9,7 +9,14 @@ extension Game {
         
         var body: some View {
             ZStack {
-                Board(session: $session, positions: $positions)
+                Board { point in
+                    GeometryReader {
+                        Cell(session: $session,
+                             positions: $positions,
+                             point: point,
+                             frame: $0.frame(in: .global))
+                    }
+                }
                 VStack {
                     Header(session: $session, wait: wait)
                     Spacer()
