@@ -13,7 +13,6 @@ extension Game {
                 ForEach(session.beads.filter(\.selected).filter { session.match?[$0.item] == false }, id: \.self) { bead in
                     Bead(bead: bead.item)
                         .zIndex(offset[bead] == nil ? 0 : 1)
-                        .frame(width: 54, height: 54)
                         .offset(offset[bead] ?? .zero)
                         .gesture(
                             DragGesture(coordinateSpace: .global)

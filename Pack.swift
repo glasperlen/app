@@ -12,21 +12,16 @@ struct Pack: View {
                     HStack {
                         Bead(bead: beads[0].item)
                             .matchedGeometryEffect(id: "0", in: animation)
-                            .frame(width: 50, height: 50)
                         Bead(bead: beads[1].item)
                             .matchedGeometryEffect(id: "1", in: animation)
-                            .frame(width: 50, height: 50)
                     }
                     HStack {
                         Bead(bead: beads[2].item)
                             .matchedGeometryEffect(id: "2", in: animation)
-                            .frame(width: 50, height: 50)
                         Bead(bead: beads[3].item)
                             .matchedGeometryEffect(id: "3", in: animation)
-                            .frame(width: 50, height: 50)
                         Bead(bead: beads[4].item)
                             .matchedGeometryEffect(id: "4", in: animation)
-                            .frame(width: 50, height: 50)
                     }
                 }
             } else {

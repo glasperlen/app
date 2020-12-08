@@ -35,7 +35,6 @@ extension Game.Board {
                         .stroke(session[session.match![point]!.player] ? Color("User") : .init("Opponent"), style: .init(lineWidth: 1))
                         .padding(5)
                     Bead(bead: session.match![point]!.bead)
-                        .frame(width: 54, height: 54)
                 }
                 if flash != nil {
                     RoundedRectangle(cornerRadius: 11)

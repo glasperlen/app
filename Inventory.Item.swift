@@ -16,7 +16,6 @@ extension Inventory {
                         .frame(width: 62, height: 62)
                         .opacity(bead.selected ? 1 : 0)
                     Bead(bead: bead.item)
-                        .frame(width: 56, height: 56)
                         .opacity(bead.selected ? 1 : 0.5)
                 }
             }

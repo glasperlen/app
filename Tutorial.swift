@@ -334,7 +334,6 @@ private struct H: View {
                                                 .stroke(Color("User"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                                .frame(width: 60, height: 60)
                                         } else {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .fill(Color("Background"))
@@ -398,7 +397,6 @@ private struct J: View {
                                                 .stroke(Color("Opponent"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                                .frame(width: 60, height: 60)
                                         } else {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .fill(Color("Background"))
@@ -443,13 +441,11 @@ private struct K: View {
                                                 .stroke(Color("User"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                                .frame(width: 60, height: 60)
                                         } else if x == 1 && y == 0 {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .stroke(Color("User"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                                .frame(width: 60, height: 60)
                                         } else {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .fill(Color("Background"))
@@ -497,13 +493,11 @@ private struct L: View {
                                                 .stroke(Color("Opponent"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                                .frame(width: 60, height: 60)
                                         } else if x == 0 && y == 1 {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .stroke(Color("User"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                                .frame(width: 60, height: 60)
                                         } else {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .fill(Color("Background"))
@@ -548,13 +542,11 @@ private struct M: View {
                                                 .stroke(Color("Opponent"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                                .frame(width: 60, height: 60)
                                         } else if x == 1 && y == 1 {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .stroke(Color("User"), style: .init(lineWidth: 1))
                                                 .padding(5)
                                             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                                .frame(width: 60, height: 60)
                                         } else {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .fill(Color("Background"))
