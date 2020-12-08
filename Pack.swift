@@ -11,17 +11,27 @@ struct Pack: View {
                 VStack {
                     HStack {
                         Bead(bead: beads[0].item)
+                            .frame(width: 15, height: 15)
                             .matchedGeometryEffect(id: "0", in: animation)
+                            .frame(width: 54, height: 54)
                         Bead(bead: beads[1].item)
+                            .frame(width: 15, height: 15)
                             .matchedGeometryEffect(id: "1", in: animation)
+                            .frame(width: 54, height: 54)
                     }
                     HStack {
                         Bead(bead: beads[2].item)
+                            .frame(width: 15, height: 15)
                             .matchedGeometryEffect(id: "2", in: animation)
+                            .frame(width: 54, height: 54)
                         Bead(bead: beads[3].item)
+                            .frame(width: 15, height: 15)
                             .matchedGeometryEffect(id: "3", in: animation)
+                            .frame(width: 54, height: 54)
                         Bead(bead: beads[4].item)
+                            .frame(width: 15, height: 15)
                             .matchedGeometryEffect(id: "4", in: animation)
+                            .frame(width: 54, height: 54)
                     }
                 }
             } else {
@@ -48,9 +58,10 @@ struct Pack: View {
                 }
             }
         }
+        .transition(.scale)
         .contentShape(Rectangle())
         .onTapGesture {
-            withAnimation(.easeInOut(duration: 0.3)) {
+            withAnimation(.easeInOut(duration: 0.5)) {
                 zoom.toggle()
             }
         }
