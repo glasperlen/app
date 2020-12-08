@@ -11,13 +11,13 @@ extension Game {
             ZStack {
                 if visible {
                     Color.background
-                        .opacity(0.8)
+                        .opacity(0.9)
                         .edgesIgnoringSafeArea(.all)
                     session.match.map { match in
                         player.map {
-                            Text(session[$0] ? "Your turn" : "\(match[$0].name)'s turn")
+                            Text(verbatim: session[$0] ? UIApplication.name.value : match[$0].name)
+                                .font(Font.largeTitle.bold())
                                 .padding()
-                                .font(Font.title2.bold())
                                 .transition(.slide)
                         }
                     }
