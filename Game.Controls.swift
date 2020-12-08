@@ -10,7 +10,7 @@ extension Game {
         var body: some View {
             HStack {
                 Spacer()
-                Control.Circle(image: "bag") {
+                Control.Circle(image: "circle.grid.2x2.fill") {
                     inventory = true
                 }
                 .sheet(isPresented: $inventory) {
@@ -46,6 +46,7 @@ extension Game {
                 }
                 Spacer()
             }
+            .padding(.bottom)
         }
     }
 }

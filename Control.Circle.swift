@@ -14,8 +14,8 @@ extension Control {
                             .frame(width: 90, height: 90)
                         if selected {
                             SwiftUI.Circle()
-                                .stroke(Color.primary, style: .init(lineWidth: 2))
-                                .frame(width: 60, height: 60)
+                                .fill(Color.black)
+                                .frame(width: 65, height: 65)
                         } else {
                             SwiftUI.Circle()
                                 .fill(Color("Background"))
@@ -24,7 +24,7 @@ extension Control {
                         }
                         Image(systemName: image)
                             .font(.title2)
-                            .foregroundColor(.primary)
+                            .foregroundColor(selected ? .secondary : .primary)
                     }
                     .contentShape(SwiftUI.Circle())
                 })
