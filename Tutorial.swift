@@ -52,7 +52,7 @@ private struct A: View {
     var body: some View {
         VStack {
             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                .padding()
+                .padding(.vertical)
             HStack {
                 Text("Colour")
                     .bold()
@@ -97,11 +97,11 @@ private struct A: View {
                 Text(verbatim: "4")
             }
             .frame(width: 140)
-            .padding(.bottom)
             .foregroundColor(.secondary)
+            Spacer()
             Text("A bead")
-                .padding(.top)
                 .font(Font.title.bold())
+                .padding(.bottom)
             Text("The main element of the game.\nEach one is unique and with different properties.")
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
@@ -114,7 +114,7 @@ private struct B: View {
         VStack {
             Text(verbatim: "5")
                 .font(Font.largeTitle.bold())
-                .padding(.vertical)
+                .padding(.bottom)
             Text("""
 You will receive 5 beads at the beginning, this will be your inventory.
 
@@ -133,9 +133,9 @@ You can also purchase new beads.
 private struct C: View {
     var body: some View {
         VStack {
-            Text("Playing Modes")
-                .bold()
-                .padding()
+            Text("Modes")
+                .font(Font.largeTitle.bold())
+                .padding(.bottom)
             HStack {
                 VStack {
                     Image(systemName: "person.fill")
@@ -178,8 +178,7 @@ Notice the different colours between you and your opponent.
 """)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.vertical)
-            
+            Spacer()
             HStack {
                 HStack {
                     Text("Opponent")
@@ -197,7 +196,6 @@ Notice the different colours between you and your opponent.
                         .foregroundColor(.init("Opponent"))
                 }
             }
-            .padding(.vertical)
             HStack {
                 HStack {
                     Text("You")
@@ -223,37 +221,16 @@ Notice the different colours between you and your opponent.
 private struct E: View {
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                Group {
-                    VStack {
-                        ForEach(0 ..< 3) { _ in
-                            HStack {
-                                ForEach(0 ..< 3) { _ in
-                                    ZStack {
-                                        Rectangle()
-                                            .hidden()
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color("Background"))
-                                            .modifier(Neumorphic())
-                                            .padding(5)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: geo.size.width)
+            Board { _ in
+                Place(state: .empty)
             }
-            .frame(maxWidth: 300)
-            .padding(.top)
+            Spacer()
             Text("Board")
-                .padding(.top)
+                .padding(.vertical)
                 .font(Font.title.bold())
             Text("This is where the game takes place.")
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.bottom)
         }
     }
 }
@@ -280,39 +257,18 @@ The game ends when all the cells are owned, the player with the most cells wins.
 private struct G: View {
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                Group {
-                    VStack {
-                        ForEach(0 ..< 3) { _ in
-                            HStack {
-                                ForEach(0 ..< 3) { _ in
-                                    ZStack {
-                                        Rectangle()
-                                            .hidden()
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color("Background"))
-                                            .modifier(Neumorphic())
-                                            .padding(5)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: geo.size.width)
+            Board { _ in
+                Place(state: .empty)
             }
-            .frame(maxWidth: 300)
-            .padding(.top)
+            Spacer()
             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
                 .padding(.vertical)
             Text("Turns")
-                .padding(.top)
+                .padding(.vertical)
                 .font(Font.title.bold())
             Text("During your turn drag and drop 1 of your beads into an empty cell.")
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.bottom)
         }
     }
 }
@@ -320,44 +276,16 @@ private struct G: View {
 private struct H: View {
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                Group {
-                    VStack {
-                        ForEach(0 ..< 3) { x in
-                            HStack {
-                                ForEach(0 ..< 3) { y in
-                                    ZStack {
-                                        Rectangle()
-                                            .hidden()
-                                        if x == 1 && y == 1 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("User"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(Color("Background"))
-                                                .modifier(Neumorphic())
-                                                .padding(5)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: geo.size.width)
+            Board {
+                Place(state: $0.x == 1 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
             }
-            .frame(maxWidth: 300)
-            .padding(.top)
+            Spacer()
             Text("Own")
-                .padding(.top)
+                .padding(.vertical)
                 .font(Font.title.bold())
             Text("When you place a bead into an empty cell you own it and your turn ends.")
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.bottom)
         }
     }
 }
@@ -383,43 +311,15 @@ All defenses that get overpowered by your attack become yours.
 private struct J: View {
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                Group {
-                    VStack {
-                        ForEach(0 ..< 3) { y in
-                            HStack {
-                                ForEach(0 ..< 3) { x in
-                                    ZStack {
-                                        Rectangle()
-                                            .hidden()
-                                        if x == 0 && y == 0 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("Opponent"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(Color("Background"))
-                                                .modifier(Neumorphic())
-                                                .padding(5)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: geo.size.width)
+            Board {
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("Opponent")) : .empty)
             }
-            .frame(maxWidth: 300)
-            .padding(.top)
+            Spacer()
             Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
                 .padding(.vertical)
             Text("The green bead already on the board is in defensive mode.")
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.bottom)
         }
     }
 }
@@ -427,51 +327,18 @@ private struct J: View {
 private struct K: View {
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                Group {
-                    VStack {
-                        ForEach(0 ..< 3) { y in
-                            HStack {
-                                ForEach(0 ..< 3) { x in
-                                    ZStack {
-                                        Rectangle()
-                                            .hidden()
-                                        if x == 0 && y == 0 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("User"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                        } else if x == 1 && y == 0 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("User"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(Color("Background"))
-                                                .modifier(Neumorphic())
-                                                .padding(5)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: geo.size.width)
+            Board {
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("User")) :
+                        $0.x == 1 && $0.y == 0 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
             }
-            .frame(maxWidth: 300)
-            .padding(.top)
+            Spacer()
             Text("""
-The defense can't hold against your attack.
-Your Left (2) points are matched against the defense's Right (1).
+The defense (Right = 1) can't stand against your attack (Left = 2).
 
 The defending cell becomes yours.
 """)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.bottom)
         }
     }
 }
@@ -479,48 +346,16 @@ The defending cell becomes yours.
 private struct L: View {
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                Group {
-                    VStack {
-                        ForEach(0 ..< 3) { y in
-                            HStack {
-                                ForEach(0 ..< 3) { x in
-                                    ZStack {
-                                        Rectangle()
-                                            .hidden()
-                                        if x == 0 && y == 0 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("Opponent"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                        } else if x == 0 && y == 1 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("User"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(Color("Background"))
-                                                .modifier(Neumorphic())
-                                                .padding(5)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: geo.size.width)
+            Board {
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("Opponent")) :
+                        $0.x == 0 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
             }
-            .frame(maxWidth: 300)
-            .padding(.top)
+            Spacer()
             Text("""
-In this case the defense's Bottom (1) can hold against your attack Top (1).
+In this case the defense (Bottom = 1) holds against your attack (Top = 1).
 """)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.bottom)
         }
     }
 }
@@ -528,48 +363,16 @@ In this case the defense's Bottom (1) can hold against your attack Top (1).
 private struct M: View {
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                Group {
-                    VStack {
-                        ForEach(0 ..< 3) { y in
-                            HStack {
-                                ForEach(0 ..< 3) { x in
-                                    ZStack {
-                                        Rectangle()
-                                            .hidden()
-                                        if x == 0 && y == 0 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("Opponent"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .green, top: 0, bottom: 1, left: 1, right: 1))
-                                        } else if x == 1 && y == 1 {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color("User"), style: .init(lineWidth: 1))
-                                                .padding(5)
-                                            Bead(bead: .init(color: .blue, top: 1, bottom: 0, left: 2, right: 4))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(Color("Background"))
-                                                .modifier(Neumorphic())
-                                                .padding(5)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: geo.size.width)
+            Board {
+                Place(state: $0.x == 0 && $0.y == 0 ? .taken(.init(color: .green, top: 0, bottom: 1, left: 1, right: 1), .init("Opponent")) :
+                        $0.x == 1 && $0.y == 1 ? .taken(.init(color: .blue, top: 1, bottom: 0, left: 2, right: 4), .init("User")) : .empty)
             }
-            .frame(maxWidth: 300)
-            .padding(.top)
+            Spacer()
             Text("""
-In this case the cells are not adjacents and there is no attack.
+In this case the cells are not sharing a side and there is no attack.
 """)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .padding(.bottom)
         }
     }
 }
@@ -579,7 +382,7 @@ private struct N: View {
         Text("""
 Only the side of the beads that touch between them are considered for an attack: Top against Bottom, Left against Right.
 
-If your attack is smaller than the defense nothing happens.
+Attacks smaller or equal than the defense are ignored.
 
 You can't attack your own cells.
 """)
@@ -593,7 +396,7 @@ private struct O: View {
         VStack {
             Text(verbatim: "Time Out")
                 .font(Font.largeTitle.bold())
-                .padding(.vertical)
+                .padding(.bottom)
             Text("""
 When playing in single player mode you have no restriction of time; play as relaxed as you want and take your time.
 
@@ -610,7 +413,7 @@ private struct P: View {
         VStack {
             Text(verbatim: "End Game")
                 .font(Font.largeTitle.bold())
-                .padding(.vertical)
+                .padding(.bottom)
             Text("""
 The winner can choose 1 bead from the looser and add it to their inventory.
 
