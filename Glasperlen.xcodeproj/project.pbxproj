@@ -141,6 +141,7 @@
 		CEECC8D9256686F600395B05 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		CEECC8DC25668F9800395B05 /* Menu.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.Item.swift; sourceTree = "<group>"; };
 		CEECC8E0256697DD00395B05 /* Menu.Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.Switch.swift; sourceTree = "<group>"; };
+		CEFE7E52258126730079FD4D /* Glasperlen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Glasperlen.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +161,7 @@
 		CE4495AC25496A4300ECA6C0 = {
 			isa = PBXGroup;
 			children = (
+				CEFE7E52258126730079FD4D /* Glasperlen.entitlements */,
 				CE55B3C52567C649006D3F83 /* Settings.bundle */,
 				CE4495C125496A4300ECA6C0 /* Info.plist */,
 				CE4495B825496A4300ECA6C0 /* App.swift */,
@@ -526,16 +528,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Glasperlen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 4.2;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = glasperlen;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -545,16 +551,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Glasperlen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 4.2;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Info.plist;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = glasperlen;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
