@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE063851256190A4006ED1AD /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE063850256190A4006ED1AD /* UIApplication.swift */; };
+		CE1640282580FE2E00A2F24C /* Game.Prize.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1640272580FE2E00A2F24C /* Game.Prize.Item.swift */; };
 		CE2317362556E6470074CD22 /* Game.Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2317352556E6470074CD22 /* Game.Title.swift */; };
 		CE2535FD255967BC00DBA035 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FC255967BC00DBA035 /* Defaults.swift */; };
 		CE253600255967E900DBA035 /* Session.Bead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2535FF255967E900DBA035 /* Session.Bead.swift */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		CE063850256190A4006ED1AD /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		CE1640272580FE2E00A2F24C /* Game.Prize.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Prize.Item.swift; sourceTree = "<group>"; };
 		CE2317352556E6470074CD22 /* Game.Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.Title.swift; sourceTree = "<group>"; };
 		CE2535FC255967BC00DBA035 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		CE2535FF255967E900DBA035 /* Session.Bead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.Bead.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				CEEB8105256EB591005A03A4 /* Game.Matching.swift */,
 				CE7273BE2553FE0900A79BF2 /* Game.New.swift */,
 				CE73E550256D43B300406EA8 /* Game.Play.swift */,
+				CE1640272580FE2E00A2F24C /* Game.Prize.Item.swift */,
 				CE4B649225766F8D00CD3ED4 /* Game.Prize.swift */,
 				CED6BA342575446C002C0699 /* Game.Refresh.swift */,
 				CE6324812549D14F0051A470 /* Game.swift */,
@@ -344,6 +347,7 @@
 				CE31057D2577C1F200FEC4D9 /* Tutorial.swift in Sources */,
 				CE7FDC58255A8F69004D46A5 /* Inventory.Item.swift in Sources */,
 				CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */,
+				CE1640282580FE2E00A2F24C /* Game.Prize.Item.swift in Sources */,
 				CE83135D256E8EA20014EEA4 /* Game.Loading.swift in Sources */,
 				CE6324822549D14F0051A470 /* Game.swift in Sources */,
 				CEE26A30257E4279005BD684 /* Game.Area.swift in Sources */,

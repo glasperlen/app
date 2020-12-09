@@ -9,37 +9,30 @@ extension Game {
         @State private var selected: Magister.Bead?
         
         var body: some View {
-            Text("Choose your prize")
-                .padding(.horizontal)
+            Text("Choose\n1 bead")
+                .multilineTextAlignment(.center)
+                .font(Font.title.bold())
                 .padding(.bottom)
-            ForEach(beads, id: \.self) { bead in
-                Button {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        selected = bead
-                    }
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(selected == bead ? .accentColor : Color(.secondarySystemBackground))
-                            .frame(width: 72, height: 72)
-                        Circle()
-                            .fill(Color.black.opacity(0.2))
-                            .frame(width: 62, height: 62)
-                        Bead(bead: bead)
-                    }
+            VStack {
+                HStack {
+                    Item(selected: $selected, bead: beads[0])
+                    Item(selected: $selected, bead: beads[1])
                 }
-                .contentShape(Rectangle())
-                .padding(.horizontal)
-            }
-            Spacer()
-            if selected != nil {
-                Control.Capsule(text: "Done", background: .primary, foreground: .black) {
-                    guard let bead = selected else { return }
-                    session.match!.prize(bead)
-                    UIApplication.shared.next(session.match!)
+                HStack {
+                    Item(selected: $selected, bead: beads[2])
+                    Item(selected: $selected, bead: beads[3])
+                    Item(selected: $selected, bead: beads[4])
                 }
-                .padding(.bottom)
             }
+            .padding(.vertical)
+            Control.Capsule(text: "Done", background: .primary, foreground: .black) {
+                guard let bead = selected else { return }
+                session.match!.prize(bead)
+                UIApplication.shared.next(session.match!)
+            }
+            .padding(.vertical)
+            .opacity(selected == nil ? 0 : 1)
+            .allowsHitTesting(selected != nil)
         }
     }
 }
