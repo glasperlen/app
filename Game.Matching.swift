@@ -8,13 +8,13 @@ extension Game {
             VStack {
                 Spacer()
                 Text("Waiting for player two...")
+                    .bold()
                     .foregroundColor(.secondary)
                 Control.Capsule(text: "Cancel", background: .secondary, foreground: .black) {
                     session.match!.cancel()
                 }
-                .padding(.vertical)
+                .padding(.vertical, 100)
                 Refresh(session: $session)
-                    .padding(.vertical)
                 Spacer()
             }
         }

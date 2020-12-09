@@ -14,15 +14,19 @@ extension Game {
                     .padding(.top, 50)
                 if visible {
                     Bead(bead: result.bead)
-                    Text("This bead will be\nremoved from your inventory")
-                        .font(Font.title2.bold())
-                        .padding()
+                        .padding(.top, 40)
+                    Text("Will be removed\nfrom your inventory")
+                        .multilineTextAlignment(.center)
+                        .font(Font.title3.bold())
+                        .padding(.horizontal)
+                        .padding(.bottom, 40)
                     Control.Capsule(text: "Done", background: .primary, foreground: .black) {
+                        session.beads.removeAll { $0.item == result.bead && $0.selected }
                         withAnimation(.easeInOut(duration: 0.5)) {
                             visible = false
                         }
                         UIApplication.shared.end()
-                        withAnimation(.easeInOut(duration: 1)) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             session.match = nil
                             Defaults.game = nil
                         }
@@ -36,13 +40,10 @@ extension Game {
                         session.beads.append(.init(selected: false, item: result.bead))
                         UIApplication.shared.victory()
                         UIApplication.shared.remove()
-                        withAnimation(.easeInOut(duration: 0.35)) {
-                            session.match = nil
-                            Defaults.game = nil
-                        }
+                        session.match = nil
+                        Defaults.game = nil
                     }
                 } else {
-                    session.beads.removeAll { $0.item == result.bead && $0.selected }
                     visible = true
                 }
             }

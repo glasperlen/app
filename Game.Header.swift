@@ -63,7 +63,6 @@ extension Game {
                 }
                 if session.multiplayer {
                     Timer(session: $session, wait: wait)
-                        .offset(y: -35)
                 }
             }
             .padding()

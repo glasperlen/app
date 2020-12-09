@@ -7,13 +7,14 @@ extension Game {
         var body: some View {
             VStack {
                 Spacer()
-                Text("Game was cancelled")
+                Text("Game Cancelled")
+                    .bold()
                 Control.Capsule(text: "Continue", background: .primary, foreground: .black) {
                     UIApplication.shared.quit()
                     Defaults.game = nil
                     session.match = nil
                 }
-                .padding(.vertical)
+                .padding(.vertical, 50)
                 Spacer()
             }
         }

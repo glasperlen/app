@@ -8,6 +8,7 @@ extension Game {
         
         var body: some View {
             Text("Loading match...")
+                .bold()
                 .foregroundColor(.secondary)
                 .onReceive(GKLocalPlayer.local.publisher(for: \.isAuthenticated).debounce(for: .seconds(1), scheduler: DispatchQueue.main)) { _ in
                     UIApplication.shared.load()

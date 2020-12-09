@@ -39,6 +39,7 @@ extension Game {
                             VStack {
                                 Text("Choose\n1 bead")
                                     .multilineTextAlignment(.center)
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .font(Font.title.bold())
                                     .padding(.bottom)
                                 VStack {
@@ -55,10 +56,8 @@ extension Game {
                                 .padding(.vertical)
                                 Control.Capsule(text: "Done", background: .primary, foreground: .black) {
                                     guard let bead = selected else { return }
-                                    withAnimation(.easeInOut(duration: 0.35)) {
-                                        session.match!.prize(bead)
-                                        UIApplication.shared.next(session.match!)
-                                    }
+                                    session.match!.prize(bead)
+                                    UIApplication.shared.next(session.match!)
                                 }
                                 .padding(.vertical)
                                 .opacity(selected == nil ? 0 : 1)
@@ -82,9 +81,7 @@ extension Game {
                             Control.Capsule(text: "Continue", background: .primary, foreground: .black) {
                                 session.match.map { match in
                                     if match[winner].id.isEmpty {
-                                        withAnimation(.easeInOut(duration: 0.5)) {
-                                            session.match?.prize(match[winner.negative].beads.randomElement()!)
-                                        }
+                                        session.match?.prize(match[winner.negative].beads.randomElement()!)
                                     }
                                 }
                             }

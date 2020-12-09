@@ -12,7 +12,8 @@ extension Game {
         var body: some View {
             VStack {
                 Text(verbatim: date)
-                    .font(Font.title2.bold().monospacedDigit())
+                    .font(Font.title.bold().monospacedDigit())
+                    .foregroundColor(.secondary)
             }
             .onAppear {
                 formatter.allowedUnits = [.second]
