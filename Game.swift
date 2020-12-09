@@ -17,8 +17,8 @@ struct Game: View {
             case .matching: Matching(session: $session)
             case .cancel: Cancel(session: $session)
             case let .play(wait): Area(session: $session, wait: wait)
-            case let .win(wait): Win(session: $session, wait: wait)
-            case let .timeout(wait): Timeout(session: $session, wait: wait)
+            case let .win(wait): Ending(session: $session, state: session.match!.state, winner: wait.player, wait: wait)
+            case let .timeout(wait): Ending(session: $session, state: session.match!.state, winner: wait.player.negative, wait: wait)
             case let .end(result): End(session: $session, result: result)
             }
         }

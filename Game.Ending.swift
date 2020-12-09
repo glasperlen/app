@@ -2,10 +2,12 @@ import SwiftUI
 import Magister
 
 extension Game {
-    struct Win: View {
+    struct Ending: View {
         @Binding var session: Session
-        @State private var selected: Magister.Bead?
+        let state: Match.State
+        let winner: Match.Turn
         let wait: Match.Wait
+        @State private var selected: Magister.Bead?
         @State private var scale = CGFloat(1)
         @State private var opacity = Double(1)
         @State private var show = false
@@ -19,19 +21,20 @@ extension Game {
                 ZStack {
                     session.match.map { match in
                         Board {
-                            Place(state: .taken(match[$0]!, session[match[$0]!.player] ? .user : .opponent))
+                            Place(state: match[$0]?.bead == nil ? .empty : .taken(match[$0]!, session[match[$0]!.player] ? .user : .opponent))
                         }
                         .opacity(opacity)
                         .scaleEffect(scale)
                     }
                     if show {
-                        Text(session[wait.player] ? "WIN" : "LOOSE")
+                        Text(message)
+                            .multilineTextAlignment(.center)
                             .font(Font.largeTitle.bold())
                             .transition(.slide)
                     }
                 }
                 if next {
-                    if session[wait.player] {
+                    if session[winner] {
                         Prize(session: $session, wait: wait, beads: session.match?[wait.player.negative].beads ?? [])
                             .offset(y: -50)
                     } else {
@@ -84,6 +87,14 @@ extension Game {
                         next = true
                     }
                 }
+            }
+        }
+        
+        private var message: LocalizedStringKey {
+            if case .win = state {
+                return session[winner] ? "WIN" : "LOOSE"
+            } else {
+                return session[winner] ? .init(session.match![winner.negative].name + "\nTIMED OUT") : "TIME OUT"
             }
         }
     }
