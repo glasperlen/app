@@ -22,7 +22,7 @@ extension Game {
                             visible = false
                         }
                         UIApplication.shared.end()
-                        withAnimation(.easeInOut(duration: 1.5)) {
+                        withAnimation(.easeInOut(duration: 1)) {
                             session.match = nil
                             Defaults.game = nil
                         }
@@ -36,8 +36,10 @@ extension Game {
                         session.beads.append(.init(selected: false, item: result.bead))
                         UIApplication.shared.victory()
                         UIApplication.shared.remove()
-                        session.match = nil
-                        Defaults.game = nil
+                        withAnimation(.easeInOut(duration: 0.35)) {
+                            session.match = nil
+                            Defaults.game = nil
+                        }
                     }
                 } else {
                     session.beads.removeAll { $0.item == result.bead && $0.selected }

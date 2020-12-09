@@ -35,12 +35,41 @@ extension Game {
                 }
                 if next {
                     if session[winner] {
-                        Prize(session: $session, wait: wait, beads: session.match?[wait.player.negative].beads ?? [])
+                        session.match.map { match in
+                            VStack {
+                                Text("Choose\n1 bead")
+                                    .multilineTextAlignment(.center)
+                                    .font(Font.title.bold())
+                                    .padding(.bottom)
+                                VStack {
+                                    HStack {
+                                        Item(selected: $selected, bead: match[winner.negative].beads[0])
+                                        Item(selected: $selected, bead: match[winner.negative].beads[1])
+                                    }
+                                    HStack {
+                                        Item(selected: $selected, bead: match[winner.negative].beads[2])
+                                        Item(selected: $selected, bead: match[winner.negative].beads[3])
+                                        Item(selected: $selected, bead: match[winner.negative].beads[4])
+                                    }
+                                }
+                                .padding(.vertical)
+                                Control.Capsule(text: "Done", background: .primary, foreground: .black) {
+                                    guard let bead = selected else { return }
+                                    withAnimation(.easeInOut(duration: 0.35)) {
+                                        session.match!.prize(bead)
+                                        UIApplication.shared.next(session.match!)
+                                    }
+                                }
+                                .padding(.vertical)
+                                .opacity(selected == nil ? 0 : 1)
+                                .allowsHitTesting(selected != nil)
+                            }
                             .offset(y: -50)
+                        }
                     } else {
                         if session.multiplayer {
                             session.match.map {
-                                Text("\($0[wait.player].name)\nwill take 1 bead")
+                                Text("\($0[winner].name)\nTakes 1 bead")
                                     .multilineTextAlignment(.center)
                                     .font(Font.title.bold())
                                     .padding()
@@ -52,9 +81,9 @@ extension Game {
                         } else {
                             Control.Capsule(text: "Continue", background: .primary, foreground: .black) {
                                 session.match.map { match in
-                                    if match[wait.player].id.isEmpty {
+                                    if match[winner].id.isEmpty {
                                         withAnimation(.easeInOut(duration: 0.5)) {
-                                            session.match?.prize(match[wait.player.negative].beads.randomElement()!)
+                                            session.match?.prize(match[winner.negative].beads.randomElement()!)
                                         }
                                     }
                                 }
