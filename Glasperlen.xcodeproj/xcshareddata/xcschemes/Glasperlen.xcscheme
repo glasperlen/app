@@ -73,6 +73,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "The Glass Bead Game"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
