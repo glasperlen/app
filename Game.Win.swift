@@ -7,14 +7,32 @@ extension Game {
         @State private var selected: Magister.Bead?
         let wait: Match.Wait
         @State private var scale = CGFloat(1)
+        @State private var opacity = Double(1)
+        @State private var show = false
         
         var body: some View {
             ZStack {
-                session.match.map { match in
-                    Board {
-                        Place(state: .taken(match[$0]!, session[match[$0]!.player] ? .user : .opponent))
+                VStack {
+                    if !show {
+                        Spacer()
                     }
-                    .scaleEffect(scale)
+                    session.match.map { match in
+                        Board {
+                            Place(state: .taken(match[$0]!, session[match[$0]!.player] ? .user : .opponent))
+                        }
+                        .opacity(opacity)
+                        .scaleEffect(scale)
+                    }
+                    Spacer()
+                }
+                VStack {
+                    if show {
+                        Text("You win!")
+                            .font(Font.largeTitle.bold())
+                            .padding()
+                            .transition(.slide)
+                    }
+                    Spacer()
                 }
                 if false {
                     VStack {
@@ -60,9 +78,21 @@ extension Game {
                 }
             }
             .onAppear {
+                session.play(.Endgame)
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation(.easeInOut(duration: 0.3)) {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        opacity = 0.5
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                    withAnimation(.easeInOut(duration: 0.4)) {
                         scale = 0.5
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        show = true
                     }
                 }
             }

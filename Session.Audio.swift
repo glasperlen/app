@@ -7,6 +7,7 @@ extension Session {
         Pop,
         Bottle,
         Hero,
-        Basso
+        Basso,
+        Endgame
     }
 }

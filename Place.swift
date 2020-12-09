@@ -35,6 +35,6 @@ private struct Highlight: View {
             .fill(Color.background)
             .shadow(color: color, radius: 7)
         RoundedRectangle(cornerRadius: 12)
-            .stroke(color, style: .init(lineWidth: 1))
+            .stroke(color, style: .init(lineWidth: 3))
     }
 }
