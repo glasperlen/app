@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CE4495B425496A4300ECA6C0"
-               BuildableName = "Glasperlen.app"
+               BuildableName = "The Glass Bead Game.app"
                BlueprintName = "Glasperlen"
                ReferencedContainer = "container:Glasperlen.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE4495B425496A4300ECA6C0"
-            BuildableName = "Glasperlen.app"
+            BuildableName = "The Glass Bead Game.app"
             BlueprintName = "Glasperlen"
             ReferencedContainer = "container:Glasperlen.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE4495B425496A4300ECA6C0"
-            BuildableName = "Glasperlen.app"
+            BuildableName = "The Glass Bead Game.app"
             BlueprintName = "Glasperlen"
             ReferencedContainer = "container:Glasperlen.xcodeproj">
          </BuildableReference>
