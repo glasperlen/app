@@ -62,8 +62,9 @@ struct Menu: View {
             }
             Switch(text: "Sounds", value: $sound)
                 .padding(.top)
-            #if os(iOS)
-            Switch(text: "Vibrate", value: $vibrate)
+            #if targetEnvironment(macCatalyst)
+            #elseif os(iOS)
+                Switch(text: "Vibrate", value: $vibrate)
             #endif
         }
         .background(Color.background.edgesIgnoringSafeArea(.all))
