@@ -16,10 +16,11 @@
 		CE25360425596A2200DBA035 /* Defaults.Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25360325596A2200DBA035 /* Defaults.Key.swift */; };
 		CE31057D2577C1F200FEC4D9 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31057C2577C1F200FEC4D9 /* Tutorial.swift */; };
 		CE34B9E025642A5200A2CD60 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34B9DF25642A5200A2CD60 /* Pack.swift */; };
+		CE388475258B71D70088A8CF /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE388472258B71D70088A8CF /* Settings.bundle */; platformFilter = maccatalyst; };
+		CE388476258B71D70088A8CF /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE388474258B71D70088A8CF /* Settings.bundle */; platformFilter = ios; };
 		CE4495B925496A4300ECA6C0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4495B825496A4300ECA6C0 /* App.swift */; };
 		CE4495BD25496A4300ECA6C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4495BC25496A4300ECA6C0 /* Assets.xcassets */; };
 		CE4B648C2576490C00CD3ED4 /* Game.End.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B648B2576490C00CD3ED4 /* Game.End.swift */; };
-		CE55B3C62567C649006D3F83 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE55B3C52567C649006D3F83 /* Settings.bundle */; };
 		CE594343257F94BC00A86D50 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE594342257F94BC00A86D50 /* Board.swift */; };
 		CE594347257F97EA00A86D50 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE594346257F97EA00A86D50 /* Place.swift */; };
 		CE594352257F9AA900A86D50 /* Place.State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE594351257F9AA900A86D50 /* Place.State.swift */; };
@@ -84,12 +85,13 @@
 		CE25360325596A2200DBA035 /* Defaults.Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.Key.swift; sourceTree = "<group>"; };
 		CE31057C2577C1F200FEC4D9 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		CE34B9DF25642A5200A2CD60 /* Pack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pack.swift; sourceTree = "<group>"; };
+		CE388472258B71D70088A8CF /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CE388474258B71D70088A8CF /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CE4495B525496A4300ECA6C0 /* The Glass Bead Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Glass Bead Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4495B825496A4300ECA6C0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CE4495BC25496A4300ECA6C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE4495C125496A4300ECA6C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE4B648B2576490C00CD3ED4 /* Game.End.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.End.swift; sourceTree = "<group>"; };
-		CE55B3C52567C649006D3F83 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CE594342257F94BC00A86D50 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		CE594346257F97EA00A86D50 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		CE594351257F9AA900A86D50 /* Place.State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.State.swift; sourceTree = "<group>"; };
@@ -158,11 +160,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE388471258B71D70088A8CF /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				CE388472258B71D70088A8CF /* Settings.bundle */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		CE388473258B71D70088A8CF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CE388474258B71D70088A8CF /* Settings.bundle */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		CE4495AC25496A4300ECA6C0 = {
 			isa = PBXGroup;
 			children = (
 				CEFE7E52258126730079FD4D /* Glasperlen.entitlements */,
-				CE55B3C52567C649006D3F83 /* Settings.bundle */,
 				CE4495C125496A4300ECA6C0 /* Info.plist */,
 				CE4495B825496A4300ECA6C0 /* App.swift */,
 				CE6E727525542CA5000AB7D2 /* Bead.Base.swift */,
@@ -220,6 +237,8 @@
 				CE063850256190A4006ED1AD /* UIApplication.swift */,
 				CE4495BC25496A4300ECA6C0 /* Assets.xcassets */,
 				CEE2467625680E93005133F5 /* Frameworks */,
+				CE388473258B71D70088A8CF /* iOS */,
+				CE388471258B71D70088A8CF /* macOS */,
 				CE4495B625496A4300ECA6C0 /* Products */,
 				CE70C2052565748900E5FCC0 /* Sounds */,
 			);
@@ -318,13 +337,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE55B3C62567C649006D3F83 /* Settings.bundle in Resources */,
+				CE388475258B71D70088A8CF /* Settings.bundle in Resources */,
 				CE7E031E2580EDF400CAD362 /* Endgame.aiff in Resources */,
 				CED891432565840E0083C128 /* Basso.aiff in Resources */,
 				CE70C214256578A700E5FCC0 /* Pop.aiff in Resources */,
 				CED8913A256583030083C128 /* Bottle.aiff in Resources */,
 				CE4495BD25496A4300ECA6C0 /* Assets.xcassets in Resources */,
 				CE70C215256578A700E5FCC0 /* Tink.aiff in Resources */,
+				CE388476258B71D70088A8CF /* Settings.bundle in Resources */,
 				CED8913B256583030083C128 /* Hero.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
