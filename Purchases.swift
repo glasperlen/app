@@ -10,7 +10,6 @@ final class Purchases: NSObject, SKRequestDelegate, SKProductsRequestDelegate, S
     let done = PassthroughSubject<[Session.Bead], Never>()
     private weak var request: SKProductsRequest?
     
-    
     override init() {
         super.init()
         SKPaymentQueue.default().add(self)
